@@ -17,3 +17,4 @@ deploy:
     branch: source
   local-dir: public
   target_branch: master
+  fqdn: blog.fiqht.club

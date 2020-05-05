@@ -4,7 +4,7 @@ date: 2020-05-05 10:41:44
 tags:
 ---
 
-[将 Hexo 部署到 GitHub Pages](https://hexo.io/zh-cn/docs/github-pages)
+[参考：将 Hexo 部署到 GitHub Pages](https://hexo.io/zh-cn/docs/github-pages)
 
 ## 分支
 
@@ -38,13 +38,13 @@ deploy:
   target_branch: master
 ```
 
-[GitHub Pages Deployment](https://docs.travis-ci.com/user/deployment/pages/)
+[参考：GitHub Pages Deployment](https://docs.travis-ci.com/user/deployment/pages/)
 
 然后推送到远程仓库
 
 `git push -u origin source`
 
-如果你已经配置好了TravisCI，接下来它就会帮你完成部署了。
+如果你已经配置好了Travis CI，接下来它就会帮你发布了。
 
 
 
@@ -54,5 +54,6 @@ deploy:
 
 ## The tag fancybox on line 77 in themes/landscape/README.md is not a recognized Liquid tag
 
-似乎是因为Github把source分支当成了页面内容？？在TravisCI上Restart build可以解决问题。
+_Originally posted by @lifecoderua in https://github.com/hexojs/hexo/issues/2590#issuecomment-322005032_
 
+似乎是因为Github把source分支当成了页面内容？？在TravisCI上Restart build可以解决问题。
