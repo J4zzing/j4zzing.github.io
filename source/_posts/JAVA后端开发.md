@@ -4,9 +4,11 @@ date: 2020-05-05 13:31:13
 tags:
 ---
 
-通过底层学习原理，通过项目学习技术。
+通过原理理解底层，通过项目学习技术。
 
 ## 总纲
+
+这篇文章适用于：**我自己**
 
 首先搭建一个技术博客，用来总结经验。可以写在简历上，是学习能力的一种证明。
 
@@ -14,11 +16,20 @@ tags:
 
 从练习项目出发，遇到不懂的再专门学习
 
+随缘学习，先求广度，再求深度。兴趣驱动，想学哪个，就学哪个，遇到有前置条件的，回头学前置条件。
 
+Github上的方向概览
 
-重要程度？
+JavaGuide
 
+#### 我个人的学习顺序
 
+=>代表需要
+
+-->代表可选
+
+1. 独立完成一个项目=>(Spring，Mybatis，MySql)=>Java I/O,Java Annotations
+2. 分布式
 
 ### 额外资料
 
@@ -32,7 +43,33 @@ tags:
 
 ## JAVA8语言特性
 
+[参考教程：Java Tutorials Learning Paths](https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html)
+
+《Thinking in Java》
+
+《Effective Java》
+
+《On Java 8》
+
 ### 数据类型
+
+[Java Integer Cache: Why Integer.valueOf(127) == Integer.valueOf(127) Is True](https://dzone.com/articles/java-integer-cache-why-integervalueof127-integerva)
+
+#### 包
+
+[Naming a Package](https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html)
+
+#### 术语
+
+这些术语你应该会在学习途中遇到
+
+Java Language Specification(JLS)：
+
+Plain old Java object(POJO)：普通Java对象，除了JSL不受其他框架或模型限制。
+
+[Java Beans](https://www.geeksforgeeks.org/pojo-vs-java-beans/)：是可序列化的、具有无参构造函数的、字段均为私有且拥有对应的getter和setter方法的POJO。
+
+Enterprise Java Beans(EJB)：
 
 ### [抽象类和接口](https://cyc2018.github.io/CS-Notes/#/notes/Java%20%E5%9F%BA%E7%A1%80?id=%e6%8a%bd%e8%b1%a1%e7%b1%bb%e4%b8%8e%e6%8e%a5%e5%8f%a3)
 
@@ -58,17 +95,22 @@ tags:
 
 #### 异常
 
+[Java Exception介绍](https://www.geeksforgeeks.org/exceptions-in-java/)
+
+#### I/O
+
 #### 并发
 
 #### 网络编程
 
-socket，NIO，AIO
+使用ServerSocket编写一个web服务器
+，NIO，AIO
 
 #### JVM虚拟机
 
 
 
-## 底层知识
+## 理论知识
 
 ### 算法与数据结构
 
@@ -94,27 +136,43 @@ socket，NIO，AIO
 
 ## 项目经验
 
-找视频教程跟着做
-
-找开源项目跟着做
+找开源项目看或模仿
 
 要求：项目尽量新，使用技术尽量广泛
 
-#### 需要涉及技术
+### 需要涉及技术
 
-框架：Spring，Spring Boot，SSM，
+框架：Spring，Spring Boot，Mybatis，Hibernate
 
 数据库：MySQL，Redis，
 
-其他工具：Tomcat，Maven，Git，Docker
+#### 构建
 
-设计：Restful API
+介绍：
 
+[构建工具的进化：ant, maven, gradle](https://zhuanlan.zhihu.com/p/24429133)
 
+[学习Maven](http://maven.apache.org/guides/getting-started/index.html)
+
+学习gradle
+
+CI
+
+TravisCI
+
+#### 部署：Docker
+
+#### Web服务器：Tomcat，Nginx
+
+#### 设计模式：Restful API，MVC
+
+#### 其他：Linux基础，Git，
 
 ## 面试经验
 
-确定面试时提问的深度。
+查缺补漏或寻找方向
+
+https://www.jianshu.com/p/745757d373e9
 
 
 
