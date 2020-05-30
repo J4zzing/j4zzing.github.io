@@ -70,9 +70,192 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Web前端开发复习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript-callbacks-promise和async-await" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+    <a href="/2020/05/29/javascript-callbacks-promise%E5%92%8Casync-await/" class="article-date">
+  <time datetime="2020-05-29T20:32:11.000Z" itemprop="datePublished">2020-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/29/javascript-callbacks-promise%E5%92%8Casync-await/">javascript callbacks, promise和async/await</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></p>
+<h3 id="Promise和async-await"><a href="#Promise和async-await" class="headerlink" title="Promise和async/await"></a>Promise和async/await</h3><p>Promise来自于ES2015，用来规避回调地狱这一现象。后来更是在ES2016演变为async/await，async/await的原理是使用promise。</p>
+<h4 id="Promise-构造函数"><a href="#Promise-构造函数" class="headerlink" title="Promise 构造函数"></a>Promise 构造函数</h4><p>Promise接受一个函数</p>
+<h4 id="如何使用Promise"><a href="#如何使用Promise" class="headerlink" title="如何使用Promise"></a>如何使用Promise</h4><h4 id="Promise链"><a href="#Promise链" class="headerlink" title="Promise链"></a>Promise链</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/29/javascript-callbacks-promise%E5%92%8Casync-await/" data-id="ckattdi3t0008z8lvh5m00d0y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js-event-loop-和-node-js-event-loop" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/29/js-event-loop-%E5%92%8C-node-js-event-loop/" class="article-date">
+  <time datetime="2020-05-29T17:20:41.000Z" itemprop="datePublished">2020-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/29/js-event-loop-%E5%92%8C-node-js-event-loop/">js event loop 和 node.js event loop</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是event-loop"><a href="#什么是event-loop" class="headerlink" title="什么是event loop"></a>什么是event loop</h2><p>event loop为事件循环，</p>
+<h2 id="JavaScript-event-loop"><a href="#JavaScript-event-loop" class="headerlink" title="JavaScript event loop"></a>JavaScript event loop</h2><p>参考资料：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion</a></p>
+<p>event loop 是在js运行时（runtime）的一种并发模型，负责执行代码，收集、处理事件和执行队列中的子任务。</p>
+<p><img src="https://mdn.mozillademos.org/files/17124/The_Javascript_Runtime_Environment_Example.svg" alt="运行时概念"></p>
+<h4 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h4><p>调用函数会形成栈的结构，即调用栈。栈中的每一项称为frame。</p>
+<h4 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h4><p>message queue是由message组成的队列。</p>
+<h5 id="message又是什么"><a href="#message又是什么" class="headerlink" title="message又是什么?"></a>message又是什么?</h5><h5 id="message如何被处理？"><a href="#message如何被处理？" class="headerlink" title="message如何被处理？"></a>message如何被处理？</h5><p>在event loop的某个阶段，运行时会开始处理message队列。根据队列FIFO的定义，运行时从最先进入队列的那一项处理，此时与message关联的回调函数会被调用，而message则作为该函数的参数使用，之后该message会被移除。</p>
+<p>同样的，调用回调函数时会在栈中创建一个新的frame，直到栈空，运行时开始处理下一个message。</p>
+<h5 id="什么时候会创建message"><a href="#什么时候会创建message" class="headerlink" title="什么时候会创建message?"></a>什么时候会创建message?</h5><ol>
+<li>每当一个拥有对应事件监听器（event listener）的事件发生。比如点击拥有click事件监听器的元素会添加一个message到队列。</li>
+<li>setTimeout函数。setTimeout接受的第2个参数为时延，从添加message到队列开始算起。注意，只有当队列里没有其他message在前并且栈空，该message在才会在时延后被执行。所以这个时延参数为<strong>最短时延</strong>，它并不能aAQZ保证在准确的时间后执行。</li>
+</ol>
+<h4 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h4><p>heap指的是一大块内存区域，js对象会分配到heap中。</p>
+<h2 id="Node-js-event-loop"><a href="#Node-js-event-loop" class="headerlink" title="Node.js event loop"></a>Node.js event loop</h2><p>参考资料：<a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/" target="_blank" rel="noopener">https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/29/js-event-loop-%E5%92%8C-node-js-event-loop/" data-id="ckattdi3u0009z8lv6xrl2x87" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-function-declaration-function-expression-and-IIFE" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/29/function-declaration-function-expression-and-IIFE/" class="article-date">
+  <time datetime="2020-05-29T10:56:35.000Z" itemprop="datePublished">2020-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/29/function-declaration-function-expression-and-IIFE/">function declaration, function expression and IIFE</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="函数声明，函数表达式和IIFE"><a href="#函数声明，函数表达式和IIFE" class="headerlink" title="函数声明，函数表达式和IIFE"></a>函数声明，函数表达式和IIFE</h1><p>参考：<a href="https://developer.mozilla.org/en-US/docs/Glossary/Function" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Function</a></p>
+<p>首先回顾一下创建函数的两种方式</p>
+<p>函数声明：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ex1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ex2 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数还可以分为匿名函数和命名函数，只有函数表达式才能匿名。</p>
+<h2 id="IIFE（Immediately-invoked-function-expression"><a href="#IIFE（Immediately-invoked-function-expression" class="headerlink" title="IIFE（Immediately invoked function expression)"></a>IIFE（Immediately invoked function expression)</h2><p>IIFE即“立刻执行函数表达式”，该函数在被编译器加载后会立刻执行。</p>
+<p>经典的方法有两种方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;())</span><br></pre></td></tr></table></figure>
+
+<p>乍一看可能没看到有什么区别，第一种把括号放到了最后</p>
+<p>另一种方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">+<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>无论哪种方法，都是为了让编译器认为这是一个函数</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/29/function-declaration-function-expression-and-IIFE/" data-id="ckattdi3r0007z8lveem69dz0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-node-js" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/29/node-js/" class="article-date">
+  <time datetime="2020-05-29T10:56:18.000Z" itemprop="datePublished">2020-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/29/node-js/">node.js</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="The-Node-js-Event-emitter"><a href="#The-Node-js-Event-emitter" class="headerlink" title="The Node.js Event emitter"></a>The Node.js Event emitter</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/29/node-js/" data-id="ckattdi3v000az8lvdgyxa1qs" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Web前端复习指南" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97/" class="article-date">
   <time datetime="2020-05-23T00:00:05.000Z" itemprop="datePublished">2020-05-23</time>
 </a>
     
@@ -84,7 +267,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/">Web前端开发复习笔记</a>
+      <a class="article-title" href="/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97/">Web前端复习指南</a>
     </h1>
   
 
@@ -92,13 +275,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><h4 id="弹性布局（flex-box"><a href="#弹性布局（flex-box" class="headerlink" title="弹性布局（flex-box"></a>弹性布局（flex-box</h4><p>复习：<a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Flexbox" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Flexbox</a></p>
+        <h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><h3 id="浏览器本地支持的懒加载（loading-“lazy”"><a href="#浏览器本地支持的懒加载（loading-“lazy”" class="headerlink" title="浏览器本地支持的懒加载（loading=“lazy”"></a>浏览器本地支持的懒加载（loading=“lazy”</h3><p><a href="https://css-tricks.com/native-lazy-loading/" target="_blank" rel="noopener">https://css-tricks.com/native-lazy-loading/</a></p>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><h4 id="1-栅格布局（grid-layout"><a href="#1-栅格布局（grid-layout" class="headerlink" title="1. 栅格布局（grid-layout"></a>1. 栅格布局（grid-layout</h4><h4 id="2-弹性布局（flex-box"><a href="#2-弹性布局（flex-box" class="headerlink" title="2. 弹性布局（flex-box"></a>2. 弹性布局（flex-box</h4><p>复习：<a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Flexbox" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Flexbox</a></p>
 <p>测试：<a href="https://wiki.developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills" target="_blank" rel="noopener">https://wiki.developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills</a></p>
-<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2>
+<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h4 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction</a></p>
+<h4 id="解构赋值；Spread-syntax-vs-Rest-parameter-vs-argument-object"><a href="#解构赋值；Spread-syntax-vs-Rest-parameter-vs-argument-object" class="headerlink" title="解构赋值；Spread syntax vs. (Rest parameter vs. argument object)"></a>解构赋值；Spread syntax vs. (Rest parameter vs. argument object)</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">数组和对象解构赋值</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments</a></p>
+<h3 id="RegExp"><a href="#RegExp" class="headerlink" title="RegExp"></a>RegExp</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp</a></p>
+<h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener">数组</a></h3><p>数组字面量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Array.from(arrayLike [, mapFn [, thisArg]])</span><br></pre></td></tr></table></figure>
+
+<p>Array.prototype.pop()</p>
+<p>Array.prototype.slice()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let newArray &#x3D; arr.filter(callback(element[, index, [array]])[, thisArg])</span><br></pre></td></tr></table></figure>
+
+<p>Array.prototype.sort()</p>
+<p>Array.prototype.forEach()</p>
+<p>Array.prototype.map()</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="function-declaration-funtion-expression-and-IIFE-Immediately-invoked-function-expression"><a href="#function-declaration-funtion-expression-and-IIFE-Immediately-invoked-function-expression" class="headerlink" title="function declaration, funtion expression and IIFE(Immediately invoked function expression)"></a>function declaration, funtion expression and IIFE(Immediately invoked function expression)</h4><p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Function" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Function</a></p>
+<p>什么时候适合使用它们？</p>
+<p><a href="https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoked-function-expressions-67791338ddc6" target="_blank" rel="noopener">https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoked-function-expressions-67791338ddc6</a></p>
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects</a></p>
+<h4 id="创建对象：new-Object-和-对象字面量（Object-literal"><a href="#创建对象：new-Object-和-对象字面量（Object-literal" class="headerlink" title="创建对象：new Object() 和 对象字面量（Object literal"></a>创建对象：new Object() 和 对象字面量（Object literal</h4><h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures</a></p>
+<h3 id="JS事件"><a href="#JS事件" class="headerlink" title="JS事件"></a>JS事件</h3><p>EventTarget.addEventListener</p>
+<p>EventTarget.removeEventListener</p>
+<p>EventTarget.dispatchEvent</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop</a></p>
+<h3 id="回调，Promise"><a href="#回调，Promise" class="headerlink" title="回调，Promise"></a>回调，Promise</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise</a></p>
+<h3 id="async-await"><a href="#async-await" class="headerlink" title="async/await"></a>async/await</h3><p><a href="https://nodejs.dev/learn/modern-asynchronous-javascript-with-async-and-await" target="_blank" rel="noopener">https://nodejs.dev/learn/modern-asynchronous-javascript-with-async-and-await</a></p>
+<h3 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h3><h3 id="XHR-XML-HTTP-request"><a href="#XHR-XML-HTTP-request" class="headerlink" title="XHR(XML HTTP request)"></a>XHR(XML HTTP request)</h3><p>js XMLHttpRequest对象</p>
+<p>jquery ajax</p>
+<p>Fetch API</p>
+<p>Axios</p>
+<h3 id="Web-worker"><a href="#Web-worker" class="headerlink" title="Web worker"></a>Web worker</h3><h3 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a>IndexedDB</h3><h2 id="类库"><a href="#类库" class="headerlink" title="类库"></a>类库</h2><p>jquery</p>
+<p>lodash</p>
+<p>axios</p>
+<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p>npm，webpack，babel历史或用途解释：</p>
+<p><a href="https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70" target="_blank" rel="noopener">https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70</a></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckaihevjb00060fttfiqb7afe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97/" data-id="ckattdi3q0006z8lvf6ncc9x7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -150,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/React/" data-id="ckaihevja00050ftt99j497zw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/React/" data-id="ckattdi3p0005z8lv0ybgccfz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,13 +403,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="点击文档跳出爱心❤"><a href="#点击文档跳出爱心❤" class="headerlink" title="点击文档跳出爱心❤"></a>点击文档跳出爱心❤</h4><p>考虑设置document级别EventListener。了解下用border-radius画图、CSS动画之类的。应在一定时间后清除那些隐藏的元素。</p>
+        <h4 id="点击文档跳出爱心❤"><a href="#点击文档跳出爱心❤" class="headerlink" title="点击文档跳出爱心❤"></a>点击文档跳出爱心❤</h4><p>考虑对document设置click的EventListener。了解下js canvas，配合border-radius、CSS动画之类的。应在一定时间后清除那些隐藏的元素。</p>
 <p>参考资料：<br><a href="https://www.quirksmode.org/js/events_order.html#link4" target="_blank" rel="noopener">https://www.quirksmode.org/js/events_order.html#link4</a></p>
+<p>Node.js</p>
+<p>TypeScript</p>
+<p>Ant Design</p>
+<p>Redux</p>
+<p>Gatsby </p>
+<p>GraphQL</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/20/%E5%BC%80%E5%9D%91/" data-id="ckaihevjc00070ftt4t6s6wxv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/20/%E5%BC%80%E5%9D%91/" data-id="ckattdi3x000bz8lvfzwq14hx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -275,7 +502,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/05/JAVA%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" data-id="ckaihevj900040ftt18rweh45" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/05/JAVA%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" data-id="ckattdi3o0004z8lvhps4hoom" class="article-share-link">Share</a>
       
       
     </footer>
@@ -326,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/05/%E9%83%A8%E7%BD%B2Hexo%E5%88%B0Github%20Pages%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="ckaihevjd00080fttfjwth7nu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/05/%E9%83%A8%E7%BD%B2Hexo%E5%88%B0Github%20Pages%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="ckattdi3y000cz8lv5bfo1gw6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -367,23 +594,23 @@
       <ul>
         
           <li>
-            <a href="/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/">Web前端开发复习笔记</a>
+            <a href="/2020/05/29/javascript-callbacks-promise%E5%92%8Casync-await/">javascript callbacks, promise和async/await</a>
           </li>
         
           <li>
-            <a href="/2020/05/22/React/">React</a>
+            <a href="/2020/05/29/js-event-loop-%E5%92%8C-node-js-event-loop/">js event loop 和 node.js event loop</a>
           </li>
         
           <li>
-            <a href="/2020/05/20/%E5%BC%80%E5%9D%91/">开坑</a>
+            <a href="/2020/05/29/function-declaration-function-expression-and-IIFE/">function declaration, function expression and IIFE</a>
           </li>
         
           <li>
-            <a href="/2020/05/05/JAVA%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">JAVA后端开发学习路线</a>
+            <a href="/2020/05/29/node-js/">node.js</a>
           </li>
         
           <li>
-            <a href="/2020/05/05/%E9%83%A8%E7%BD%B2Hexo%E5%88%B0Github%20Pages%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">部署Hexo到Github Pages遇到的问题</a>
+            <a href="/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97/">Web前端复习指南</a>
           </li>
         
       </ul>

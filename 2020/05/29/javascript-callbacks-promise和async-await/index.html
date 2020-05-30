@@ -5,17 +5,17 @@
   
 
   
-  <title>Web前端开发复习笔记 | 狂风吹乱我发</title>
+  <title>javascript callbacks, promise和async/await | 狂风吹乱我发</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HTMLCSS布局弹性布局（flex-box复习：https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Learn&#x2F;CSS&#x2F;CSS_layout&#x2F;Flexbox 测试：https:&#x2F;&#x2F;wiki.developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Learn&#x2F;CSS&#x2F;CSS_layout&#x2F;Flexbox_skills JavaScriptReact">
+  <meta name="description" content="参考：https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;Reference&#x2F;Global_Objects&#x2F;Promise Promise和async&#x2F;awaitPromise来自于ES2015，用来规避回调地狱这一现象。后来更是在ES2016演变为async&#x2F;await，async&#x2F;await的原理是使用promise。 Promise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Web前端开发复习笔记">
-<meta property="og:url" content="http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="javascript callbacks, promise和async&#x2F;await">
+<meta property="og:url" content="http://yoursite.com/2020/05/29/javascript-callbacks-promise%E5%92%8Casync-await/index.html">
 <meta property="og:site_name" content="狂风吹乱我发">
-<meta property="og:description" content="HTMLCSS布局弹性布局（flex-box复习：https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Learn&#x2F;CSS&#x2F;CSS_layout&#x2F;Flexbox 测试：https:&#x2F;&#x2F;wiki.developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Learn&#x2F;CSS&#x2F;CSS_layout&#x2F;Flexbox_skills JavaScriptReact">
+<meta property="og:description" content="参考：https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;Reference&#x2F;Global_Objects&#x2F;Promise Promise和async&#x2F;awaitPromise来自于ES2015，用来规避回调地狱这一现象。后来更是在ES2016演变为async&#x2F;await，async&#x2F;await的原理是使用promise。 Promise">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-23T00:00:05.000Z">
-<meta property="article:modified_time" content="2020-05-22T17:32:10.599Z">
+<meta property="article:published_time" content="2020-05-29T20:32:11.000Z">
+<meta property="article:modified_time" content="2020-05-30T15:52:29.993Z">
 <meta property="article:author" content="rockham">
 <meta name="twitter:card" content="summary">
   
@@ -70,10 +70,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Web前端开发复习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-javascript-callbacks-promise和async-await" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-05-23T00:00:05.000Z" itemprop="datePublished">2020-05-23</time>
+    <a href="/2020/05/29/javascript-callbacks-promise%E5%92%8Casync-await/" class="article-date">
+  <time datetime="2020-05-29T20:32:11.000Z" itemprop="datePublished">2020-05-29</time>
 </a>
     
   </div>
@@ -84,7 +84,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Web前端开发复习笔记
+      javascript callbacks, promise和async/await
     </h1>
   
 
@@ -92,13 +92,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><h4 id="弹性布局（flex-box"><a href="#弹性布局（flex-box" class="headerlink" title="弹性布局（flex-box"></a>弹性布局（flex-box</h4><p>复习：<a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Flexbox" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Flexbox</a></p>
-<p>测试：<a href="https://wiki.developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills" target="_blank" rel="noopener">https://wiki.developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills</a></p>
-<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2>
+        <p>参考：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></p>
+<h3 id="Promise和async-await"><a href="#Promise和async-await" class="headerlink" title="Promise和async/await"></a>Promise和async/await</h3><p>Promise来自于ES2015，用来规避回调地狱这一现象。后来更是在ES2016演变为async/await，async/await的原理是使用promise。</p>
+<h4 id="Promise-构造函数"><a href="#Promise-构造函数" class="headerlink" title="Promise 构造函数"></a>Promise 构造函数</h4><p>Promise接受一个函数</p>
+<h4 id="如何使用Promise"><a href="#如何使用Promise" class="headerlink" title="如何使用Promise"></a>如何使用Promise</h4><h4 id="Promise链"><a href="#Promise链" class="headerlink" title="Promise链"></a>Promise链</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckaihevjb00060fttfiqb7afe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/29/javascript-callbacks-promise%E5%92%8Casync-await/" data-id="ckattdi3t0008z8lvh5m00d0y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -108,9 +109,9 @@
 <nav id="article-nav">
   
   
-    <a href="/2020/05/22/React/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/05/29/js-event-loop-%E5%92%8C-node-js-event-loop/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">React</div>
+      <div class="article-nav-title">js event loop 和 node.js event loop</div>
     </a>
   
 </nav>
@@ -147,23 +148,23 @@
       <ul>
         
           <li>
-            <a href="/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/">Web前端开发复习笔记</a>
+            <a href="/2020/05/29/javascript-callbacks-promise%E5%92%8Casync-await/">javascript callbacks, promise和async/await</a>
           </li>
         
           <li>
-            <a href="/2020/05/22/React/">React</a>
+            <a href="/2020/05/29/js-event-loop-%E5%92%8C-node-js-event-loop/">js event loop 和 node.js event loop</a>
           </li>
         
           <li>
-            <a href="/2020/05/20/%E5%BC%80%E5%9D%91/">开坑</a>
+            <a href="/2020/05/29/function-declaration-function-expression-and-IIFE/">function declaration, function expression and IIFE</a>
           </li>
         
           <li>
-            <a href="/2020/05/05/JAVA%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">JAVA后端开发学习路线</a>
+            <a href="/2020/05/29/node-js/">node.js</a>
           </li>
         
           <li>
-            <a href="/2020/05/05/%E9%83%A8%E7%BD%B2Hexo%E5%88%B0Github%20Pages%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">部署Hexo到Github Pages遇到的问题</a>
+            <a href="/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97/">Web前端复习指南</a>
           </li>
         
       </ul>
