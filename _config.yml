@@ -5,10 +5,10 @@
 # Site
 title: 狂风吹乱我发
 subtitle: '我爱自由，兴趣是吹风和思考。'
-description: '不许笑！这是技术博客！'
+description: '...'
 keywords:
 author: rockham
-language: en
+language: zh-Hans
 timezone: ''
 
 # URL
@@ -93,7 +93,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
