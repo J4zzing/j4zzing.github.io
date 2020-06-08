@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>js event loop 和 node.js event loop | 狂风吹乱我发</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是event loopevent loop为事件循环， JavaScript event loop参考资料：https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;EventLoop#Run-to-completion event loop 是在js运行时（runtime）的一种并发模型，负责执行代码，收集、处理事件和执行队列中的子任务。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js event loop 和 node.js event loop">
+<meta property="og:url" content="http://yoursite.com/2020/05/29/js-event-loop-%E5%92%8C-node-js-event-loop/index.html">
+<meta property="og:site_name" content="狂风吹乱我发">
+<meta property="og:description" content="什么是event loopevent loop为事件循环， JavaScript event loop参考资料：https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;EventLoop#Run-to-completion event loop 是在js运行时（runtime）的一种并发模型，负责执行代码，收集、处理事件和执行队列中的子任务。">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/17124/The_Javascript_Runtime_Environment_Example.svg">
+<meta property="article:published_time" content="2020-05-29T17:20:41.000Z">
+<meta property="article:modified_time" content="2020-06-08T08:50:41.326Z">
+<meta property="article:author" content="rockham">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mdn.mozillademos.org/files/17124/The_Javascript_Runtime_Environment_Example.svg">
+  
+    <link rel="alternate" href="/atom.xml" title="狂风吹乱我发" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狂风吹乱我发</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">我爱自由，兴趣是吹风和思考。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js-event-loop-和-node-js-event-loop" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/29/js-event-loop-%E5%92%8C-node-js-event-loop/" class="article-date">
+  <time datetime="2020-05-29T17:20:41.000Z" itemprop="datePublished">2020-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js event loop 和 node.js event loop
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是event-loop"><a href="#什么是event-loop" class="headerlink" title="什么是event loop"></a>什么是event loop</h2><p>event loop为事件循环，</p>
+<h2 id="JavaScript-event-loop"><a href="#JavaScript-event-loop" class="headerlink" title="JavaScript event loop"></a>JavaScript event loop</h2><p>参考资料：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion</a></p>
+<p>event loop 是在js运行时（runtime）的一种并发模型，负责执行代码，收集、处理事件和执行队列中的子任务。</p>
+<p><img src="https://mdn.mozillademos.org/files/17124/The_Javascript_Runtime_Environment_Example.svg" alt="运行时概念"></p>
+<h4 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h4><p>调用函数会形成栈的结构，即调用栈。栈中的每一项称为frame。</p>
+<h4 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h4><p>message queue是由message组成的队列。</p>
+<h5 id="message又是什么"><a href="#message又是什么" class="headerlink" title="message又是什么?"></a>message又是什么?</h5><h5 id="message如何被处理？"><a href="#message如何被处理？" class="headerlink" title="message如何被处理？"></a>message如何被处理？</h5><p>在event loop的某个阶段，运行时会开始处理message队列。根据队列FIFO的定义，运行时从最先进入队列的那一项处理，此时与message关联的回调函数会被调用，而message则作为该函数的参数使用，之后该message会被移除。</p>
+<p>同样的，调用回调函数时会在栈中创建一个新的frame，直到栈空，运行时开始处理下一个message。</p>
+<h5 id="什么时候会创建message"><a href="#什么时候会创建message" class="headerlink" title="什么时候会创建message?"></a>什么时候会创建message?</h5><ol>
+<li>每当一个拥有对应事件监听器（event listener）的事件发生。比如点击拥有click事件监听器的元素会添加一个message到队列。</li>
+<li>setTimeout函数。setTimeout接受的第2个参数为时延，从添加message到队列开始算起。注意，只有当队列里没有其他message在前并且栈空，该message在才会在时延后被执行。所以这个时延参数为<strong>最短时延</strong>，它并不能aAQZ保证在准确的时间后执行。</li>
+</ol>
+<h4 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h4><p>heap指的是一大块内存区域，js对象会分配到heap中。</p>
+<h2 id="Node-js-event-loop"><a href="#Node-js-event-loop" class="headerlink" title="Node.js event loop"></a>Node.js event loop</h2><p>参考资料：<a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/" target="_blank" rel="noopener">https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/29/js-event-loop-%E5%92%8C-node-js-event-loop/" data-id="ckb699pop0005zmnueuokaro3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/29/javascript-callbacks-promise%E5%92%8Casync-await/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          javascript callbacks, promise和async/await
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/29/function-declaration-function-expression-and-IIFE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">function declaration, function expression and IIFE</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/29/javascript-callbacks-promise%E5%92%8Casync-await/">javascript callbacks, promise和async/await</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/29/js-event-loop-%E5%92%8C-node-js-event-loop/">js event loop 和 node.js event loop</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/29/function-declaration-function-expression-and-IIFE/">function declaration, function expression and IIFE</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/29/node-js/">node.js</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97/">Web前端回忆指南</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 rockham<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
