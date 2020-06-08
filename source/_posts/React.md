@@ -2,6 +2,7 @@
 title: React
 date: 2020-05-22 17:47:41
 tags:
+- React
 ---
 
 # React 学习笔记
@@ -78,6 +79,8 @@ https://www.quirksmode.org/js/events_order.html#link4
 #### Hexo 主题开发
 
 参考下列主题
+
+https://github.com/probberechts/hexo-theme-cactus
 
 https://theme-next.js.org/
 

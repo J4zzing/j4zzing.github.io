@@ -2,6 +2,7 @@
 title: js event loop 和 node.js event loop
 date: 2020-05-29 17:20:41
 tags:
+- JavaScript
 ---
 
 ## 什么是event loop

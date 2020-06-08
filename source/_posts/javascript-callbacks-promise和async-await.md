@@ -2,6 +2,7 @@
 title: 'javascript callbacks, promise和async/await'
 date: 2020-05-29 20:32:11
 tags:
+- JavaScript
 ---
 
 参考：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise

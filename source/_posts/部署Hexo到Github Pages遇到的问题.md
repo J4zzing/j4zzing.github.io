@@ -2,6 +2,7 @@
 title: 部署Hexo到Github Pages遇到的问题
 date: 2020-05-05 10:41:44
 tags:
+- Hexo
 ---
 
 [参考：将 Hexo 部署到 GitHub Pages](https://hexo.io/zh-cn/docs/github-pages)
