@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="版本V0.47.9 相关Issueshttps:&#x2F;&#x2F;github.com&#x2F;ianstormtaylor&#x2F;slate&#x2F;issues&#x2F;2368 https:&#x2F;&#x2F;github.com&#x2F;ianstormtaylor&#x2F;slate&#x2F;pull&#x2F;2415 https:&#x2F;&#x2F;github.com&#x2F;ianstormtaylor&#x2F;slate&#x2F;pull&#x2F;2454 https:&#x2F;&#x2F;github.com&#x2F;ianstormtay">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Slate富文本编辑器中文输入bug解决">
+<meta property="og:url" content="http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/index.html">
+<meta property="og:site_name" content="狂风吹乱我发">
+<meta property="og:description" content="版本V0.47.9 相关Issueshttps:&#x2F;&#x2F;github.com&#x2F;ianstormtaylor&#x2F;slate&#x2F;issues&#x2F;2368 https:&#x2F;&#x2F;github.com&#x2F;ianstormtaylor&#x2F;slate&#x2F;pull&#x2F;2415 https:&#x2F;&#x2F;github.com&#x2F;ianstormtaylor&#x2F;slate&#x2F;pull&#x2F;2454 https:&#x2F;&#x2F;github.com&#x2F;ianstormtay">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-06T23:49:05.000Z">
+<meta property="article:modified_time" content="2020-06-08T10:17:30.061Z">
+<meta property="article:author" content="rockham">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="Slate">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Slate富文本编辑器中文输入bug解决</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/06/08/supervisor%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/06/02/React-%E9%99%B7%E9%98%B1/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&text=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&is_video=false&description=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Slate富文本编辑器中文输入bug解决&body=Check out this article: http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&name=Slate富文本编辑器中文输入bug解决&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&t=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本"><span class="toc-number">1.</span> <span class="toc-text">版本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#相关Issues"><span class="toc-number">1.1.</span> <span class="toc-text">相关Issues</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-number">2.</span> <span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理解"><span class="toc-number">3.</span> <span class="toc-text">理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM-Selection对象"><span class="toc-number">3.1.</span> <span class="toc-text">DOM Selection对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slate-Selection对象"><span class="toc-number">3.2.</span> <span class="toc-text">Slate Selection对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#属性"><span class="toc-number">3.2.1.</span> <span class="toc-text">属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码解释"><span class="toc-number">4.</span> <span class="toc-text">源码解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-number">6.</span> <span class="toc-text">参考文章</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Slate富文本编辑器中文输入bug解决
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">狂风吹乱我发</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-06-06T23:49:05.000Z" itemprop="datePublished">2020-06-06</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/React/" rel="tag">React</a>, <a class="tag-link" href="/tags/Slate/" rel="tag">Slate</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>V0.47.9</p>
+<h3 id="相关Issues"><a href="#相关Issues" class="headerlink" title="相关Issues"></a>相关Issues</h3><p><a href="https://github.com/ianstormtaylor/slate/issues/2368" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/issues/2368</a></p>
+<p><a href="https://github.com/ianstormtaylor/slate/pull/2415" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/pull/2415</a></p>
+<p><a href="https://github.com/ianstormtaylor/slate/pull/2454" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/pull/2454</a></p>
+<p><a href="https://github.com/ianstormtaylor/slate/issues/2457" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/issues/2457</a></p>
+<p><a href="https://segmentfault.com/a/1190000019133673" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019133673</a></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p><a href="https://github.com/ianstormtaylor/slate/compare/v0.47...rockhamx:v0.47" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/compare/v0.47...rockhamx:v0.47</a></p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><h3 id="DOM-Selection对象"><a href="#DOM-Selection对象" class="headerlink" title="DOM Selection对象"></a>DOM Selection对象</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Selection" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Selection</a></p>
+<h3 id="Slate-Selection对象"><a href="#Slate-Selection对象" class="headerlink" title="Slate Selection对象"></a>Slate Selection对象</h3><p><a href="https://github.com/ianstormtaylor/slate/blob/v0.47/docs/reference/slate/selection.md" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/blob/v0.47/docs/reference/slate/selection.md</a></p>
+<p>Selection实现Range</p>
+<p><a href="https://github.com/ianstormtaylor/slate/blob/v0.47/docs/reference/slate/range.md" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/blob/v0.47/docs/reference/slate/range.md</a></p>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>在控制台中添加onSelectionChange Listener：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'selectionchange'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">document</span>.getSelection());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>然后随便点击或选择文本查看输出的Selection对象。</p>
+<h2 id="源码解释"><a href="#源码解释" class="headerlink" title="源码解释"></a>源码解释</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Content</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">component</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  updateSelection = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; editor &#125; = <span class="keyword">this</span>.props</span><br><span class="line">    <span class="keyword">const</span> &#123; value &#125; = editor</span><br><span class="line">    <span class="keyword">const</span> &#123; selection &#125; = value</span><br><span class="line">    <span class="keyword">const</span> &#123; isBackward &#125; = selection</span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">window</span> = getWindow(<span class="keyword">this</span>.ref.current)</span><br><span class="line">    <span class="keyword">const</span> native = <span class="built_in">window</span>.getSelection()</span><br><span class="line">    <span class="comment">// document.activeElement返回当前focus的元素。如果一个可编辑的对象(&lt;input&gt;, &lt;textarea&gt;, contentEditable元素)里有文本被选择，那么它会返回这个元素。</span></span><br><span class="line">    <span class="comment">// 见 https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/activeElement</span></span><br><span class="line">    <span class="keyword">const</span> &#123; activeElement &#125; = <span class="built_in">window</span>.document</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (debug.update.enabled) &#123;</span><br><span class="line">      debug.update(<span class="string">'updateSelection'</span>, &#123; <span class="attr">selection</span>: selection.toJSON() &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// COMPAT: In Firefox, there's a but where `getSelection` can return `null`.</span></span><br><span class="line">    <span class="comment">// https://bugzilla.mozilla.org/show_bug.cgi?id=827585 (2018/11/07)</span></span><br><span class="line">    <span class="keyword">if</span> (!native) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123; rangeCount, anchorNode &#125; = native</span><br><span class="line">    <span class="keyword">let</span> updated = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// If the Slate selection is blurred, but the DOM's active element is still</span></span><br><span class="line">    <span class="comment">// the editor, we need to blur it.</span></span><br><span class="line">    <span class="keyword">if</span> (selection.isBlurred &amp;&amp; activeElement === <span class="keyword">this</span>.ref.current) &#123;</span><br><span class="line">      <span class="keyword">this</span>.ref.current.blur()</span><br><span class="line">      updated = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If the Slate selection is unset, but the DOM selection has a range</span></span><br><span class="line">    <span class="comment">// selected in the editor, we need to remove the range.</span></span><br><span class="line">    <span class="comment">// However we should _not_ remove the range if the selection as</span></span><br><span class="line">    <span class="comment">// reported by `getSelection` is not equal to `this.tmp.nativeSelection`</span></span><br><span class="line">    <span class="comment">// as this suggests `onNativeSelectionChange` has not triggered yet (which can occur in Firefox)</span></span><br><span class="line">    <span class="comment">// See: https://github.com/ianstormtaylor/slate/pull/2995</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> propsToCompare = [</span><br><span class="line">      <span class="string">'anchorNode'</span>,</span><br><span class="line">      <span class="string">'anchorOffset'</span>,</span><br><span class="line">      <span class="string">'focusNode'</span>,</span><br><span class="line">      <span class="string">'focusOffset'</span>,</span><br><span class="line">      <span class="string">'isCollapsed'</span>,</span><br><span class="line">      <span class="string">'rangeCount'</span>,</span><br><span class="line">      <span class="string">'type'</span>,</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> selectionsEqual = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> prop <span class="keyword">of</span> propsToCompare) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.tmp.nativeSelection[prop] !== native[prop]) &#123;</span><br><span class="line">        selectionsEqual = <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">      selection.isUnset &amp;&amp;</span><br><span class="line">      rangeCount &amp;&amp;</span><br><span class="line">      <span class="keyword">this</span>.isInEditor(anchorNode) &amp;&amp;</span><br><span class="line">      selectionsEqual</span><br><span class="line">    ) &#123;</span><br><span class="line">      removeAllRanges(native)</span><br><span class="line">      updated = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If the Slate selection is focused, but the DOM's active element is not</span></span><br><span class="line">    <span class="comment">// the editor, we need to focus it. We prevent scrolling because we handle</span></span><br><span class="line">    <span class="comment">// scrolling to the correct selection.</span></span><br><span class="line">    <span class="keyword">if</span> (selection.isFocused &amp;&amp; activeElement !== <span class="keyword">this</span>.ref.current) &#123;</span><br><span class="line">      <span class="keyword">this</span>.ref.current.focus(&#123; <span class="attr">preventScroll</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">      updated = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Otherwise, figure out which DOM nodes should be selected...</span></span><br><span class="line">    <span class="keyword">if</span> (selection.isFocused &amp;&amp; selection.isSet) &#123;</span><br><span class="line">      <span class="keyword">const</span> current = !!native.rangeCount &amp;&amp; native.getRangeAt(<span class="number">0</span>)</span><br><span class="line">      <span class="keyword">const</span> range = editor.findDOMRange(selection)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (!range) &#123;</span><br><span class="line">        warning(</span><br><span class="line">          <span class="literal">false</span>,</span><br><span class="line">          <span class="string">'Unable to find a native DOM range from the current selection.'</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> &#123; startContainer, startOffset, endContainer, endOffset &#125; = range</span><br><span class="line"></span><br><span class="line">      <span class="comment">// If the new range matches the current selection, there is nothing to fix.</span></span><br><span class="line">      <span class="comment">// COMPAT: The native `Range` object always has it's "start" first and "end"</span></span><br><span class="line">      <span class="comment">// last in the DOM. It has no concept of "backwards/forwards", so we have</span></span><br><span class="line">      <span class="comment">// to check both orientations here. (2017/10/31)</span></span><br><span class="line">      <span class="keyword">if</span> (current) &#123;</span><br><span class="line">        <span class="keyword">if</span> (</span><br><span class="line">          (startContainer === current.startContainer &amp;&amp;</span><br><span class="line">            startOffset === current.startOffset &amp;&amp;</span><br><span class="line">            endContainer === current.endContainer &amp;&amp;</span><br><span class="line">            endOffset === current.endOffset) ||</span><br><span class="line">          (startContainer === current.endContainer &amp;&amp;</span><br><span class="line">            startOffset === current.endOffset &amp;&amp;</span><br><span class="line">            endContainer === current.startContainer &amp;&amp;</span><br><span class="line">            endOffset === current.startOffset)</span><br><span class="line">        ) &#123;</span><br><span class="line">          <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Otherwise, set the `isUpdatingSelection` flag and update the selection.</span></span><br><span class="line">      updated = <span class="literal">true</span></span><br><span class="line">      <span class="keyword">this</span>.tmp.isUpdatingSelection = <span class="literal">true</span></span><br><span class="line">      removeAllRanges(native)</span><br><span class="line"></span><br><span class="line">      <span class="comment">// COMPAT: IE 11 does not support `setBaseAndExtent`. (2018/11/07)</span></span><br><span class="line">      <span class="keyword">if</span> (native.setBaseAndExtent) &#123;</span><br><span class="line">        <span class="comment">// COMPAT: Since the DOM range has no concept of backwards/forwards</span></span><br><span class="line">        <span class="comment">// we need to check and do the right thing here.</span></span><br><span class="line">        <span class="keyword">if</span> (isBackward) &#123;</span><br><span class="line">          native.setBaseAndExtent(</span><br><span class="line">            range.endContainer,</span><br><span class="line">            range.endOffset,</span><br><span class="line">            range.startContainer,</span><br><span class="line">            range.startOffset</span><br><span class="line">          )</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          native.setBaseAndExtent(</span><br><span class="line">            range.startContainer,</span><br><span class="line">            range.startOffset,</span><br><span class="line">            range.endContainer,</span><br><span class="line">            range.endOffset</span><br><span class="line">          )</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        native.addRange(range)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Only scroll to selection when a user action is performed</span></span><br><span class="line">      <span class="keyword">if</span> (editor.userActionPerformed() === <span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="comment">// Scroll to the selection, in case it's out of view.</span></span><br><span class="line">        scrollToSelection(native)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Then unset the `isUpdatingSelection` flag after a delay, to ensure that</span></span><br><span class="line">      <span class="comment">// it is still set when selection-related events from updating it fire.</span></span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// COMPAT: In Firefox, it's not enough to create a range, you also need</span></span><br><span class="line">        <span class="comment">// to focus the contenteditable element too. (2016/11/16)</span></span><br><span class="line">        <span class="keyword">if</span> (IS_FIREFOX &amp;&amp; <span class="keyword">this</span>.ref.current) &#123;</span><br><span class="line">          <span class="keyword">this</span>.ref.current.focus()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.tmp.isUpdatingSelection = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">        debug.update(<span class="string">'updateSelection:setTimeout'</span>, &#123;</span><br><span class="line">          anchorOffset: <span class="built_in">window</span>.getSelection().anchorOffset,</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (updated &amp;&amp; (debug.enabled || debug.update.enabled)) &#123;</span><br><span class="line">      debug(<span class="string">'updateSelection'</span>, &#123; selection, native, activeElement &#125;)</span><br><span class="line"></span><br><span class="line">      debug.update(<span class="string">'updateSelection:applied'</span>, &#123;</span><br><span class="line">        selection: selection.toJSON(),</span><br><span class="line">        native: &#123;</span><br><span class="line">          anchorOffset: native.anchorOffset,</span><br><span class="line">          focusOffset: native.focusOffset,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该解决方法只在Chrome上测试过。</p>
+<p>暂时不想继续深究原因了…</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://medium.com/articode/fixing-broken-npm-packages-d8f808657d8e" target="_blank" rel="noopener">https://medium.com/articode/fixing-broken-npm-packages-d8f808657d8e</a></p>
+<p><a href="https://docs.npmjs.com/cli-commands/link.html" target="_blank" rel="noopener">https://docs.npmjs.com/cli-commands/link.html</a></p>
+<p><a href="https://classic.yarnpkg.com/en/docs/workspaces/" target="_blank" rel="noopener">https://classic.yarnpkg.com/en/docs/workspaces/</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Monorepo" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Monorepo</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本"><span class="toc-number">1.</span> <span class="toc-text">版本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#相关Issues"><span class="toc-number">1.1.</span> <span class="toc-text">相关Issues</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-number">2.</span> <span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理解"><span class="toc-number">3.</span> <span class="toc-text">理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM-Selection对象"><span class="toc-number">3.1.</span> <span class="toc-text">DOM Selection对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slate-Selection对象"><span class="toc-number">3.2.</span> <span class="toc-text">Slate Selection对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#属性"><span class="toc-number">3.2.1.</span> <span class="toc-text">属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码解释"><span class="toc-number">4.</span> <span class="toc-text">源码解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-number">6.</span> <span class="toc-text">参考文章</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&text=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&is_video=false&description=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Slate富文本编辑器中文输入bug解决&body=Check out this article: http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&name=Slate富文本编辑器中文输入bug解决&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&t=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2019-2020
+    rockham
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
