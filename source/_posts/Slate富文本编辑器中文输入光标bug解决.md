@@ -1,5 +1,5 @@
 ---
-title: Slate富文本编辑器中文输入bug解决
+title: Slate富文本编辑器中文输入光标bug解决
 date: 2020-06-06 23:49:05
 tags:
 - React
@@ -103,9 +103,9 @@ class Content extends React.component {
 }
 ```
 
-![光标一致](C:\Users\Rockh\AppData\Roaming\Typora\typora-user-images\1591671154049.png)
+![光标一致](/images/1591671154049.png)
 
-![光标不一致](C:\Users\Rockh\AppData\Roaming\Typora\typora-user-images\1591671095180.png)
+![光标不一致](/images/1591671095180.png)
 
 
 
@@ -175,7 +175,7 @@ class Content extends React.component {
 
 **至此光标恢复正常：**
 
-![正常状态](C:\Users\Rockh\AppData\Roaming\Typora\typora-user-images\1591679334365.png)
+![正常状态](/images/1591679334365.png)
 
 至于为什么没有和DOM同步？有没有更好的解决方案？按照第一种思路来改怎么做?
 
