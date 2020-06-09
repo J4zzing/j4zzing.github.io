@@ -24,27 +24,33 @@ https://segmentfault.com/a/1190000019133673
 
 ## 解决方法
 
+### 前提
+
+Slate数据模型中的Node：这是Slate模仿DOM自主管理的数据，
+
+同时Slate定义了Document、Block、Inline、Text继承Node。
+
+请看下图解释。
 
 
-https://github.com/ianstormtaylor/slate/compare/v0.47...rockhamx:v0.47
+
+Node的数据结构如下：
 
 
 
-## 理解
+### 相关资料
 
-### DOM Selection对象
+#### DOM Selection对象
 
 https://developer.mozilla.org/en-US/docs/Web/API/Selection
 
-### Slate Selection对象
+#### Slate Selection对象
 
 https://github.com/ianstormtaylor/slate/blob/v0.47/docs/reference/slate/selection.md
 
 Selection实现Range
 
 https://github.com/ianstormtaylor/slate/blob/v0.47/docs/reference/slate/range.md
-
-####  属性
 
 
 
@@ -60,192 +66,126 @@ document.addEventListener('selectionchange', () => {
 
 
 
-## 源码解释
+## 解决方法
+
+
+
+### 解决历程
+
+首先可能是浏览器会在输入中文时重新定位键盘光标（caret，以下统称光标），从而触发onSelect事件，
+
+由于英文输入不在这种问题，以下讨论输入时均指中文输入。
 
 ```javascript
+// ...\slate-react\src\components\content.js
 class Content extends React.component {
   ...
-  updateSelection = () => {
-    const { editor } = this.props
-    const { value } = editor
-    const { selection } = value
-    const { isBackward } = selection
-    const window = getWindow(this.ref.current)
-    const native = window.getSelection()
-    // document.activeElement返回当前focus的元素。如果一个可编辑的对象(<input>, <textarea>, contentEditable元素)里有文本被选择，那么它会返回这个元素。
-    // 见 https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/activeElement
-    const { activeElement } = window.document
+  	onEvent(handler, event) {
+  	...
+    if (!IS_ANDROID && handler === 'onSelect') {
+      const { editor } = this.props
+      const { value } = editor
+      const { selection } = value
+      const window = getWindow(event.target)
+      const domSelection = window.getSelection()
+      const range = editor.findRange(domSelection)
+      // 通过调试得知，在一个Node的结尾输入中文时，键盘光标会出现bug，而在其他地方输入则不会。在Node末尾输入中文时，range中的offset与domSelection中的不一致。如下图对比。
+      console.log(range.anchor.offset);
 
-    if (debug.update.enabled) {
-      debug.update('updateSelection', { selection: selection.toJSON() })
-    }
-
-    // COMPAT: In Firefox, there's a but where `getSelection` can return `null`.
-    // https://bugzilla.mozilla.org/show_bug.cgi?id=827585 (2018/11/07)
-    if (!native) {
-      return
-    }
-
-    const { rangeCount, anchorNode } = native
-    let updated = false
-
-    // If the Slate selection is blurred, but the DOM's active element is still
-    // the editor, we need to blur it.
-    if (selection.isBlurred && activeElement === this.ref.current) {
-      this.ref.current.blur()
-      updated = true
-    }
-
-    // If the Slate selection is unset, but the DOM selection has a range
-    // selected in the editor, we need to remove the range.
-    // However we should _not_ remove the range if the selection as
-    // reported by `getSelection` is not equal to `this.tmp.nativeSelection`
-    // as this suggests `onNativeSelectionChange` has not triggered yet (which can occur in Firefox)
-    // See: https://github.com/ianstormtaylor/slate/pull/2995
-
-    const propsToCompare = [
-      'anchorNode',
-      'anchorOffset',
-      'focusNode',
-      'focusOffset',
-      'isCollapsed',
-      'rangeCount',
-      'type',
-    ]
-
-    let selectionsEqual = true
-
-    for (const prop of propsToCompare) {
-      if (this.tmp.nativeSelection[prop] !== native[prop]) {
-        selectionsEqual = false
-      }
-    }
-
-    if (
-      selection.isUnset &&
-      rangeCount &&
-      this.isInEditor(anchorNode) &&
-      selectionsEqual
-    ) {
-      removeAllRanges(native)
-      updated = true
-    }
-
-    // If the Slate selection is focused, but the DOM's active element is not
-    // the editor, we need to focus it. We prevent scrolling because we handle
-    // scrolling to the correct selection.
-    if (selection.isFocused && activeElement !== this.ref.current) {
-      this.ref.current.focus({ preventScroll: true })
-      updated = true
-    }
-
-    // Otherwise, figure out which DOM nodes should be selected...
-    if (selection.isFocused && selection.isSet) {
-      const current = !!native.rangeCount && native.getRangeAt(0)
-      const range = editor.findDOMRange(selection)
-
-      if (!range) {
-        warning(
-          false,
-          'Unable to find a native DOM range from the current selection.'
-        )
-
+      if (range && range.equals(selection.toRange())) {
+        this.updateSelection()
         return
       }
-
-      const { startContainer, startOffset, endContainer, endOffset } = range
-
-      // If the new range matches the current selection, there is nothing to fix.
-      // COMPAT: The native `Range` object always has it's "start" first and "end"
-      // last in the DOM. It has no concept of "backwards/forwards", so we have
-      // to check both orientations here. (2017/10/31)
-      if (current) {
-        if (
-          (startContainer === current.startContainer &&
-            startOffset === current.startOffset &&
-            endContainer === current.endContainer &&
-            endOffset === current.endOffset) ||
-          (startContainer === current.endContainer &&
-            startOffset === current.endOffset &&
-            endContainer === current.startContainer &&
-            endOffset === current.startOffset)
-        ) {
-          return
-        }
-      }
-
-      // Otherwise, set the `isUpdatingSelection` flag and update the selection.
-      updated = true
-      this.tmp.isUpdatingSelection = true
-      removeAllRanges(native)
-
-      // COMPAT: IE 11 does not support `setBaseAndExtent`. (2018/11/07)
-      if (native.setBaseAndExtent) {
-        // COMPAT: Since the DOM range has no concept of backwards/forwards
-        // we need to check and do the right thing here.
-        if (isBackward) {
-          native.setBaseAndExtent(
-            range.endContainer,
-            range.endOffset,
-            range.startContainer,
-            range.startOffset
-          )
-        } else {
-          native.setBaseAndExtent(
-            range.startContainer,
-            range.startOffset,
-            range.endContainer,
-            range.endOffset
-          )
-        }
-      } else {
-        native.addRange(range)
-      }
-
-      // Only scroll to selection when a user action is performed
-      if (editor.userActionPerformed() === true) {
-        // Scroll to the selection, in case it's out of view.
-        scrollToSelection(native)
-      }
-
-      // Then unset the `isUpdatingSelection` flag after a delay, to ensure that
-      // it is still set when selection-related events from updating it fire.
-      setTimeout(() => {
-        // COMPAT: In Firefox, it's not enough to create a range, you also need
-        // to focus the contenteditable element too. (2016/11/16)
-        if (IS_FIREFOX && this.ref.current) {
-          this.ref.current.focus()
-        }
-
-        this.tmp.isUpdatingSelection = false
-
-        debug.update('updateSelection:setTimeout', {
-          anchorOffset: window.getSelection().anchorOffset,
-        })
-      })
     }
-
-    if (updated && (debug.enabled || debug.update.enabled)) {
-      debug('updateSelection', { selection, native, activeElement })
-
-      debug.update('updateSelection:applied', {
-        selection: selection.toJSON(),
-        native: {
-          anchorOffset: native.anchorOffset,
-          focusOffset: native.focusOffset,
-        },
-      })
-    }
+  	...
   }
   ...
 }
 ```
 
-## 总结
+![光标一致](C:\Users\Rockh\AppData\Roaming\Typora\typora-user-images\1591671154049.png)
 
-该解决方法只在Chrome上测试过。
+![光标不一致](C:\Users\Rockh\AppData\Roaming\Typora\typora-user-images\1591671095180.png)
 
-暂时不想继续深究原因了...
+
+
+我想解决方法有两个方向。
+
+- 一是找出为什么中文输入会触发onSelect事件并制止它
+- 二是找出在段尾输入会导致光标不一致而在其他地方则不会的原因
+
+选择第一个更合理些，但这里我首先选择了第二种方向。
+
+> ```javascript
+> // 目的：找到finRange调用栈中发生差异的方法
+> const range = editor.findRange(domSelection)
+> ```
+
+最后找到差异发生在这里：
+
+```javascript
+// ...\slate\packages\slate\src\models\point.js
+...
+  normalize(node) {
+    ...
+    let target = path && node.getNode(path)
+    ...
+    let point = this.merge({
+      key: target.key,
+      path: path == null ? node.getPath(target.key) : path,
+      offset: offset == null ? 0 : Math.min(offset, target.text.length),
+    })
+    ...
+    return point
+    ...
+  }
+```
+
+请看`Math.min(offset, target.text.length)`，这里的`target`是一个Text Node，此时Slate内部数据还没有和DOM同步，还处在输入之前的状态，所以由于`target.text.length`限制，最大不会超过这个数值。
+
+当在除Node末尾输入时，`offset`的值不会超过`target.text.length`，返回`Point`后，由于`offset`和`target.text.length`两个永远不会等于Slate内部对应的Point的offset。
+
+当在Node末尾输入时，`offset`的值**一定**会等于`target.text.length`，导致返回的`Point`，一定**会和Slate内部对应的Point相等，从而满足条件：
+
+```javascript
+      // selection是存储在Slate内部的数据，range为从DOM Selection推断的Range，它出现了问题。
+      if (range && range.equals(selection.toRange())) {
+        this.updateSelection()
+        return
+      }
+```
+
+从而调用不该调用的updateSelection方法，并使光标重置。
+
+尝试做如下改变：
+
+```javascript
+// ...\slate\packages\slate\src\models\point.js
+...
+  normalize(node) {
+    ...
+    let point = this.merge({
+      key: target.key,
+      path: path == null ? node.getPath(target.key) : path,
+      offset: offset == null ? 0 : offset,
+    })
+    ...
+  }
+```
+
+**至此光标恢复正常：**
+
+![正常状态](C:\Users\Rockh\AppData\Roaming\Typora\typora-user-images\1591679334365.png)
+
+至于为什么没有和DOM同步？有没有更好的解决方案？按照第一种思路来改怎么做?
+
+以后再说吧...
+
+希望以后找bug不要像无头苍蝇一样乱撞，一定要静下心来思考问题可能出现在哪。
+
+https://github.com/ianstormtaylor/slate/compare/v0.47...rockhamx:v0.47
+
+
 
 ## 参考文章
 
