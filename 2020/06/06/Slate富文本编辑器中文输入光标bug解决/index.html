@@ -8,21 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="版本V0.47.9 相关Issueshttps:&#x2F;&#x2F;github.com&#x2F;ianstormtaylor&#x2F;slate&#x2F;issues&#x2F;2368 https:&#x2F;&#x2F;github.com&#x2F;ianstormtaylor&#x2F;slate&#x2F;pull&#x2F;2415 https:&#x2F;&#x2F;github.com&#x2F;ianstormtaylor&#x2F;slate&#x2F;pull&#x2F;2454 https:&#x2F;&#x2F;github.com&#x2F;ianstormtay">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Slate富文本编辑器中文输入bug解决">
-<meta property="og:url" content="http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/index.html">
+<meta property="og:title" content="Slate富文本编辑器中文输入光标bug解决">
+<meta property="og:url" content="http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/index.html">
 <meta property="og:site_name" content="狂风吹乱我发">
 <meta property="og:description" content="版本V0.47.9 相关Issueshttps:&#x2F;&#x2F;github.com&#x2F;ianstormtaylor&#x2F;slate&#x2F;issues&#x2F;2368 https:&#x2F;&#x2F;github.com&#x2F;ianstormtaylor&#x2F;slate&#x2F;pull&#x2F;2415 https:&#x2F;&#x2F;github.com&#x2F;ianstormtaylor&#x2F;slate&#x2F;pull&#x2F;2454 https:&#x2F;&#x2F;github.com&#x2F;ianstormtay">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:%5CUsers%5CRockh%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1591671154049.png">
-<meta property="og:image" content="c:%5CUsers%5CRockh%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1591671095180.png">
-<meta property="og:image" content="c:%5CUsers%5CRockh%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1591679334365.png">
+<meta property="og:image" content="http://yoursite.com/images/1591671154049.png">
+<meta property="og:image" content="http://yoursite.com/images/1591671095180.png">
+<meta property="og:image" content="http://yoursite.com/images/1591679334365.png">
 <meta property="article:published_time" content="2020-06-06T23:49:05.000Z">
-<meta property="article:modified_time" content="2020-06-09T06:28:57.897Z">
+<meta property="article:modified_time" content="2020-06-09T11:24:31.088Z">
 <meta property="article:author" content="rockham">
 <meta property="article:tag" content="React">
 <meta property="article:tag" content="Slate">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:%5CUsers%5CRockh%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1591671154049.png">
+<meta name="twitter:image" content="http://yoursite.com/images/1591671154049.png">
     
     
         
@@ -42,7 +42,7 @@
         
     
     <!-- title -->
-    <title>Slate富文本编辑器中文输入bug解决</title>
+    <title>Slate富文本编辑器中文输入光标bug解决</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -98,17 +98,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&text=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&is_video=false&description=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Slate富文本编辑器中文输入bug解决&body=Check out this article: http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&name=Slate富文本编辑器中文输入bug解决&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&t=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&text=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&is_video=false&description=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Slate富文本编辑器中文输入光标bug解决&body=Check out this article: http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&name=Slate富文本编辑器中文输入光标bug解决&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&t=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -125,7 +125,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Slate富文本编辑器中文输入bug解决
+        Slate富文本编辑器中文输入光标bug解决
     </h1>
 
 
@@ -179,8 +179,8 @@
 <p>由于英文输入不在这种问题，以下讨论输入时均指中文输入。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...\slate-react\src\components\content.js</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Content</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">component</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  	onEvent(handler, event) &#123;</span><br><span class="line">  	...</span><br><span class="line">    <span class="keyword">if</span> (!IS_ANDROID &amp;&amp; handler === <span class="string">'onSelect'</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> &#123; editor &#125; = <span class="keyword">this</span>.props</span><br><span class="line">      <span class="keyword">const</span> &#123; value &#125; = editor</span><br><span class="line">      <span class="keyword">const</span> &#123; selection &#125; = value</span><br><span class="line">      <span class="keyword">const</span> <span class="built_in">window</span> = getWindow(event.target)</span><br><span class="line">      <span class="keyword">const</span> domSelection = <span class="built_in">window</span>.getSelection()</span><br><span class="line">      <span class="keyword">const</span> range = editor.findRange(domSelection)</span><br><span class="line">      <span class="comment">// 通过调试得知，在一个Node的结尾输入中文时，键盘光标会出现bug，而在其他地方输入则不会。在Node末尾输入中文时，range中的offset与domSelection中的不一致。如下图对比。</span></span><br><span class="line">      <span class="built_in">console</span>.log(range.anchor.offset);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (range &amp;&amp; range.equals(selection.toRange())) &#123;</span><br><span class="line">        <span class="keyword">this</span>.updateSelection()</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  	...</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="C:%5CUsers%5CRockh%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1591671154049.png" alt="光标一致"></p>
-<p><img src="C:%5CUsers%5CRockh%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1591671095180.png" alt="光标不一致"></p>
+<p><img src="/images/1591671154049.png" alt="光标一致"></p>
+<p><img src="/images/1591671095180.png" alt="光标不一致"></p>
 <p>我想解决方法有两个方向。</p>
 <ul>
 <li>一是找出为什么中文输入会触发onSelect事件并制止它</li>
@@ -203,7 +203,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...\slate\packages\slate\src\models\point.js</span></span><br><span class="line">...</span><br><span class="line">  normalize(node) &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">let</span> point = <span class="keyword">this</span>.merge(&#123;</span><br><span class="line">      key: target.key,</span><br><span class="line">      path: path == <span class="literal">null</span> ? node.getPath(target.key) : path,</span><br><span class="line">      offset: offset == <span class="literal">null</span> ? <span class="number">0</span> : offset,</span><br><span class="line">    &#125;)</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>至此光标恢复正常：</strong></p>
-<p><img src="C:%5CUsers%5CRockh%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1591679334365.png" alt="正常状态"></p>
+<p><img src="/images/1591679334365.png" alt="正常状态"></p>
 <p>至于为什么没有和DOM同步？有没有更好的解决方案？按照第一种思路来改怎么做?</p>
 <p>以后再说吧…</p>
 <p>希望以后找bug不要像无头苍蝇一样乱撞，一定要静下心来思考问题可能出现在哪。</p>
@@ -242,17 +242,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&text=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&is_video=false&description=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Slate富文本编辑器中文输入bug解决&body=Check out this article: http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&name=Slate富文本编辑器中文输入bug解决&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5bug%E8%A7%A3%E5%86%B3/&t=Slate富文本编辑器中文输入bug解决" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&text=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&is_video=false&description=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Slate富文本编辑器中文输入光标bug解决&body=Check out this article: http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&title=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&name=Slate富文本编辑器中文输入光标bug解决&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/&t=Slate富文本编辑器中文输入光标bug解决" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
