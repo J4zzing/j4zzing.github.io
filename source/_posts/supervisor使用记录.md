@@ -1,5 +1,6 @@
 ---
 title: supervisor使用记录
+date: 2020-05-10 17:03:16
 tags:
 - Linux
 ---
