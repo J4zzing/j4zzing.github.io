@@ -5,6 +5,12 @@ tags:
 - React
 ---
 
+## Key
+
+https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318
+
+
+
 ## React Hook
 
 ### useState
@@ -31,3 +37,6 @@ const funcComp = () => {
 
 https://reactjs.org/docs/hooks-state.html#tip-using-multiple-state-variables
 
+## useRef
+
+ref不能再函数组件上使用，因为函数组件没有实例。

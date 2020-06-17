@@ -28,6 +28,8 @@ https://segmentfault.com/a/1190000019133673
 
 Slate数据模型中的Node：这是Slate模仿DOM自主管理的数据，
 
+https://github.com/ianstormtaylor/slate/blob/v0.47/docs/guides/data-model.md
+
 同时Slate定义了Document、Block、Inline、Text继承Node。
 
 请看下图解释。

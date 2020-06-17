@@ -13,6 +13,8 @@ event loop为事件循环，
 
 ## JavaScript event loop
 
+![Event Loop](https://javascript.info/article/event-loop/eventLoop-full.svg)
+
 参考资料：https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion
 
 event loop 是在js运行时（runtime）的一种并发模型，负责执行代码，收集、处理事件和执行队列中的子任务。

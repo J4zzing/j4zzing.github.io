@@ -9,6 +9,10 @@ tags:
 
 ## HTML
 
+## 元素
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
 ### 表单
 
 ```html
@@ -29,6 +33,14 @@ tags:
 
 ### 可访问性
 
+https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML
+
+https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics
+
+tabindex="0"
+
+tabindex="-1"
+
 role
 
 aria-*
@@ -43,23 +55,94 @@ https://css-tricks.com/native-lazy-loading/
 
 ### 选择器
 
-伪选择器，伪元素
+伪类
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
+
+伪元素
+
+https://developer.mozilla.org/en-US/docs/Glossary/Pseudo-element
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/::before
+
+### 属性
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/content
+
+字体
+
+### 数据类型与自动转换
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types
+
+6个假值（相对于真值）：false, undefined, null, "", 0, NaN
+
+https://www.sitepoint.com/automatic-type-conversion/
+
+https://www.w3schools.com/js/js_type_conversion.asp
+
+为什么([] == false)为false，比较算法概况：
+
+http://es5.github.io/#x11.9.3
 
 ### 布局
 
-1. 栅格布局（grid-layout
+1. 网格布局（grid-layout
+
+   https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout
 
    https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
 
 2. 弹性布局（flex-box
 
-   复习：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Flexbox
+   复习：https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox
 
    测试：https://wiki.developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills
 
+布局手册：
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook
+
 ### 动画
 
+```css
+transition: <property> <duration> <timing-function> <delay>;
+```
 
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions
+
+https://easings.net/
+
+### 变量
+
+[css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)
+
+#### 函数
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+
+### [At(@)-rules](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule)
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/@import
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/@media
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/@supports
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face
+
+### 响应式设计(Responsive Design)
+
+https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design
+
+```html
+<meta >
+```
+
+1. meadia queries
+2. flexible layout(flexbox, grid layout)
+
+3. images
 
 ## JavaScript
 
@@ -85,15 +168,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/bre
 
 ### Javascript特点或quirks
 
-#### Global Object - 全局对象
+Global Object - 全局对象
 
 https://developer.mozilla.org/en-US/docs/Glossary/Global_object
 
-#### Hoisting - 提升
+Hoisting - 提升
 
 https://developer.mozilla.org/en-US/docs/Glossary/Hoisting
 
-#### 闭包，setTimeout, setInterval：
+闭包，setTimeout, setInterval：
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 
@@ -101,15 +184,19 @@ https://www.typescriptlang.org/docs/handbook/variable-declarations.html#variable
 
 更多参见[javascript事件循环](#JS事件循环)
 
-#### Strict mode - 严格模式
+Strict mode - 严格模式
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 
-#### DOM
+函数参数个数
+
+https://stackoverflow.com/questions/6446304/question-on-javascript-function-parameters
+
+DOM
 
 https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
 
-#### this
+this
 
 
 
@@ -117,15 +204,9 @@ https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduct
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
 
+### 可迭代对象
 
-
-```
-let boundFunc = func.bind(thisArg[, arg1[, arg2[, ...argN]]])
-```
-
-
-
-### [数组](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+[数组](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 数组字面量
 
@@ -155,6 +236,12 @@ arr.reduce(callback( accumulator, currentValue[, index[, array]] )[, initialValu
 arr.some(callback(element[, index[, array]])[, thisArg])
 ```
 
+### 
+
+for...in vs. for...of
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+
 ### 函数
 
 #### function declaration, funtion expression and IIFE(Immediately invoked function expression)
@@ -168,6 +255,10 @@ https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoke
 #### 箭头函数
 
 
+
+```
+let boundFunc = func.bind(thisArg[, arg1[, arg2[, ...argN]]])
+```
 
 ### 对象
 
@@ -193,17 +284,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prot
 Object.defineProperty(obj, prop, descriptor)
 ```
 
-### 可迭代对象
-
-for...in vs. for...of
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
 
 
+### 事件
 
+https://developer.mozilla.org/en-US/docs/Web/API/Event
 
+https://developer.mozilla.org/en-US/docs/Web/Events
 
-### JS事件循环
+Event.target vs. Event.currentTarget
 
 EventTarget.addEventListener
 
@@ -211,13 +300,15 @@ EventTarget.removeEventListener
 
 EventTarget.dispatchEvent
 
+### 事件循环
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
 
-https://developer.mozilla.org/en-US/docs/Web/API/Event
+Macrotasks and Microtasks
 
-https://developer.mozilla.org/en-US/docs/Web/Events
+https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide
 
-
+https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 
 ### ECMAScript 2015/ES6 特性
 
@@ -253,7 +344,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Meth
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
+Promise构造函数
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise
+
+
 
 #### Map & Set
 
@@ -271,61 +366,49 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Gene
 
 
 
-### ECMAScript 2016/ES7 特性
+### ECMAScript 2017特性
 
-### async/await
-
-
+#### async/await
 
 https://nodejs.dev/learn/modern-asynchronous-javascript-with-async-and-await
 
+#### [Object.entries()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
 
 
 
-
-### Canvas API
+#### Canvas API
 
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
 
-### XHR(XML HTTP request)
 
-js XMLHttpRequest对象
 
-jquery ajax
+### Ajax
+
+XMLHttpRequest（XHR）
 
 Fetch API: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 
-Axios
 
-### 非标准（因浏览器不同而实现不同）
+
+### 非标准
+
+#### Console
 
 https://developer.mozilla.org/en-US/docs/Web/API/Console
 
 https://developer.mozilla.org/en-US/docs/Web/API/Console/log
 
+#### Babel
+
+property initializers
+
+https://itnext.io/property-initializers-what-why-and-how-to-use-it-5615210474a3
+
 ### Performance polyfills
 
 
 
-### Web worker
-
-### IndexedDB
-
-### AWS
-
-
-
-
-
 ## 设计模式 - Design Pattern
-
-### 响应式设计(Responsive Design)
-
-```html
-<meta >
-```
-
-meadia query (@media
 
 ### ReSTful
 
@@ -339,43 +422,7 @@ https://florimond.dev/blog/articles/2018/08/restful-api-design-13-best-practices
 
 https://en.wikipedia.org/wiki/Principle_of_least_privilege
 
-
-
-## 出色的类库
-
-#### jQuery
-
-### lodash
-
-https://css-tricks.com/debouncing-throttling-explained-examples/
-
-https://levelup.gitconnected.com/omit-is-being-removed-in-lodash-5-c1db1de61eaf
-
-axios
-
-Medium Zoom
-
-https://medium-zoom.francoischalifour.com/#
-
-##### Velocity.js
-
-## React
-
-
-
-
-
-## TypeScript
-
-### Interface
-
-
-
-https://stackoverflow.com/questions/52534910/difference-between-import-x-requirex-and-const-x-requirex-in-typ
-
-
-
-### 工具
+## 自动化构建工具
 
 npm，webpack，babel历史、用途与解释：
 
@@ -383,17 +430,68 @@ https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosa
 
 
 
-## 不了解
+## 框架与库列举
 
-Redux
+### 工具库
+
+jQuery
+
+lodash
+
+https://css-tricks.com/debouncing-throttling-explained-examples/
+
+https://levelup.gitconnected.com/omit-is-being-removed-in-lodash-5-c1db1de61eaf
+
+Axios
+
+Medium Zoom
+
+https://medium-zoom.francoischalifour.com/#
+
+Velocity.js
+
+React
 
 Flux
 
-Gatsby 
+Redux
 
 GraphQL
 
+Relay
+
+Gatsby 
+
+### Angular
+
+### Vue
+
+### Web Component
 
 
-Ant Design
 
+## More
+
+TypeScript
+
+Interface
+
+https://stackoverflow.com/questions/52534910/difference-between-import-x-requirex-and-const-x-requirex-in-typ
+
+Web Workers
+
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+
+Cache API
+
+### PWS
+
+service worker
+
+Web worker
+
+IndexedDB
+
+### Hybrid
+
+### WebAssembly
