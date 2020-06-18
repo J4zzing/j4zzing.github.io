@@ -5,7 +5,6 @@ tags:
 - React
 - Slate
 ---
-
 ## 版本
 
 V0.47.9
@@ -105,9 +104,13 @@ class Content extends React.component {
 }
 ```
 
-![光标一致](/images/1591671154049.png)
+光标一致：
 
-![光标不一致](/images/1591671095180.png)
+{% asset_img 1591671154049.png [光标一致] %}
+
+光标不一致：
+
+{% asset_img 1591671095180.png [光标不一致] %}
 
 
 
@@ -177,7 +180,7 @@ class Content extends React.component {
 
 **至此光标恢复正常：**
 
-![正常状态](/images/1591679334365.png)
+{% asset_img 1591679334365.png [正常状态] %}
 
 至于为什么没有和DOM同步？有没有更好的解决方案？按照第一种思路来改怎么做?
 

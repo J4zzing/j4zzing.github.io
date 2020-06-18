@@ -5,6 +5,12 @@ tags:
 - Web前端
 ---
 
+以下总结可能来自于
+
+https://www.jianshu.com/p/07b24b4baa35
+
+
+
 ## 数据类型
 
 ### null的数据类型是对象吗
@@ -14,6 +20,10 @@ tags:
 ~~而这个bug到现在还没修复。~~
 
 https://stackoverflow.com/questions/801032/why-is-null-an-object-and-whats-the-difference-between-null-and-undefined
+
+
+
+## Promise，Event Loop，macrotask，microtask
 
 
 
