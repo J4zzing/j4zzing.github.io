@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="施工中。。。本文目前只适用于个人 简单介绍https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript 简单复习https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;A_re-introduction_to_JavaScript 数据类型与数据结构https:&#x2F;&#x2F;developer.mozi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web前端复习指南JS篇">
+<meta property="og:url" content="http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/index.html">
+<meta property="og:site_name" content="狂风吹乱我发">
+<meta property="og:description" content="施工中。。。本文目前只适用于个人 简单介绍https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript 简单复习https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;A_re-introduction_to_JavaScript 数据类型与数据结构https:&#x2F;&#x2F;developer.mozi">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-18T20:56:50.000Z">
+<meta property="article:modified_time" content="2020-06-18T15:38:21.208Z">
+<meta property="article:author" content="rockham">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Web前端复习指南JS篇</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2020/06/18/Web%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&text=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&title=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&is_video=false&description=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Web前端复习指南JS篇&body=Check out this article: http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&title=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&title=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&title=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&title=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&name=Web前端复习指南JS篇&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&t=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单介绍"><span class="toc-number">1.</span> <span class="toc-text">简单介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单复习"><span class="toc-number">2.</span> <span class="toc-text">简单复习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型与数据结构"><span class="toc-number">3.</span> <span class="toc-text">数据类型与数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表达式和操作符"><span class="toc-number">4.</span> <span class="toc-text">表达式和操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制流"><span class="toc-number">5.</span> <span class="toc-text">控制流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript特点或quirks"><span class="toc-number">6.</span> <span class="toc-text">Javascript特点或quirks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RegExp-常规表达式"><span class="toc-number">7.</span> <span class="toc-text">RegExp - 常规表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可迭代对象"><span class="toc-number">8.</span> <span class="toc-text">可迭代对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-number">9.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数"><span class="toc-number">10.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#function-declaration-funtion-expression-and-IIFE-Immediately-invoked-function-expression"><span class="toc-number">10.1.</span> <span class="toc-text">function declaration, funtion expression and IIFE(Immediately invoked function expression)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#箭头函数"><span class="toc-number">10.2.</span> <span class="toc-text">箭头函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象"><span class="toc-number">11.</span> <span class="toc-text">对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建对象"><span class="toc-number">11.1.</span> <span class="toc-text">创建对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#继承和原型链"><span class="toc-number">11.2.</span> <span class="toc-text">继承和原型链</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prototype-和prototype和proto"><span class="toc-number"></span> <span class="toc-text">[[prototype]]和prototype和proto</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#-1"><span class="toc-number">0.1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#熟悉以下方法"><span class="toc-number">0.2.</span> <span class="toc-text">熟悉以下方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getter-amp-setter"><span class="toc-number">0.3.</span> <span class="toc-text">getter &amp; setter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件"><span class="toc-number">1.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件循环"><span class="toc-number">2.</span> <span class="toc-text">事件循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ECMAScript-2015-ES6-特性"><span class="toc-number">3.</span> <span class="toc-text">ECMAScript 2015&#x2F;ES6 特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模组化：CommonJS和ES6-import"><span class="toc-number">3.1.</span> <span class="toc-text">模组化：CommonJS和ES6 import</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模板字面量-Template-literals-Template-strings"><span class="toc-number">3.2.</span> <span class="toc-text">模板字面量(Template literals&#x2F;Template strings)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解构赋值；Spread-syntax-vs-Rest-parameter-vs-argument-object"><span class="toc-number">3.3.</span> <span class="toc-text">解构赋值；Spread syntax vs. (Rest parameter vs. argument object)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类"><span class="toc-number">3.4.</span> <span class="toc-text">类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#回调，Promise"><span class="toc-number">3.5.</span> <span class="toc-text">回调，Promise</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Map-amp-Set"><span class="toc-number">3.6.</span> <span class="toc-text">Map &amp; Set</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Symbol"><span class="toc-number">3.7.</span> <span class="toc-text">Symbol</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代器和生成器"><span class="toc-number">3.8.</span> <span class="toc-text">迭代器和生成器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ECMAScript-2017特性"><span class="toc-number">4.</span> <span class="toc-text">ECMAScript 2017特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#async-await"><span class="toc-number">4.1.</span> <span class="toc-text">async&#x2F;await</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object-entries"><span class="toc-number">4.2.</span> <span class="toc-text">Object.entries()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Canvas-API"><span class="toc-number">4.3.</span> <span class="toc-text">Canvas API</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ajax"><span class="toc-number">5.</span> <span class="toc-text">Ajax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非标准"><span class="toc-number">6.</span> <span class="toc-text">非标准</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Console"><span class="toc-number">6.1.</span> <span class="toc-text">Console</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Babel"><span class="toc-number">6.2.</span> <span class="toc-text">Babel</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式-Design-Pattern"><span class="toc-number"></span> <span class="toc-text">设计模式 - Design Pattern</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ReSTful"><span class="toc-number">1.</span> <span class="toc-text">ReSTful</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动化构建工具"><span class="toc-number"></span> <span class="toc-text">自动化构建工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架与库列举"><span class="toc-number"></span> <span class="toc-text">框架与库列举</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#工具库"><span class="toc-number">1.</span> <span class="toc-text">工具库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#React"><span class="toc-number">2.</span> <span class="toc-text">React</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Angular"><span class="toc-number">3.</span> <span class="toc-text">Angular</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue"><span class="toc-number">4.</span> <span class="toc-text">Vue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-Component"><span class="toc-number">5.</span> <span class="toc-text">Web Component</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More"><span class="toc-number"></span> <span class="toc-text">More</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PWS"><span class="toc-number">1.</span> <span class="toc-text">PWS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hybrid"><span class="toc-number">2.</span> <span class="toc-text">Hybrid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebAssembly"><span class="toc-number">3.</span> <span class="toc-text">WebAssembly</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Web前端复习指南JS篇
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">狂风吹乱我发</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-06-18T20:56:50.000Z" itemprop="datePublished">2020-06-18</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>施工中。。。本文目前只适用于个人</strong></p>
+<h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript</a></p>
+<h3 id="简单复习"><a href="#简单复习" class="headerlink" title="简单复习"></a>简单复习</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript</a></p>
+<h3 id="数据类型与数据结构"><a href="#数据类型与数据结构" class="headerlink" title="数据类型与数据结构"></a>数据类型与数据结构</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures</a></p>
+<p>7个原始数据类型</p>
+<ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>undefined</li>
+<li>null</li>
+<li>Symbol</li>
+<li>bigint</li>
+</ul>
+<p>引用数据类型</p>
+<ul>
+<li>Wrapper Object</li>
+<li></li>
+</ul>
+<h3 id="表达式和操作符"><a href="#表达式和操作符" class="headerlink" title="表达式和操作符"></a>表达式和操作符</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Logical" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Logical</a></p>
+<h3 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break</a></p>
+<h3 id="Javascript特点或quirks"><a href="#Javascript特点或quirks" class="headerlink" title="Javascript特点或quirks"></a>Javascript特点或quirks</h3><p><strong>Global Object - 全局对象</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Global_object" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Global_object</a></p>
+<p>全局对象通常指window</p>
+<p><strong>Hoisting - 提升</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Hoisting</a></p>
+<p>只有变量和函数声明会提升，类声明则不会提升</p>
+<p>提升的真正原因是在程序被执行前声明首先被JS保存到内存中了。</p>
+<p><strong>闭包</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures</a></p>
+<p><a href="https://www.typescriptlang.org/docs/handbook/variable-declarations.html#variable-capturing-quirks" target="_blank" rel="noopener">https://www.typescriptlang.org/docs/handbook/variable-declarations.html#variable-capturing-quirks</a></p>
+<p><strong>Strict mode - 严格模式</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode</a></p>
+<p>ESModule默认严格模式</p>
+<p><strong>函数参数个数</strong></p>
+<p><a href="https://stackoverflow.com/questions/6446304/question-on-javascript-function-parameters" target="_blank" rel="noopener">https://stackoverflow.com/questions/6446304/question-on-javascript-function-parameters</a></p>
+<p>调用函数时，实参既可以多与形参也可以少于形参，少给的实参值为undefined，多给的实参可以通过函数内置的arguments获取。</p>
+<p><strong>DOM</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction</a></p>
+<p><strong>this</strong></p>
+<p>this会根据调用时的上下文判断。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>ASI - 自动分号插入</p>
+<h3 id="RegExp-常规表达式"><a href="#RegExp-常规表达式" class="headerlink" title="RegExp - 常规表达式"></a>RegExp - 常规表达式</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp</a></p>
+<p>和其他RegExp不一样的：</p>
+<ul>
+<li><h3 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h3></li>
+</ul>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener">数组</a></p>
+<p>数组字面量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Array.from(arrayLike [, mapFn [, thisArg]])</span><br></pre></td></tr></table></figure>
+
+<p>Array.prototype.pop()</p>
+<p>Array.prototype.slice()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.filter(callback(element[, index, [array]])[, thisArg])</span><br></pre></td></tr></table></figure>
+
+<p>Array.prototype.sort()</p>
+<p>Array.prototype.forEach()</p>
+<p>Array.prototype.map()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.reduce(callback( accumulator, currentValue[, index[, array]] )[, initialValue])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.some(callback(element[, index[, array]])[, thisArg])</span><br></pre></td></tr></table></figure>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>for…in vs. for…of</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of</a></p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>所有函数均为Function对象</p>
+<p>函数内的arguments对象</p>
+<h4 id="function-declaration-funtion-expression-and-IIFE-Immediately-invoked-function-expression"><a href="#function-declaration-funtion-expression-and-IIFE-Immediately-invoked-function-expression" class="headerlink" title="function declaration, funtion expression and IIFE(Immediately invoked function expression)"></a>function declaration, funtion expression and IIFE(Immediately invoked function expression)</h4><p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Function" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Function</a></p>
+<p>什么时候适合使用它们？</p>
+<p><a href="https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoked-function-expressions-67791338ddc6" target="_blank" rel="noopener">https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoked-function-expressions-67791338ddc6</a></p>
+<p>还有Function constructor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Function([arg1 [, arg2 [, ...argN]] ,] functionBody)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function</a></p>
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p>特点：</p>
+<ul>
+<li>this指向当前上下文。</li>
+<li>没有默认的prototype属性（arrow function doesn’t have a default prototype property</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let boundFunc &#x3D; func.bind(thisArg[, arg1[, arg2[, ...argN]]])</span><br></pre></td></tr></table></figure>
+
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p><strong>JS中都有什么是对象？</strong></p>
+<p>几乎所有JS对象都继承Object</p>
+<p>包括Function，Array</p>
+<p>JS对象没有所谓的“方法”，只有属性。</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects</a></p>
+<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>创建对象的几种方法：</p>
+<ul>
+<li>Object()构造函数</li>
+<li>Object.create()</li>
+<li>对象字面量（Object initializer/Object literal</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"Puss"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cat1 = <span class="keyword">new</span> Cat() </span><br><span class="line">cat1.name <span class="comment">// "Puss"</span></span><br><span class="line"><span class="comment">// p1继承Person，p1是Person的实例</span></span><br><span class="line">cat1 <span class="keyword">instanceof</span> Cat <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cat2 = <span class="built_in">Object</span>.create(Cat) </span><br><span class="line">cat2.name <span class="comment">// "Puss"</span></span><br><span class="line">cat2 <span class="keyword">instanceof</span> Cat  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p3 = &#123;<span class="attr">name</span>: <span class="string">"Jack"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="继承和原型链"><a href="#继承和原型链" class="headerlink" title="继承和原型链"></a>继承和原型链</h4><blockquote>
+<h2 id="prototype-和prototype和proto"><a href="#prototype-和prototype和proto" class="headerlink" title="[[prototype]]和prototype和proto"></a>[[prototype]]和prototype和<strong>proto</strong></h2><p>请注意！上面标题的第一个prototype外面有两层[]包裹！<code>[[prototype]] !== prototype</code>！<br><code>[[prototype]]</code>是对象的私有属性，而<code>prototype</code>却是只有函数才有的属性！<br><strong><strong>proto</strong>是JS的非标准但许多浏览器实现的属性，即[[prototype]]</strong>，也就是<code>someObject.[[Prototype]] === someObject.__proto__</code>，当然如果你在控制台操作的话会报错，因为浏览器并没有实现<code>someObject.[[Prototype]]</code>这样的操作，所以你如果非要验证的话请使用ES6支持的<code>Object.getPrototypeOf()</code>方法，即<code>Object.getPrototypeOf(someObject) === someObject.__proto__</code></p>
+</blockquote>
+<blockquote>
+<p>It should not be confused with the <code>*func*.prototype</code> property of functions, which instead specifies the <code>[[Prototype]]</code> to be assigned to all <em>instances</em> of objects created by the given function when used as a constructor. The <code>**Object.prototype**</code> property represents the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" rel="noopener"><code>Object</code></a> prototype object.</p>
+</blockquote>
+<h4 id="-1"><a href="#-1" class="headerlink" title=""></a></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"Jack"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person() </span><br><span class="line"><span class="comment">// p1继承Person，p1是Person的实例</span></span><br><span class="line">p1 <span class="keyword">instanceof</span> Person  <span class="comment">//true</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line">p1.__proto__ === Person.prototype</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p2 = <span class="built_in">Object</span>.create(Person)</span><br><span class="line">p2 <span class="keyword">instanceof</span> Person  <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p3 = &#123;<span class="attr">name</span>: <span class="string">"Jack"</span>&#125;</span><br><span class="line"><span class="comment">// p3直接继承Object</span></span><br><span class="line">p3.__proto__ === <span class="built_in">Object</span>.prototype  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>访问一个对象的原型的方法：</p>
+<ul>
+<li>Object.getPrototypeOf()</li>
+<li>Object.setPrototypeOf()</li>
+<li>obj._<em>proto_</em>() <em>（非标准）</em></li>
+</ul>
+<p>当访问一个对象的属性时，如果在当前的对象找不到属性，JS会根据原型链向上游寻找属性，直到找到它或到达原型链顶层。</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain</a></p>
+<h4 id="熟悉以下方法"><a href="#熟悉以下方法" class="headerlink" title="熟悉以下方法"></a>熟悉以下方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(obj, prop, descriptor)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="getter-amp-setter"><a href="#getter-amp-setter" class="headerlink" title="getter &amp; setter"></a>getter &amp; setter</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set</a></p>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Event</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/Events</a></p>
+<p>Event.target vs. Event.currentTarget</p>
+<p>EventTarget.addEventListener</p>
+<p>EventTarget.removeEventListener</p>
+<p>EventTarget.dispatchEvent</p>
+<h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop</a></p>
+<p>Macrotasks and Microtasks</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide</a></p>
+<p><a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank" rel="noopener">https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/</a></p>
+<h3 id="ECMAScript-2015-ES6-特性"><a href="#ECMAScript-2015-ES6-特性" class="headerlink" title="ECMAScript 2015/ES6 特性"></a>ECMAScript 2015/ES6 特性</h3><h4 id="模组化：CommonJS和ES6-import"><a href="#模组化：CommonJS和ES6-import" class="headerlink" title="模组化：CommonJS和ES6 import"></a>模组化：CommonJS和ES6 import</h4><p>require() and module.exports</p>
+<p>import and export </p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import</a></p>
+<h4 id="模板字面量-Template-literals-Template-strings"><a href="#模板字面量-Template-literals-Template-strings" class="headerlink" title="模板字面量(Template literals/Template strings)"></a>模板字面量(Template literals/Template strings)</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals</a></p>
+<h4 id="解构赋值；Spread-syntax-vs-Rest-parameter-vs-argument-object"><a href="#解构赋值；Spread-syntax-vs-Rest-parameter-vs-argument-object" class="headerlink" title="解构赋值；Spread syntax vs. (Rest parameter vs. argument object)"></a>解构赋值；Spread syntax vs. (Rest parameter vs. argument object)</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">数组和对象解构赋值</a></p>
+<p>对象解构赋值 对比 Object.assign()</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments</a></p>
+<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions</a></p>
+<h4 id="回调，Promise"><a href="#回调，Promise" class="headerlink" title="回调，Promise"></a>回调，Promise</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></p>
+<p>Promise构造函数</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise</a></p>
+<h4 id="Map-amp-Set"><a href="#Map-amp-Set" class="headerlink" title="Map &amp; Set"></a>Map &amp; Set</h4><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol</a></p>
+<h4 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators</a></p>
+<h3 id="ECMAScript-2017特性"><a href="#ECMAScript-2017特性" class="headerlink" title="ECMAScript 2017特性"></a>ECMAScript 2017特性</h3><h4 id="async-await"><a href="#async-await" class="headerlink" title="async/await"></a>async/await</h4><p><a href="https://nodejs.dev/learn/modern-asynchronous-javascript-with-async-and-await" target="_blank" rel="noopener">https://nodejs.dev/learn/modern-asynchronous-javascript-with-async-and-await</a></p>
+<h4 id="Object-entries"><a href="#Object-entries" class="headerlink" title="Object.entries()"></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries" target="_blank" rel="noopener">Object.entries()</a></h4><h4 id="Canvas-API"><a href="#Canvas-API" class="headerlink" title="Canvas API"></a>Canvas API</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API</a></p>
+<h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><p>XMLHttpRequest（XHR）</p>
+<p>Fetch API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API</a></p>
+<h3 id="非标准"><a href="#非标准" class="headerlink" title="非标准"></a>非标准</h3><h4 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Console" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Console</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Console/log" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Console/log</a></p>
+<h4 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h4><p>property initializers</p>
+<p><a href="https://itnext.io/property-initializers-what-why-and-how-to-use-it-5615210474a3" target="_blank" rel="noopener">https://itnext.io/property-initializers-what-why-and-how-to-use-it-5615210474a3</a></p>
+<h2 id="设计模式-Design-Pattern"><a href="#设计模式-Design-Pattern" class="headerlink" title="设计模式 - Design Pattern"></a>设计模式 - Design Pattern</h2><h3 id="ReSTful"><a href="#ReSTful" class="headerlink" title="ReSTful"></a>ReSTful</h3><p>Best practice:</p>
+<p><a href="https://florimond.dev/blog/articles/2018/08/restful-api-design-13-best-practices-to-make-your-users-happy/" target="_blank" rel="noopener">https://florimond.dev/blog/articles/2018/08/restful-api-design-13-best-practices-to-make-your-users-happy/</a></p>
+<p>代码规范：</p>
+<p><a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Principle_of_least_privilege</a></p>
+<h2 id="自动化构建工具"><a href="#自动化构建工具" class="headerlink" title="自动化构建工具"></a>自动化构建工具</h2><p>npm，webpack，babel历史、用途与解释：</p>
+<p><a href="https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70" target="_blank" rel="noopener">https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70</a></p>
+<h2 id="框架与库列举"><a href="#框架与库列举" class="headerlink" title="框架与库列举"></a>框架与库列举</h2><h3 id="工具库"><a href="#工具库" class="headerlink" title="工具库"></a>工具库</h3><p>jQuery</p>
+<p>lodash</p>
+<p><a href="https://css-tricks.com/debouncing-throttling-explained-examples/" target="_blank" rel="noopener">https://css-tricks.com/debouncing-throttling-explained-examples/</a></p>
+<p><a href="https://levelup.gitconnected.com/omit-is-being-removed-in-lodash-5-c1db1de61eaf" target="_blank" rel="noopener">https://levelup.gitconnected.com/omit-is-being-removed-in-lodash-5-c1db1de61eaf</a></p>
+<p>Axios</p>
+<p>Medium Zoom</p>
+<p><a href="https://medium-zoom.francoischalifour.com/#" target="_blank" rel="noopener">https://medium-zoom.francoischalifour.com/#</a></p>
+<p>Velocity.js</p>
+<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p>Flux</p>
+<p>Redux</p>
+<p>GraphQL</p>
+<p>Relay</p>
+<p>Gatsby </p>
+<h3 id="Angular"><a href="#Angular" class="headerlink" title="Angular"></a>Angular</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><h3 id="Web-Component"><a href="#Web-Component" class="headerlink" title="Web Component"></a>Web Component</h3><h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><p>TypeScript</p>
+<p>Interface</p>
+<p><a href="https://stackoverflow.com/questions/52534910/difference-between-import-x-requirex-and-const-x-requirex-in-typ" target="_blank" rel="noopener">https://stackoverflow.com/questions/52534910/difference-between-import-x-requirex-and-const-x-requirex-in-typ</a></p>
+<p>Web Workers</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers</a></p>
+<p>Cache API</p>
+<h3 id="PWS"><a href="#PWS" class="headerlink" title="PWS"></a>PWS</h3><p>service worker</p>
+<p>Web worker</p>
+<p>IndexedDB</p>
+<h3 id="Hybrid"><a href="#Hybrid" class="headerlink" title="Hybrid"></a>Hybrid</h3><h3 id="WebAssembly"><a href="#WebAssembly" class="headerlink" title="WebAssembly"></a>WebAssembly</h3>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单介绍"><span class="toc-number">1.</span> <span class="toc-text">简单介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单复习"><span class="toc-number">2.</span> <span class="toc-text">简单复习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型与数据结构"><span class="toc-number">3.</span> <span class="toc-text">数据类型与数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表达式和操作符"><span class="toc-number">4.</span> <span class="toc-text">表达式和操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制流"><span class="toc-number">5.</span> <span class="toc-text">控制流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript特点或quirks"><span class="toc-number">6.</span> <span class="toc-text">Javascript特点或quirks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RegExp-常规表达式"><span class="toc-number">7.</span> <span class="toc-text">RegExp - 常规表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可迭代对象"><span class="toc-number">8.</span> <span class="toc-text">可迭代对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-number">9.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数"><span class="toc-number">10.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#function-declaration-funtion-expression-and-IIFE-Immediately-invoked-function-expression"><span class="toc-number">10.1.</span> <span class="toc-text">function declaration, funtion expression and IIFE(Immediately invoked function expression)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#箭头函数"><span class="toc-number">10.2.</span> <span class="toc-text">箭头函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象"><span class="toc-number">11.</span> <span class="toc-text">对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建对象"><span class="toc-number">11.1.</span> <span class="toc-text">创建对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#继承和原型链"><span class="toc-number">11.2.</span> <span class="toc-text">继承和原型链</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prototype-和prototype和proto"><span class="toc-number"></span> <span class="toc-text">[[prototype]]和prototype和proto</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#-1"><span class="toc-number">0.1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#熟悉以下方法"><span class="toc-number">0.2.</span> <span class="toc-text">熟悉以下方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getter-amp-setter"><span class="toc-number">0.3.</span> <span class="toc-text">getter &amp; setter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件"><span class="toc-number">1.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件循环"><span class="toc-number">2.</span> <span class="toc-text">事件循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ECMAScript-2015-ES6-特性"><span class="toc-number">3.</span> <span class="toc-text">ECMAScript 2015&#x2F;ES6 特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模组化：CommonJS和ES6-import"><span class="toc-number">3.1.</span> <span class="toc-text">模组化：CommonJS和ES6 import</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模板字面量-Template-literals-Template-strings"><span class="toc-number">3.2.</span> <span class="toc-text">模板字面量(Template literals&#x2F;Template strings)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解构赋值；Spread-syntax-vs-Rest-parameter-vs-argument-object"><span class="toc-number">3.3.</span> <span class="toc-text">解构赋值；Spread syntax vs. (Rest parameter vs. argument object)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类"><span class="toc-number">3.4.</span> <span class="toc-text">类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#回调，Promise"><span class="toc-number">3.5.</span> <span class="toc-text">回调，Promise</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Map-amp-Set"><span class="toc-number">3.6.</span> <span class="toc-text">Map &amp; Set</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Symbol"><span class="toc-number">3.7.</span> <span class="toc-text">Symbol</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代器和生成器"><span class="toc-number">3.8.</span> <span class="toc-text">迭代器和生成器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ECMAScript-2017特性"><span class="toc-number">4.</span> <span class="toc-text">ECMAScript 2017特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#async-await"><span class="toc-number">4.1.</span> <span class="toc-text">async&#x2F;await</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object-entries"><span class="toc-number">4.2.</span> <span class="toc-text">Object.entries()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Canvas-API"><span class="toc-number">4.3.</span> <span class="toc-text">Canvas API</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ajax"><span class="toc-number">5.</span> <span class="toc-text">Ajax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非标准"><span class="toc-number">6.</span> <span class="toc-text">非标准</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Console"><span class="toc-number">6.1.</span> <span class="toc-text">Console</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Babel"><span class="toc-number">6.2.</span> <span class="toc-text">Babel</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式-Design-Pattern"><span class="toc-number"></span> <span class="toc-text">设计模式 - Design Pattern</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ReSTful"><span class="toc-number">1.</span> <span class="toc-text">ReSTful</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动化构建工具"><span class="toc-number"></span> <span class="toc-text">自动化构建工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架与库列举"><span class="toc-number"></span> <span class="toc-text">框架与库列举</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#工具库"><span class="toc-number">1.</span> <span class="toc-text">工具库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#React"><span class="toc-number">2.</span> <span class="toc-text">React</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Angular"><span class="toc-number">3.</span> <span class="toc-text">Angular</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue"><span class="toc-number">4.</span> <span class="toc-text">Vue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-Component"><span class="toc-number">5.</span> <span class="toc-text">Web Component</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More"><span class="toc-number"></span> <span class="toc-text">More</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PWS"><span class="toc-number">1.</span> <span class="toc-text">PWS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hybrid"><span class="toc-number">2.</span> <span class="toc-text">Hybrid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebAssembly"><span class="toc-number">3.</span> <span class="toc-text">WebAssembly</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&text=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&title=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&is_video=false&description=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Web前端复习指南JS篇&body=Check out this article: http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&title=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&title=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&title=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&title=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&name=Web前端复习指南JS篇&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/&t=Web前端复习指南JS篇" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2019-2020
+    rockham
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

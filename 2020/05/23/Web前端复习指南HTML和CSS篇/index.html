@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="HTML元素https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;HTML&#x2F;Element 表单1234567&lt;form&gt;  &lt;label for&#x3D;&quot;name&quot;&gt;        &lt;label &#x2F;&gt;  &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;name&quot; value&#x3D;&quot;Michael&quot; required &#x2F;&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web前端复习指南HTML和CSS篇">
+<meta property="og:url" content="http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/index.html">
+<meta property="og:site_name" content="狂风吹乱我发">
+<meta property="og:description" content="HTML元素https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;HTML&#x2F;Element 表单1234567&lt;form&gt;  &lt;label for&#x3D;&quot;name&quot;&gt;        &lt;label &#x2F;&gt;  &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;name&quot; value&#x3D;&quot;Michael&quot; required &#x2F;&gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-23T00:00:05.000Z">
+<meta property="article:modified_time" content="2020-06-18T15:38:21.208Z">
+<meta property="article:author" content="rockham">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Web前端复习指南HTML和CSS篇</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/05/29/%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%EF%BC%8C%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8CIIFE/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/05/22/React/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&text=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&title=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&is_video=false&description=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Web前端复习指南HTML和CSS篇&body=Check out this article: http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&title=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&title=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&title=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&title=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&name=Web前端复习指南HTML和CSS篇&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&t=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-number">1.</span> <span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元素"><span class="toc-number">2.</span> <span class="toc-text">元素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#表单"><span class="toc-number">2.1.</span> <span class="toc-text">表单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可访问性"><span class="toc-number">2.2.</span> <span class="toc-text">可访问性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器本地支持的懒加载（loading-“lazy”"><span class="toc-number">2.3.</span> <span class="toc-text">浏览器本地支持的懒加载（loading&#x3D;“lazy”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS"><span class="toc-number">3.</span> <span class="toc-text">CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器"><span class="toc-number">3.1.</span> <span class="toc-text">选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#盒子模型"><span class="toc-number">3.2.</span> <span class="toc-text">盒子模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性"><span class="toc-number">3.3.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型与自动转换"><span class="toc-number">3.4.</span> <span class="toc-text">数据类型与自动转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布局"><span class="toc-number">3.5.</span> <span class="toc-text">布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动画"><span class="toc-number">3.6.</span> <span class="toc-text">动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">3.7.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数"><span class="toc-number">3.7.1.</span> <span class="toc-text">函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#At-rules"><span class="toc-number">3.8.</span> <span class="toc-text">At(@)-rules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应式设计-Responsive-Design"><span class="toc-number">3.9.</span> <span class="toc-text">响应式设计(Responsive Design)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最佳实践"><span class="toc-number">3.10.</span> <span class="toc-text">最佳实践</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Web前端复习指南HTML和CSS篇
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">狂风吹乱我发</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-05-23T00:00:05.000Z" itemprop="datePublished">2020-05-23</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/CSS/" rel="tag">CSS</a>, <a class="tag-link" href="/tags/HTML/" rel="tag">HTML</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTML/Element</a></p>
+<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"Michael"</span> <span class="attr">required</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"submit"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label" target="_blank" rel="noopener">label</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a></li>
+<li>button</li>
+</ol>
+<h3 id="可访问性"><a href="#可访问性" class="headerlink" title="可访问性"></a>可访问性</h3><p><a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics</a></p>
+<p>tabindex=”0”</p>
+<p>tabindex=”-1”</p>
+<p>role</p>
+<p>aria-*</p>
+<h3 id="浏览器本地支持的懒加载（loading-“lazy”"><a href="#浏览器本地支持的懒加载（loading-“lazy”" class="headerlink" title="浏览器本地支持的懒加载（loading=“lazy”"></a>浏览器本地支持的懒加载（loading=“lazy”</h3><p><a href="https://css-tricks.com/native-lazy-loading/" target="_blank" rel="noopener">https://css-tricks.com/native-lazy-loading/</a></p>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><p>伪类</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes</a></p>
+<p>伪元素</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Pseudo-element" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Pseudo-element</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::before" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/::before</a></p>
+<h3 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/margin</a></p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/content</a></p>
+<p>字体</p>
+<p>阴影</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow</a></p>
+<h3 id="数据类型与自动转换"><a href="#数据类型与自动转换" class="headerlink" title="数据类型与自动转换"></a>数据类型与自动转换</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types</a></p>
+<p>6个假值（相对于真值）：false, undefined, null, “”, 0, NaN</p>
+<p><a href="https://www.sitepoint.com/automatic-type-conversion/" target="_blank" rel="noopener">https://www.sitepoint.com/automatic-type-conversion/</a></p>
+<p><a href="https://www.w3schools.com/js/js_type_conversion.asp" target="_blank" rel="noopener">https://www.w3schools.com/js/js_type_conversion.asp</a></p>
+<p>为什么([] == false)为false，比较算法概况：</p>
+<p><a href="http://es5.github.io/#x11.9.3" target="_blank" rel="noopener">http://es5.github.io/#x11.9.3</a></p>
+<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><ol>
+<li><p>网格布局（grid-layout</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout</a></p>
+</li>
+<li><p>弹性布局（flex-box</p>
+<p>复习：<a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox</a></p>
+<p>测试：<a href="https://wiki.developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills" target="_blank" rel="noopener">https://wiki.developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills</a></p>
+</li>
+</ol>
+<p>布局手册：</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook</a></p>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">transition</span>: &lt;<span class="selector-tag">property</span>&gt; &lt;<span class="selector-tag">duration</span>&gt; &lt;<span class="selector-tag">timing-function</span>&gt; &lt;<span class="selector-tag">delay</span>&gt;;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions</a></p>
+<p><a href="https://easings.net/" target="_blank" rel="noopener">https://easings.net/</a></p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*" target="_blank" rel="noopener">css variables</a></p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/calc</a></p>
+<h3 id="At-rules"><a href="#At-rules" class="headerlink" title="At(@)-rules"></a><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule" target="_blank" rel="noopener">At(@)-rules</a></h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/@import</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/@media</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/@supports</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face</a></p>
+<h3 id="响应式设计-Responsive-Design"><a href="#响应式设计-Responsive-Design" class="headerlink" title="响应式设计(Responsive Design)"></a>响应式设计(Responsive Design)</h3><p><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> &gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>meadia queries</li>
+<li>使用现代化布局(flexbox, grid layout)</li>
+<li>images</li>
+</ol>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><p><a href="https://www.google.com/search?q=*+%7B+margin%3A+0%3B+padding%3A+0%3B+%7D&oq=*+%7B+margin%3A+0%3B+padding%3A+0%3B+%7D" target="_blank" rel="noopener">不使用* { margin: 0; padding: 0; }</a></p>
+<p>*{ box-sizing: border-box;}</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-number">1.</span> <span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元素"><span class="toc-number">2.</span> <span class="toc-text">元素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#表单"><span class="toc-number">2.1.</span> <span class="toc-text">表单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可访问性"><span class="toc-number">2.2.</span> <span class="toc-text">可访问性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器本地支持的懒加载（loading-“lazy”"><span class="toc-number">2.3.</span> <span class="toc-text">浏览器本地支持的懒加载（loading&#x3D;“lazy”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS"><span class="toc-number">3.</span> <span class="toc-text">CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器"><span class="toc-number">3.1.</span> <span class="toc-text">选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#盒子模型"><span class="toc-number">3.2.</span> <span class="toc-text">盒子模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性"><span class="toc-number">3.3.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型与自动转换"><span class="toc-number">3.4.</span> <span class="toc-text">数据类型与自动转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布局"><span class="toc-number">3.5.</span> <span class="toc-text">布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动画"><span class="toc-number">3.6.</span> <span class="toc-text">动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">3.7.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数"><span class="toc-number">3.7.1.</span> <span class="toc-text">函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#At-rules"><span class="toc-number">3.8.</span> <span class="toc-text">At(@)-rules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应式设计-Responsive-Design"><span class="toc-number">3.9.</span> <span class="toc-text">响应式设计(Responsive Design)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最佳实践"><span class="toc-number">3.10.</span> <span class="toc-text">最佳实践</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&text=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&title=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&is_video=false&description=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Web前端复习指南HTML和CSS篇&body=Check out this article: http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&title=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&title=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&title=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&title=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&name=Web前端复习指南HTML和CSS篇&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97HTML%E5%92%8CCSS%E7%AF%87/&t=Web前端复习指南HTML和CSS篇" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2019-2020
+    rockham
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
