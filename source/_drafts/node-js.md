@@ -5,6 +5,10 @@ tags:
 - Nodejs
 ---
 
+top-level scope in Node is not the global scope
+
+
+
 ## The Node.js Event emitter
 
 

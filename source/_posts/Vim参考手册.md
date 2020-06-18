@@ -5,6 +5,12 @@ tags:
 - Vim
 ---
 
+## 学习
+
+键 映射
+
+https://learnvimscriptthehardway.stevelosh.com/chapters/03.html
+
 ## 快速移动
 
 https://medium.com/usevim/vim-101-quick-movement-c12889e759e0
