@@ -9,7 +9,7 @@ tags:
 
 https://www.jianshu.com/p/07b24b4baa35
 
-
+https://segmentfault.com/a/1190000022211870
 
 ## 数据类型
 
@@ -23,6 +23,12 @@ https://stackoverflow.com/questions/801032/why-is-null-an-object-and-whats-the-d
 
 
 
+## DOM
+
+### Element和Node的区别
+
+
+
 ## Promise，Event Loop，macrotask，microtask
 
 
@@ -30,3 +36,12 @@ https://stackoverflow.com/questions/801032/why-is-null-an-object-and-whats-the-d
 ## polyfills
 
 https://en.wikipedia.org/wiki/Polyfill_(programming)
+
+
+
+## React
+
+### 什么是高阶组件
+
+### 合成事件和原生事件有什么不同
+

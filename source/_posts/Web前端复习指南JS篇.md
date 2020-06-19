@@ -298,6 +298,8 @@ https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 
 ### ECMAScript 2015/ES6 特性
 
+https://ponyfoo.com/articles/es6
+
 #### 模组化：CommonJS和ES6 import
 
 require() and module.exports
