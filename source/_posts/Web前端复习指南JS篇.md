@@ -42,7 +42,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Op
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break
 
-### Javascript特点或quirks
+### JavaScript的特点或quirks
 
 **Global Object - 全局对象**
 
@@ -54,7 +54,7 @@ https://developer.mozilla.org/en-US/docs/Glossary/Global_object
 
 https://developer.mozilla.org/en-US/docs/Glossary/Hoisting
 
-只有变量和函数声明会提升，类声明则不会提升
+只有var变量声明和函数声明会提升，类声明则不会提升
 
 提升的真正原因是在程序被执行前声明首先被JS保存到内存中了。
 
@@ -84,6 +84,8 @@ https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduct
 
 this会根据调用时的上下文判断。
 
+非严格模式下this的Autoboxing ，指向全局对象
+
 ```javascript
 
 ```
@@ -96,7 +98,7 @@ ASI - 自动分号插入
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
 
-和其他RegExp不一样的：
+和其他RegExp不一样的地方：
 
 - 
 
@@ -144,7 +146,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for
 
 函数内的arguments对象
 
+#### function signature
 
+https://developer.mozilla.org/en-US/docs/Glossary/Signature/Function
 
 #### function declaration, funtion expression and IIFE(Immediately invoked function expression)
 
@@ -162,6 +166,10 @@ new Function([arg1 [, arg2 [, ...argN]] ,] functionBody)
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function
 
+#### new
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
+
 #### 箭头函数
 
 特点：
@@ -172,6 +180,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 ```
 let boundFunc = func.bind(thisArg[, arg1[, arg2[, ...argN]]])
 ```
+
+
 
 ### 对象
 
@@ -222,7 +232,9 @@ var p3 = {name: "Jack"}
 
 > It should not be confused with the `*func*.prototype` property of functions, which instead specifies the `[[Prototype]]` to be assigned to all *instances* of objects created by the given function when used as a constructor. The `**Object.prototype**` property represents the [`Object`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) prototype object.
 
-#### 
+
+
+> *An object created by a* constructor *is an instance of that* constructor
 
 ```javascript
 function Person() {
@@ -264,14 +276,6 @@ Object.defineProperty(obj, prop, descriptor)
 
 
 
-#### getter & setter
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set
-
-
-
 ### 事件
 
 https://developer.mozilla.org/en-US/docs/Web/API/Event
@@ -298,60 +302,6 @@ https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 
 ### ECMAScript 2015/ES6 特性
 
-https://ponyfoo.com/articles/es6
-
-#### 模组化：CommonJS和ES6 import
-
-require() and module.exports
-
-import and export 
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
-
-#### 模板字面量(Template literals/Template strings)
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-
-#### 解构赋值；Spread syntax vs. (Rest parameter vs. argument object) 
-
-[数组和对象解构赋值](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
-
-对象解构赋值 对比 Object.assign()
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
-
-#### 类
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions
-
-#### 回调，Promise
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-
-Promise构造函数
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise
-
-
-
-#### Map & Set
-
-
-
-#### Symbol
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
-
-#### 迭代器和生成器
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators
-
-
-
 
 
 ### ECMAScript 2017特性
@@ -364,17 +314,19 @@ https://nodejs.dev/learn/modern-asynchronous-javascript-with-async-and-await
 
 
 
+### API
+
 #### Canvas API
 
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
 
+#### Fetch API
 
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 
-### Ajax
+#### Web_Storage_API
 
-XMLHttpRequest（XHR）
-
-Fetch API: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API
 
 
 

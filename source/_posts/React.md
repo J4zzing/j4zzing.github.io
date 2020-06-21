@@ -1,11 +1,13 @@
 ---
-title: React
+title: React 学习笔记
 date: 2020-05-22 17:47:41
 tags:
 - React
 ---
 
 # React 学习笔记
+
+## React
 
 ### 要点摘录：
 
@@ -43,57 +45,48 @@ React如何确保这段代码是更新原来的元素而不是渲染多个元素
 
 https://reactjs.org/docs/rendering-elements.html#updating-the-rendered-element
 
-如果是用Key，那么为什么有些元素需要key属性，另一些不需要？
-
-https://reactjs.org/docs/lists-and-keys.html#keyss
-
 
 
 ### Immutable
 
+### 类型检查
 
-
-### TypeScript-React
+#### TypeScript-React
 
 https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter
 
 https://www.staging-typescript.org/docs/handbook/jsx.html
 
+#### PropTypes
+
+## React-Router
+
+## Redux
+
+
+
+
+
 ## 练手项目
 
-### 入门
+### 原生练习
+
+https://codepen.io/
 
 #### MERN
 
 https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-1/
 
-###　入门后
+### 全方位项目 Spectrum
 
+https://github.com/withspectrum/spectrum
 
+## 怀旧
 
+http://www.ruanyifeng.com/blog/2015/03/react.html
 
+React.createClass()
 
-## 特技
+Flux
 
-#### 点击文档跳出爱心❤
-
-考虑对document设置click的EventListener。了解下js canvas，配合border-radius、CSS动画之类的。应在一定时间后清除那些隐藏的元素。
-
-参考资料：
-https://www.quirksmode.org/js/events_order.html#link4
-
-#### Hexo 主题开发
-
-参考下列主题
-
-https://github.com/probberechts/hexo-theme-cactus
-
-https://theme-next.js.org/
-
-https://www.yunyoujun.cn/
-
-优秀博客
-
-https://dnocm.com/articles/beechnut/hexo-next-injects/
-
-https://blog.oniuo.com/
+https://blog.andrewray.me/flux-for-stupid-people/

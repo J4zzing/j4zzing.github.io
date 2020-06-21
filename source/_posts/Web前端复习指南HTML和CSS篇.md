@@ -94,17 +94,19 @@ http://es5.github.io/#x11.9.3
 
 ### 布局
 
-1. 网格布局（grid-layout
+**网格布局（grid-layout**
 
-   https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout
 
-   https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
 
-2. 弹性布局（flex-box
+**弹性布局（flex-box**
 
-   复习：https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox
+复习：https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox
 
-   测试：https://wiki.developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills
+测试：https://wiki.developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills
+
+**其他古老的布局：流式布局，表格布局**
 
 布局手册：
 
@@ -120,7 +122,18 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_trans
 
 https://easings.net/
 
-### 变量
+### 变量 --*
+
+```css
+/* 声明全局变量 */
+:root {
+  --primary-color: lightblue;
+  --secondary-color: orange;
+}
+div {
+  color: var(--primary-color);
+}
+```
 
 [css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)
 

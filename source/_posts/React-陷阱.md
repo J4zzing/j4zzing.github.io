@@ -7,6 +7,10 @@ tags:
 
 ## Key
 
+https://reactjs.org/docs/reconciliation.html#keys
+
+https://codepen.io/pen?&editable=true&editors=0010
+
 https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318
 
 
