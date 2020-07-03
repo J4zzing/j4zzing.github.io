@@ -8,9 +8,13 @@ tags:
 
 ## HTML
 
-## 元素
+### 元素
 
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+### 全局属性
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
 
 ### 表单
 
@@ -36,9 +40,15 @@ https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML
 
 https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics
 
+
+
+**tabindex**
+
 tabindex="0"
 
 tabindex="-1"
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
 
 role
 
@@ -48,7 +58,9 @@ aria-*
 
 https://css-tricks.com/native-lazy-loading/
 
+### 与XHTML的区别
 
+https://en.wikipedia.org/wiki/XHTML#Relationship_to_HTML
 
 ## CSS
 
@@ -70,27 +82,37 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/margin
 
 ### 属性
 
+定位：
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/position
+
+cotent
+
 https://developer.mozilla.org/en-US/docs/Web/CSS/content
 
 字体
 
 阴影
 
-https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow
+https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Box-shadow_generator
+
+使用阴影改变select option：
+
+https://stackoverflow.com/questions/10484053/change-select-list-option-background-colour-on-hover
+
+
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events
 
 ### 数据类型与自动转换
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types
 
-6个假值（相对于真值）：false, undefined, null, "", 0, NaN
+**length**
 
-https://www.sitepoint.com/automatic-type-conversion/
-
-https://www.w3schools.com/js/js_type_conversion.asp
-
-为什么([] == false)为false，比较算法概况：
-
-http://es5.github.io/#x11.9.3
+https://developer.mozilla.org/en-US/docs/Web/CSS/length
 
 ### 布局
 

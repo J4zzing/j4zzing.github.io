@@ -17,12 +17,24 @@ http://47.98.159.95/my_blog/nav/#html%E9%83%A8%E5%88%86
 
 ### 布局 -- 如何同时水平居中并垂直居中一个元素
 
-- 父元素line-height配合内联子元素vertical-align: middle垂直对齐，父元素text-align: center居中对齐
+https://www.smashingmagazine.com/2013/08/absolute-horizontal-vertical-centering-css/
 
+http://jsfiddle.net/mBBJM/1/
+
+```css
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+```
+
+- 父元素line-height配合内联子元素vertical-align: middle垂直对齐，父元素text-align: center居中对齐
 - position: absolute; top: 50% - 元素高度; left: 50% - 元素宽度
 - flexbox的content-justify和align-items设为center
 - grid layout
 - margin: 0 auto水平居中，padding垂直居中
+- padding % https://stackoverflow.com/questions/11535827/responsive-height-proportional-to-width
 
 ## JavaScript
 
@@ -37,7 +49,7 @@ http://47.98.159.95/my_blog/nav/#html%E9%83%A8%E5%88%86
 好处都有啥：
 
 - 节约性能或内存消耗
-- 删除一个元素时不必用removeListener去解绑事件
+- 删除一个元素时不用removeListener去解绑事件
 
 ### null的数据类型是对象吗
 
@@ -69,7 +81,7 @@ https://en.wikipedia.org/wiki/Polyfill_(programming)
 
 ### 讲一下生命周期
 
-
+http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
 ### 什么是高阶组件
 
@@ -77,7 +89,7 @@ https://en.wikipedia.org/wiki/Polyfill_(programming)
 
 ### Redux有了解吗
 
-核心概念state, action 说一下
+核心概念reducer，state，action， 说一下
 
 ## Webpack
 
@@ -85,4 +97,4 @@ https://en.wikipedia.org/wiki/Polyfill_(programming)
 
 - 打包文件
 
-- 
+- 配置loader和plugin

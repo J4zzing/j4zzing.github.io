@@ -32,7 +32,20 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
 引用数据类型
 
 - Wrapper Object
-- 
+
+
+
+**6个假值**（相对于真值）：false, undefined, null, "", 0, NaN
+
+**自动类型转换**
+
+https://www.sitepoint.com/automatic-type-conversion/
+
+https://www.w3schools.com/js/js_type_conversion.asp
+
+为什么([] == false)为false，比较算法概况：
+
+http://es5.github.io/#x11.9.3
 
 ### 表达式和操作符
 
@@ -49,6 +62,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/bre
 https://developer.mozilla.org/en-US/docs/Glossary/Global_object
 
 全局对象通常指window
+
+https://developer.mozilla.org/en-US/docs/Web/API/Location
 
 **Hoisting - 提升**
 
@@ -79,6 +94,14 @@ https://stackoverflow.com/questions/6446304/question-on-javascript-function-para
 **DOM**
 
 https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
+
+**事件**
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event
+
+各种DOM操纵
+
+https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
 
 **this**
 
@@ -189,7 +212,7 @@ let boundFunc = func.bind(thisArg[, arg1[, arg2[, ...argN]]])
 
 几乎所有JS对象都继承Object
 
-包括Function，Array
+包括Function，Array，[Date](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
 JS对象没有所谓的“方法”，只有属性。
 
@@ -274,7 +297,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prot
 Object.defineProperty(obj, prop, descriptor)
 ```
 
+```javascript
+Object.freeze(obj)
+```
 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze
 
 ### 事件
 

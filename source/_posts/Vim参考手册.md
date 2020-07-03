@@ -5,6 +5,17 @@ tags:
 - Vim
 ---
 
+## Cheat Sheet
+
+```vim
+:set number
+:set nonumber
+:set relativenumber
+:set norelativenum
+```
+
+https://jeffkreeftmeijer.com/vim-number/
+
 ## 学习
 
 键 映射

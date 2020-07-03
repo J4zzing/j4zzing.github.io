@@ -38,7 +38,7 @@ Samesite有三个可选参数：
 
 也可以通过实现Restful API来预防
 
-**减轻XSS**可以通过设置首部Cookie的Httponly属性，使得Cookie只能发送到服务器，而无法被document.cookie接口访问。
+**减轻XSS**可以通过设置首部Cookie的Httponly属性，使得Cookie只能被发送到服务器，而无法被document.cookie接口访问。
 
 同时还可以通过设置短暂的Cookie有效期限(`Expires`或`Max-Age`)~~或者用Web_Storage_API取代Cookie~~来预防这两种攻击。
 
@@ -51,3 +51,8 @@ Samesite有三个可选参数：
 https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
 协议，主机与端口一致的URL为同源
+
+## 传输层
+
+### TCP和UDP的区别
+
