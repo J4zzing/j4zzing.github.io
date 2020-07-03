@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="以下总结可能来自于 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;07b24b4baa35 https:&#x2F;&#x2F;segmentfault.com&#x2F;a&#x2F;1190000022211870 http:&#x2F;&#x2F;47.98.159.95&#x2F;my_blog&#x2F;nav&#x2F;#html%E9%83%A8%E5%88%86 CSS布局 – 如何同时水平居中并垂直居中一个元素 父元素line-height配合内联子元素vert">
+  <meta name="description" content="以下总结可能来自于 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;07b24b4baa35 https:&#x2F;&#x2F;segmentfault.com&#x2F;a&#x2F;1190000022211870 http:&#x2F;&#x2F;47.98.159.95&#x2F;my_blog&#x2F;nav&#x2F;#html%E9%83%A8%E5%88%86 CSS布局 – 如何同时水平居中并垂直居中一个元素https:&#x2F;&#x2F;www.smashingmagazi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Web前端面试题整理">
 <meta property="og:url" content="http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="A thinker.">
-<meta property="og:description" content="以下总结可能来自于 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;07b24b4baa35 https:&#x2F;&#x2F;segmentfault.com&#x2F;a&#x2F;1190000022211870 http:&#x2F;&#x2F;47.98.159.95&#x2F;my_blog&#x2F;nav&#x2F;#html%E9%83%A8%E5%88%86 CSS布局 – 如何同时水平居中并垂直居中一个元素 父元素line-height配合内联子元素vert">
+<meta property="og:description" content="以下总结可能来自于 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;07b24b4baa35 https:&#x2F;&#x2F;segmentfault.com&#x2F;a&#x2F;1190000022211870 http:&#x2F;&#x2F;47.98.159.95&#x2F;my_blog&#x2F;nav&#x2F;#html%E9%83%A8%E5%88%86 CSS布局 – 如何同时水平居中并垂直居中一个元素https:&#x2F;&#x2F;www.smashingmagazi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-18T20:08:18.000Z">
-<meta property="article:modified_time" content="2020-06-21T02:30:43.768Z">
+<meta property="article:modified_time" content="2020-07-03T10:26:51.211Z">
 <meta property="article:author" content="rockham">
 <meta property="article:tag" content="Web前端">
 <meta name="twitter:card" content="summary">
@@ -186,7 +186,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-21 02:30:43" itemprop="dateModified" datetime="2020-06-21T02:30:43+00:00">2020-06-21</time>
+                <time title="修改时间：2020-07-03 10:26:51" itemprop="dateModified" datetime="2020-07-03T10:26:51+00:00">2020-07-03</time>
               </span>
 
           
@@ -204,34 +204,36 @@
 <p><a href="https://www.jianshu.com/p/07b24b4baa35" target="_blank" rel="noopener">https://www.jianshu.com/p/07b24b4baa35</a></p>
 <p><a href="https://segmentfault.com/a/1190000022211870" target="_blank" rel="noopener">https://segmentfault.com/a/1190000022211870</a></p>
 <p><a href="http://47.98.159.95/my_blog/nav/#html%E9%83%A8%E5%88%86" target="_blank" rel="noopener">http://47.98.159.95/my_blog/nav/#html%E9%83%A8%E5%88%86</a></p>
-<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="布局-–-如何同时水平居中并垂直居中一个元素"><a href="#布局-–-如何同时水平居中并垂直居中一个元素" class="headerlink" title="布局 – 如何同时水平居中并垂直居中一个元素"></a>布局 – 如何同时水平居中并垂直居中一个元素</h3><ul>
-<li><p>父元素line-height配合内联子元素vertical-align: middle垂直对齐，父元素text-align: center居中对齐</p>
-</li>
-<li><p>position: absolute; top: 50% - 元素高度; left: 50% - 元素宽度</p>
-</li>
-<li><p>flexbox的content-justify和align-items设为center</p>
-</li>
-<li><p>grid layout</p>
-</li>
-<li><p>margin: 0 auto水平居中，padding垂直居中</p>
-</li>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="布局-–-如何同时水平居中并垂直居中一个元素"><a href="#布局-–-如何同时水平居中并垂直居中一个元素" class="headerlink" title="布局 – 如何同时水平居中并垂直居中一个元素"></a>布局 – 如何同时水平居中并垂直居中一个元素</h3><p><a href="https://www.smashingmagazine.com/2013/08/absolute-horizontal-vertical-centering-css/" target="_blank" rel="noopener">https://www.smashingmagazine.com/2013/08/absolute-horizontal-vertical-centering-css/</a></p>
+<p><a href="http://jsfiddle.net/mBBJM/1/" target="_blank" rel="noopener">http://jsfiddle.net/mBBJM/1/</a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.Absolute-Center</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: auto;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>父元素line-height配合内联子元素vertical-align: middle垂直对齐，父元素text-align: center居中对齐</li>
+<li>position: absolute; top: 50% - 元素高度; left: 50% - 元素宽度</li>
+<li>flexbox的content-justify和align-items设为center</li>
+<li>grid layout</li>
+<li>margin: 0 auto水平居中，padding垂直居中</li>
+<li>padding % <a href="https://stackoverflow.com/questions/11535827/responsive-height-proportional-to-width" target="_blank" rel="noopener">https://stackoverflow.com/questions/11535827/responsive-height-proportional-to-width</a></li>
 </ul>
 <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h3 id="讲一下闭包"><a href="#讲一下闭包" class="headerlink" title="讲一下闭包"></a>讲一下闭包</h3><p>是什么</p>
 <p>用在什么地方</p>
 <h3 id="讲一讲事件委托"><a href="#讲一讲事件委托" class="headerlink" title="讲一讲事件委托"></a>讲一讲事件委托</h3><p>好处都有啥：</p>
 <ul>
 <li>节约性能或内存消耗</li>
-<li>删除一个元素时不必用removeListener去解绑事件</li>
+<li>删除一个元素时不用removeListener去解绑事件</li>
 </ul>
 <h3 id="null的数据类型是对象吗"><a href="#null的数据类型是对象吗" class="headerlink" title="null的数据类型是对象吗"></a>null的数据类型是对象吗</h3><p>不是，null是JS七种原始数据类型之一。之所以<code>typeof null === &quot;object&quot;</code>是因为JS把所有二进制开头为000的数据都当成object类型，而null的二进制全是0。</p>
 <p><del>而这个bug到现在还没修复。</del></p>
 <p><a href="https://stackoverflow.com/questions/801032/why-is-null-an-object-and-whats-the-difference-between-null-and-undefined" target="_blank" rel="noopener">https://stackoverflow.com/questions/801032/why-is-null-an-object-and-whats-the-difference-between-null-and-undefined</a></p>
 <h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><h3 id="Element和Node的区别"><a href="#Element和Node的区别" class="headerlink" title="Element和Node的区别"></a>Element和Node的区别</h3><h2 id="Promise，Event-Loop，macrotask，microtask"><a href="#Promise，Event-Loop，macrotask，microtask" class="headerlink" title="Promise，Event Loop，macrotask，microtask"></a>Promise，Event Loop，macrotask，microtask</h2><h2 id="polyfills"><a href="#polyfills" class="headerlink" title="polyfills"></a>polyfills</h2><p><a href="https://en.wikipedia.org/wiki/Polyfill_(programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Polyfill_(programming)</a></p>
-<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h3 id="讲一下生命周期"><a href="#讲一下生命周期" class="headerlink" title="讲一下生命周期"></a>讲一下生命周期</h3><h3 id="什么是高阶组件"><a href="#什么是高阶组件" class="headerlink" title="什么是高阶组件"></a>什么是高阶组件</h3><h3 id="合成事件和原生事件有什么不同"><a href="#合成事件和原生事件有什么不同" class="headerlink" title="合成事件和原生事件有什么不同"></a>合成事件和原生事件有什么不同</h3><h3 id="Redux有了解吗"><a href="#Redux有了解吗" class="headerlink" title="Redux有了解吗"></a>Redux有了解吗</h3><p>核心概念state, action 说一下</p>
+<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h3 id="讲一下生命周期"><a href="#讲一下生命周期" class="headerlink" title="讲一下生命周期"></a>讲一下生命周期</h3><p><a href="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" rel="noopener">http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/</a></p>
+<h3 id="什么是高阶组件"><a href="#什么是高阶组件" class="headerlink" title="什么是高阶组件"></a>什么是高阶组件</h3><h3 id="合成事件和原生事件有什么不同"><a href="#合成事件和原生事件有什么不同" class="headerlink" title="合成事件和原生事件有什么不同"></a>合成事件和原生事件有什么不同</h3><h3 id="Redux有了解吗"><a href="#Redux有了解吗" class="headerlink" title="Redux有了解吗"></a>Redux有了解吗</h3><p>核心概念reducer，state，action， 说一下</p>
 <h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h2><h3 id="Webpack都可以做什么"><a href="#Webpack都可以做什么" class="headerlink" title="Webpack都可以做什么"></a>Webpack都可以做什么</h3><ul>
 <li><p>打包文件</p>
 </li>
-<li></li>
+<li><p>配置loader和plugin</p>
+</li>
 </ul>
 
     </div>
@@ -330,7 +332,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
