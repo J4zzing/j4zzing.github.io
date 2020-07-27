@@ -152,6 +152,526 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/01/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rockham">
+      <meta itemprop="description" content="没有无用的知识。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A thinker.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/01/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/" class="post-title-link" itemprop="url">Web前端复习指南JS篇</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-01 20:56:50" itemprop="dateCreated datePublished" datetime="2020-06-01T20:56:50+00:00">2020-06-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-27 05:19:55" itemprop="dateModified" datetime="2020-07-27T05:19:55+00:00">2020-07-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>施工中。。。本文目前只适用于个人</strong></p>
+<h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript</a></p>
+<h3 id="简单复习"><a href="#简单复习" class="headerlink" title="简单复习"></a>简单复习</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript</a></p>
+<h2 id="完整介绍"><a href="#完整介绍" class="headerlink" title="完整介绍"></a>完整介绍</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript</a></p>
+<h3 id="数据类型与数据结构"><a href="#数据类型与数据结构" class="headerlink" title="数据类型与数据结构"></a>数据类型与数据结构</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures</a></p>
+<p>7个原始数据类型</p>
+<ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>undefined</li>
+<li>null</li>
+<li>Symbol</li>
+<li>bigint</li>
+</ul>
+<p>引用数据类型</p>
+<ul>
+<li>Wrapper Object</li>
+</ul>
+<p><strong>6个假值</strong>（相对于真值）：false, undefined, null, “”, 0, NaN</p>
+<p><strong>自动类型转换</strong></p>
+<p><a href="https://www.sitepoint.com/automatic-type-conversion/" target="_blank" rel="noopener">https://www.sitepoint.com/automatic-type-conversion/</a></p>
+<p><a href="https://www.w3schools.com/js/js_type_conversion.asp" target="_blank" rel="noopener">https://www.w3schools.com/js/js_type_conversion.asp</a></p>
+<p>为什么([] == false)为false，比较算法概况：</p>
+<p><a href="http://es5.github.io/#x11.9.3" target="_blank" rel="noopener">http://es5.github.io/#x11.9.3</a></p>
+<h3 id="表达式和操作符"><a href="#表达式和操作符" class="headerlink" title="表达式和操作符"></a>表达式和操作符</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Logical" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Logical</a></p>
+<h3 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break</a></p>
+<h3 id="JavaScript的特点或quirks"><a href="#JavaScript的特点或quirks" class="headerlink" title="JavaScript的特点或quirks"></a>JavaScript的特点或quirks</h3><p><strong>Global Object - 全局对象</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Global_object" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Global_object</a></p>
+<p>全局对象通常指window</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Location" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Location</a></p>
+<p><strong>Hoisting - 提升</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Hoisting</a></p>
+<p>只有var变量声明和函数声明会提升，类声明则不会提升</p>
+<p>提升的真正原因是在程序被执行前声明首先被JS保存到内存中了。</p>
+<p><strong>闭包</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures</a></p>
+<p><a href="https://www.typescriptlang.org/docs/handbook/variable-declarations.html#variable-capturing-quirks" target="_blank" rel="noopener">https://www.typescriptlang.org/docs/handbook/variable-declarations.html#variable-capturing-quirks</a></p>
+<p><strong>Strict mode - 严格模式</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode</a></p>
+<p>ESModule默认严格模式</p>
+<p><strong>函数参数个数</strong></p>
+<p><a href="https://stackoverflow.com/questions/6446304/question-on-javascript-function-parameters" target="_blank" rel="noopener">https://stackoverflow.com/questions/6446304/question-on-javascript-function-parameters</a></p>
+<p>调用函数时，实参既可以多与形参也可以少于形参，少给的实参值为undefined，多给的实参可以通过函数内置的arguments获取。</p>
+<p><strong>DOM</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction</a></p>
+<p><strong>事件</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event</a></p>
+<p>各种DOM操纵</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Element/closest</a></p>
+<p><strong>this</strong></p>
+<p>this会根据调用时的上下文判断。</p>
+<p>非严格模式下this的Autoboxing ，指向全局对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>ASI - 自动分号插入</p>
+<h3 id="RegExp-常规表达式"><a href="#RegExp-常规表达式" class="headerlink" title="RegExp - 常规表达式"></a>RegExp - 常规表达式</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp</a></p>
+<p>和其他RegExp不一样的地方：</p>
+<ul>
+<li><h3 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h3></li>
+</ul>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener">数组</a></p>
+<p>数组字面量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Array.from(arrayLike [, mapFn [, thisArg]])</span><br></pre></td></tr></table></figure>
+
+<p>Array.prototype.pop()</p>
+<p>Array.prototype.slice()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.filter(callback(element[, index, [array]])[, thisArg])</span><br></pre></td></tr></table></figure>
+
+<p>Array.prototype.sort()</p>
+<p>Array.prototype.forEach()</p>
+<p>Array.prototype.map()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.reduce(callback( accumulator, currentValue[, index[, array]] )[, initialValue])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.some(callback(element[, index[, array]])[, thisArg])</span><br></pre></td></tr></table></figure>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>for…in vs. for…of</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of</a></p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数的数据类型为function</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125; === <span class="string">'function'</span></span><br></pre></td></tr></table></figure>
+
+<p>函数内的arguments对象</p>
+<h4 id="function-signature"><a href="#function-signature" class="headerlink" title="function signature"></a>function signature</h4><p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Signature/Function" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Signature/Function</a></p>
+<h4 id="创建函数-–-function-declaration-funtion-expression-and-IIFE-Immediately-invoked-function-expression"><a href="#创建函数-–-function-declaration-funtion-expression-and-IIFE-Immediately-invoked-function-expression" class="headerlink" title="创建函数 – function declaration, funtion expression and IIFE(Immediately invoked function expression)"></a>创建函数 – function declaration, funtion expression and IIFE(Immediately invoked function expression)</h4><p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Function" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Function</a></p>
+<p>什么时候适合使用它们？</p>
+<p><a href="https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoked-function-expressions-67791338ddc6" target="_blank" rel="noopener">https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoked-function-expressions-67791338ddc6</a></p>
+<p>还有<strong>Function constructor</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Function([arg1 [, arg2 [, ...argN]] ,] functionBody)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function#Difference_between_Function_constructor_and_function_declaration" target="_blank" rel="noopener">区别</a>：Function constructor不会创建闭包。</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function</a></p>
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p>特点：</p>
+<ul>
+<li>this指向当前上下文。</li>
+<li>没有默认的prototype属性（arrow function doesn’t have a default prototype property</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let boundFunc &#x3D; func.bind(thisArg[, arg1[, arg2[, ...argN]]])</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model</a></p>
+<p><strong>JS中都有什么是对象？</strong></p>
+<p>几乎所有JS对象都继承Object</p>
+<p>包括Function，Array，<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="noopener">Date</a></p>
+<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>创建对象的几种方法：</p>
+<ul>
+<li>对象字面量（Object literal / Object initializer</li>
+<li>new 构造函数</li>
+<li>Object.create() Object.from() Object.assign()</li>
+<li>ES6 class</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"Puss"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cat1 = <span class="keyword">new</span> Cat() </span><br><span class="line">cat1.name <span class="comment">// "Puss"</span></span><br><span class="line"><span class="comment">// cat1是Cat的实例</span></span><br><span class="line">cat1 <span class="keyword">instanceof</span> Cat <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cat2 = <span class="built_in">Object</span>.create(Cat) </span><br><span class="line">cat2.name <span class="comment">// "Puss"</span></span><br><span class="line">cat2 <span class="keyword">instanceof</span> Cat  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cat = &#123;<span class="attr">name</span>: <span class="string">"Puss"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="new"><a href="#new" class="headerlink" title="new"></a>new</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new</a></p>
+<h4 id="getter-amp-setter"><a href="#getter-amp-setter" class="headerlink" title="getter &amp; setter"></a>getter &amp; setter</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters</a></p>
+<h4 id="继承和原型链"><a href="#继承和原型链" class="headerlink" title="继承和原型链"></a>继承和原型链</h4><p><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain</a></p>
+<blockquote>
+<h2 id="prototype-和prototype和proto"><a href="#prototype-和prototype和proto" class="headerlink" title="[[prototype]]和prototype和proto"></a>[[prototype]]和prototype和<strong>proto</strong></h2><p>请注意！上面标题的第一个prototype外面有两层[]包裹！<code>[[prototype]] !== prototype</code>！<br><code>[[prototype]]</code>是对象的私有属性，而<code>prototype</code>却是只有函数才有的属性！<br><strong><strong>proto</strong>是JS的非标准但许多浏览器实现的属性，即[[prototype]]</strong>，也就是<code>someObject.[[Prototype]] === someObject.__proto__</code>，当然如果你在控制台操作的话会报错，因为浏览器并没有实现<code>someObject.[[Prototype]]</code>这样的操作，所以你如果非要验证的话请使用ES6支持的<code>Object.getPrototypeOf()</code>方法，即<code>Object.getPrototypeOf(someObject) === someObject.__proto__</code></p>
+</blockquote>
+<blockquote>
+<p>It should not be confused with the <code>*func*.prototype</code> property of functions, which instead specifies the <code>[[Prototype]]</code> to be assigned to all <em>instances</em> of objects created by the given function when used as a constructor. The <code>**Object.prototype**</code> property represents the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" rel="noopener"><code>Object</code></a> prototype object.</p>
+</blockquote>
+<p>访问一个对象的原型的方法：</p>
+<ul>
+<li>Object.getPrototypeOf()</li>
+<li>obj._<em>proto_</em>() <em>（非标准）</em></li>
+</ul>
+<p>当访问一个对象的属性或方法时，如果在当前的对象找不到，JS会根据原型链向上游寻找，直到找到它或到达原型链顶层。</p>
+<p><strong>constructor</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat1.constructor === Cat.prototype.constructor  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">cat1.constructor.name === <span class="string">'Cat'</span>  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> cat1.constructor() <span class="keyword">instanceof</span> Cat  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>各种方式创建对象的原型链</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain#Different_ways_to_create_objects_and_the_resulting_prototype_chain" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain#Different_ways_to_create_objects_and_the_resulting_prototype_chain</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对象字面量</span></span><br><span class="line"><span class="keyword">var</span> cat = &#123;<span class="attr">name</span>: <span class="string">"Puss"</span>&#125;</span><br><span class="line"><span class="comment">// cat直接继承Object.prototype</span></span><br><span class="line">cat.__proto__ === <span class="built_in">Object</span>.prototype  <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造函数</span></span><br><span class="line"><span class="keyword">var</span> cat1 = <span class="keyword">new</span> Cat() </span><br><span class="line"><span class="comment">// cat1继承Cat.prototype</span></span><br><span class="line">cat1.__proto__ === Cat.prototype  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Object.create()</span></span><br><span class="line"><span class="keyword">var</span> cat2 = <span class="built_in">Object</span>.create(cat1)</span><br><span class="line"><span class="comment">// cat2继承cat1</span></span><br><span class="line">cat2.__proto__ === cat1  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="对象有以下方法"><a href="#对象有以下方法" class="headerlink" title="对象有以下方法"></a>对象有以下方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(obj, prop, descriptor)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.freeze(obj)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze</a></p>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Event</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/Events</a></p>
+<p>Event.target vs. Event.currentTarget</p>
+<p>EventTarget.addEventListener</p>
+<p>EventTarget.removeEventListener</p>
+<p>EventTarget.dispatchEvent</p>
+<h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop</a></p>
+<p>Macrotasks and Microtasks</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide</a></p>
+<p><a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank" rel="noopener">https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/</a></p>
+<h3 id="ECMAScript-2015-ES6-特性"><a href="#ECMAScript-2015-ES6-特性" class="headerlink" title="ECMAScript 2015/ES6 特性"></a>ECMAScript 2015/ES6 特性</h3><h3 id="ECMAScript-2017特性"><a href="#ECMAScript-2017特性" class="headerlink" title="ECMAScript 2017特性"></a>ECMAScript 2017特性</h3><h4 id="async-await"><a href="#async-await" class="headerlink" title="async/await"></a>async/await</h4><p><a href="https://nodejs.dev/learn/modern-asynchronous-javascript-with-async-and-await" target="_blank" rel="noopener">https://nodejs.dev/learn/modern-asynchronous-javascript-with-async-and-await</a></p>
+<h4 id="Object-entries"><a href="#Object-entries" class="headerlink" title="Object.entries()"></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries" target="_blank" rel="noopener">Object.entries()</a></h4><h3 id="Web-APIs"><a href="#Web-APIs" class="headerlink" title="Web APIs"></a>Web APIs</h3><h4 id="Canvas-API"><a href="#Canvas-API" class="headerlink" title="Canvas API"></a>Canvas API</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes</a></p>
+<h4 id="Fetch-API"><a href="#Fetch-API" class="headerlink" title="Fetch API"></a>Fetch API</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API</a></p>
+<h4 id="Web-Storage-API"><a href="#Web-Storage-API" class="headerlink" title="Web_Storage_API"></a>Web_Storage_API</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Storage" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Storage</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage</a></p>
+<p><strong>比较Cookie SessionStorage LocalStorage</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>HTTP cookie</th>
+<th>SessionStorage</th>
+<th>LocalStorage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否发送到服务器</td>
+<td>是</td>
+<td>永不</td>
+<td>永不</td>
+</tr>
+<tr>
+<td>保存时间</td>
+<td>通过Expires和max-age设置过期时间</td>
+<td>直到浏览器或标签关闭</td>
+<td>不会过期，用JS清除或在清除浏览器缓存时被删除</td>
+</tr>
+<tr>
+<td>源</td>
+<td></td>
+<td>同源可以访问</td>
+<td>同源可以访问</td>
+</tr>
+<tr>
+<td>大小限制</td>
+<td>4KB</td>
+<td>5MB</td>
+<td>5MB</td>
+</tr>
+</tbody></table>
+<p>注意：Web Storage会针对网页协议区分。也就是说在<a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a>和<a href="https://example.com/" target="_blank" rel="noopener">https://example.com</a>访问Web Storage会得到两个不同的对象。</p>
+<h4 id="WebSocket-API"><a href="#WebSocket-API" class="headerlink" title="WebSocket API"></a>WebSocket API</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/WebSocket</a></p>
+<h4 id="IndexedDB-API"><a href="#IndexedDB-API" class="headerlink" title="IndexedDB API"></a>IndexedDB API</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API</a></p>
+<h3 id="非标准"><a href="#非标准" class="headerlink" title="非标准"></a>非标准</h3><h4 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Console" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Console</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Console/log" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Console/log</a></p>
+<h4 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h4><p>property initializers</p>
+<p><a href="https://itnext.io/property-initializers-what-why-and-how-to-use-it-5615210474a3" target="_blank" rel="noopener">https://itnext.io/property-initializers-what-why-and-how-to-use-it-5615210474a3</a></p>
+<h2 id="设计模式-Design-Pattern"><a href="#设计模式-Design-Pattern" class="headerlink" title="设计模式 - Design Pattern"></a>设计模式 - Design Pattern</h2><h3 id="ReSTful"><a href="#ReSTful" class="headerlink" title="ReSTful"></a>ReSTful</h3><p>Best practice:</p>
+<p><a href="https://florimond.dev/blog/articles/2018/08/restful-api-design-13-best-practices-to-make-your-users-happy/" target="_blank" rel="noopener">https://florimond.dev/blog/articles/2018/08/restful-api-design-13-best-practices-to-make-your-users-happy/</a></p>
+<p>代码规范：</p>
+<p><a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Principle_of_least_privilege</a></p>
+<h2 id="自动化构建工具"><a href="#自动化构建工具" class="headerlink" title="自动化构建工具"></a>自动化构建工具</h2><p>npm，webpack，babel历史、用途与解释：</p>
+<p><a href="https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70" target="_blank" rel="noopener">https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70</a></p>
+<h2 id="框架与库列举"><a href="#框架与库列举" class="headerlink" title="框架与库列举"></a>框架与库列举</h2><h3 id="工具库"><a href="#工具库" class="headerlink" title="工具库"></a>工具库</h3><p>jQuery</p>
+<p>lodash</p>
+<p><a href="https://css-tricks.com/debouncing-throttling-explained-examples/" target="_blank" rel="noopener">https://css-tricks.com/debouncing-throttling-explained-examples/</a></p>
+<p><a href="https://levelup.gitconnected.com/omit-is-being-removed-in-lodash-5-c1db1de61eaf" target="_blank" rel="noopener">https://levelup.gitconnected.com/omit-is-being-removed-in-lodash-5-c1db1de61eaf</a></p>
+<p>Axios</p>
+<p>Medium Zoom</p>
+<p><a href="https://medium-zoom.francoischalifour.com/#" target="_blank" rel="noopener">https://medium-zoom.francoischalifour.com/#</a></p>
+<p>Velocity.js</p>
+<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p>Flux</p>
+<p>Redux</p>
+<p>GraphQL</p>
+<p>Relay</p>
+<p>Gatsby </p>
+<h3 id="Angular"><a href="#Angular" class="headerlink" title="Angular"></a>Angular</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><h3 id="Web-Component"><a href="#Web-Component" class="headerlink" title="Web Component"></a>Web Component</h3><h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><p>TypeScript</p>
+<p>Interface</p>
+<p><a href="https://stackoverflow.com/questions/52534910/difference-between-import-x-requirex-and-const-x-requirex-in-typ" target="_blank" rel="noopener">https://stackoverflow.com/questions/52534910/difference-between-import-x-requirex-and-const-x-requirex-in-typ</a></p>
+<p>Web Workers</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers</a></p>
+<p>Cache API</p>
+<h3 id="PWS"><a href="#PWS" class="headerlink" title="PWS"></a>PWS</h3><p>service worker</p>
+<p>Web worker</p>
+<p>IndexedDB</p>
+<h3 id="Hybrid"><a href="#Hybrid" class="headerlink" title="Hybrid"></a>Hybrid</h3><h3 id="WebAssembly"><a href="#WebAssembly" class="headerlink" title="WebAssembly"></a>WebAssembly</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97-HTML%E4%B8%8ECSS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rockham">
+      <meta itemprop="description" content="没有无用的知识。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A thinker.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97-HTML%E4%B8%8ECSS/" class="post-title-link" itemprop="url">Web前端复习指南 - HTML与CSS</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-23 00:00:05" itemprop="dateCreated datePublished" datetime="2020-05-23T00:00:05+00:00">2020-05-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-27 05:19:55" itemprop="dateModified" datetime="2020-07-27T05:19:55+00:00">2020-07-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h3 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTML/Element</a></p>
+<h3 id="全局属性"><a href="#全局属性" class="headerlink" title="全局属性"></a>全局属性</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes</a></p>
+<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"Michael"</span> <span class="attr">required</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"submit"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label" target="_blank" rel="noopener">label</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a></li>
+<li>button</li>
+</ol>
+<h3 id="可访问性"><a href="#可访问性" class="headerlink" title="可访问性"></a>可访问性</h3><p><a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics</a></p>
+<p><strong>tabindex</strong></p>
+<p>tabindex=”0”</p>
+<p>tabindex=”-1”</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex</a></p>
+<p>role</p>
+<p>aria-*</p>
+<h3 id="浏览器本地支持的懒加载（loading-“lazy”"><a href="#浏览器本地支持的懒加载（loading-“lazy”" class="headerlink" title="浏览器本地支持的懒加载（loading=“lazy”"></a>浏览器本地支持的懒加载（loading=“lazy”</h3><p><a href="https://css-tricks.com/native-lazy-loading/" target="_blank" rel="noopener">https://css-tricks.com/native-lazy-loading/</a></p>
+<h3 id="与XHTML的区别"><a href="#与XHTML的区别" class="headerlink" title="与XHTML的区别"></a>与XHTML的区别</h3><p><a href="https://en.wikipedia.org/wiki/XHTML#Relationship_to_HTML" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/XHTML#Relationship_to_HTML</a></p>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><p>伪类</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes</a></p>
+<p>伪元素</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Pseudo-element" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Pseudo-element</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::before" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/::before</a></p>
+<h3 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/margin</a></p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>定位：</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/position</a></p>
+<p>cotent</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/content</a></p>
+<p>字体</p>
+<p>阴影</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Box-shadow_generator" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Box-shadow_generator</a></p>
+<p>使用阴影改变select option：</p>
+<p><a href="https://stackoverflow.com/questions/10484053/change-select-list-option-background-colour-on-hover" target="_blank" rel="noopener">https://stackoverflow.com/questions/10484053/change-select-list-option-background-colour-on-hover</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events</a></p>
+<h3 id="数据类型与自动转换"><a href="#数据类型与自动转换" class="headerlink" title="数据类型与自动转换"></a>数据类型与自动转换</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types</a></p>
+<p><strong>length</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/length</a></p>
+<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p><strong>网格布局（grid-layout</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout</a></p>
+<p><strong>弹性布局（flex-box</strong></p>
+<p>复习：<a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox</a></p>
+<p>测试：<a href="https://wiki.developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills" target="_blank" rel="noopener">https://wiki.developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills</a></p>
+<p><strong>其他古老的布局：流式布局，表格布局</strong></p>
+<p>布局手册：</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook</a></p>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">transition</span>: &lt;<span class="selector-tag">property</span>&gt; &lt;<span class="selector-tag">duration</span>&gt; &lt;<span class="selector-tag">timing-function</span>&gt; &lt;<span class="selector-tag">delay</span>&gt;;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions</a></p>
+<p><a href="https://easings.net/" target="_blank" rel="noopener">https://easings.net/</a></p>
+<h3 id="变量-–"><a href="#变量-–" class="headerlink" title="变量 –*"></a>变量 –*</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 声明全局变量 */</span></span><br><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--primary-color</span>: lightblue;</span><br><span class="line">  <span class="attribute">--secondary-color</span>: orange;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">var</span>(--primary-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*" target="_blank" rel="noopener">css variables</a></p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/calc</a></p>
+<h3 id="At-rules"><a href="#At-rules" class="headerlink" title="At(@)-rules"></a><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule" target="_blank" rel="noopener">At(@)-rules</a></h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/@import</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/@media</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/@supports</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face</a></p>
+<h3 id="响应式设计-Responsive-Design"><a href="#响应式设计-Responsive-Design" class="headerlink" title="响应式设计(Responsive Design)"></a>响应式设计(Responsive Design)</h3><p><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> &gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>meadia queries</li>
+<li>使用现代化布局(flexbox, grid layout)</li>
+<li>images</li>
+</ol>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><p><a href="https://www.google.com/search?q=*+%7B+margin%3A+0%3B+padding%3A+0%3B+%7D&oq=*+%7B+margin%3A+0%3B+padding%3A+0%3B+%7D" target="_blank" rel="noopener">不使用* { margin: 0; padding: 0; }</a></p>
+<p>*{ box-sizing: border-box;}</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/22/React/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rockham">
+      <meta itemprop="description" content="没有无用的知识。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A thinker.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/22/React/" class="post-title-link" itemprop="url">React 学习笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-22 17:47:41" itemprop="dateCreated datePublished" datetime="2020-05-22T17:47:41+00:00">2020-05-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-27 05:19:55" itemprop="dateModified" datetime="2020-07-27T05:19:55+00:00">2020-07-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="React-学习笔记"><a href="#React-学习笔记" class="headerlink" title="React 学习笔记"></a>React 学习笔记</h1><h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h3 id="要点摘录："><a href="#要点摘录：" class="headerlink" title="要点摘录："></a>要点摘录：</h3><blockquote>
+<p>React elements are <a href="https://en.wikipedia.org/wiki/Immutable_object" target="_blank" rel="noopener">immutable</a>. Once you create an element, you can’t change its children or attributes. An element is like a single frame in a movie: it represents the UI at a certain point in time.</p>
+</blockquote>
+<blockquote>
+<p>React DOM compares the element and its children to the previous one, and only applies the DOM updates necessary to bring the DOM to the desired state.</p>
+</blockquote>
+<blockquote>
+<p>React may batch multiple <code>setState()</code> calls into a single update for performance.</p>
+<p>Because <code>this.props</code> and <code>this.state</code> may be updated <a href="https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous" target="_blank" rel="noopener">asynchronously</a>, you should not rely on their values for calculating the next state.</p>
+</blockquote>
+<h3 id="继续学习："><a href="#继续学习：" class="headerlink" title="继续学习："></a>继续学习：</h3><p><a href="https://reactjs.org/docs/code-splitting.html" target="_blank" rel="noopener">代码分块，懒加载</a></p>
+<p><a href="https://reactjs.org/docs/introducing-jsx.html#jsx-prevents-injection-attacks" target="_blank" rel="noopener">https://reactjs.org/docs/introducing-jsx.html#jsx-prevents-injection-attacks</a></p>
+<p><a href="https://reactjs.org/docs/jsx-in-depth.html" target="_blank" rel="noopener">深入JSX</a></p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><h4 id="Tradeoff"><a href="#Tradeoff" class="headerlink" title="Tradeoff"></a>Tradeoff</h4><p>与其把性能花费在监听/订阅状态等数据上，React把性能花费在创建新的Immutable Collection上。</p>
+<p>同时Immutable实现了memoization的性能优化，</p>
+<h3 id="提问："><a href="#提问：" class="headerlink" title="提问："></a>提问：</h3><p>React如何确保这段代码是更新原来的元素而不是渲染多个元素？</p>
+<p><a href="https://reactjs.org/docs/rendering-elements.html#updating-the-rendered-element" target="_blank" rel="noopener">https://reactjs.org/docs/rendering-elements.html#updating-the-rendered-element</a></p>
+<h3 id="Immutable"><a href="#Immutable" class="headerlink" title="Immutable"></a>Immutable</h3><h3 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h3><h4 id="TypeScript-React"><a href="#TypeScript-React" class="headerlink" title="TypeScript-React"></a>TypeScript-React</h4><p><a href="https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter" target="_blank" rel="noopener">https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter</a></p>
+<p><a href="https://www.staging-typescript.org/docs/handbook/jsx.html" target="_blank" rel="noopener">https://www.staging-typescript.org/docs/handbook/jsx.html</a></p>
+<h4 id="PropTypes"><a href="#PropTypes" class="headerlink" title="PropTypes"></a>PropTypes</h4><h2 id="React-Router"><a href="#React-Router" class="headerlink" title="React-Router"></a>React-Router</h2><h2 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h2><h2 id="练手项目"><a href="#练手项目" class="headerlink" title="练手项目"></a>练手项目</h2><h3 id="原生练习"><a href="#原生练习" class="headerlink" title="原生练习"></a>原生练习</h3><p><a href="https://codepen.io/" target="_blank" rel="noopener">https://codepen.io/</a></p>
+<h4 id="MERN"><a href="#MERN" class="headerlink" title="MERN"></a>MERN</h4><p><a href="https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-1/" target="_blank" rel="noopener">https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-1/</a></p>
+<h3 id="全方位项目-Spectrum"><a href="#全方位项目-Spectrum" class="headerlink" title="全方位项目 Spectrum"></a>全方位项目 Spectrum</h3><p><a href="https://github.com/withspectrum/spectrum" target="_blank" rel="noopener">https://github.com/withspectrum/spectrum</a></p>
+<h2 id="怀旧"><a href="#怀旧" class="headerlink" title="怀旧"></a>怀旧</h2><p><a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/03/react.html</a></p>
+<p>React.createClass()</p>
+<p>Flux</p>
+<p><a href="https://blog.andrewray.me/flux-for-stupid-people/" target="_blank" rel="noopener">https://blog.andrewray.me/flux-for-stupid-people/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/20/ssh%E6%97%B6%E7%94%B1%E4%BA%8E%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%E6%9C%AA%E6%93%8D%E4%BD%9C%E5%AF%BC%E8%87%B4%E7%9A%84Connection%20reset%20by%20x.x.x.x%20port%2022/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -183,7 +703,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-03 10:26:51" itemprop="dateModified" datetime="2020-07-03T10:26:51+00:00">2020-07-03</time>
+                <time title="修改时间：2020-07-27 05:19:55" itemprop="dateModified" datetime="2020-07-27T05:19:55+00:00">2020-07-27</time>
               </span>
 
           
@@ -250,7 +770,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-03 10:26:51" itemprop="dateModified" datetime="2020-07-03T10:26:51+00:00">2020-07-03</time>
+                <time title="修改时间：2020-07-27 05:19:55" itemprop="dateModified" datetime="2020-07-27T05:19:55+00:00">2020-07-27</time>
               </span>
 
           
@@ -329,7 +849,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-03 10:26:51" itemprop="dateModified" datetime="2020-07-03T10:26:51+00:00">2020-07-03</time>
+                <time title="修改时间：2020-07-27 05:19:55" itemprop="dateModified" datetime="2020-07-27T05:19:55+00:00">2020-07-27</time>
               </span>
 
           
@@ -440,14 +960,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
