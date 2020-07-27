@@ -57,19 +57,19 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Meth
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
 
-类是“特殊的函数”，主要是基于JS原型继承的语法糖。
+类是“特殊的函数”，是基于JS原型继承的语法糖。
 
 特点：
 
 - 和函数一样，声明类有两种语法 —— 类声明和类表达式
-
 - 与函数声明不一样，类声明不会被hoisted（提升）
 - 类里面的代码永远以strict mode执行，为了提高性能
-- 支持功能：构造函数，实例属性，静态属性（在声明类之外定义），方法，静态方法，继承
+- 支持：构造函数，实例属性（构造函数内定义），静态属性（在类体之外定义），方法，静态方法，继承
+- super调用父类函数
 
 注意：
 
-- 由于在strict mode中this的指向
+- autoboxing不会发生：this如果为undefined，不会被设置为全局对象(Global Object)，因为class内永远是strict mode
 
 实验性功能
 
@@ -85,6 +85,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 #### Map & Set
 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+
 
 
 #### Symbol
@@ -99,3 +101,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators
 
+
+
+## 实验性特性
+
+公开类字段  stage 3
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields

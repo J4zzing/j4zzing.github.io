@@ -36,6 +36,16 @@ http://jsfiddle.net/mBBJM/1/
 - margin: 0 auto水平居中，padding垂直居中
 - padding % https://stackoverflow.com/questions/11535827/responsive-height-proportional-to-width
 
+## 响应式设计
+
+### @media
+
+### 现代布局
+
+#### 长度单位rem和em的区别
+
+
+
 ## JavaScript
 
 ### 讲一下闭包
@@ -96,5 +106,11 @@ http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 ### Webpack都可以做什么
 
 - 打包文件
+- 代码分块
+- loader和plugin
 
-- 配置loader和plugin
+
+
+## 其他
+
+有哪些优化性能的方法？

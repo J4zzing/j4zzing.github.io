@@ -15,6 +15,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 
+## 完整介绍
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
 ### 数据类型与数据结构
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
@@ -165,7 +169,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for
 
 ### 函数
 
-所有函数均为Function对象
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
+
+```javascript
+// 函数的数据类型为function
+typeof function() {} === 'function'
+```
 
 函数内的arguments对象
 
@@ -173,7 +182,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for
 
 https://developer.mozilla.org/en-US/docs/Glossary/Signature/Function
 
-#### function declaration, funtion expression and IIFE(Immediately invoked function expression)
+#### 创建函数 -- function declaration, funtion expression and IIFE(Immediately invoked function expression)
 
 https://developer.mozilla.org/en-US/docs/Glossary/Function
 
@@ -181,17 +190,15 @@ https://developer.mozilla.org/en-US/docs/Glossary/Function
 
 https://medium.com/@vvkchandra/essential-javascript-mastering-immediately-invoked-function-expressions-67791338ddc6
 
-还有Function constructor
+还有**Function constructor**
 
 ```
 new Function([arg1 [, arg2 [, ...argN]] ,] functionBody)
 ```
 
+[区别](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function#Difference_between_Function_constructor_and_function_declaration)：Function constructor不会创建闭包。
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function
-
-#### new
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
 
 #### 箭头函数
 
@@ -208,25 +215,24 @@ let boundFunc = func.bind(thisArg[, arg1[, arg2[, ...argN]]])
 
 ### 对象
 
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model
+
 **JS中都有什么是对象？**
 
 几乎所有JS对象都继承Object
 
 包括Function，Array，[Date](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
-JS对象没有所谓的“方法”，只有属性。
-
-https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
-
-
-
 #### 创建对象
 
 创建对象的几种方法：
 
-- Object()构造函数
-- Object.create()
-- 对象字面量（Object initializer/Object literal
+- 对象字面量（Object literal / Object initializer
+- new 构造函数
+- Object.create() Object.from() Object.assign()
+- ES6 class
 
 ```javascript
 function Cat() {
@@ -235,17 +241,29 @@ function Cat() {
 
 var cat1 = new Cat() 
 cat1.name // "Puss"
-// p1继承Person，p1是Person的实例
+// cat1是Cat的实例
 cat1 instanceof Cat // true
 
 var cat2 = Object.create(Cat) 
 cat2.name // "Puss"
 cat2 instanceof Cat  // true
 
-var p3 = {name: "Jack"}
+var cat = {name: "Puss"}
 ```
 
+#### new
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
+
+#### getter & setter
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters
+
 #### 继承和原型链
+
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
 
 > ## [[prototype]]和prototype和__proto__
 >
@@ -257,41 +275,47 @@ var p3 = {name: "Jack"}
 
 
 
-> *An object created by a* constructor *is an instance of that* constructor
-
-```javascript
-function Person() {
-  this.name = "Jack"
-}
-
-var p1 = new Person() 
-// p1继承Person，p1是Person的实例
-p1 instanceof Person  //true
-// 
-p1.__proto__ === Person.prototype
-
-var p2 = Object.create(Person)
-p2 instanceof Person  //true
-
-var p3 = {name: "Jack"}
-// p3直接继承Object
-p3.__proto__ === Object.prototype  //true
-
-```
-
 访问一个对象的原型的方法：
 
 - Object.getPrototypeOf()
-- Object.setPrototypeOf()
 - obj.\__proto__() *（非标准）*
 
-当访问一个对象的属性时，如果在当前的对象找不到属性，JS会根据原型链向上游寻找属性，直到找到它或到达原型链顶层。
+当访问一个对象的属性或方法时，如果在当前的对象找不到，JS会根据原型链向上游寻找，直到找到它或到达原型链顶层。
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+**constructor**
+
+```javascript
+cat1.constructor === Cat.prototype.constructor  // true
+
+cat1.constructor.name === 'Cat'  // true
+
+new cat1.constructor() instanceof Cat  // true
+```
+
+**各种方式创建对象的原型链**
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain#Different_ways_to_create_objects_and_the_resulting_prototype_chain
+
+```javascript
+// 对象字面量
+var cat = {name: "Puss"}
+// cat直接继承Object.prototype
+cat.__proto__ === Object.prototype  //true
+
+// 构造函数
+var cat1 = new Cat() 
+// cat1继承Cat.prototype
+cat1.__proto__ === Cat.prototype  // true
+
+// Object.create()
+var cat2 = Object.create(cat1)
+// cat2继承cat1
+cat2.__proto__ === cat1  // true
+```
 
 
 
-#### 熟悉以下方法
+#### 对象有以下方法
 
 ```javascript
 Object.defineProperty(obj, prop, descriptor)
@@ -341,11 +365,13 @@ https://nodejs.dev/learn/modern-asynchronous-javascript-with-async-and-await
 
 
 
-### API
+### Web APIs
 
 #### Canvas API
 
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
 
 #### Fetch API
 
@@ -355,7 +381,30 @@ https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 
 https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API
 
+https://developer.mozilla.org/en-US/docs/Web/API/Storage
 
+https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+
+**比较Cookie SessionStorage LocalStorage**
+
+|                  | HTTP cookie                      | SessionStorage       | LocalStorage                                 |
+| ---------------- | -------------------------------- | -------------------- | -------------------------------------------- |
+| 是否发送到服务器 | 是                               | 永不                 | 永不                                         |
+| 保存时间         | 通过Expires和max-age设置过期时间 | 直到浏览器或标签关闭 | 不会过期，用JS清除或在清除浏览器缓存时被删除 |
+| 源               |                                  | 同源可以访问         | 同源可以访问                                 |
+| 大小限制         | 4KB                              | 5MB                  | 5MB                                          |
+
+注意：Web Storage会针对网页协议区分。也就是说在[http://example.com](http://example.com/)和[https://example.com](https://example.com/)访问Web Storage会得到两个不同的对象。
+
+#### WebSocket API
+
+https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
+
+#### IndexedDB API
+
+https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
 
 ### 非标准
 
