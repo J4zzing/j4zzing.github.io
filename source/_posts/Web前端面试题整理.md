@@ -31,6 +31,8 @@ tags:
 
 二叉树遍历
 
+
+
 ## 计算机网络
 
 ### HTTP
@@ -49,6 +51,23 @@ GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS#Preflighted_requests_in_CORS
 
+Q：GET和POST请求发送数据的优劣势
+
+使用GET请求发送数据的
+
+劣势：
+
+1. 数据长度。使用GET发送数据时，数据会被添加到URL查询字符串，URL的长度限制为2048字符
+2. 数据类型。因为数据是通过URL的方式发送，所以使用GET请求发送数据只支持ASCII字符
+3. 安全性。因为数据是通过URL的方式发送，所以数据对任何可以看到URL的人可见
+
+优势：
+
+1. 实现更简单。
+2. 通过分享链接，操作可以重现。
+
+https://www.w3schools.com/tags/ref_httpmethods.asp
+
 #### 泛问题 - 考察了解程度和细节把握
 
 **Q：在浏览器输入URL后发生了什么**
@@ -63,11 +82,9 @@ https://zhuanlan.zhihu.com/p/43369093
 6. 浏览器解析HTML
 7. 浏览器布局渲染
 
-***Hot* Q：HTTPS和HTTP的区别**
-
-具体讲TSL
-
 **Q：了解哪些HTTP首部**
+
+随缘作答
 
 #### HTTP缓存
 
@@ -81,8 +98,6 @@ Cache-Control, Expires首部
 
 E-Tag
 
-
-
 #### HTTP跨源
 
 **Q：讲一下跨源**
@@ -90,6 +105,30 @@ E-Tag
 #### HTTP安全
 
 ***Hot* Q：XSS与CSRF防范**
+
+#### Websockets
+
+
+
+### 传输层
+
+***Hot* Q：HTTPS和HTTP的区别**
+
+具体讲TSL
+
+
+
+## HTML
+
+Q：H5新标签
+
+Q：HTML语义化
+
+**Q：HTML表单编码类型**
+
+application/x-www-form-urlencoded or multipart/form-data. 
+
+Use multipart encoding for binary data
 
 
 
@@ -128,7 +167,7 @@ http://jsfiddle.net/mBBJM/1/
 
 1. @media
 
-2. 现代布局
+2. 现代布局。flex和grid对响应式支持好
 
 3. 相对长度单位
 
@@ -246,6 +285,10 @@ http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
 
 
+Q：key
+
+
+
 **Q：什么是高阶组件（HOC），它的作用、缺点及解决方案**
 
 一个返回新组件的组件。
@@ -299,7 +342,9 @@ hooks出现的原因之一就是为了解决这个问题。
 
 - 图片延迟加载
 
-文件最小化
+文件最小化minified
+
+https://webpack.js.org/plugins/mini-css-extract-plugin/#minimizing-for-production
 
 **Q：前后端分离用户认证的方法**
 
