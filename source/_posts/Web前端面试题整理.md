@@ -38,11 +38,11 @@ http://jsfiddle.net/mBBJM/1/
 
 ## 响应式设计
 
-### @media
+#### @media
 
-### 现代布局
+#### 现代布局
 
-#### 长度单位rem和em的区别
+#### 相对长度单位
 
 
 
@@ -60,6 +60,8 @@ http://jsfiddle.net/mBBJM/1/
 
 - 节约性能或内存消耗
 - 删除一个元素时不用removeListener去解绑事件
+
+**讲一讲原型链**
 
 ### null的数据类型是对象吗
 
@@ -89,13 +91,19 @@ https://en.wikipedia.org/wiki/Polyfill_(programming)
 
 ## React
 
-### 讲一下生命周期
+**讲一下生命周期**
 
 http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
-### 什么是高阶组件
+**什么是高阶组件 - HOC**
 
-### 合成事件和原生事件有什么不同
+一个返回新组件的组件
+
+**render props**
+
+**合成事件和原生事件有什么不同**
+
+合成事件是React实现的一个模块，它包裹了原生事件，解决了浏览器兼容的问题。
 
 ### Redux有了解吗
 
@@ -103,14 +111,29 @@ http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
 ## Webpack
 
-### Webpack都可以做什么
+#### **Q：Webpack都可以做什么**
 
-- 打包文件
-- 代码分块
-- loader和plugin
+- 打包并支持模组化。
+- 通过插件或loaders转义（transpile）代码
+- 性能优化：代码分块等
+- 提高开发效率：检测改动自动打包，Webpack开发服务器等
+
+**Q：都用过Webpack的那些插件**
+
+- 代码分块插件 - SplitChunkPlugin
+- 生成HTML插件 - HtmlWebpackPlugin
+- 清理输出文件夹 - CleanWebpackPlugin
 
 
 
 ## 其他
 
-有哪些优化性能的方法？
+Q：有哪些优化性能的方法？
+
+懒加载
+
+- [代码分块](https://webpack.js.org/guides/code-splitting/) Webpack, optimization.splitChunks
+
+- 图片延迟加载
+
+最小化

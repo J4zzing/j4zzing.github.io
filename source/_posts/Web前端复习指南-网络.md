@@ -8,11 +8,12 @@ tags:
 
 ## 在浏览器输入URL后发生了什么
 
+https://zhuanlan.zhihu.com/p/43369093
+
 1. DNS域名解析
 2. 建立TCP连接
 3. 发送HTTP请求
-4. 服务器处理请求
-5. 返回响应结果
+4. 服务器处理请求并响应
 6. 关闭TCP连接
 7. 浏览器解析HTML
 8. 浏览器布局渲染
@@ -21,7 +22,7 @@ tags:
 
 
 
-## CSRF和XSS
+## HTTP安全 - CSRF和XSS
 
 https://en.wikipedia.org/wiki/Cross-site_scripting
 
@@ -87,7 +88,108 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Controlx
 
 Cache-Control
 
+## HTTP 响应状态码
+
+**101 Switching Protocol**
+
+表示服务器正在按客户端要求切换协议（通过Upgrade首部）。[Protocol upgrade mechanism详情](https://developer.mozilla.org/en-US/docs/Web/HTTP/Protocol_upgrade_mechanism)
+
+Websockets用例
+
+```http
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+```
+
+#### 成功 - 2xx
+
+**200 OK**
+
+请求成功。
+
+针对不同的请求方式有不同意义：
+
+- GET：取得了资源，放在报文体。
+- HEAD：取得了首部，放在报文体。
+- POST：处理结果，放在报文体。
+- TRACE：请求报文，放在报文体。
+
+**201 Created**
+
+请求成功。在返回响应时，新的资源已经被积极创建并且包含在响应体中。Location首部指示资源URL。
+
+**202 Accepted**
+
+请求被接受，但还未开始或完成处理。202不保证处理的结果，通常表示这个请求被交予其他进程或服务器处理。
+
+#### 重定向 - 3xx
+
+**301 Moved Permanently**
+
+请求的资源被永久移动到了Location首部的URL。浏览器重定向，搜索引擎**会**更新资源的URL。
+
+虽然标准要求重定向时请求方法和请求体不能改变，但并不是所有的UA都遵从，所以推荐仅对GET和HEAD请求响应301。使用308 Permanent Redirect响应POST请求，严格要求不能改变。
+
+**302 Found**
+
+请求的资源被临时移动到了Location首部的URL。浏览器重定向，搜索引擎**不会**更新资源的URL。
+
+虽然标准要求重定向时请求方法和请求体不能改变，但并不是所有的UA都遵从，所以推荐仅对GET和HEAD请求响应302。使用307 Temporary Redirect响应POST请求，严格要求不能改变。
+
+如果你想让请求方法改变为GET，请使用303 See Other。
+
+**303 See Other**
+
+表示重定向到另一个与新创建资源无关的页面，比如确认页面或者处理进度页面。一般只在POST与PUT请求返回303。
+
+#### 客户端错误 - 4xx
+
+[**401 Unauthorized**](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401)
+
+拒绝请求，因为针对目标资源的权限不足。
+
+同时应响应 [`WWW-Authenticate`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/WWW-Authenticate)首部，表明应该如何正确授权。
+
+**403 Forbidden**
+
+明白你的请求，但是拒绝授权。
+
+和401相似，但是这种情况下重新授权也没用，因为这个操作与程序逻辑绑定，永远禁止。
+
+**404 Not Found**
+
+服务器无法找到请求的资源。
+
+#### 服务器错误 - 5xx
+
+**500 Internal Server Error**
+
+服务器遇到了一个未预料的错误导致其无法完成处理请求。
+
+通常用来表示找不到一个更好的5xx状态码来响应。记录到日志来预防同样的事情发生。
+
+**502 Bad Gateway**
+
+服务器（作为网关或代理）从上游接收到了一个无效的响应。
+
+**504 Gateway timeout**
+
+服务器（作为网关或代理）在规定的时间内没有从上游收到响应。
+
 ## 传输层
 
+[TCP](https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE)
+
 ### TCP和UDP的区别
+
+TCP发送数据前需要先建立连接，UDP则不需要。
+
+包括三次握手与四次挥手
+
+TCP提供差错检测，按序到位，拥塞控制。
+
+UDP则不提供，所以它适用于对数据完整性要求不高的场景，如流媒体。
+
+### TCP三次握手
 

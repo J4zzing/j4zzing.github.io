@@ -31,11 +31,13 @@ import and export
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 
-#### 解构赋值；Spread syntax vs. (Rest parameter vs. argument object) 
+#### 解构赋值；Spread syntax, Rest parameter
 
 [数组和对象解构赋值](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
-对象解构赋值 对比 Object.assign()
+Rest parameter 对比 argument object
+
+对象解构赋值 对比 [Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 
