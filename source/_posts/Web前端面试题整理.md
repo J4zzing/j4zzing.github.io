@@ -11,6 +11,10 @@ tags:
 
 毕竟面试时，双方的信息不对称，虽然都是开发者，但是各自钻研的方向也不尽相同。所以说要尽可能的展示自己的长处。
 
+简历上写的内容要吃透。
+
+好的项目要有难点或亮点。
+
 
 
 以下内容可能来自于
@@ -18,6 +22,14 @@ tags:
 亲身经历
 
 互联网
+
+## 算法与数据结构
+
+冒泡排序
+
+递归
+
+二叉树遍历
 
 ## 计算机网络
 
@@ -79,6 +91,8 @@ E-Tag
 
 ***Hot* Q：XSS与CSRF防范**
 
+
+
 ## CSS
 
 ***Hot* Q：花式居中一个元素**
@@ -120,7 +134,13 @@ http://jsfiddle.net/mBBJM/1/
 
 **Q：rem和em的区别**
 
-rem表示根元素的，1 em单位等于其父级元素的字体大小。
+rem表示根元素的字体大小（通常是html），em表示该元素的字体大小。
+
+如果em用在自身的font-size大小上，那么它的大小将继承父元素。
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/length
+
+
 
 ## JavaScript
 
@@ -143,6 +163,8 @@ https://stackoverflow.com/questions/801032/why-is-null-an-object-and-whats-the-d
 **Q：for...in和for...of的区别**
 
 
+
+**Q：ES6/ES7的新特性**
 
 #### this指向类
 
