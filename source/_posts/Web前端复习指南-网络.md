@@ -3,20 +3,7 @@ title: Web前端复习指南 - 网络
 date: 2020-06-19 17:35:28
 tags: 
 - HTTP
-- 浏览器
 ---
-
-## 在浏览器输入URL后发生了什么
-
-https://zhuanlan.zhihu.com/p/43369093
-
-1. DNS域名解析
-2. 建立TCP连接
-3. 发送HTTP请求
-4. 服务器处理请求并响应
-6. 关闭TCP连接
-7. 浏览器解析HTML
-8. 浏览器布局渲染
 
 ## 浏览器渲染过程
 
@@ -38,7 +25,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
 
 ### 如何预防
 
-**减轻CSRF**可以通过首部Set-Cookie的Samesite属性，
+减轻CSRF可以通过首部Set-Cookie的Samesite属性，
 
 Samesite有三个可选参数：
 
@@ -48,7 +35,7 @@ Samesite有三个可选参数：
 
 也可以通过实现Restful API来预防
 
-**减轻XSS**可以通过设置首部Cookie的Httponly属性，使得Cookie只能被发送到服务器，而无法被document.cookie接口访问。
+减轻XSS可以通过设置首部Cookie的Httponly属性，使得Cookie只能被发送到服务器，而无法被document.cookie接口访问。
 
 同时还可以通过设置短暂的Cookie有效期限(`Expires`或`Max-Age`)~~或者用Web_Storage_API取代Cookie~~来预防这两种攻击。
 
@@ -58,13 +45,13 @@ Samesite有三个可选参数：
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
-**同源政策**：https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy
+同源政策：https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy
 
 协议，主机与端口一致的URL为同源
 
 [`Access-Control-Allow-Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
 
-**Preflight request**
+Preflight request
 
 https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request
 
@@ -88,9 +75,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Controlx
 
 Cache-Control
 
+##### HTTP请求方法
+
 ## HTTP 响应状态码
 
-**101 Switching Protocol**
+101 Switching Protocol
 
 表示服务器正在按客户端要求切换协议（通过Upgrade首部）。[Protocol upgrade mechanism详情](https://developer.mozilla.org/en-US/docs/Web/HTTP/Protocol_upgrade_mechanism)
 
@@ -104,7 +93,7 @@ Connection: Upgrade
 
 #### 成功 - 2xx
 
-**200 OK**
+200 OK
 
 请求成功。
 
@@ -115,65 +104,65 @@ Connection: Upgrade
 - POST：处理结果，放在报文体。
 - TRACE：请求报文，放在报文体。
 
-**201 Created**
+201 Created
 
 请求成功。在返回响应时，新的资源已经被积极创建并且包含在响应体中。Location首部指示资源URL。
 
-**202 Accepted**
+202 Accepted
 
 请求被接受，但还未开始或完成处理。202不保证处理的结果，通常表示这个请求被交予其他进程或服务器处理。
 
 #### 重定向 - 3xx
 
-**301 Moved Permanently**
+301 Moved Permanently
 
-请求的资源被永久移动到了Location首部的URL。浏览器重定向，搜索引擎**会**更新资源的URL。
+请求的资源被永久移动到了Location首部的URL。浏览器重定向，搜索引擎会更新资源的URL。
 
 虽然标准要求重定向时请求方法和请求体不能改变，但并不是所有的UA都遵从，所以推荐仅对GET和HEAD请求响应301。使用308 Permanent Redirect响应POST请求，严格要求不能改变。
 
-**302 Found**
+302 Found
 
-请求的资源被临时移动到了Location首部的URL。浏览器重定向，搜索引擎**不会**更新资源的URL。
+请求的资源被临时移动到了Location首部的URL。浏览器重定向，搜索引擎不会更新资源的URL。
 
 虽然标准要求重定向时请求方法和请求体不能改变，但并不是所有的UA都遵从，所以推荐仅对GET和HEAD请求响应302。使用307 Temporary Redirect响应POST请求，严格要求不能改变。
 
 如果你想让请求方法改变为GET，请使用303 See Other。
 
-**303 See Other**
+303 See Other
 
 表示重定向到另一个与新创建资源无关的页面，比如确认页面或者处理进度页面。一般只在POST与PUT请求返回303。
 
 #### 客户端错误 - 4xx
 
-[**401 Unauthorized**](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401)
+[401 Unauthorized](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401)
 
 拒绝请求，因为针对目标资源的权限不足。
 
 同时应响应 [`WWW-Authenticate`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/WWW-Authenticate)首部，表明应该如何正确授权。
 
-**403 Forbidden**
+403 Forbidden
 
 明白你的请求，但是拒绝授权。
 
 和401相似，但是这种情况下重新授权也没用，因为这个操作与程序逻辑绑定，永远禁止。
 
-**404 Not Found**
+404 Not Found
 
 服务器无法找到请求的资源。
 
 #### 服务器错误 - 5xx
 
-**500 Internal Server Error**
+500 Internal Server Error
 
 服务器遇到了一个未预料的错误导致其无法完成处理请求。
 
 通常用来表示找不到一个更好的5xx状态码来响应。记录到日志来预防同样的事情发生。
 
-**502 Bad Gateway**
+502 Bad Gateway
 
 服务器（作为网关或代理）从上游接收到了一个无效的响应。
 
-**504 Gateway timeout**
+504 Gateway timeout
 
 服务器（作为网关或代理）在规定的时间内没有从上游收到响应。
 

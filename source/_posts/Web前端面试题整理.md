@@ -5,17 +5,83 @@ tags:
 - Web前端
 ---
 
-以下总结可能来自于
+## 通用心得
 
-https://www.jianshu.com/p/07b24b4baa35
+回答问题时要有发散思维，要善于引导面试官到自己擅长的内容。
 
-https://segmentfault.com/a/1190000022211870
+毕竟面试时，双方的信息不对称，虽然都是开发者，但是各自钻研的方向也不尽相同。所以说要尽可能的展示自己的长处。
 
-http://47.98.159.95/my_blog/nav/#html%E9%83%A8%E5%88%86
+
+
+以下内容可能来自于
+
+亲身经历
+
+互联网
+
+## 计算机网络
+
+### HTTP
+
+**Q：HTTP有几种请求方法**
+
+GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH
+
+**Q：Options请求的使用场景**
+
+1. 确认服务器支持的请求方法
+
+2. preflight request in CORS（重点）
+
+——申引出CORS
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS#Preflighted_requests_in_CORS
+
+#### 泛问题 - 考察了解程度和细节把握
+
+**Q：在浏览器输入URL后发生了什么**
+
+https://zhuanlan.zhihu.com/p/43369093
+
+1. DNS域名解析
+2. 建立TCP连接
+3. 发送HTTP请求
+4. 服务器处理请求并响应
+5. 关闭TCP连接
+6. 浏览器解析HTML
+7. 浏览器布局渲染
+
+***Hot* Q：HTTPS和HTTP的区别**
+
+具体讲TSL
+
+**Q：了解哪些HTTP首部**
+
+#### HTTP缓存
+
+**Q：Post请求能被缓存吗**
+
+不能，GET支持缓存。
+
+***Hot* Q：介绍一下HTTP缓存的几种方法**
+
+Cache-Control, Expires首部
+
+E-Tag
+
+
+
+#### HTTP跨源
+
+**Q：讲一下跨源**
+
+#### HTTP安全
+
+***Hot* Q：XSS与CSRF防范**
 
 ## CSS
 
-### 布局 -- 如何同时水平居中并垂直居中一个元素
+***Hot* Q：花式居中一个元素**
 
 https://www.smashingmagazine.com/2013/08/absolute-horizontal-vertical-centering-css/
 
@@ -36,82 +102,157 @@ http://jsfiddle.net/mBBJM/1/
 - margin: 0 auto水平居中，padding垂直居中
 - padding % https://stackoverflow.com/questions/11535827/responsive-height-proportional-to-width
 
-## 响应式设计
+例题：
 
-#### @media
+1. 居中一个宽高均为100px的元素。
 
-#### 现代布局
+2. 窗口居中一个未知大小的元素。
 
-#### 相对长度单位
+#### 响应式设计
 
+**Q：怎么实现响应式设计的**
 
+1. @media
+
+2. 现代布局
+
+3. 相对长度单位
+
+**Q：rem和em的区别**
+
+rem表示根元素的，1 em单位等于其父级元素的字体大小。
 
 ## JavaScript
 
-### 讲一下闭包
+**Q：Js一共有多少种数据类型（纯记忆）**
 
-是什么
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
 
-用在什么地方
+九种，包括6种原始数据类型：number, boolean, string, undefined, BigInt, Symbol
 
-### 讲一讲事件委托
+与null, Object, Function
 
-好处都有啥：
+**Q：null的数据类型是对象吗**
 
-- 节约性能或内存消耗
-- 删除一个元素时不用removeListener去解绑事件
-
-**讲一讲原型链**
-
-### null的数据类型是对象吗
-
-不是，null是JS七种原始数据类型之一。之所以`typeof null === "object"`是因为JS把所有二进制开头为000的数据都当成object类型，而null的二进制全是0。
+不是，null是一种特殊的原始类型。之所以`typeof null === "object"`是因为JS把所有二进制开头为000的数据都当成object类型，而null的二进制全是0。
 
 ~~而这个bug到现在还没修复。~~
 
 https://stackoverflow.com/questions/801032/why-is-null-an-object-and-whats-the-difference-between-null-and-undefined
 
-
-
-## DOM
-
-### Element和Node的区别
+**Q：for...in和for...of的区别**
 
 
 
-## Promise，Event Loop，macrotask，microtask
+#### this指向类
 
 
 
-## polyfills
+**Q：讲一下闭包**
+
+闭包时一个函数能够访问其父函数的变量，即使这个父函数已经执行完毕。
+
+用在什么地方？
+
+**Q：讲一讲事件委托**
+
+好处都有啥：
+
+- 节约性能或内存消耗
+- ~~删除一个元素时不用removeListener去解绑事件~~
+
+#### 原型与继承类
+
+**Q：讲一讲原型链**
+
+Q：未完成，请忽略
+
+```javascript
+Class A {
+    constructor(num=1)
+    fn1(num=2)
+    fn2(num=3)
+}
+Class B extends A {
+    fn1(num=4)
+}
+const b = new B();
+b.fn2();
+b.fn1();
+```
+
+1. 输出结果
+2. 不使用console.log函数实现输出A5
+
+**Q：设计一个EventEmitter，包含on, off, emit方法。**
+
+#### DOM
+
+Q：Element和Node的区别
+
+#### Promise
+
+**Q：promise是在什么时候执行的**
+
+事件循环，宏任务，微任务
+
+Event Loop，macrotask，microtask
+
+**Q：Async/awaits 是如何实现的**
+
+
+
+#### polyfills
 
 https://en.wikipedia.org/wiki/Polyfill_(programming)
+
+**Q：实现function.prototype.bind**
 
 
 
 ## React
 
-**讲一下生命周期**
+#### 生命周期
 
 http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
-**什么是高阶组件 - HOC**
+**Q：生命周期都有哪些**
 
-一个返回新组件的组件
 
-**render props**
 
-**合成事件和原生事件有什么不同**
+**Q：组件更新时会触发哪些生命周期**
+
+
+
+**Q：什么是高阶组件（HOC），它的作用、缺点及解决方案**
+
+一个返回新组件的组件。
+
+HOC提高代码复用性。
+
+缺点是会导致嵌套地狱。
+
+缺点是会导致嵌套地狱
+
+hooks出现的原因之一就是为了解决这个问题。
+
+**比较render props**
+
+**Q：合成事件和原生事件有什么不同**
 
 合成事件是React实现的一个模块，它包裹了原生事件，解决了浏览器兼容的问题。
 
-### Redux有了解吗
+#### React生态
+
+**Q: Redux有了解吗**
 
 核心概念reducer，state，action， 说一下
 
+
+
 ## Webpack
 
-#### **Q：Webpack都可以做什么**
+**Q：Webpack都可以做什么**
 
 - 打包并支持模组化。
 - 通过插件或loaders转义（transpile）代码
@@ -128,12 +269,30 @@ http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
 ## 其他
 
-Q：有哪些优化性能的方法？
+***Hot* Q：有哪些优化性能的方法？**
+
+[代码分块](https://webpack.js.org/guides/code-splitting/) Webpack, optimization.splitChunks
 
 懒加载
 
-- [代码分块](https://webpack.js.org/guides/code-splitting/) Webpack, optimization.splitChunks
-
 - 图片延迟加载
 
-最小化
+文件最小化
+
+**Q：前后端分离用户认证的方法**
+
+HTTP Basic Authentication
+
+Cookie或Session
+
+JWT Token
+
+
+
+## 拓展阅读
+
+https://www.jianshu.com/p/07b24b4baa35
+
+https://segmentfault.com/a/1190000022211870
+
+http://47.98.159.95/my_blog/nav/#html%E9%83%A8%E5%88%86
