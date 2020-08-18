@@ -18,25 +18,46 @@ https://jeffkreeftmeijer.com/vim-number/
 
 ## 学习
 
+Learn vim script the hard way
+
+https://learnvimscriptthehardway.stevelosh.com/
+
 键 映射
 
 https://learnvimscriptthehardway.stevelosh.com/chapters/03.html
 
-## 快速移动
+快速移动
 
 https://medium.com/usevim/vim-101-quick-movement-c12889e759e0
 
-## Register
+Register
 
 `:reg`
 
 https://www.brianstorti.com/vim-registers/
+
+Leder key
+
+https://medium.com/usevim/vim-101-what-is-the-leader-key-f2f5c1fa610f
 
 ## 插件
 
 [Vim surround](https://github.com/tpope/vim-surround)
 
 [vim-xkbswitch](https://github.com/lyokha/vim-xkbswitch)
+
+vscode vim
+
+https://medium.com/@hoitz/improved-vim-setup-in-visual-studio-code-bc579501b80c
+
+```json
+"vim.normalModeKeyBindingsNonRecursive": [
+  {
+    "before": ["<space>"],
+    "commands": ["workbench.action.files.save"]
+  }
+]
+```
 
 
 
