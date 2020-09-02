@@ -153,6 +153,189 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/18/SVG/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rockham">
+      <meta itemprop="description" content="没有无用的知识。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A thinker.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/18/SVG/" class="post-title-link" itemprop="url">SVG</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-18 19:09:33" itemprop="dateCreated datePublished" datetime="2020-08-18T19:09:33+00:00">2020-08-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-02 03:40:37" itemprop="dateModified" datetime="2020-09-02T03:40:37+00:00">2020-09-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Everything-You-Need-To-Know-About-SVG"><a href="#Everything-You-Need-To-Know-About-SVG" class="headerlink" title="Everything You Need To Know About SVG"></a>Everything You Need To Know About SVG</h2><p><a href="https://css-tricks.com/lodge/svg/01-intro-course/" target="_blank" rel="noopener">https://css-tricks.com/lodge/svg/01-intro-course/</a></p>
+<h3 id="使用SVG"><a href="#使用SVG" class="headerlink" title="使用SVG"></a>使用SVG</h3><ul>
+<li><code>&lt;img src=&#39;x.svg&#39; /&gt;</code> or <code>&lt;img src=&#39;dataURL&#39; /&gt;</code> </li>
+<li>CSS background-image property</li>
+<li>Inline SVG <code>&lt;svg&gt;...&lt;/svg&gt;</code></li>
+<li>Iframe/object/<del>embed</del></li>
+</ul>
+<h3 id="获得"><a href="#获得" class="headerlink" title="获得"></a>获得</h3><p><a href="https://css-tricks.com/lodge/svg/10-getting-svg-stock-photography-sites/" target="_blank" rel="noopener">https://css-tricks.com/lodge/svg/10-getting-svg-stock-photography-sites/</a></p>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><p><a href="https://codepen.io/Rockham/pen/yLOaXEB" target="_blank" rel="noopener">https://codepen.io/Rockham/pen/yLOaXEB</a></p>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p><a href="https://www.freeformatter.com/xml-formatter.html" target="_blank" rel="noopener">https://www.freeformatter.com/xml-formatter.html</a></p>
+<p><a href="https://pdfmall.com/xml-to-svg" target="_blank" rel="noopener">https://pdfmall.com/xml-to-svg</a></p>
+<p><a href="https://base64.guru/converter/decode/image" target="_blank" rel="noopener">https://base64.guru/converter/decode/image</a></p>
+<p><a href="https://jakearchibald.github.io/svgomg/" target="_blank" rel="noopener">https://jakearchibald.github.io/svgomg/</a></p>
+<h3 id="Data-URLs"><a href="#Data-URLs" class="headerlink" title="Data URLs"></a>Data URLs</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs</a></p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:[&lt;mediatype&gt;][;base64],&lt;data&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Data URLs是由data:开头的，随后跟上MIME类型、;base64标识与数据组成的。</p>
+<p>默认值为text/plain;charset=US-ASCII。</p>
+<p>举几个例子🌰：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:,Hello%2C%20World!</span><br></pre></td></tr></table></figure>
+
+<p>文本类型，ASCII编码的数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:text&#x2F;plain;base64,SGVsbG8sIFdvcmxkIQ&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>上面的base64编码版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:image&#x2F;png;base64,ln8A2f4MRWX71NIAAAAASUVORK5CYII&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>PNG类型，base64编码的图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:image&#x2F;svg+xml;base64,ln8A2f4MRWX71NIAAAAASUVORK5CYII&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>SVG类型，base64编码的图片</p>
+<h4 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h4><p><a href="https://codepen.io/Rockham/pen/yLOaXEB" target="_blank" rel="noopener">https://codepen.io/Rockham/pen/yLOaXEB</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/18/Encode-Decode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rockham">
+      <meta itemprop="description" content="没有无用的知识。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A thinker.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/18/Encode-Decode/" class="post-title-link" itemprop="url">Encode & Decode</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-18 19:03:46" itemprop="dateCreated datePublished" datetime="2020-08-18T19:03:46+00:00">2020-08-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-02 03:40:37" itemprop="dateModified" datetime="2020-09-02T03:40:37+00:00">2020-09-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><h4 id="BASE64"><a href="#BASE64" class="headerlink" title="BASE64"></a>BASE64</h4><p>使用的字符包括大小写<a href="https://zh.wikipedia.org/wiki/拉丁字母" target="_blank" rel="noopener">拉丁字母</a>各26个、数字10个、加号<code>+</code>和斜杠<code>/</code>，共<strong>64</strong>个字符，等号<code>=</code>用来作为后缀用途。<a href="https://zh.wikipedia.org/wiki/Base64" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Base64</a></p>
+<h4 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h4><p><a href="https://zh.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/ASCII</a></p>
+<p>至今为止共定义了<strong>128</strong>个字符</p>
+<h4 id="Latin1"><a href="#Latin1" class="headerlink" title="Latin1"></a>Latin1</h4><p><a href="https://zh.wikipedia.org/wiki/ISO/IEC_8859-1" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/ISO/IEC_8859-1</a></p>
+<blockquote>
+<p><strong>ISO 8859-1</strong>，正式编号为<strong>ISO/IEC 8859-1:1998</strong>，又称<strong>Latin-1</strong>或“<a href="https://zh.wikipedia.org/wiki/西欧" target="_blank" rel="noopener">西欧</a>语言”，是<a href="https://zh.wikipedia.org/wiki/國際標準化組織" target="_blank" rel="noopener">国际标准化组织</a>内<a href="https://zh.wikipedia.org/wiki/ISO/IEC_8859" target="_blank" rel="noopener">ISO/IEC 8859</a>的第一个8位<a href="https://zh.wikipedia.org/wiki/字符集" target="_blank" rel="noopener">字符集</a>。它以<a href="https://zh.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener">ASCII</a>为基础，在空置的0xA0-0xFF的范围内，加入96个<a href="https://zh.wikipedia.org/wiki/字母" target="_blank" rel="noopener">字母</a>及<a href="https://zh.wikipedia.org/wiki/符号" target="_blank" rel="noopener">符号</a>，藉以供使用<a href="https://zh.wikipedia.org/wiki/附加符号" target="_blank" rel="noopener">附加符号</a>的<a href="https://zh.wikipedia.org/wiki/拉丁字母" target="_blank" rel="noopener">拉丁字母</a>语言使用。</p>
+</blockquote>
+<p><strong>256</strong>个字符</p>
+<h4 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h4><p><a href="https://zh.wikipedia.org/wiki/Unicode" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Unicode</a></p>
+<h3 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h3><p>Latin1与Unicode的前256位对应</p>
+<h3 id="编码方式"><a href="#编码方式" class="headerlink" title="编码方式"></a>编码方式</h3><p>UTF-8</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Base64" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Base64</a></p>
+<p><a href="https://en.wikipedia.org/wiki/MIME#Content-Transfer-Encoding" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/MIME#Content-Transfer-Encoding</a></p>
+<h4 id="Javascript-APIs"><a href="#Javascript-APIs" class="headerlink" title="Javascript APIs"></a>Javascript APIs</h4><p><a href="https://www.jianshu.com/p/b2c6dc5fad0a" target="_blank" rel="noopener">https://www.jianshu.com/p/b2c6dc5fad0a</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent</a></p>
+<p>javascript字符串以UTF-16编码</p>
+<h4 id="btoa"><a href="#btoa" class="headerlink" title="btoa"></a><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa" target="_blank" rel="noopener">btoa</a></h4><p>btoa接收一个<a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMString/Binary" target="_blank" rel="noopener">binary string</a>类型的参数</p>
+<p>所以，</p>
+<blockquote>
+<p>invoking it on a string that contains codepoints greater than <code>255</code> will cause a <code>Character Out Of Range</code> error</p>
+</blockquote>
+<p>btoa只能处理一个字节大小的字符，可用以下方法转换：</p>
+<p><a href="https://stackoverflow.com/questions/23223718/failed-to-execute-btoa-on-window-the-string-to-be-encoded-contains-characte" target="_blank" rel="noopener">https://stackoverflow.com/questions/23223718/failed-to-execute-btoa-on-window-the-string-to-be-encoded-contains-characte</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/26/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%B6%E9%9B%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -184,7 +367,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 04:36:00" itemprop="dateModified" datetime="2020-08-18T04:36:00+00:00">2020-08-18</time>
+                <time title="修改时间：2020-09-02 03:40:37" itemprop="dateModified" datetime="2020-09-02T03:40:37+00:00">2020-09-02</time>
               </span>
 
           
@@ -256,7 +439,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 04:36:00" itemprop="dateModified" datetime="2020-08-18T04:36:00+00:00">2020-08-18</time>
+                <time title="修改时间：2020-09-02 03:40:37" itemprop="dateModified" datetime="2020-09-02T03:40:37+00:00">2020-09-02</time>
               </span>
 
           
@@ -342,7 +525,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 04:36:00" itemprop="dateModified" datetime="2020-08-18T04:36:00+00:00">2020-08-18</time>
+                <time title="修改时间：2020-09-02 03:40:37" itemprop="dateModified" datetime="2020-09-02T03:40:37+00:00">2020-09-02</time>
               </span>
 
           
@@ -407,7 +590,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 04:36:00" itemprop="dateModified" datetime="2020-08-18T04:36:00+00:00">2020-08-18</time>
+                <time title="修改时间：2020-09-02 03:40:37" itemprop="dateModified" datetime="2020-09-02T03:40:37+00:00">2020-09-02</time>
               </span>
 
           
@@ -426,6 +609,14 @@
 <p><a href="https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)</a></p>
 <h2 id="DRY-vs-WET"><a href="#DRY-vs-WET" class="headerlink" title="DRY vs WET"></a>DRY vs WET</h2><p><a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" rel="noopener">DRY</a></p>
 <h2 id="Single-source-of-truth"><a href="#Single-source-of-truth" class="headerlink" title="Single source of truth"></a>Single source of truth</h2><p><a href="https://en.wikipedia.org/wiki/Single_source_of_truth" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Single_source_of_truth</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Inversion_of_control" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Inversion_of_control</a></p>
+<p>SOLID</p>
+<p><a href="https://en.wikipedia.org/wiki/SOLID" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/SOLID</a></p>
+<p>GRASP</p>
+<p><a href="https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)</a></p>
+<p><a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank" rel="noopener">https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4</a></p>
+<p>High xx, Low coupling</p>
+<p><a href="https://en.wikipedia.org/wiki/Coupling_(computer_programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Coupling_(computer_programming)</a></p>
 
       
     </div>
@@ -476,7 +667,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 04:36:00" itemprop="dateModified" datetime="2020-08-18T04:36:00+00:00">2020-08-18</time>
+                <time title="修改时间：2020-09-02 03:40:37" itemprop="dateModified" datetime="2020-09-02T03:40:37+00:00">2020-09-02</time>
               </span>
 
           
@@ -581,7 +772,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 04:36:00" itemprop="dateModified" datetime="2020-08-18T04:36:00+00:00">2020-08-18</time>
+                <time title="修改时间：2020-09-02 03:40:37" itemprop="dateModified" datetime="2020-09-02T03:40:37+00:00">2020-09-02</time>
               </span>
 
           
@@ -722,7 +913,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 04:36:00" itemprop="dateModified" datetime="2020-08-18T04:36:00+00:00">2020-08-18</time>
+                <time title="修改时间：2020-09-02 03:40:37" itemprop="dateModified" datetime="2020-09-02T03:40:37+00:00">2020-09-02</time>
               </span>
 
           
@@ -959,7 +1150,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 04:36:00" itemprop="dateModified" datetime="2020-08-18T04:36:00+00:00">2020-08-18</time>
+                <time title="修改时间：2020-09-02 03:40:37" itemprop="dateModified" datetime="2020-09-02T03:40:37+00:00">2020-09-02</time>
               </span>
 
           
@@ -976,6 +1167,10 @@
           <h2 id="Cheat-Sheet"><a href="#Cheat-Sheet" class="headerlink" title="Cheat Sheet"></a>Cheat Sheet</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:<span class="keyword">set</span> <span class="keyword">number</span></span><br><span class="line">:<span class="keyword">set</span> nonumber</span><br><span class="line">:<span class="keyword">set</span> relativenumber</span><br><span class="line">:<span class="keyword">set</span> norelativenum</span><br></pre></td></tr></table></figure>
 
 <p><a href="https://jeffkreeftmeijer.com/vim-number/" target="_blank" rel="noopener">https://jeffkreeftmeijer.com/vim-number/</a></p>
+<h2 id="VsCode-设置"><a href="#VsCode-设置" class="headerlink" title="VsCode 设置"></a>VsCode 设置</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"editor.lineNumbers"</span>: <span class="string">"relative"</span>,</span><br><span class="line">  <span class="attr">"editor.defaultFormatter"</span>: <span class="string">"esbenp.prettier-vscode"</span>,</span><br><span class="line">  <span class="attr">"editor.codeActionsOnSave"</span>: &#123;</span><br><span class="line">    <span class="attr">"source.fixAll.tslint"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"window.zoomLevel"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"vim.normalModeKeyBindingsNonRecursive"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"before"</span>: [<span class="string">"&lt;space&gt;"</span>],</span><br><span class="line">      <span class="attr">"commands"</span>: [<span class="string">"workbench.action.files.save"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"before"</span>: [<span class="string">"&lt;leader&gt;"</span>, <span class="string">"w"</span>],</span><br><span class="line">      <span class="attr">"commands"</span>: [<span class="string">"workbench.action.splitEditor"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><p>Learn vim script the hard way</p>
 <p><a href="https://learnvimscriptthehardway.stevelosh.com/" target="_blank" rel="noopener">https://learnvimscriptthehardway.stevelosh.com/</a></p>
 <p>键 映射</p>
@@ -985,7 +1180,7 @@
 <p>Register</p>
 <p><code>:reg</code></p>
 <p><a href="https://www.brianstorti.com/vim-registers/" target="_blank" rel="noopener">https://www.brianstorti.com/vim-registers/</a></p>
-<p>Leder key</p>
+<p>Leader key</p>
 <p><a href="https://medium.com/usevim/vim-101-what-is-the-leader-key-f2f5c1fa610f" target="_blank" rel="noopener">https://medium.com/usevim/vim-101-what-is-the-leader-key-f2f5c1fa610f</a></p>
 <h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p><a href="https://github.com/tpope/vim-surround" target="_blank" rel="noopener">Vim surround</a></p>
 <p><a href="https://github.com/lyokha/vim-xkbswitch" target="_blank" rel="noopener">vim-xkbswitch</a></p>
@@ -998,206 +1193,6 @@
 <h2 id="书"><a href="#书" class="headerlink" title="书"></a>书</h2><p><a href="https://www.amazon.com/Practical-Vim-Edit-Speed-Thought/dp/1680501275/ref=as_li_ss_tl?ie=UTF8&amp;qid=1501817867&amp;sr=8-3&amp;keywords=vim&amp;linkCode=sl1&amp;tag=caspbeye-20&amp;linkId=6c394064b4e6f05b198e68c64a6f4d76" target="_blank" rel="noopener">https://www.amazon.com/Practical-Vim-Edit-Speed-Thought/dp/1680501275/ref=as_li_ss_tl?ie=UTF8&amp;qid=1501817867&amp;sr=8-3&amp;keywords=vim&amp;linkCode=sl1&amp;tag=caspbeye-20&amp;linkId=6c394064b4e6f05b198e68c64a6f4d76</a></p>
 <h2 id="配件"><a href="#配件" class="headerlink" title="配件"></a>配件</h2><p><a href="https://www.amazon.com/HRH-Functional-Shortcuts-Keyboard-Silicone/dp/B01MFXLBO9/ref=as_li_ss_tl?_encoding=UTF8&amp;pd_rd_i=B01MFXLBO9&amp;pd_rd_r=MQ0G7GR3ZTR44DX0N0DX&amp;pd_rd_w=EVMod&amp;pd_rd_wg=43zpB&amp;psc=1&amp;refRID=MQ0G7GR3ZTR44DX0N0DX&amp;linkCode=sl1&amp;tag=caspbeye-20&amp;linkId=6fa29a44e25b23a14f53e215fa219845" target="_blank" rel="noopener">https://www.amazon.com/HRH-Functional-Shortcuts-Keyboard-Silicone/dp/B01MFXLBO9/ref=as_li_ss_tl?_encoding=UTF8&amp;pd_rd_i=B01MFXLBO9&amp;pd_rd_r=MQ0G7GR3ZTR44DX0N0DX&amp;pd_rd_w=EVMod&amp;pd_rd_wg=43zpB&amp;psc=1&amp;refRID=MQ0G7GR3ZTR44DX0N0DX&amp;linkCode=sl1&amp;tag=caspbeye-20&amp;linkId=6fa29a44e25b23a14f53e215fa219845</a></p>
 <h2 id="其他资料"><a href="#其他资料" class="headerlink" title="其他资料"></a>其他资料</h2><p><a href="http://vimcasts.org/" target="_blank" rel="noopener">http://vimcasts.org/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rockham">
-      <meta itemprop="description" content="没有无用的知识。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/" class="post-title-link" itemprop="url">Slate富文本编辑器中文输入光标bug解决</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-06 23:49:05" itemprop="dateCreated datePublished" datetime="2020-06-06T23:49:05+00:00">2020-06-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 04:36:00" itemprop="dateModified" datetime="2020-08-18T04:36:00+00:00">2020-08-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>V0.47.9</p>
-<h3 id="相关Issues"><a href="#相关Issues" class="headerlink" title="相关Issues"></a>相关Issues</h3><p><a href="https://github.com/ianstormtaylor/slate/issues/2368" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/issues/2368</a></p>
-<p><a href="https://github.com/ianstormtaylor/slate/pull/2415" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/pull/2415</a></p>
-<p><a href="https://github.com/ianstormtaylor/slate/pull/2454" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/pull/2454</a></p>
-<p><a href="https://github.com/ianstormtaylor/slate/issues/2457" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/issues/2457</a></p>
-<p><a href="https://segmentfault.com/a/1190000019133673" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019133673</a></p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>Slate数据模型中的Node：这是Slate模仿DOM自主管理的数据，</p>
-<p><a href="https://github.com/ianstormtaylor/slate/blob/v0.47/docs/guides/data-model.md" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/blob/v0.47/docs/guides/data-model.md</a></p>
-<p>同时Slate定义了Document、Block、Inline、Text继承Node。</p>
-<p>请看下图解释。</p>
-<p>Node的数据结构如下：</p>
-<h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><h4 id="DOM-Selection对象"><a href="#DOM-Selection对象" class="headerlink" title="DOM Selection对象"></a>DOM Selection对象</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Selection" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Selection</a></p>
-<h4 id="Slate-Selection对象"><a href="#Slate-Selection对象" class="headerlink" title="Slate Selection对象"></a>Slate Selection对象</h4><p><a href="https://github.com/ianstormtaylor/slate/blob/v0.47/docs/reference/slate/selection.md" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/blob/v0.47/docs/reference/slate/selection.md</a></p>
-<p>Selection实现Range</p>
-<p><a href="https://github.com/ianstormtaylor/slate/blob/v0.47/docs/reference/slate/range.md" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/blob/v0.47/docs/reference/slate/range.md</a></p>
-<p>在控制台中添加onSelectionChange Listener：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'selectionchange'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">document</span>.getSelection());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>然后随便点击或选择文本查看输出的Selection对象。</p>
-<h2 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="解决历程"><a href="#解决历程" class="headerlink" title="解决历程"></a>解决历程</h3><p>首先可能是浏览器会在输入中文时重新定位键盘光标（caret，以下统称光标），从而触发onSelect事件，</p>
-<p>由于英文输入不在这种问题，以下讨论输入时均指中文输入。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...\slate-react\src\components\content.js</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Content</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">component</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  	onEvent(handler, event) &#123;</span><br><span class="line">  	...</span><br><span class="line">    <span class="keyword">if</span> (!IS_ANDROID &amp;&amp; handler === <span class="string">'onSelect'</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> &#123; editor &#125; = <span class="keyword">this</span>.props</span><br><span class="line">      <span class="keyword">const</span> &#123; value &#125; = editor</span><br><span class="line">      <span class="keyword">const</span> &#123; selection &#125; = value</span><br><span class="line">      <span class="keyword">const</span> <span class="built_in">window</span> = getWindow(event.target)</span><br><span class="line">      <span class="keyword">const</span> domSelection = <span class="built_in">window</span>.getSelection()</span><br><span class="line">      <span class="keyword">const</span> range = editor.findRange(domSelection)</span><br><span class="line">      <span class="comment">// 通过调试得知，在一个Node的结尾输入中文时，键盘光标会出现bug，而在其他地方输入则不会。在Node末尾输入中文时，range中的offset与domSelection中的不一致。如下图对比。</span></span><br><span class="line">      <span class="built_in">console</span>.log(range.anchor.offset);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (range &amp;&amp; range.equals(selection.toRange())) &#123;</span><br><span class="line">        <span class="keyword">this</span>.updateSelection()</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  	...</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>光标一致：</p>
-<img src="/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/1591671154049.png" class="" title="[光标一致]">
-
-<p>光标不一致：</p>
-<img src="/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/1591671095180.png" class="" title="[光标不一致]">
-
-
-
-<p>我想解决方法有两个方向。</p>
-<ul>
-<li>一是找出为什么中文输入会触发onSelect事件并制止它</li>
-<li>二是找出在段尾输入会导致光标不一致而在其他地方则不会的原因</li>
-</ul>
-<p>选择第一个更合理些，但这里我首先选择了第二种方向。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 目的：找到finRange调用栈中发生差异的方法</span></span><br><span class="line"><span class="keyword">const</span> range = editor.findRange(domSelection)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>最后找到差异发生在这里：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...\slate\packages\slate\src\models\point.js</span></span><br><span class="line">...</span><br><span class="line">  normalize(node) &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">let</span> target = path &amp;&amp; node.getNode(path)</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">let</span> point = <span class="keyword">this</span>.merge(&#123;</span><br><span class="line">      key: target.key,</span><br><span class="line">      path: path == <span class="literal">null</span> ? node.getPath(target.key) : path,</span><br><span class="line">      offset: offset == <span class="literal">null</span> ? <span class="number">0</span> : <span class="built_in">Math</span>.min(offset, target.text.length),</span><br><span class="line">    &#125;)</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> point</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>请看<code>Math.min(offset, target.text.length)</code>，这里的<code>target</code>是一个Text Node，此时Slate内部数据还没有和DOM同步，还处在输入之前的状态，所以由于<code>target.text.length</code>限制，最大不会超过这个数值。</p>
-<p>当在除Node末尾输入时，<code>offset</code>的值不会超过<code>target.text.length</code>，返回<code>Point</code>后，由于<code>offset</code>和<code>target.text.length</code>两个永远不会等于Slate内部对应的Point的offset。</p>
-<p>当在Node末尾输入时，<code>offset</code>的值<strong>一定</strong>会等于<code>target.text.length</code>，导致返回的<code>Point</code>，一定**会和Slate内部对应的Point相等，从而满足条件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// selection是存储在Slate内部的数据，range为从DOM Selection推断的Range，它出现了问题。</span></span><br><span class="line"><span class="keyword">if</span> (range &amp;&amp; range.equals(selection.toRange())) &#123;</span><br><span class="line">  <span class="keyword">this</span>.updateSelection()</span><br><span class="line">  <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>从而调用不该调用的updateSelection方法，并使光标重置。</p>
-<p>尝试做如下改变：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...\slate\packages\slate\src\models\point.js</span></span><br><span class="line">...</span><br><span class="line">  normalize(node) &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">let</span> point = <span class="keyword">this</span>.merge(&#123;</span><br><span class="line">      key: target.key,</span><br><span class="line">      path: path == <span class="literal">null</span> ? node.getPath(target.key) : path,</span><br><span class="line">      offset: offset == <span class="literal">null</span> ? <span class="number">0</span> : offset,</span><br><span class="line">    &#125;)</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>至此光标恢复正常：</strong></p>
-<img src="/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/1591679334365.png" class="" title="[正常状态]">
-
-<p>至于为什么没有和DOM同步？有没有更好的解决方案？按照第一种思路来改怎么做?</p>
-<p>以后再说吧…</p>
-<p>希望以后找bug不要像无头苍蝇一样乱撞，一定要静下心来思考问题可能出现在哪。</p>
-<p><a href="https://github.com/ianstormtaylor/slate/compare/v0.47...rockhamx:v0.47" target="_blank" rel="noopener">https://github.com/ianstormtaylor/slate/compare/v0.47...rockhamx:v0.47</a></p>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://medium.com/articode/fixing-broken-npm-packages-d8f808657d8e" target="_blank" rel="noopener">https://medium.com/articode/fixing-broken-npm-packages-d8f808657d8e</a></p>
-<p><a href="https://docs.npmjs.com/cli-commands/link.html" target="_blank" rel="noopener">https://docs.npmjs.com/cli-commands/link.html</a></p>
-<p><a href="https://classic.yarnpkg.com/en/docs/workspaces/" target="_blank" rel="noopener">https://classic.yarnpkg.com/en/docs/workspaces/</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Monorepo" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Monorepo</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/02/React-%E9%99%B7%E9%98%B1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rockham">
-      <meta itemprop="description" content="没有无用的知识。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/02/React-%E9%99%B7%E9%98%B1/" class="post-title-link" itemprop="url">React 陷阱</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-02 21:55:15" itemprop="dateCreated datePublished" datetime="2020-06-02T21:55:15+00:00">2020-06-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 04:36:00" itemprop="dateModified" datetime="2020-08-18T04:36:00+00:00">2020-08-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h2><p><a href="https://reactjs.org/docs/reconciliation.html#keys" target="_blank" rel="noopener">https://reactjs.org/docs/reconciliation.html#keys</a></p>
-<p><a href="https://codepen.io/pen?&amp;editable=true&amp;editors=0010" target="_blank" rel="noopener">https://codepen.io/pen?&amp;editable=true&amp;editors=0010</a></p>
-<p><a href="https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318" target="_blank" rel="noopener">https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318</a></p>
-<h2 id="React-Hook"><a href="#React-Hook" class="headerlink" title="React Hook"></a>React Hook</h2><h3 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h3><p>使用React函数组件的useState()钩子更新state的时候，不像类组件的this.setState一样会<strong>合并</strong>所作的更新，而是直接<strong>替换</strong>掉之前的内容。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const funcComp &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">    const [obj, setObj] &#x3D; useState(&#123;</span><br><span class="line">        age: 18,</span><br><span class="line">        name: &#39;John&#39;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 下面这条语句会覆盖整个obj对象，使name属性为undefined</span><br><span class="line">    setObj(&#123;num: 19&#125;)</span><br><span class="line">	&#x2F;&#x2F; 可以采用Spread语法解决</span><br><span class="line">    const o &#x3D; obj;</span><br><span class="line">    setObj(&#123;...o, num: 19&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>参考：<a href="https://reactjs.org/docs/state-and-lifecycle.html#state-updates-are-merged" target="_blank" rel="noopener">https://reactjs.org/docs/state-and-lifecycle.html#state-updates-are-merged</a></p>
-<p><a href="https://reactjs.org/docs/hooks-state.html#tip-using-multiple-state-variables" target="_blank" rel="noopener">https://reactjs.org/docs/hooks-state.html#tip-using-multiple-state-variables</a></p>
-<h2 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h2><p>ref不能再函数组件上使用，因为函数组件没有实例。</p>
 
       
     </div>
@@ -1282,7 +1277,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
