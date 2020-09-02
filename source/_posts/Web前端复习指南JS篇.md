@@ -87,7 +87,9 @@ https://www.typescriptlang.org/docs/handbook/variable-declarations.html#variable
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 
-ESModule默认严格模式
+ESModule默认使用严格模式
+
+> modules use [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) automatically.
 
 **函数参数个数**
 
@@ -333,7 +335,9 @@ https://developer.mozilla.org/en-US/docs/Web/API/Event
 
 https://developer.mozilla.org/en-US/docs/Web/Events
 
-Event.target vs. Event.currentTarget
+Event.target: Event发生的Element，可能是currentTarget的后代
+
+Event.currentTarget: 注册Event监听事件的元素
 
 EventTarget.addEventListener
 
@@ -350,10 +354,6 @@ Macrotasks and Microtasks
 https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide
 
 https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
-
-### ECMAScript 2015/ES6 特性
-
-
 
 ### ECMAScript 2017特性
 
@@ -402,6 +402,10 @@ https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 
 https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
 
+#### WebWorker API
+
+
+
 #### IndexedDB API
 
 https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
@@ -420,7 +424,11 @@ property initializers
 
 https://itnext.io/property-initializers-what-why-and-how-to-use-it-5615210474a3
 
+#### TypeScript
 
+declare keyword
+
+https://stackoverflow.com/a/59552002
 
 ## 设计模式 - Design Pattern
 

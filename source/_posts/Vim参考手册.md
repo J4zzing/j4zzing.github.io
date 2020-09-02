@@ -16,6 +16,31 @@ tags:
 
 https://jeffkreeftmeijer.com/vim-number/
 
+## VsCode 设置
+
+```json
+{
+  "editor.lineNumbers": "relative",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
+  "window.zoomLevel": 0,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<space>"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.splitEditor"]
+    }
+  ]
+}
+```
+
+
+
 ## 学习
 
 Learn vim script the hard way
@@ -36,7 +61,7 @@ Register
 
 https://www.brianstorti.com/vim-registers/
 
-Leder key
+Leader key
 
 https://medium.com/usevim/vim-101-what-is-the-leader-key-f2f5c1fa610f
 

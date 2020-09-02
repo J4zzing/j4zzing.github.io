@@ -21,14 +21,6 @@ tags:
 
 
 
-### 继续学习：
-
-[代码分块，懒加载](https://reactjs.org/docs/code-splitting.html)
-
-https://reactjs.org/docs/introducing-jsx.html#jsx-prevents-injection-attacks
-
-[深入JSX](https://reactjs.org/docs/jsx-in-depth.html)
-
 ### 思考
 
 #### Tradeoff
