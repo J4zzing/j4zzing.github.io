@@ -85,11 +85,15 @@ Promise构造函数
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise
 
-#### Map & Set
+#### 内置对象
+
+Map & Set
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
 
+TypedArray
 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
 #### Symbol
 

@@ -94,6 +94,8 @@ https://zhuanlan.zhihu.com/p/43369093
 
 ***Hot* Q：介绍一下HTTP缓存的几种方法**
 
+
+
 Cache-Control, Expires首部
 
 E-Tag
@@ -105,8 +107,6 @@ E-Tag
 #### HTTP安全
 
 ***Hot* Q：XSS与CSRF防范**
-
-#### Websockets
 
 
 
@@ -183,6 +183,8 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/length
 
 ## JavaScript
 
+Q：script标签会不会阻塞渲染
+
 **Q：Js一共有多少种数据类型（纯记忆）**
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
@@ -203,9 +205,11 @@ https://stackoverflow.com/questions/801032/why-is-null-an-object-and-whats-the-d
 
 
 
-**Q：ES6/ES7的新特性**
+##### Q：ES6/ES7的新特性有哪些
 
 #### this指向类
+
+Q：箭头函数的this指向
 
 
 
@@ -336,6 +340,18 @@ hooks出现的原因之一就是为了解决这个问题。
 
 ***Hot* Q：有哪些优化性能的方法？**
 
+https://web.dev/why-speed-matters/
+
+https://developers.google.com/speed
+
+https://developers.google.com/speed/docs/insights/v5/about	
+
+缓存
+
+负载均衡
+
+前端：
+
 [代码分块](https://webpack.js.org/guides/code-splitting/) Webpack, optimization.splitChunks
 
 懒加载
@@ -354,7 +370,13 @@ Cookie或Session
 
 JWT Token
 
+Q：浏览器渲染原理
 
+https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+
+https://stackoverflow.com/questions/37759321/parser-blocking-vs-render-blocking
 
 ## 拓展阅读
 
