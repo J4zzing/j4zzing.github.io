@@ -153,6 +153,348 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/18/Web%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rockham">
+      <meta itemprop="description" content="没有无用的知识。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A thinker.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/18/Web%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">Web前端面试题整理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-18 20:08:18" itemprop="dateCreated datePublished" datetime="2020-06-18T20:08:18+00:00">2020-06-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-14 05:27:59" itemprop="dateModified" datetime="2020-09-14T05:27:59+00:00">2020-09-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="通用心得"><a href="#通用心得" class="headerlink" title="通用心得"></a>通用心得</h2><p>回答问题时要有发散思维，要善于引导面试官到自己擅长的内容。</p>
+<p>毕竟面试时，双方的信息不对称，虽然都是开发者，但是各自钻研的方向也不尽相同。所以说要尽可能的展示自己的长处。</p>
+<p>简历上写的内容要吃透。</p>
+<p>好的项目要有难点或亮点。</p>
+<p>以下内容可能来自于</p>
+<p>亲身经历</p>
+<p>互联网</p>
+<h2 id="算法与数据结构"><a href="#算法与数据结构" class="headerlink" title="算法与数据结构"></a>算法与数据结构</h2><p>冒泡排序</p>
+<p>递归</p>
+<p>二叉树遍历</p>
+<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p><strong>Q：HTTP有几种请求方法</strong></p>
+<p>GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH</p>
+<p><strong>Q：Options请求的使用场景</strong></p>
+<ol>
+<li><p>确认服务器支持的请求方法</p>
+</li>
+<li><p>preflight request in CORS（重点）</p>
+</li>
+</ol>
+<p>——申引出CORS</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS#Preflighted_requests_in_CORS" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS#Preflighted_requests_in_CORS</a></p>
+<p>Q：GET和POST请求发送数据的优劣势</p>
+<p>使用GET请求发送数据的</p>
+<p>劣势：</p>
+<ol>
+<li>数据长度。使用GET发送数据时，数据会被添加到URL查询字符串，URL的长度限制为2048字符</li>
+<li>数据类型。因为数据是通过URL的方式发送，所以使用GET请求发送数据只支持ASCII字符</li>
+<li>安全性。因为数据是通过URL的方式发送，所以数据对任何可以看到URL的人可见</li>
+</ol>
+<p>优势：</p>
+<ol>
+<li>实现更简单。</li>
+<li>通过分享链接，操作可以重现。</li>
+</ol>
+<p><a href="https://www.w3schools.com/tags/ref_httpmethods.asp" target="_blank" rel="noopener">https://www.w3schools.com/tags/ref_httpmethods.asp</a></p>
+<h4 id="泛问题-考察了解程度和细节把握"><a href="#泛问题-考察了解程度和细节把握" class="headerlink" title="泛问题 - 考察了解程度和细节把握"></a>泛问题 - 考察了解程度和细节把握</h4><p><strong>Q：在浏览器输入URL后发生了什么</strong></p>
+<p><a href="https://zhuanlan.zhihu.com/p/43369093" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/43369093</a></p>
+<ol>
+<li>DNS域名解析</li>
+<li>建立TCP连接</li>
+<li>发送HTTP请求</li>
+<li>服务器处理请求并响应</li>
+<li>关闭TCP连接</li>
+<li>浏览器解析HTML</li>
+<li>浏览器布局渲染</li>
+</ol>
+<p><strong>Q：了解哪些HTTP首部</strong></p>
+<p>随缘作答</p>
+<h4 id="HTTP缓存"><a href="#HTTP缓存" class="headerlink" title="HTTP缓存"></a>HTTP缓存</h4><p><strong>Q：Post请求能被缓存吗</strong></p>
+<p>不能，GET支持缓存。</p>
+<p><strong><em>Hot</em> Q：介绍一下HTTP缓存的几种方法</strong></p>
+<p>Cache-Control, Expires首部</p>
+<p>E-Tag</p>
+<h4 id="HTTP跨源"><a href="#HTTP跨源" class="headerlink" title="HTTP跨源"></a>HTTP跨源</h4><p><strong>Q：讲一下跨源</strong></p>
+<h4 id="HTTP安全"><a href="#HTTP安全" class="headerlink" title="HTTP安全"></a>HTTP安全</h4><p><strong><em>Hot</em> Q：XSS与CSRF防范</strong></p>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p><strong><em>Hot</em> Q：HTTPS和HTTP的区别</strong></p>
+<p>具体讲TSL</p>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>Q：H5新标签</p>
+<p>Q：HTML语义化</p>
+<p><strong>Q：HTML表单编码类型</strong></p>
+<p>application/x-www-form-urlencoded or multipart/form-data. </p>
+<p>Use multipart encoding for binary data</p>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p><strong><em>Hot</em> Q：花式居中一个元素</strong></p>
+<p><a href="https://www.smashingmagazine.com/2013/08/absolute-horizontal-vertical-centering-css/" target="_blank" rel="noopener">https://www.smashingmagazine.com/2013/08/absolute-horizontal-vertical-centering-css/</a></p>
+<p><a href="http://jsfiddle.net/mBBJM/1/" target="_blank" rel="noopener">http://jsfiddle.net/mBBJM/1/</a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.Absolute-Center</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: auto;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>父元素line-height配合内联子元素vertical-align: middle垂直对齐，父元素text-align: center居中对齐</li>
+<li>position: absolute; top: 50% - 元素高度; left: 50% - 元素宽度</li>
+<li>flexbox的content-justify和align-items设为center</li>
+<li>grid layout</li>
+<li>margin: 0 auto水平居中，padding垂直居中</li>
+<li>padding % <a href="https://stackoverflow.com/questions/11535827/responsive-height-proportional-to-width" target="_blank" rel="noopener">https://stackoverflow.com/questions/11535827/responsive-height-proportional-to-width</a></li>
+</ul>
+<p>例题：</p>
+<ol>
+<li><p>居中一个宽高均为100px的元素。</p>
+</li>
+<li><p>窗口居中一个未知大小的元素。</p>
+</li>
+</ol>
+<h4 id="响应式设计"><a href="#响应式设计" class="headerlink" title="响应式设计"></a>响应式设计</h4><p><strong>Q：怎么实现响应式设计的</strong></p>
+<ol>
+<li><p>@media</p>
+</li>
+<li><p>现代布局。flex和grid对响应式支持好</p>
+</li>
+<li><p>相对长度单位</p>
+</li>
+</ol>
+<p><strong>Q：rem和em的区别</strong></p>
+<p>rem表示根元素的字体大小（通常是html），em表示该元素的字体大小。</p>
+<p>如果em用在自身的font-size大小上，那么它的大小将继承父元素。</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/length</a></p>
+<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>Q：script标签会不会阻塞渲染</p>
+<p><strong>Q：Js一共有多少种数据类型（纯记忆）</strong></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures</a></p>
+<p>九种，包括6种原始数据类型：number, boolean, string, undefined, BigInt, Symbol</p>
+<p>与null, Object, Function</p>
+<p><strong>Q：null的数据类型是对象吗</strong></p>
+<p>不是，null是一种特殊的原始类型。之所以<code>typeof null === &quot;object&quot;</code>是因为JS把所有二进制开头为000的数据都当成object类型，而null的二进制全是0。</p>
+<p><del>而这个bug到现在还没修复。</del></p>
+<p><a href="https://stackoverflow.com/questions/801032/why-is-null-an-object-and-whats-the-difference-between-null-and-undefined" target="_blank" rel="noopener">https://stackoverflow.com/questions/801032/why-is-null-an-object-and-whats-the-difference-between-null-and-undefined</a></p>
+<p><strong>Q：for…in和for…of的区别</strong></p>
+<h5 id="Q：ES6-ES7的新特性有哪些"><a href="#Q：ES6-ES7的新特性有哪些" class="headerlink" title="Q：ES6/ES7的新特性有哪些"></a>Q：ES6/ES7的新特性有哪些</h5><h4 id="this指向类"><a href="#this指向类" class="headerlink" title="this指向类"></a>this指向类</h4><p>Q：箭头函数的this指向</p>
+<p><strong>Q：讲一下闭包</strong></p>
+<p>闭包时一个函数能够访问其父函数的变量，即使这个父函数已经执行完毕。</p>
+<p>用在什么地方？</p>
+<p><strong>Q：讲一讲事件委托</strong></p>
+<p>好处都有啥：</p>
+<ul>
+<li>节约性能或内存消耗</li>
+<li><del>删除一个元素时不用removeListener去解绑事件</del></li>
+</ul>
+<h4 id="原型与继承类"><a href="#原型与继承类" class="headerlink" title="原型与继承类"></a>原型与继承类</h4><p><strong>Q：讲一讲原型链</strong></p>
+<p>Q：未完成，请忽略</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Class A &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(num=1)</span><br><span class="line">    fn1(num=2)</span><br><span class="line">    fn2(num=3)</span><br><span class="line">&#125;</span><br><span class="line">Class B extends A &#123;</span><br><span class="line">    fn1(num=<span class="number">4</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> B();</span><br><span class="line">b.fn2();</span><br><span class="line">b.fn1();</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>输出结果</li>
+<li>不使用console.log函数实现输出A5</li>
+</ol>
+<p><strong>Q：设计一个EventEmitter，包含on, off, emit方法。</strong></p>
+<h4 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h4><p>Q：Element和Node的区别</p>
+<h4 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h4><p><strong>Q：promise是在什么时候执行的</strong></p>
+<p>事件循环，宏任务，微任务</p>
+<p>Event Loop，macrotask，microtask</p>
+<p><strong>Q：Async/awaits 是如何实现的</strong></p>
+<h4 id="polyfills"><a href="#polyfills" class="headerlink" title="polyfills"></a>polyfills</h4><p><a href="https://en.wikipedia.org/wiki/Polyfill_(programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Polyfill_(programming)</a></p>
+<p><strong>Q：实现function.prototype.bind</strong></p>
+<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p><a href="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" rel="noopener">http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/</a></p>
+<p><strong>Q：生命周期都有哪些</strong></p>
+<p><strong>Q：组件更新时会触发哪些生命周期</strong></p>
+<p>Q：key</p>
+<p><strong>Q：什么是高阶组件（HOC），它的作用、缺点及解决方案</strong></p>
+<p>一个返回新组件的组件。</p>
+<p>HOC提高代码复用性。</p>
+<p>缺点是会导致嵌套地狱。</p>
+<p>缺点是会导致嵌套地狱</p>
+<p>hooks出现的原因之一就是为了解决这个问题。</p>
+<p><strong>比较render props</strong></p>
+<p><strong>Q：合成事件和原生事件有什么不同</strong></p>
+<p>合成事件是React实现的一个模块，它包裹了原生事件，解决了浏览器兼容的问题。</p>
+<h4 id="React生态"><a href="#React生态" class="headerlink" title="React生态"></a>React生态</h4><p><strong>Q: Redux有了解吗</strong></p>
+<p>核心概念reducer，state，action， 说一下</p>
+<h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h2><p><strong>Q：Webpack都可以做什么</strong></p>
+<ul>
+<li>打包并支持模组化。</li>
+<li>通过插件或loaders转义（transpile）代码</li>
+<li>性能优化：代码分块等</li>
+<li>提高开发效率：检测改动自动打包，Webpack开发服务器等</li>
+</ul>
+<p><strong>Q：都用过Webpack的那些插件</strong></p>
+<ul>
+<li>代码分块插件 - SplitChunkPlugin</li>
+<li>生成HTML插件 - HtmlWebpackPlugin</li>
+<li>清理输出文件夹 - CleanWebpackPlugin</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><strong><em>Hot</em> Q：有哪些优化性能的方法？</strong></p>
+<p><a href="https://web.dev/why-speed-matters/" target="_blank" rel="noopener">https://web.dev/why-speed-matters/</a></p>
+<p><a href="https://developers.google.com/speed" target="_blank" rel="noopener">https://developers.google.com/speed</a></p>
+<p><a href="https://developers.google.com/speed/docs/insights/v5/about" target="_blank" rel="noopener">https://developers.google.com/speed/docs/insights/v5/about</a>    </p>
+<p>缓存</p>
+<p>负载均衡</p>
+<p>前端：</p>
+<p><a href="https://webpack.js.org/guides/code-splitting/" target="_blank" rel="noopener">代码分块</a> Webpack, optimization.splitChunks</p>
+<p>懒加载</p>
+<ul>
+<li>图片延迟加载</li>
+</ul>
+<p>文件最小化minified</p>
+<p><a href="https://webpack.js.org/plugins/mini-css-extract-plugin/#minimizing-for-production" target="_blank" rel="noopener">https://webpack.js.org/plugins/mini-css-extract-plugin/#minimizing-for-production</a></p>
+<p><strong>Q：前后端分离用户认证的方法</strong></p>
+<p>HTTP Basic Authentication</p>
+<p>Cookie或Session</p>
+<p>JWT Token</p>
+<p>Q：浏览器渲染原理</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script</a></p>
+<p><a href="https://stackoverflow.com/questions/37759321/parser-blocking-vs-render-blocking" target="_blank" rel="noopener">https://stackoverflow.com/questions/37759321/parser-blocking-vs-render-blocking</a></p>
+<h2 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h2><p><a href="https://www.jianshu.com/p/07b24b4baa35" target="_blank" rel="noopener">https://www.jianshu.com/p/07b24b4baa35</a></p>
+<p><a href="https://segmentfault.com/a/1190000022211870" target="_blank" rel="noopener">https://segmentfault.com/a/1190000022211870</a></p>
+<p><a href="http://47.98.159.95/my_blog/nav/#html%E9%83%A8%E5%88%86" target="_blank" rel="noopener">http://47.98.159.95/my_blog/nav/#html%E9%83%A8%E5%88%86</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/10/Vim%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rockham">
+      <meta itemprop="description" content="没有无用的知识。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A thinker.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/10/Vim%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/" class="post-title-link" itemprop="url">Vim参考手册</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-10 17:03:16" itemprop="dateCreated datePublished" datetime="2020-06-10T17:03:16+00:00">2020-06-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-14 05:27:59" itemprop="dateModified" datetime="2020-09-14T05:27:59+00:00">2020-09-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Cheat-Sheet"><a href="#Cheat-Sheet" class="headerlink" title="Cheat Sheet"></a>Cheat Sheet</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:<span class="keyword">set</span> <span class="keyword">number</span></span><br><span class="line">:<span class="keyword">set</span> nonumber</span><br><span class="line">:<span class="keyword">set</span> relativenumber</span><br><span class="line">:<span class="keyword">set</span> norelativenum</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://jeffkreeftmeijer.com/vim-number/" target="_blank" rel="noopener">https://jeffkreeftmeijer.com/vim-number/</a></p>
+<h2 id="VsCode-设置"><a href="#VsCode-设置" class="headerlink" title="VsCode 设置"></a>VsCode 设置</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"editor.lineNumbers"</span>: <span class="string">"relative"</span>,</span><br><span class="line">  <span class="attr">"editor.defaultFormatter"</span>: <span class="string">"esbenp.prettier-vscode"</span>,</span><br><span class="line">  <span class="attr">"editor.codeActionsOnSave"</span>: &#123;</span><br><span class="line">    <span class="attr">"source.fixAll.tslint"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"window.zoomLevel"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"vim.normalModeKeyBindingsNonRecursive"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"before"</span>: [<span class="string">"&lt;space&gt;"</span>],</span><br><span class="line">      <span class="attr">"commands"</span>: [<span class="string">"workbench.action.files.save"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"before"</span>: [<span class="string">"&lt;leader&gt;"</span>, <span class="string">"w"</span>],</span><br><span class="line">      <span class="attr">"commands"</span>: [<span class="string">"workbench.action.splitEditor"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><p>Learn vim script the hard way</p>
+<p><a href="https://learnvimscriptthehardway.stevelosh.com/" target="_blank" rel="noopener">https://learnvimscriptthehardway.stevelosh.com/</a></p>
+<p>键 映射</p>
+<p><a href="https://learnvimscriptthehardway.stevelosh.com/chapters/03.html" target="_blank" rel="noopener">https://learnvimscriptthehardway.stevelosh.com/chapters/03.html</a></p>
+<p>快速移动</p>
+<p><a href="https://medium.com/usevim/vim-101-quick-movement-c12889e759e0" target="_blank" rel="noopener">https://medium.com/usevim/vim-101-quick-movement-c12889e759e0</a></p>
+<p>Register</p>
+<p><code>:reg</code></p>
+<p><a href="https://www.brianstorti.com/vim-registers/" target="_blank" rel="noopener">https://www.brianstorti.com/vim-registers/</a></p>
+<p>Leader key</p>
+<p><a href="https://medium.com/usevim/vim-101-what-is-the-leader-key-f2f5c1fa610f" target="_blank" rel="noopener">https://medium.com/usevim/vim-101-what-is-the-leader-key-f2f5c1fa610f</a></p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p><a href="https://github.com/tpope/vim-surround" target="_blank" rel="noopener">Vim surround</a></p>
+<p><a href="https://github.com/lyokha/vim-xkbswitch" target="_blank" rel="noopener">vim-xkbswitch</a></p>
+<p>vscode vim</p>
+<p><a href="https://medium.com/@hoitz/improved-vim-setup-in-visual-studio-code-bc579501b80c" target="_blank" rel="noopener">https://medium.com/@hoitz/improved-vim-setup-in-visual-studio-code-bc579501b80c</a></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"vim.normalModeKeyBindingsNonRecursive": [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">"before"</span>: [<span class="string">"&lt;space&gt;"</span>],</span><br><span class="line">    <span class="attr">"commands"</span>: [<span class="string">"workbench.action.files.save"</span>]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="书"><a href="#书" class="headerlink" title="书"></a>书</h2><p><a href="https://www.amazon.com/Practical-Vim-Edit-Speed-Thought/dp/1680501275/ref=as_li_ss_tl?ie=UTF8&amp;qid=1501817867&amp;sr=8-3&amp;keywords=vim&amp;linkCode=sl1&amp;tag=caspbeye-20&amp;linkId=6c394064b4e6f05b198e68c64a6f4d76" target="_blank" rel="noopener">https://www.amazon.com/Practical-Vim-Edit-Speed-Thought/dp/1680501275/ref=as_li_ss_tl?ie=UTF8&amp;qid=1501817867&amp;sr=8-3&amp;keywords=vim&amp;linkCode=sl1&amp;tag=caspbeye-20&amp;linkId=6c394064b4e6f05b198e68c64a6f4d76</a></p>
+<h2 id="配件"><a href="#配件" class="headerlink" title="配件"></a>配件</h2><p>HHKB</p>
+<p><a href="https://www.amazon.com/HRH-Functional-Shortcuts-Keyboard-Silicone/dp/B01MFXLBO9/ref=as_li_ss_tl?_encoding=UTF8&amp;pd_rd_i=B01MFXLBO9&amp;pd_rd_r=MQ0G7GR3ZTR44DX0N0DX&amp;pd_rd_w=EVMod&amp;pd_rd_wg=43zpB&amp;psc=1&amp;refRID=MQ0G7GR3ZTR44DX0N0DX&amp;linkCode=sl1&amp;tag=caspbeye-20&amp;linkId=6fa29a44e25b23a14f53e215fa219845" target="_blank" rel="noopener">https://www.amazon.com/HRH-Functional-Shortcuts-Keyboard-Silicone/dp/B01MFXLBO9/ref=as_li_ss_tl?_encoding=UTF8&amp;pd_rd_i=B01MFXLBO9&amp;pd_rd_r=MQ0G7GR3ZTR44DX0N0DX&amp;pd_rd_w=EVMod&amp;pd_rd_wg=43zpB&amp;psc=1&amp;refRID=MQ0G7GR3ZTR44DX0N0DX&amp;linkCode=sl1&amp;tag=caspbeye-20&amp;linkId=6fa29a44e25b23a14f53e215fa219845</a></p>
+<h2 id="其他资料"><a href="#其他资料" class="headerlink" title="其他资料"></a>其他资料</h2><p><a href="http://vimcasts.org/" target="_blank" rel="noopener">http://vimcasts.org/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -184,7 +526,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 14:09:05" itemprop="dateModified" datetime="2020-09-09T14:09:05+00:00">2020-09-09</time>
+                <time title="修改时间：2020-09-14 05:27:59" itemprop="dateModified" datetime="2020-09-14T05:27:59+00:00">2020-09-14</time>
               </span>
 
           
@@ -311,7 +653,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 14:09:05" itemprop="dateModified" datetime="2020-09-09T14:09:05+00:00">2020-09-09</time>
+                <time title="修改时间：2020-09-14 05:27:59" itemprop="dateModified" datetime="2020-09-14T05:27:59+00:00">2020-09-14</time>
               </span>
 
           
@@ -384,7 +726,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 14:09:05" itemprop="dateModified" datetime="2020-09-09T14:09:05+00:00">2020-09-09</time>
+                <time title="修改时间：2020-09-14 05:27:59" itemprop="dateModified" datetime="2020-09-14T05:27:59+00:00">2020-09-14</time>
               </span>
 
           
@@ -686,7 +1028,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 14:09:05" itemprop="dateModified" datetime="2020-09-09T14:09:05+00:00">2020-09-09</time>
+                <time title="修改时间：2020-09-14 05:27:59" itemprop="dateModified" datetime="2020-09-14T05:27:59+00:00">2020-09-14</time>
               </span>
 
           
@@ -820,7 +1162,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 14:09:05" itemprop="dateModified" datetime="2020-09-09T14:09:05+00:00">2020-09-09</time>
+                <time title="修改时间：2020-09-14 05:27:59" itemprop="dateModified" datetime="2020-09-14T05:27:59+00:00">2020-09-14</time>
               </span>
 
           
@@ -907,7 +1249,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 14:09:05" itemprop="dateModified" datetime="2020-09-09T14:09:05+00:00">2020-09-09</time>
+                <time title="修改时间：2020-09-14 05:27:59" itemprop="dateModified" datetime="2020-09-14T05:27:59+00:00">2020-09-14</time>
               </span>
 
           
@@ -974,7 +1316,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 14:09:05" itemprop="dateModified" datetime="2020-09-09T14:09:05+00:00">2020-09-09</time>
+                <time title="修改时间：2020-09-14 05:27:59" itemprop="dateModified" datetime="2020-09-14T05:27:59+00:00">2020-09-14</time>
               </span>
 
           
@@ -1053,7 +1395,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 14:09:05" itemprop="dateModified" datetime="2020-09-09T14:09:05+00:00">2020-09-09</time>
+                <time title="修改时间：2020-09-14 05:27:59" itemprop="dateModified" datetime="2020-09-14T05:27:59+00:00">2020-09-14</time>
               </span>
 
           
@@ -1164,14 +1506,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

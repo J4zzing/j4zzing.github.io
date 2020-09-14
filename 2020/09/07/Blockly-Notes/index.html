@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="没有无用的知识。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="A thinker.">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="Renderer, Theme, ToolBox, Field 作用与关系 1&#x2F;&#x2F; Blockly.blockRendering.register    123456&#x2F;&#x2F; Blockly.core.registryBlockly.registry.typeMap_: &amp;#123;  type: &amp;#123;    name: registryItem;  &amp;#125;&amp;#125;    1&#x2F;&#x2F; B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blockly Notes">
+<meta property="og:url" content="http://yoursite.com/2020/09/07/Blockly-Notes/index.html">
 <meta property="og:site_name" content="A thinker.">
-<meta property="og:description" content="没有无用的知识。">
+<meta property="og:description" content="Renderer, Theme, ToolBox, Field 作用与关系 1&#x2F;&#x2F; Blockly.blockRendering.register    123456&#x2F;&#x2F; Blockly.core.registryBlockly.registry.typeMap_: &amp;#123;  type: &amp;#123;    name: registryItem;  &amp;#125;&amp;#125;    1&#x2F;&#x2F; B">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-07T13:59:57.000Z">
+<meta property="article:modified_time" content="2020-09-14T05:27:59.289Z">
 <meta property="article:author" content="rockham">
+<meta property="article:tag" content="Blockly">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/archives/page/2/">
+<link rel="canonical" href="http://yoursite.com/2020/09/07/Blockly-Notes/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | A thinker.</title>
+  <title>Blockly Notes | A thinker.</title>
   
 
 
@@ -147,234 +150,104 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 20 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/07/Blockly-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rockham">
+      <meta itemprop="description" content="没有无用的知识。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A thinker.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Blockly Notes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-07 13:59:57" itemprop="dateCreated datePublished" datetime="2020-09-07T13:59:57+00:00">2020-09-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-14 05:27:59" itemprop="dateModified" datetime="2020-09-14T05:27:59+00:00">2020-09-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
-    </div>
+        <p>Renderer, Theme, ToolBox, Field 作用与关系</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Blockly.blockRendering.register</span></span><br></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-18T20:08:18+00:00"
-              content="2020-06-18">
-          06-18
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/18/Web%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/" itemprop="url">
-            <span itemprop="name">Web前端面试题整理</span>
-          </a>
-      </div>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Blockly.core.registry</span></span><br><span class="line">Blockly.registry.typeMap_: &#123;</span><br><span class="line">  <span class="keyword">type</span>: &#123;</span><br><span class="line">    name: registryItem;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-10T17:03:16+00:00"
-              content="2020-06-10">
-          06-10
-        </time>
-      </div>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Blockly.core.contextMenu</span></span><br></pre></td></tr></table></figure>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/10/Vim%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/" itemprop="url">
-            <span itemprop="name">Vim参考手册</span>
-          </a>
-      </div>
 
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-06T23:49:05+00:00"
-              content="2020-06-06">
-          06-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/06/Slate%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E5%85%89%E6%A0%87bug%E8%A7%A3%E5%86%B3/" itemprop="url">
-            <span itemprop="name">Slate富文本编辑器中文输入光标bug解决</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-02T21:55:15+00:00"
-              content="2020-06-02">
-          06-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/02/React-%E9%99%B7%E9%98%B1/" itemprop="url">
-            <span itemprop="name">React 陷阱</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-01T20:56:50+00:00"
-              content="2020-06-01">
-          06-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/01/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97JS%E7%AF%87/" itemprop="url">
-            <span itemprop="name">Web前端复习指南JS篇</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-23T00:00:05+00:00"
-              content="2020-05-23">
-          05-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/05/23/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97-HTML%E4%B8%8ECSS/" itemprop="url">
-            <span itemprop="name">Web前端复习指南 - HTML与CSS</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-22T17:47:41+00:00"
-              content="2020-05-22">
-          05-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/05/22/React/" itemprop="url">
-            <span itemprop="name">React 学习笔记</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-20T23:24:23+00:00"
-              content="2020-05-20">
-          05-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/05/20/ssh%E6%97%B6%E7%94%B1%E4%BA%8E%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%E6%9C%AA%E6%93%8D%E4%BD%9C%E5%AF%BC%E8%87%B4%E7%9A%84Connection%20reset%20by%20x.x.x.x%20port%2022/" itemprop="url">
-            <span itemprop="name">ssh时由于一段时间未操作导致的Connection reset by x.x.x.x port 22</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-05T10:41:44+00:00"
-              content="2020-05-05">
-          05-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/05/05/%E9%83%A8%E7%BD%B2Hexo%E5%88%B0Github%20Pages%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" itemprop="url">
-            <span itemprop="name">部署Hexo到Github Pages遇到的问题</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-05T10:11:44+00:00"
-              content="2020-05-05">
-          05-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/05/05/hello-world/" itemprop="url">
-            <span itemprop="name">Hello World</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Blockly.WidgetDiv</span></span><br></pre></td></tr></table></figure>
 
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Blockly/" rel="tag"># Blockly</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/18/SVG/" rel="prev" title="SVG">
+      <i class="fa fa-chevron-left"></i> SVG
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/11/TypeScript-Tough-Points/" rel="next" title="TypeScript Tough Points">
+      TypeScript Tough Points <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-  </nav>
+  
+  
 
 
 
