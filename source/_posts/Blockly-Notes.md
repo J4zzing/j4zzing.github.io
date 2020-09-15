@@ -3,7 +3,6 @@ title: Blockly Notes
 date: 2020-09-07 13:59:57
 tags:
 - Blockly
-
 ---
 
 

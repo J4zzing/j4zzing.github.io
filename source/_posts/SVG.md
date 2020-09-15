@@ -2,6 +2,7 @@
 title: SVG
 date: 2020-08-18 19:09:33
 tags:
+- SVG
 ---
 
 ## Everything You Need To Know About SVG

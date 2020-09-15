@@ -1,8 +1,9 @@
 ---
-title: TypeScript Tough Points
+title: TypeScript Tough Spots
 date: 2020-09-11 10:50:37
 tags:
 - TypeScript
+- Decorator
 ---
 
 ### Type Alias vs. Interface

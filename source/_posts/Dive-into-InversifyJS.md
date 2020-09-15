@@ -2,13 +2,13 @@
 title: Dive into InversifyJS
 date: 2020-09-12 23:53:23
 tags:
-- typescript
-- inversifyJS
-- IOC
-- DI
+- TypeScript
+- InversifyJS
+- Inversion of control
+- Dependency injection
 ---
 
-# Dive into [InversifyJS](http://inversify.io/)
+[InversifyJS](http://inversify.io/)
 
 <Inversify的目的>
 
@@ -25,7 +25,7 @@ declare type MethodDecorator = <T>(target: Object, propertyKey: string | symbol,
 declare type ParameterDecorator = (target: Object, propertyKey: string | symbol, parameterIndex: number) => void;
 ```
 
-
+## Using InversifyJS
 
 1. Declare interface
 

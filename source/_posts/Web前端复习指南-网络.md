@@ -2,7 +2,7 @@
 title: Web前端复习指南 - 网络
 date: 2020-06-19 17:35:28
 tags: 
-- 计算机网络
+- Computer network
 - HTTP
 - TSL
 - DNS

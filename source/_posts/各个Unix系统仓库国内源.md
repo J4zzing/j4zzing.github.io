@@ -1,8 +1,8 @@
 ---
 title: 各个Unix系统仓库国内源
 date: 2020-07-26 15:51:12
-tags: Linux
-
+tags: 
+- Linux
 ---
 
 ## 国内源主页
