@@ -153,6 +153,129 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/12/Dive-into-InversifyJS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rockham">
+      <meta itemprop="description" content="没有无用的知识。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A thinker.">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/12/Dive-into-InversifyJS/" class="post-title-link" itemprop="url">Dive into InversifyJS</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-12 23:53:23" itemprop="dateCreated datePublished" datetime="2020-09-12T23:53:23+00:00">2020-09-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-15 15:59:32" itemprop="dateModified" datetime="2020-09-15T15:59:32+00:00">2020-09-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Dive-into-InversifyJS"><a href="#Dive-into-InversifyJS" class="headerlink" title="Dive into InversifyJS"></a>Dive into <a href="http://inversify.io/" target="_blank" rel="noopener">InversifyJS</a></h1><p>&lt;Inversify的目的&gt;</p>
+<h2 id="Brief-Introduction-about-Decorator"><a href="#Brief-Introduction-about-Decorator" class="headerlink" title="Brief Introduction about Decorator"></a>Brief Introduction about Decorator</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">type</span> ClassDecorator = &lt;TFunction <span class="keyword">extends</span> <span class="built_in">Function</span>&gt;<span class="function">(<span class="params">target: TFunction</span>) =&gt;</span> TFunction | <span class="built_in">void</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">type</span> PropertyDecorator = <span class="function">(<span class="params">target: <span class="built_in">Object</span>, propertyKey: <span class="built_in">string</span> | symbol</span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">type</span> MethodDecorator = &lt;T&gt;<span class="function">(<span class="params">target: <span class="built_in">Object</span>, propertyKey: <span class="built_in">string</span> | symbol, descriptor: TypedPropertyDescriptor&lt;T&gt;</span>) =&gt;</span> TypedPropertyDescriptor&lt;T&gt; | <span class="built_in">void</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">type</span> ParameterDecorator = <span class="function">(<span class="params">target: <span class="built_in">Object</span>, propertyKey: <span class="built_in">string</span> | symbol, parameterIndex: <span class="built_in">number</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li>Declare interface</li>
+</ol>
+<blockquote>
+<p>Our goal is to write code that adheres to the <a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank" rel="noopener">dependency inversion principle</a>. This means that we should “depend upon Abstractions and do not depend upon concretions”. Let’s start by declaring some interfaces (abstractions).</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Warrior &#123;</span><br><span class="line">    fight(): <span class="built_in">string</span>;</span><br><span class="line">    sneak(): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Weapon &#123;</span><br><span class="line">    hit(): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> ThrowableWeapon &#123;</span><br><span class="line">    <span class="keyword">throw</span>(): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>InversifyJS need to use the type as identifiers at runtime. We use symbols as identifiers but you can also use classes and or string literals.</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> TYPES = &#123;</span><br><span class="line">    Warrior: Symbol(<span class="string">"Warrior"</span>),</span><br><span class="line">    Weapon: Symbol(<span class="string">"Weapon"</span>),</span><br><span class="line">    ThrowableWeapon: Symbol(<span class="string">"ThrowableWeapon"</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> TYPES;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Declaring classes and dependencies</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; injectable, inject &#125; <span class="keyword">from</span> <span class="string">"inversify"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"reflect-metadata"</span>;</span><br><span class="line"><span class="keyword">import</span> TYPES <span class="keyword">from</span> <span class="string">"./types"</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@injectable</span>()</span><br><span class="line"><span class="keyword">class</span> Katana <span class="keyword">implements</span> Weapon &#123;</span><br><span class="line">    <span class="keyword">public</span> hit() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"cut!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@injectable</span>()</span><br><span class="line"><span class="keyword">class</span> Shuriken <span class="keyword">implements</span> ThrowableWeapon &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">throw</span>() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hit!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@injectable</span>()</span><br><span class="line"><span class="keyword">class</span> Ninja <span class="keyword">implements</span> Warrior &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> _katana: Weapon;</span><br><span class="line">    <span class="keyword">private</span> _shuriken: ThrowableWeapon;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">        <span class="meta">@inject</span>(TYPES.Weapon) katana: Weapon,</span></span><br><span class="line"><span class="params">        <span class="meta">@inject</span>(TYPES.ThrowableWeapon) shuriken: ThrowableWeapon</span></span><br><span class="line"><span class="params">    </span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>._katana = katana;</span><br><span class="line">        <span class="keyword">this</span>._shuriken = shuriken;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> fight() &#123; <span class="keyword">return</span> <span class="keyword">this</span>._katana.hit(); &#125;;</span><br><span class="line">    <span class="keyword">public</span> sneak() &#123; <span class="keyword">return</span> <span class="keyword">this</span>._shuriken.throw(); &#125;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; Ninja, Katana, Shuriken &#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="What-happend"><a href="#What-happend" class="headerlink" title="What happend?"></a>What happend?</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">injectable</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">target: <span class="built_in">any</span></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (Reflect.hasOwnMetadata(METADATA_KEY.PARAM_TYPES, target)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(ERRORS_MSGS.DUPLICATED_INJECTABLE_DECORATOR);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> types = Reflect.getMetadata(METADATA_KEY.DESIGN_PARAM_TYPES, target) || [];</span><br><span class="line">    Reflect.defineMetadata(METADATA_KEY.PARAM_TYPES, types, target);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>injectable是一个装饰器工厂，从返回的装饰器可以看出这是一个类装饰器。 </p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inject</span>(<span class="params">serviceIdentifier: ServiceIdentifierOrFunc</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">target: <span class="built_in">any</span>, targetKey: <span class="built_in">string</span>, index?: <span class="built_in">number</span></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (serviceIdentifier === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(UNDEFINED_INJECT_ANNOTATION(target.name));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> metadata = <span class="keyword">new</span> Metadata(METADATA_KEY.INJECT_TAG, serviceIdentifier);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> index === <span class="string">"number"</span>) &#123;</span><br><span class="line">      tagParameter(target, targetKey, index, metadata);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      tagProperty(target, targetKey, metadata);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> x &#123;</span><br><span class="line">    anotationTargetObject: &#123;</span><br><span class="line">        propertyName: &#123;</span><br><span class="line">            metadataKey: &#123;</span><br><span class="line">                metadata: &#123;</span><br><span class="line">                    <span class="comment">// inversifyJS</span></span><br><span class="line">                    [METADATA_KEY: <span class="built_in">string</span>]: Metadata[];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// metadata keys of inversify</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">enum</span> METADATA_KEY &#123;</span><br><span class="line">    <span class="comment">// used to store types to be injected</span></span><br><span class="line">    PARAM_TYPES = <span class="string">"inversify:paramtypes"</span>,</span><br><span class="line">    <span class="comment">// used to access design time types</span></span><br><span class="line">    DESIGN_PARAM_TYPES = <span class="string">"design:paramtypes"</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// The type of the binding at design time</span></span><br><span class="line">    INJECT_TAG = <span class="string">"inject"</span>,</span><br><span class="line">    <span class="comment">// used to store constructor arguments tags</span></span><br><span class="line">    TAGGED = <span class="string">"inversify:tagged"</span>,</span><br><span class="line">    <span class="comment">// used to store class properties tags</span></span><br><span class="line">    TAGGED_PROP = <span class="string">"inversify:tagged_props"</span>,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Metadata &#123;</span><br><span class="line">    key: <span class="built_in">string</span> | <span class="built_in">number</span> | symbol;</span><br><span class="line">    value: <span class="built_in">any</span>;</span><br><span class="line">    toString(): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> propertyName = <span class="built_in">string</span> | symbol | <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@inject(serviceIdentifier) </span><br><span class="line">          ||</span><br><span class="line">          \&#x2F;</span><br><span class="line">&#123;</span><br><span class="line">  key: METADATA_KEY.INJECT_TAG,</span><br><span class="line">  value: serviceIdentifier,</span><br><span class="line">&#125;: Metadata</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>If you prefer it you can use property injection instead of constructor injection so you don’t have to declare the class constructor:</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@injectable</span>()</span><br><span class="line"><span class="keyword">class</span> Ninja <span class="keyword">implements</span> Warrior &#123;</span><br><span class="line">    <span class="meta">@inject</span>(TYPES.Weapon) <span class="keyword">private</span> _katana: Weapon;</span><br><span class="line">    <span class="meta">@inject</span>(TYPES.ThrowableWeapon) <span class="keyword">private</span> _shuriken: ThrowableWeapon;</span><br><span class="line">    <span class="keyword">public</span> fight() &#123; <span class="keyword">return</span> <span class="keyword">this</span>._katana.hit(); &#125;;</span><br><span class="line">    <span class="keyword">public</span> sneak() &#123; <span class="keyword">return</span> <span class="keyword">this</span>._shuriken.throw(); &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Creating and configuring a Container</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Container &#125; <span class="keyword">from</span> <span class="string">"inversify"</span>;</span><br><span class="line"><span class="keyword">import</span> TYPES <span class="keyword">from</span> <span class="string">"./types"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Ninja, Katana, Shuriken &#125; <span class="keyword">from</span> <span class="string">"./entities"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> container = <span class="keyword">new</span> Container();</span><br><span class="line">container.bind&lt;Warrior&gt;(TYPES.Warrior).to(Ninja);</span><br><span class="line">container.bind&lt;Weapon&gt;(TYPES.Weapon).to(Katana);</span><br><span class="line">container.bind&lt;ThrowableWeapon&gt;(TYPES.ThrowableWeapon).to(Shuriken);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> container;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>Resolving dependencies</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> container = <span class="keyword">from</span> <span class="string">"./inversify.config"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ninja = container.get&lt;Warrior&gt;(TYPES.Warrior);</span><br><span class="line"></span><br><span class="line">expect(ninja.fight()).eql(<span class="string">"cut!"</span>); <span class="comment">// true</span></span><br><span class="line">expect(ninja.sneak()).eql(<span class="string">"hit!"</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/11/TypeScript-Tough-Points/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -184,7 +307,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 10:14:17" itemprop="dateModified" datetime="2020-09-15T10:14:17+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-15 15:59:32" itemprop="dateModified" datetime="2020-09-15T15:59:32+00:00">2020-09-15</time>
               </span>
 
           
@@ -288,7 +411,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 10:14:17" itemprop="dateModified" datetime="2020-09-15T10:14:17+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-15 15:59:32" itemprop="dateModified" datetime="2020-09-15T15:59:32+00:00">2020-09-15</time>
               </span>
 
           
@@ -367,7 +490,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 10:14:17" itemprop="dateModified" datetime="2020-09-15T10:14:17+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-15 15:59:32" itemprop="dateModified" datetime="2020-09-15T15:59:32+00:00">2020-09-15</time>
               </span>
 
           
@@ -463,7 +586,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 10:14:17" itemprop="dateModified" datetime="2020-09-15T10:14:17+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-15 15:59:32" itemprop="dateModified" datetime="2020-09-15T15:59:32+00:00">2020-09-15</time>
               </span>
 
           
@@ -550,7 +673,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 10:14:17" itemprop="dateModified" datetime="2020-09-15T10:14:17+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-15 15:59:32" itemprop="dateModified" datetime="2020-09-15T15:59:32+00:00">2020-09-15</time>
               </span>
 
           
@@ -622,7 +745,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 10:14:17" itemprop="dateModified" datetime="2020-09-15T10:14:17+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-15 15:59:32" itemprop="dateModified" datetime="2020-09-15T15:59:32+00:00">2020-09-15</time>
               </span>
 
           
@@ -708,7 +831,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 10:14:17" itemprop="dateModified" datetime="2020-09-15T10:14:17+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-15 15:59:32" itemprop="dateModified" datetime="2020-09-15T15:59:32+00:00">2020-09-15</time>
               </span>
 
           
@@ -742,7 +865,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/30/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-%E5%B7%A5%E7%A8%8B%E5%B8%88/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8E%9F%E5%88%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -756,7 +879,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/30/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="post-title-link" itemprop="url">设计原则 工程师</a>
+            <a href="/2020/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8E%9F%E5%88%99/" class="post-title-link" itemprop="url">设计模式/原则</a>
         </h2>
 
         <div class="post-meta">
@@ -773,7 +896,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 10:14:17" itemprop="dateModified" datetime="2020-09-15T10:14:17+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-15 15:59:32" itemprop="dateModified" datetime="2020-09-15T15:59:32+00:00">2020-09-15</time>
               </span>
 
           
@@ -787,19 +910,123 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="模组化"><a href="#模组化" class="headerlink" title="模组化"></a>模组化</h2><p><a href="https://en.wikipedia.org/wiki/Modularity_(programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Modularity_(programming)</a></p>
-<h3 id="Separation-of-concerns"><a href="#Separation-of-concerns" class="headerlink" title="Separation of concerns"></a>Separation of concerns</h3><p><a href="https://en.wikipedia.org/wiki/Separation_of_concerns" target="_blank" rel="noopener">Separation of concerns</a></p>
+          <h2 id="通用原则"><a href="#通用原则" class="headerlink" title="通用原则"></a>通用原则</h2><p><a href="https://en.wikipedia.org/wiki/Single_source_of_truth" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Single_source_of_truth</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Separation_of_concerns" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Separation_of_concerns</a></p>
+<p>模组化</p>
+<p><a href="https://en.wikipedia.org/wiki/Modularity_(programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Modularity_(programming)</a></p>
 <p><a href="https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)</a></p>
-<h2 id="DRY-vs-WET"><a href="#DRY-vs-WET" class="headerlink" title="DRY vs WET"></a>DRY vs WET</h2><p><a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" rel="noopener">DRY</a></p>
-<h2 id="Single-source-of-truth"><a href="#Single-source-of-truth" class="headerlink" title="Single source of truth"></a>Single source of truth</h2><p><a href="https://en.wikipedia.org/wiki/Single_source_of_truth" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Single_source_of_truth</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Inversion_of_control" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Inversion_of_control</a></p>
-<p>SOLID</p>
-<p><a href="https://en.wikipedia.org/wiki/SOLID" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/SOLID</a></p>
-<p>GRASP</p>
-<p><a href="https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)</a></p>
-<p><a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank" rel="noopener">https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4</a></p>
+<p>DRY vs WET</p>
+<p><a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" rel="noopener">DRY</a></p>
 <p>High xx, Low coupling</p>
 <p><a href="https://en.wikipedia.org/wiki/Coupling_(computer_programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Coupling_(computer_programming)</a></p>
+<h2 id="Programming-Paradigms"><a href="#Programming-Paradigms" class="headerlink" title="Programming Paradigms"></a><a href="https://en.wikipedia.org/wiki/Programming_paradigm" target="_blank" rel="noopener">Programming Paradigms</a></h2><h3 id="Imperative-Programming"><a href="#Imperative-Programming" class="headerlink" title="Imperative Programming"></a>Imperative Programming</h3><h3 id="Object-Oriented-Programming-OOP"><a href="#Object-Oriented-Programming-OOP" class="headerlink" title="Object-Oriented Programming - OOP"></a><a href="https://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">Object-Oriented Programming - OOP</a></h3><h4 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation"></a><a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)" target="_blank" rel="noopener">Encapsulation</a></h4><p><a href="https://lostechies.com/derickbailey/2011/03/28/encapsulation-youre-doing-it-wrong/" target="_blank" rel="noopener">https://lostechies.com/derickbailey/2011/03/28/encapsulation-youre-doing-it-wrong/</a></p>
+<h4 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a><a href="https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)" target="_blank" rel="noopener">Inheritance</a></h4><p><a href="https://medium.com/hackernoon/inheritance-based-on-internal-structure-is-evil-7474cc8e64dc" target="_blank" rel="noopener">Implementation Inheritance Is Evil</a></p>
+<h4 id="Polymophism"><a href="#Polymophism" class="headerlink" title="Polymophism"></a>Polymophism</h4><p><a href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Polymorphism_(computer_science)</a></p>
+<ul>
+<li>Ad hoc Polymorphism(function overloading, operator overloading)</li>
+</ul>
+<blockquote>
+<p><em>Ad hoc polymorphism</em> refer to polymorphic functions that can be applied to arguments of different types, but that behave differently depending on the type of the argument to which they are applied.</p>
+</blockquote>
+<ul>
+<li>Parametric Polymorphism</li>
+</ul>
+<blockquote>
+<p><em>Parametric polymorphism</em> allows a function or a data type to be written generically, so that it can handle values <em>uniformly</em> without depending on their type.</p>
+</blockquote>
+<ul>
+<li>Subtyping</li>
+</ul>
+<blockquote>
+<p>Subtyping allows a function to be written to take an object of a certain type <em>T</em>, but also work correctly, if passed an object that belongs to a type <em>S</em> that is a subtype of <em>T</em> (according to the <a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle" target="_blank" rel="noopener">Liskov substitution principle</a>).</p>
+</blockquote>
+<p>Note: Inheritance should not be confused with subtyping.</p>
+<p>More</p>
+<p><a href="https://en.wikipedia.org/wiki/Method_dispatch" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Method_dispatch</a></p>
+<h4 id="Multiple-Inheritance"><a href="#Multiple-Inheritance" class="headerlink" title="Multiple Inheritance"></a>Multiple Inheritance</h4><p><a href="https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem" target="_blank" rel="noopener">The Diamond Problem</a></p>
+<h4 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h4><h4 id="Composition-over-inheritance"><a href="#Composition-over-inheritance" class="headerlink" title="Composition over inheritance"></a><a href="https://en.wikipedia.org/wiki/Composition_over_inheritance" target="_blank" rel="noopener">Composition over inheritance</a></h4><blockquote>
+<p>Classes should achieve <a href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)" target="_blank" rel="noopener">polymorphic</a> behavior and <a href="https://en.wikipedia.org/wiki/Code_reuse" target="_blank" rel="noopener">code reuse</a> by their <a href="https://en.wikipedia.org/wiki/Object_composition" target="_blank" rel="noopener">composition</a> (by containing instances of other classes that implement the desired functionality) rather than <a href="https://en.wikipedia.org/wiki/Inheritance_(computer_science)" target="_blank" rel="noopener">inheritance</a> from a base or parent class.</p>
+</blockquote>
+<h4 id="SOLID"><a href="#SOLID" class="headerlink" title="SOLID"></a><a href="https://en.wikipedia.org/wiki/SOLID" target="_blank" rel="noopener">SOLID</a></h4><ul>
+<li><a href="https://en.wikipedia.org/wiki/Single-responsibility_principle" target="_blank" rel="noopener">Single Responsibility Principle</a></li>
+</ul>
+<blockquote>
+<p>The single-responsibility principle (SRP) states that <strong>every module, class or function in a computer program should have responsibility over a single part of that program’s functionality</strong>, which it should encapsulate.</p>
+</blockquote>
+<p><a href="https://pasztor.at/blog/clean-code-responsibilities/" target="_blank" rel="noopener">https://pasztor.at/blog/clean-code-responsibilities/</a></p>
+<p><a href="https://blog.ploeh.dk/2011/06/07/SOLIDCodeisnt" target="_blank" rel="noopener">Application of the Single Responsibility Principle (SRP) leads to many small classes.</a></p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle" target="_blank" rel="noopener">Open-closed Principle</a></li>
+</ul>
+<blockquote>
+<p>The open–closed principle states “software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification”; that is, such an entity can <strong>allow its behaviour to be extended without modifying its source code</strong>.</p>
+</blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle" target="_blank" rel="noopener">Liskov substitution principle</a></li>
+</ul>
+<blockquote>
+<p>Substitutability stating that, <strong>if S is a subtype of T, then objects of type T may be replaced with objects of type S</strong> (i.e. an object of type T may be substituted with any object of a subtype S) without altering any of the desirable properties of the program (correctness, task performed, etc.). </p>
+</blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Interface_segregation_principle" target="_blank" rel="noopener">Interface Segregation Principle</a></li>
+</ul>
+<blockquote>
+<p>The interface-segregation principle (ISP) states that <strong>no client should be forced to depend on methods it does not use.</strong> ISP splits interfaces that are very large into smaller and more specific ones so that clients will only have to know about the methods that are of interest to them. ISP is intended to keep a system decoupled and thus easier to refactor, change, and redeploy.Such shrunken interfaces are also called <a href="https://martinfowler.com/bliki/RoleInterface.html" target="_blank" rel="noopener"><em>role interface</em>s.</a></p>
+</blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank" rel="noopener">Denpendency Inversion Principle</a></li>
+</ul>
+<blockquote>
+<ol>
+<li>High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).</li>
+<li>Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.</li>
+</ol>
+</blockquote>
+<p><a href="https://pasztor.at/blog/clean-code-dependencies/" target="_blank" rel="noopener">https://pasztor.at/blog/clean-code-dependencies/</a></p>
+<p>More</p>
+<p><a href="https://blog.ploeh.dk/2011/06/07/SOLIDCodeisnt/" target="_blank" rel="noopener">https://blog.ploeh.dk/2011/06/07/SOLIDCodeisnt/</a></p>
+<h4 id="GRASP"><a href="#GRASP" class="headerlink" title="GRASP"></a>GRASP</h4><p><a href="https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)</a></p>
+<h4 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h4><p><a href="https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)" target="_blank" rel="noopener">Factory Pattern</a></p>
+<p>如何正确的使用class</p>
+<p><a href="https://medium.com/javascript-scene/how-to-fix-the-es6-class-keyword-2d42bb3f4caf" target="_blank" rel="noopener">https://medium.com/javascript-scene/how-to-fix-the-es6-class-keyword-2d42bb3f4caf</a></p>
+<p><a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank" rel="noopener">https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4</a></p>
+<p><a href="http://blog.wolksoftware.com/about-classes-inheritance-and-object-oriented-design-in-typescript-and-es6" target="_blank" rel="noopener">http://blog.wolksoftware.com/about-classes-inheritance-and-object-oriented-design-in-typescript-and-es6</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Inversion_of_control" target="_blank" rel="noopener">IOC</a></p>
+<blockquote>
+<p>IoC inverts the flow of control as compared to traditional control flow. In IoC, custom-written portions of a computer program receive the flow of control from a generic framework. </p>
+</blockquote>
+<p><a href="https://pasztor.at/blog/what-is-the-ioc-container/" target="_blank" rel="noopener">https://pasztor.at/blog/what-is-the-ioc-container/</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Dependency_injection" target="_blank" rel="noopener">Dependency injection</a></p>
+<p><a href="https://pasztor.at/blog/clean-code-dependencies/" target="_blank" rel="noopener">https://pasztor.at/blog/clean-code-dependencies/</a></p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h4><p>Dependency inversion Principle in Dynamic programming languages.</p>
+<p><a href="https://softwareengineering.stackexchange.com/questions/195176/how-does-dependency-inversion-principle-work-in-languages-without-interfaces" target="_blank" rel="noopener">https://softwareengineering.stackexchange.com/questions/195176/how-does-dependency-inversion-principle-work-in-languages-without-interfaces</a></p>
+<p>Dependency injection 和动态语言</p>
+<p><a href="https://blog.tonyseek.com/post/notes-about-ioc-and-di/" target="_blank" rel="noopener">https://blog.tonyseek.com/post/notes-about-ioc-and-di/</a></p>
+<h3 id="Declarative-Programming"><a href="#Declarative-Programming" class="headerlink" title="Declarative Programming"></a>Declarative Programming</h3><h3 id="Functional-Programming-FP"><a href="#Functional-Programming-FP" class="headerlink" title="Functional Programming - FP"></a>Functional Programming - FP</h3><h4 id="Pure-Function"><a href="#Pure-Function" class="headerlink" title="Pure Function"></a><a href="https://en.wikipedia.org/wiki/Pure_function" target="_blank" rel="noopener">Pure Function</a></h4><blockquote>
+<p>A <strong>pure function</strong> is a <a href="https://en.wikipedia.org/wiki/Subroutine" target="_blank" rel="noopener">function</a> that has the following properties:</p>
+<ol>
+<li>Its <a href="https://en.wikipedia.org/wiki/Return_statement" target="_blank" rel="noopener">return value</a> is the same for the same <a href="https://en.wikipedia.org/wiki/Argument_of_a_function" target="_blank" rel="noopener">arguments</a> (no variation with local <a href="https://en.wikipedia.org/wiki/Static_variable" target="_blank" rel="noopener">static variables</a>, <a href="https://en.wikipedia.org/wiki/Non-local_variable" target="_blank" rel="noopener">non-local variables</a>, mutable <a href="https://en.wikipedia.org/wiki/Value_type_and_reference_type" target="_blank" rel="noopener">reference arguments</a> or input streams from <a href="https://en.wikipedia.org/wiki/Input/output" target="_blank" rel="noopener">I/O devices</a>).</li>
+<li>Its evaluation has no <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)" target="_blank" rel="noopener">side effects</a> (no mutation of local static variables, non-local variables, mutable reference arguments or I/O streams).</li>
+</ol>
+</blockquote>
+<p>Thus a pure function is a computational analogue of a mathematical function.</p>
+<h4 id="Currying"><a href="#Currying" class="headerlink" title="Currying"></a><a href="https://en.wikipedia.org/wiki/Currying" target="_blank" rel="noopener">Currying</a></h4><blockquote>
+<p>Currying is the technique of converting a function that takes multiple arguments into a sequence of functions that each take a single argument. </p>
+</blockquote>
+<p><a href="https://hughfdjackson.com/javascript/why-curry-helps/" target="_blank" rel="noopener">Why Curry Helps</a> by Hugh Jackson</p>
+<p><a href="https://www.youtube.com/watch?v=m3svKOdZijA&app=desktop" target="_blank" rel="noopener">Hey Underscore, You’re Doing It Wrong!</a> by Brian Lonsdorf</p>
+<p>Javascript library - Ramda</p>
+<ul>
+<li><a href="http://buzzdecafe.github.io/code/2014/05/16/introducing-ramda" target="_blank" rel="noopener">Introducing Ramda</a> by Buzz de Cafe</li>
+<li><a href="http://fr.umio.us/favoring-curry/" target="_blank" rel="noopener">Favoring Curry</a> by Scott Sauyet</li>
+<li><a href="http://fr.umio.us/why-ramda/" target="_blank" rel="noopener">Why Ramda?</a> by Scott Sauyet</li>
+<li><a href="https://randycoulman.com/blog/categories/thinking-in-ramda" target="_blank" rel="noopener">Thinking in Ramda</a> by Randy Coulman</li>
+</ul>
+<h4 id="Partial-Application"><a href="#Partial-Application" class="headerlink" title="Partial Application"></a><a href="https://en.wikipedia.org/wiki/Partial_application" target="_blank" rel="noopener">Partial Application</a></h4><blockquote>
+<p>Partial application (or partial function application) refers to the process of fixing a number of arguments to a function, producing another function of smaller arity.</p>
+</blockquote>
+<p>Other Insights</p>
+<p><a href="http://wiki.c2.com/?ClosuresAndObjectsAreEquivalent" target="_blank" rel="noopener">http://wiki.c2.com/?ClosuresAndObjectsAreEquivalent</a></p>
 
       
     </div>
@@ -833,7 +1060,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/19/ECMAScript2015-ES6%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">ECMAScript2015/ES6特性总结</a>
+            <a href="/2020/06/19/ECMAScript2015-ES6%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">ECMAScript2015/ES6特性</a>
         </h2>
 
         <div class="post-meta">
@@ -850,7 +1077,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 10:14:17" itemprop="dateModified" datetime="2020-09-15T10:14:17+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-15 15:59:32" itemprop="dateModified" datetime="2020-09-15T15:59:32+00:00">2020-09-15</time>
               </span>
 
           
@@ -881,6 +1108,9 @@
 <h4 id="getter-amp-setter"><a href="#getter-amp-setter" class="headerlink" title="getter &amp; setter"></a>getter &amp; setter</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get</a></p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set</a></p>
 <h4 id="简短的定义对象的方法"><a href="#简短的定义对象的方法" class="headerlink" title="简短的定义对象的方法"></a>简短的定义对象的方法</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions</a></p>
+<h4 id="Computed-property-names"><a href="#Computed-property-names" class="headerlink" title="Computed property names"></a>Computed property names</h4><blockquote>
+<p>Starting with ECMAScript 2015, the object initializer syntax also supports computed property names. That allows you to put an expression in brackets <code>[]</code>, that will be computed and used as the property name. This is reminiscent of the bracket notation of the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors" target="_blank" rel="noopener">property accessor</a> syntax, which you may have used to read and set properties already.</p>
+</blockquote>
 <h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes</a></p>
 <p>类是“特殊的函数”，是基于JS原型继承的语法糖。</p>
 <p>特点：</p>
@@ -906,185 +1136,12 @@
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray</a></p>
 <h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol</a></p>
 <h4 id="BigInt"><a href="#BigInt" class="headerlink" title="BigInt"></a>BigInt</h4><h4 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators</a></p>
+<h4 id="Iterator-Protocol"><a href="#Iterator-Protocol" class="headerlink" title="Iterator Protocol"></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols" target="_blank" rel="noopener">Iterator Protocol</a></h4><blockquote>
+<p>In order to be <strong>iterable</strong>, an object must implement the <strong>@@iterator</strong> method, meaning that the object (or one of the objects up its <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain" target="_blank" rel="noopener">prototype chain</a>) must have a property with a <code>@@iterator</code> key which is available via constant <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator" target="_blank" rel="noopener"><code>Symbol.iterator</code></a>:</p>
+</blockquote>
 <h2 id="实验性特性"><a href="#实验性特性" class="headerlink" title="实验性特性"></a>实验性特性</h2><p>公开类字段  stage 3</p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields</a></p>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/19/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97-%E7%BD%91%E7%BB%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rockham">
-      <meta itemprop="description" content="没有无用的知识。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/19/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97-%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">Web前端复习指南 - 网络</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-19 17:35:28" itemprop="dateCreated datePublished" datetime="2020-06-19T17:35:28+00:00">2020-06-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 10:14:17" itemprop="dateModified" datetime="2020-09-15T10:14:17+00:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h3 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h3><h3 id="HTTP-响应状态码"><a href="#HTTP-响应状态码" class="headerlink" title="HTTP 响应状态码"></a>HTTP 响应状态码</h3><p>101 Switching Protocol</p>
-<p>表示服务器正在按客户端要求切换协议（通过Upgrade首部）。<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Protocol_upgrade_mechanism" target="_blank" rel="noopener">Protocol upgrade mechanism详情</a></p>
-<p>Websockets用例</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">101</span> Switching Protocols</span><br><span class="line"><span class="attribute">Upgrade</span>: websocket</span><br><span class="line"><span class="attribute">Connection</span>: Upgrade</span><br></pre></td></tr></table></figure>
-
-<h4 id="成功-2xx"><a href="#成功-2xx" class="headerlink" title="成功 - 2xx"></a>成功 - 2xx</h4><p>200 OK</p>
-<p>请求成功。</p>
-<p>针对不同的请求方式有不同意义：</p>
-<ul>
-<li>GET：取得了资源，放在报文体。</li>
-<li>HEAD：取得了首部，放在报文体。</li>
-<li>POST：处理结果，放在报文体。</li>
-<li>TRACE：请求报文，放在报文体。</li>
-</ul>
-<p>201 Created</p>
-<p>请求成功。在返回响应时，新的资源已经被积极创建并且包含在响应体中。Location首部指示资源URL。</p>
-<p>202 Accepted</p>
-<p>请求被接受，但还未开始或完成处理。202不保证处理的结果，通常表示这个请求被交予其他进程或服务器处理。</p>
-<h4 id="重定向-3xx"><a href="#重定向-3xx" class="headerlink" title="重定向 - 3xx"></a>重定向 - 3xx</h4><p>301 Moved Permanently</p>
-<p>请求的资源被永久移动到了Location首部的URL。浏览器重定向，搜索引擎会更新资源的URL。</p>
-<p>虽然标准要求重定向时请求方法和请求体不能改变，但并不是所有的UA都遵从，所以推荐仅对GET和HEAD请求响应301。使用308 Permanent Redirect响应POST请求，严格要求不能改变。</p>
-<p>302 Found</p>
-<p>请求的资源被临时移动到了Location首部的URL。浏览器重定向，搜索引擎不会更新资源的URL。</p>
-<p>虽然标准要求重定向时请求方法和请求体不能改变，但并不是所有的UA都遵从，所以推荐仅对GET和HEAD请求响应302。使用307 Temporary Redirect响应POST请求，严格要求不能改变。</p>
-<p>如果你想让请求方法改变为GET，请使用303 See Other。</p>
-<p>303 See Other</p>
-<p>表示重定向到另一个与新创建资源无关的页面，比如确认页面或者处理进度页面。一般只在POST与PUT请求返回303。</p>
-<p>304 Not Modified</p>
-<p>表示资源未改变，无需重新传输请求资源。通常用来回应缓存。</p>
-<p>当请求带有 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match" target="_blank" rel="noopener"><code>If-None-Match</code></a> 或 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since" target="_blank" rel="noopener"><code>If-Modified-Since</code></a> 首部使用</p>
-<h4 id="客户端错误-4xx"><a href="#客户端错误-4xx" class="headerlink" title="客户端错误 - 4xx"></a>客户端错误 - 4xx</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401" target="_blank" rel="noopener">401 Unauthorized</a></p>
-<p>拒绝请求，因为针对目标资源的权限不足。</p>
-<p>同时应响应 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/WWW-Authenticate" target="_blank" rel="noopener"><code>WWW-Authenticate</code></a>首部，表明应该如何正确授权。</p>
-<p>403 Forbidden</p>
-<p>明白你的请求，但是拒绝授权。</p>
-<p>和401相似，但是这种情况下重新授权也没用，因为这个操作与程序逻辑绑定，永远禁止。</p>
-<p>404 Not Found</p>
-<p>服务器无法找到请求的资源。</p>
-<h4 id="服务器错误-5xx"><a href="#服务器错误-5xx" class="headerlink" title="服务器错误 - 5xx"></a>服务器错误 - 5xx</h4><p>500 Internal Server Error</p>
-<p>服务器遇到了一个未预料的错误导致其无法完成处理请求。</p>
-<p>通常用来表示找不到一个更好的5xx状态码来响应。记录到日志来预防同样的事情发生。</p>
-<p>502 Bad Gateway</p>
-<p>服务器（作为网关或代理）从上游接收到了一个无效的响应。</p>
-<p>504 Gateway timeout</p>
-<p>服务器（作为网关或代理）在规定的时间内没有从上游收到响应。</p>
-<h2 id="HTTP跨源资源共享"><a href="#HTTP跨源资源共享" class="headerlink" title="HTTP跨源资源共享"></a>HTTP跨源资源共享</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</a></p>
-<p>同源政策：<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy</a></p>
-<p>协议，主机与端口一致的URL为同源</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin" target="_blank" rel="noopener"><code>Access-Control-Allow-Origin</code></a></p>
-<p>Preflight request</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request</a></p>
-<p>preflight request是使用HTTP OPTIONS请求方法询问服务器是否支持CORS与一些特定方法和首部。</p>
-<p>请求时，使用<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Request-Method" target="_blank" rel="noopener"><code>Access-Control-Request-Method</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Request-Headers" target="_blank" rel="noopener"><code>Access-Control-Request-Headers</code></a>和<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin" target="_blank" rel="noopener"><code>Origin</code></a>首部；如果服务器允许，会响应 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Methods" target="_blank" rel="noopener"><code>Access-Control-Allow-Methods</code></a>表示允许那些请求方法，</p>
-<p>preflight request一般由浏览器自动发起。</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Max-Age" target="_blank" rel="noopener">Access-Control-Max-Age</a> </p>
-<h2 id="HTTP缓存"><a href="#HTTP缓存" class="headerlink" title="HTTP缓存"></a>HTTP缓存</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching</a></p>
-<h5 id="通常被缓存的HTTP响应"><a href="#通常被缓存的HTTP响应" class="headerlink" title="通常被缓存的HTTP响应"></a>通常被缓存的HTTP响应</h5><ul>
-<li>GET请求</li>
-</ul>
-<p>Cache：任何提供存储缓存的服务，如代理服务器，浏览器。</p>
-<p>由于HTTP是一个client-server协议，服务器无法告知Cache和客户端资源发生了改变，所以它们需要沟通一个时间。在这个时间之前，资源会被认为是最新的，而在这个时间之后，资源会被认为是过期的。另一方面，对于一个Cache来说，存储的数据的空间有限，所以，Cache会周期性的移除一些缓存，称之为<em>cache eviction</em>。自然，。注意，eviction算法不会马上移除过期的缓存，当有客户端请求Cache中的一个过期资源时，Cache会利用<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match" target="_blank" rel="noopener"><code>If-None-Match</code></a>首部传递这个请求到源服务器，确认这个资源是否还是最新。如果是这样，服务器会返回304状态码，不必重新发送资源，从而节省了一定的带宽。</p>
-<h5 id="Expires-http-1-0"><a href="#Expires-http-1-0" class="headerlink" title="Expires (http 1.0)"></a>Expires (http 1.0)</h5><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expires" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expires</a></p>
-<p>一个时间<http-date>，表示这个资源什么时候会被认为过期。</p>
-<h5 id="Cache-Control通用首部-http-1-1"><a href="#Cache-Control通用首部-http-1-1" class="headerlink" title="Cache-Control通用首部 (http 1.1)"></a><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control" target="_blank" rel="noopener">Cache-Control</a>通用首部 (http 1.1)</h5><p>不缓存</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: no-store</span><br></pre></td></tr></table></figure>
-
-<p>使用缓存前先发送一个请求到源服务器验证</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: no-cache</span><br></pre></td></tr></table></figure>
-
-<p>响应可以被任何缓存缓存，比如：代理服务器，反代，浏览器等。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: public</span><br></pre></td></tr></table></figure>
-
-<p>表示该响应是针对单个用户的，不应使用共享缓存。这种条件下，只有私人浏览器允许存储缓存。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: private</span><br></pre></td></tr></table></figure>
-
-<p>过期时间，这个时间从请求时间开始算起。缓存在max-age这段时间里被认为是最新的。该指令会覆盖Expires首部。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: max-age&#x3D;31536000</span><br><span class="line">&#x2F;&#x2F; max-age的单位为秒，31536000秒表示365天</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: must-revalidate</span><br></pre></td></tr></table></figure>
-
-<p>如果Expires首部与max-age均未指定，那么过期时间根据<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Last-Modified" target="_blank" rel="noopener">Last-Modified</a>首部设定为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Date首部时间 - Last-Modified首部时间) &#x2F; 10</span><br></pre></td></tr></table></figure>
-
-<h5 id="缓存验证-ETag"><a href="#缓存验证-ETag" class="headerlink" title="缓存验证 - ETag"></a>缓存验证 - ETag</h5><p>强验证：ETag响应头是一串UA不理解的字符。如果一个资源的响应头中包含ETag首部，客户端会在验证缓存时带上<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match" target="_blank" rel="noopener"><code>If-None-Match</code></a>首部，如果服务器的ETag与请求的<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match" target="_blank" rel="noopener"><code>If-None-Match</code></a>首部不相同，则服务器返回200 OK状态码与资源，否则返回304状态码表示资源未修改。</p>
-<p>弱验证：如果一个资源的响应头中包含<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Last-Modified" target="_blank" rel="noopener">Last-Modified</a>首部，客户端会在验证缓存时指定<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since" target="_blank" rel="noopener"><code>If-Modified-Since</code></a>请求首部。</p>
-<h5 id="Vary"><a href="#Vary" class="headerlink" title="Vary"></a>Vary</h5><p>条件式请求</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests</a></p>
-<p>简单点：<a href="https://blog.techbridge.cc/2017/06/17/cache-introduction/" target="_blank" rel="noopener">https://blog.techbridge.cc/2017/06/17/cache-introduction/</a></p>
-<h2 id="HTTP安全-CSRF和XSS"><a href="#HTTP安全-CSRF和XSS" class="headerlink" title="HTTP安全 - CSRF和XSS"></a>HTTP安全 - CSRF和XSS</h2><p><a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Cross-site_scripting</a></p>
-<h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p>什么是同源：协议(protocol)，主机(host)与端口(port)一致的URL为同源，参考：<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy</a></p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie</a></p>
-<p>跨站请求伪造(CSRF)指第三方网站向受攻击的网站发送跨站请求，使浏览器带着Cookie访问目标网站进行</p>
-<p>跨站脚本攻击(XSS)指第三方网站利用JS访问受攻击网站Cookie中的敏感信息。</p>
-<h3 id="如何预防"><a href="#如何预防" class="headerlink" title="如何预防"></a>如何预防</h3><p>减轻CSRF可以通过首部Set-Cookie的Samesite属性，</p>
-<p>Samesite有三个可选参数：</p>
-<ul>
-<li>Strict，只有在同源下浏览器才会发送Cookie给服务器</li>
-<li>Lax，现代浏览器默认值，第三方通过子请求(访问图片等)，Cookie不会被发送，但是可以通过网站导航的方式发送</li>
-<li>None，旧浏览器的默认值，任何跨源请求都会同时发送Cookie</li>
-</ul>
-<p>也可以通过实现Restful API来预防</p>
-<p>减轻XSS可以通过设置首部Cookie的Httponly属性，使得Cookie只能被发送到服务器，而无法被document.cookie接口访问。</p>
-<p>同时还可以通过设置短暂的Cookie有效期限(<code>Expires</code>或<code>Max-Age</code>)<del>或者用Web_Storage_API取代Cookie</del>来预防这两种攻击。</p>
-<p>同时也应设置Secure属性，只允许Cookie在HTTPS协议中发送，一定程度上减轻中间人攻击。</p>
-<h3 id="Websockets"><a href="#Websockets" class="headerlink" title="Websockets"></a>Websockets</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Protocol_upgrade_mechanism" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Protocol_upgrade_mechanism</a></p>
-<h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><p><a href="https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">TCP</a></p>
-<h3 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别"></a>TCP和UDP的区别</h3><p>TCP发送数据前需要先建立连接，UDP则不需要。</p>
-<p>包括三次握手与四次挥手</p>
-<p>TCP提供差错检测，按序到位，拥塞控制。</p>
-<p>UDP则不提供，所以它适用于对数据完整性要求不高的场景，如流媒体。</p>
-<h3 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h3>
       
     </div>
 
@@ -1168,14 +1225,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

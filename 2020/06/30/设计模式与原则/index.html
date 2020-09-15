@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="通用原则https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Single_source_of_truth https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Separation_of_concerns 模组化 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Modularity_(programming) https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式&#x2F;原则">
+<meta property="og:url" content="http://yoursite.com/2020/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8E%9F%E5%88%99/index.html">
+<meta property="og:site_name" content="A thinker.">
+<meta property="og:description" content="通用原则https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Single_source_of_truth https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Separation_of_concerns 模组化 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Modularity_(programming) https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;A">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-30T22:24:46.000Z">
+<meta property="article:modified_time" content="2020-09-15T15:59:32.900Z">
+<meta property="article:author" content="rockham">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8E%9F%E5%88%99/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>设计模式/原则 | A thinker.</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">A thinker.</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学无止境</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8E%9F%E5%88%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rockham">
+      <meta itemprop="description" content="没有无用的知识。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A thinker.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          设计模式/原则
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-30 22:24:46" itemprop="dateCreated datePublished" datetime="2020-06-30T22:24:46+00:00">2020-06-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-15 15:59:32" itemprop="dateModified" datetime="2020-09-15T15:59:32+00:00">2020-09-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="通用原则"><a href="#通用原则" class="headerlink" title="通用原则"></a>通用原则</h2><p><a href="https://en.wikipedia.org/wiki/Single_source_of_truth" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Single_source_of_truth</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Separation_of_concerns" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Separation_of_concerns</a></p>
+<p>模组化</p>
+<p><a href="https://en.wikipedia.org/wiki/Modularity_(programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Modularity_(programming)</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)</a></p>
+<p>DRY vs WET</p>
+<p><a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" rel="noopener">DRY</a></p>
+<p>High xx, Low coupling</p>
+<p><a href="https://en.wikipedia.org/wiki/Coupling_(computer_programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Coupling_(computer_programming)</a></p>
+<h2 id="Programming-Paradigms"><a href="#Programming-Paradigms" class="headerlink" title="Programming Paradigms"></a><a href="https://en.wikipedia.org/wiki/Programming_paradigm" target="_blank" rel="noopener">Programming Paradigms</a></h2><h3 id="Imperative-Programming"><a href="#Imperative-Programming" class="headerlink" title="Imperative Programming"></a>Imperative Programming</h3><h3 id="Object-Oriented-Programming-OOP"><a href="#Object-Oriented-Programming-OOP" class="headerlink" title="Object-Oriented Programming - OOP"></a><a href="https://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">Object-Oriented Programming - OOP</a></h3><h4 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation"></a><a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)" target="_blank" rel="noopener">Encapsulation</a></h4><p><a href="https://lostechies.com/derickbailey/2011/03/28/encapsulation-youre-doing-it-wrong/" target="_blank" rel="noopener">https://lostechies.com/derickbailey/2011/03/28/encapsulation-youre-doing-it-wrong/</a></p>
+<h4 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a><a href="https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)" target="_blank" rel="noopener">Inheritance</a></h4><p><a href="https://medium.com/hackernoon/inheritance-based-on-internal-structure-is-evil-7474cc8e64dc" target="_blank" rel="noopener">Implementation Inheritance Is Evil</a></p>
+<h4 id="Polymophism"><a href="#Polymophism" class="headerlink" title="Polymophism"></a>Polymophism</h4><p><a href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Polymorphism_(computer_science)</a></p>
+<ul>
+<li>Ad hoc Polymorphism(function overloading, operator overloading)</li>
+</ul>
+<blockquote>
+<p><em>Ad hoc polymorphism</em> refer to polymorphic functions that can be applied to arguments of different types, but that behave differently depending on the type of the argument to which they are applied.</p>
+</blockquote>
+<ul>
+<li>Parametric Polymorphism</li>
+</ul>
+<blockquote>
+<p><em>Parametric polymorphism</em> allows a function or a data type to be written generically, so that it can handle values <em>uniformly</em> without depending on their type.</p>
+</blockquote>
+<ul>
+<li>Subtyping</li>
+</ul>
+<blockquote>
+<p>Subtyping allows a function to be written to take an object of a certain type <em>T</em>, but also work correctly, if passed an object that belongs to a type <em>S</em> that is a subtype of <em>T</em> (according to the <a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle" target="_blank" rel="noopener">Liskov substitution principle</a>).</p>
+</blockquote>
+<p>Note: Inheritance should not be confused with subtyping.</p>
+<p>More</p>
+<p><a href="https://en.wikipedia.org/wiki/Method_dispatch" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Method_dispatch</a></p>
+<h4 id="Multiple-Inheritance"><a href="#Multiple-Inheritance" class="headerlink" title="Multiple Inheritance"></a>Multiple Inheritance</h4><p><a href="https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem" target="_blank" rel="noopener">The Diamond Problem</a></p>
+<h4 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h4><h4 id="Composition-over-inheritance"><a href="#Composition-over-inheritance" class="headerlink" title="Composition over inheritance"></a><a href="https://en.wikipedia.org/wiki/Composition_over_inheritance" target="_blank" rel="noopener">Composition over inheritance</a></h4><blockquote>
+<p>Classes should achieve <a href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)" target="_blank" rel="noopener">polymorphic</a> behavior and <a href="https://en.wikipedia.org/wiki/Code_reuse" target="_blank" rel="noopener">code reuse</a> by their <a href="https://en.wikipedia.org/wiki/Object_composition" target="_blank" rel="noopener">composition</a> (by containing instances of other classes that implement the desired functionality) rather than <a href="https://en.wikipedia.org/wiki/Inheritance_(computer_science)" target="_blank" rel="noopener">inheritance</a> from a base or parent class.</p>
+</blockquote>
+<h4 id="SOLID"><a href="#SOLID" class="headerlink" title="SOLID"></a><a href="https://en.wikipedia.org/wiki/SOLID" target="_blank" rel="noopener">SOLID</a></h4><ul>
+<li><a href="https://en.wikipedia.org/wiki/Single-responsibility_principle" target="_blank" rel="noopener">Single Responsibility Principle</a></li>
+</ul>
+<blockquote>
+<p>The single-responsibility principle (SRP) states that <strong>every module, class or function in a computer program should have responsibility over a single part of that program’s functionality</strong>, which it should encapsulate.</p>
+</blockquote>
+<p><a href="https://pasztor.at/blog/clean-code-responsibilities/" target="_blank" rel="noopener">https://pasztor.at/blog/clean-code-responsibilities/</a></p>
+<p><a href="https://blog.ploeh.dk/2011/06/07/SOLIDCodeisnt" target="_blank" rel="noopener">Application of the Single Responsibility Principle (SRP) leads to many small classes.</a></p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle" target="_blank" rel="noopener">Open-closed Principle</a></li>
+</ul>
+<blockquote>
+<p>The open–closed principle states “software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification”; that is, such an entity can <strong>allow its behaviour to be extended without modifying its source code</strong>.</p>
+</blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle" target="_blank" rel="noopener">Liskov substitution principle</a></li>
+</ul>
+<blockquote>
+<p>Substitutability stating that, <strong>if S is a subtype of T, then objects of type T may be replaced with objects of type S</strong> (i.e. an object of type T may be substituted with any object of a subtype S) without altering any of the desirable properties of the program (correctness, task performed, etc.). </p>
+</blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Interface_segregation_principle" target="_blank" rel="noopener">Interface Segregation Principle</a></li>
+</ul>
+<blockquote>
+<p>The interface-segregation principle (ISP) states that <strong>no client should be forced to depend on methods it does not use.</strong> ISP splits interfaces that are very large into smaller and more specific ones so that clients will only have to know about the methods that are of interest to them. ISP is intended to keep a system decoupled and thus easier to refactor, change, and redeploy.Such shrunken interfaces are also called <a href="https://martinfowler.com/bliki/RoleInterface.html" target="_blank" rel="noopener"><em>role interface</em>s.</a></p>
+</blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank" rel="noopener">Denpendency Inversion Principle</a></li>
+</ul>
+<blockquote>
+<ol>
+<li>High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).</li>
+<li>Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.</li>
+</ol>
+</blockquote>
+<p><a href="https://pasztor.at/blog/clean-code-dependencies/" target="_blank" rel="noopener">https://pasztor.at/blog/clean-code-dependencies/</a></p>
+<p>More</p>
+<p><a href="https://blog.ploeh.dk/2011/06/07/SOLIDCodeisnt/" target="_blank" rel="noopener">https://blog.ploeh.dk/2011/06/07/SOLIDCodeisnt/</a></p>
+<h4 id="GRASP"><a href="#GRASP" class="headerlink" title="GRASP"></a>GRASP</h4><p><a href="https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)</a></p>
+<h4 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h4><p><a href="https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)" target="_blank" rel="noopener">Factory Pattern</a></p>
+<p>如何正确的使用class</p>
+<p><a href="https://medium.com/javascript-scene/how-to-fix-the-es6-class-keyword-2d42bb3f4caf" target="_blank" rel="noopener">https://medium.com/javascript-scene/how-to-fix-the-es6-class-keyword-2d42bb3f4caf</a></p>
+<p><a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4" target="_blank" rel="noopener">https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4</a></p>
+<p><a href="http://blog.wolksoftware.com/about-classes-inheritance-and-object-oriented-design-in-typescript-and-es6" target="_blank" rel="noopener">http://blog.wolksoftware.com/about-classes-inheritance-and-object-oriented-design-in-typescript-and-es6</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Inversion_of_control" target="_blank" rel="noopener">IOC</a></p>
+<blockquote>
+<p>IoC inverts the flow of control as compared to traditional control flow. In IoC, custom-written portions of a computer program receive the flow of control from a generic framework. </p>
+</blockquote>
+<p><a href="https://pasztor.at/blog/what-is-the-ioc-container/" target="_blank" rel="noopener">https://pasztor.at/blog/what-is-the-ioc-container/</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Dependency_injection" target="_blank" rel="noopener">Dependency injection</a></p>
+<p><a href="https://pasztor.at/blog/clean-code-dependencies/" target="_blank" rel="noopener">https://pasztor.at/blog/clean-code-dependencies/</a></p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h4><p>Dependency inversion Principle in Dynamic programming languages.</p>
+<p><a href="https://softwareengineering.stackexchange.com/questions/195176/how-does-dependency-inversion-principle-work-in-languages-without-interfaces" target="_blank" rel="noopener">https://softwareengineering.stackexchange.com/questions/195176/how-does-dependency-inversion-principle-work-in-languages-without-interfaces</a></p>
+<p>Dependency injection 和动态语言</p>
+<p><a href="https://blog.tonyseek.com/post/notes-about-ioc-and-di/" target="_blank" rel="noopener">https://blog.tonyseek.com/post/notes-about-ioc-and-di/</a></p>
+<h3 id="Declarative-Programming"><a href="#Declarative-Programming" class="headerlink" title="Declarative Programming"></a>Declarative Programming</h3><h3 id="Functional-Programming-FP"><a href="#Functional-Programming-FP" class="headerlink" title="Functional Programming - FP"></a>Functional Programming - FP</h3><h4 id="Pure-Function"><a href="#Pure-Function" class="headerlink" title="Pure Function"></a><a href="https://en.wikipedia.org/wiki/Pure_function" target="_blank" rel="noopener">Pure Function</a></h4><blockquote>
+<p>A <strong>pure function</strong> is a <a href="https://en.wikipedia.org/wiki/Subroutine" target="_blank" rel="noopener">function</a> that has the following properties:</p>
+<ol>
+<li>Its <a href="https://en.wikipedia.org/wiki/Return_statement" target="_blank" rel="noopener">return value</a> is the same for the same <a href="https://en.wikipedia.org/wiki/Argument_of_a_function" target="_blank" rel="noopener">arguments</a> (no variation with local <a href="https://en.wikipedia.org/wiki/Static_variable" target="_blank" rel="noopener">static variables</a>, <a href="https://en.wikipedia.org/wiki/Non-local_variable" target="_blank" rel="noopener">non-local variables</a>, mutable <a href="https://en.wikipedia.org/wiki/Value_type_and_reference_type" target="_blank" rel="noopener">reference arguments</a> or input streams from <a href="https://en.wikipedia.org/wiki/Input/output" target="_blank" rel="noopener">I/O devices</a>).</li>
+<li>Its evaluation has no <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)" target="_blank" rel="noopener">side effects</a> (no mutation of local static variables, non-local variables, mutable reference arguments or I/O streams).</li>
+</ol>
+</blockquote>
+<p>Thus a pure function is a computational analogue of a mathematical function.</p>
+<h4 id="Currying"><a href="#Currying" class="headerlink" title="Currying"></a><a href="https://en.wikipedia.org/wiki/Currying" target="_blank" rel="noopener">Currying</a></h4><blockquote>
+<p>Currying is the technique of converting a function that takes multiple arguments into a sequence of functions that each take a single argument. </p>
+</blockquote>
+<p><a href="https://hughfdjackson.com/javascript/why-curry-helps/" target="_blank" rel="noopener">Why Curry Helps</a> by Hugh Jackson</p>
+<p><a href="https://www.youtube.com/watch?v=m3svKOdZijA&app=desktop" target="_blank" rel="noopener">Hey Underscore, You’re Doing It Wrong!</a> by Brian Lonsdorf</p>
+<p>Javascript library - Ramda</p>
+<ul>
+<li><a href="http://buzzdecafe.github.io/code/2014/05/16/introducing-ramda" target="_blank" rel="noopener">Introducing Ramda</a> by Buzz de Cafe</li>
+<li><a href="http://fr.umio.us/favoring-curry/" target="_blank" rel="noopener">Favoring Curry</a> by Scott Sauyet</li>
+<li><a href="http://fr.umio.us/why-ramda/" target="_blank" rel="noopener">Why Ramda?</a> by Scott Sauyet</li>
+<li><a href="https://randycoulman.com/blog/categories/thinking-in-ramda" target="_blank" rel="noopener">Thinking in Ramda</a> by Randy Coulman</li>
+</ul>
+<h4 id="Partial-Application"><a href="#Partial-Application" class="headerlink" title="Partial Application"></a><a href="https://en.wikipedia.org/wiki/Partial_application" target="_blank" rel="noopener">Partial Application</a></h4><blockquote>
+<p>Partial application (or partial function application) refers to the process of fixing a number of arguments to a function, producing another function of smaller arity.</p>
+</blockquote>
+<p>Other Insights</p>
+<p><a href="http://wiki.c2.com/?ClosuresAndObjectsAreEquivalent" target="_blank" rel="noopener">http://wiki.c2.com/?ClosuresAndObjectsAreEquivalent</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/19/ECMAScript2015-ES6%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/" rel="prev" title="ECMAScript2015/ES6特性">
+      <i class="fa fa-chevron-left"></i> ECMAScript2015/ES6特性
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/07/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97-Node-js/" rel="next" title="Web前端复习指南 - Node.js">
+      Web前端复习指南 - Node.js <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#通用原则"><span class="nav-number">1.</span> <span class="nav-text">通用原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Programming-Paradigms"><span class="nav-number">2.</span> <span class="nav-text">Programming Paradigms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Imperative-Programming"><span class="nav-number">2.1.</span> <span class="nav-text">Imperative Programming</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-Oriented-Programming-OOP"><span class="nav-number">2.2.</span> <span class="nav-text">Object-Oriented Programming - OOP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Encapsulation"><span class="nav-number">2.2.1.</span> <span class="nav-text">Encapsulation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inheritance"><span class="nav-number">2.2.2.</span> <span class="nav-text">Inheritance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Polymophism"><span class="nav-number">2.2.3.</span> <span class="nav-text">Polymophism</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multiple-Inheritance"><span class="nav-number">2.2.4.</span> <span class="nav-text">Multiple Inheritance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原则"><span class="nav-number">2.2.5.</span> <span class="nav-text">原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Composition-over-inheritance"><span class="nav-number">2.2.6.</span> <span class="nav-text">Composition over inheritance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SOLID"><span class="nav-number">2.2.7.</span> <span class="nav-text">SOLID</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GRASP"><span class="nav-number">2.2.8.</span> <span class="nav-text">GRASP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计模式"><span class="nav-number">2.2.9.</span> <span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">2.2.10.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">2.2.11.</span> <span class="nav-text">Q&amp;A</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Declarative-Programming"><span class="nav-number">2.3.</span> <span class="nav-text">Declarative Programming</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Functional-Programming-FP"><span class="nav-number">2.4.</span> <span class="nav-text">Functional Programming - FP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pure-Function"><span class="nav-number">2.4.1.</span> <span class="nav-text">Pure Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Currying"><span class="nav-number">2.4.2.</span> <span class="nav-text">Currying</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Partial-Application"><span class="nav-number">2.4.3.</span> <span class="nav-text">Partial Application</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rockham</p>
+  <div class="site-description" itemprop="description">没有无用的知识。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rockhamx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rockhamx" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rockham</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
