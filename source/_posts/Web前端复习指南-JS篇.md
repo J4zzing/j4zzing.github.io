@@ -1,11 +1,13 @@
 ---
-title: Web前端复习指南JS篇
+title: Web前端复习指南 - JS篇
 date: 2020-06-01 20:56:50
 tags:
 - JavaScript
 ---
 
 **施工中。。。本文目前只适用于个人**
+
+**施工中**。。。本文目前只适用于个人
 
 ### 简单介绍
 
@@ -398,13 +400,15 @@ https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 
 注意：Web Storage会针对网页协议区分。也就是说在[http://example.com](http://example.com/)和[https://example.com](https://example.com/)访问Web Storage会得到两个不同的对象。
 
+#### Web Audio API
+
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API
+
 #### WebSocket API
 
 https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
 
 #### WebWorker API
-
-
 
 #### IndexedDB API
 

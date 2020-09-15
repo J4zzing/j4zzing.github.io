@@ -1,5 +1,5 @@
 ---
-title: ECMAScript2015/ES6特性总结
+title: ECMAScript2015/ES6特性
 date: 2020-06-19 23:11:23
 tags: 
 - JavaScript
@@ -55,6 +55,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions
 
+#### Computed property names
+
+> Starting with ECMAScript 2015, the object initializer syntax also supports computed property names. That allows you to put an expression in brackets `[]`, that will be computed and used as the property name. This is reminiscent of the bracket notation of the [property accessor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors) syntax, which you may have used to read and set properties already.
+
 #### 类
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
@@ -76,6 +80,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
 实验性功能
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#Field_declarations
+
+
 
 #### 回调，Promise
 
@@ -107,7 +113,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators
 
+#### [Iterator Protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
 
+> In order to be **iterable**, an object must implement the **@@iterator** method, meaning that the object (or one of the objects up its [prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain)) must have a property with a `@@iterator` key which is available via constant [`Symbol.iterator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator):
+>
 
 ## 实验性特性
 

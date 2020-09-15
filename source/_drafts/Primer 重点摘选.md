@@ -109,9 +109,14 @@ const Pointers
 
 > The distinction between top-level and low-level matters when we copy an object. When we copy an object, top-level consts are ignored. On the other hand, low-level const is never ignored.
 
-#### 2.4.4 constexpr and Constant Expressions
+#### 2.4.4 `constexpr` and Constant Expressions
 
-> Under the new standard, we can ask the compiler to verify that a variable is a constant expression by declaring the variable in a constexpr declaration. Variables declared as constexpr are implicitly const and must be initialized by constant expressions. *<C++11>*
+> A constant expression is an expression whose value cannot change and that can be evaluated at compile time. A literal is a constant expression. A `const` object that is initialized from a constant expression is also a constant expression. 
+
+> In a large system, it can be difficult to determine (for certain) that an initializer is a
+> constant expression. 
+>
+> Under the new standard, we can ask the compiler to verify that a variable is a constant expression by declaring the variable in a `constexpr` declaration. Variables declared as constexpr are implicitly const and must be initialized by constant expressions. *<C++11>*
 
 ### 2.5 Dealing with types
 
@@ -226,19 +231,15 @@ copy initializing and direct initializing
 | --iter         |                                        |
 | iter1 == iter2 |                                        |
 
-> K EY C ONCEPT : G ENERIC P ROGRAMMING
+> KEY CONCEPT : GENERIC PROGRAMMING
 > Programmers coming to C++ from C or Java might be surprised that we used != rather
-> than < in ourfor loopssuch as theoneaboveand inthe oneon page94. C++ program-
-> mers use != as a matter of habit. They do so for the same reason that they use iterators
-> rather than subscripts: This coding style applies equally well to various kinds of con-
-> tainers provided by the library.
-> As we’ve seen, only a few library types, vector and string being among them,
-> have the subscript operator. Similarly, all of the library containers have iterators that
-> define the == and != operators. Most of those iterators do not have the < operator.
+> than < in our for loops such as the one above and in the one on page94. C++ programmers use != as a matter of habit. They do so for the same reason that they use iterators
+> rather than subscripts: This coding style applies equally well to various kinds of containers provided by the library.
+> As we’ve seen, only a few library types, vector and string being among them,have the subscript operator. Similarly, all of the library containers have iterators that define the == and != operators. Most of those iterators do not have the < operator.
 > By routinely using iterators and !=, we don’t have to worry about the precise type of
 > container we’re processing.
 
-> To let us ask specifically for the const_iterator type, the new standard introduced two new functions named `cbegin` and `cend`.
+> To let us ask specifically for the `const_iterator` type, the new standard introduced two new functions named `cbegin` and `cend`.
 
 #### 3.4.2 Iterator Arithmetic
 
@@ -265,3 +266,54 @@ copy initializing and direct initializing
 > By default, the elements in an array are default initialized.
 
 > ⚠ As with variables of built-in type, a default-initialized array of built-in type that is defined inside a function will have undefined values.
+
+> We can initialize such arrays from a string literal. When we use this form of initialization, it is important to remember that string literals end with a null character. That null character is copied into the array along with the characters in the literal.
+
+> We cannot initialize an array as a copy of another array, nor is it legal to assign one array to another.
+
+> It can be easier to understand array declarations by starting with the array’s name and reading them from the inside out.
+
+#### 3.5.2 Accessing the Elements of an Array
+
+> ⚠ The most common source of security problems are buffer overflow bugs. Such bugs occur when a program fails to check a subscript and mistakenly uses memory outside the range of an array or similar data structure.
+
+#### 3.5.3 Pointers and Arrays
+
+> In C++ pointers and arrays are closely intertwined. In particular, as we’ll see, when we use an array, the compiler ordinarily converts the array to a pointer.
+>
+> In most places when we use an array, the compiler automatically substitutes a pointer to the first element.
+
+> Just as we can use iterators to traverse the elements in a vector, we can use pointers to traverse the elements in an array. Of course, to do so, we need to obtain pointers to the first and one past the last element.
+
+> To make it easier and safer to use pointers, the new library includes two functions, named
+> begin and end.
+
+> The result of subtracting two pointers is a library type named `ptrdiff_t`. Like
+> `size_t`, the `ptrdiff_t` type is a machine-specific type and is defined in the
+> `cstddef` header. Because subtraction might yield a negative distance, `ptrdiff_t` is a signed integral type.
+
+> We can use the subscript operator on any pointer, as long as that pointer points to an element (or one past the last element) in an array.
+
+> The index used with the built-in subscript operator can be a negative value. 
+>
+> ⚠ Unlike subscripts for vector and string, the index of the built-in subscript operator is not an unsigned type.
+
+#### 3.5.4 C-Style Character Strings
+
+> ⚠ Although C++ supports C-style strings, they should not be used by C++ programs. C-style strings are a surprisingly rich source of bugs and are the root cause of many security problems. They’re also harder to use!
+
+#### 3.5.5 Interfacing to Older Code
+
+> More generally, we can use a null-terminated character array anywhere that we can use a string literal.
+
+> If a program needs continuing access to the contents of the array returned by `c_str`(), the program must copy the array returned by `c_str`.
+
+> Modern C++ programs should use `vector`s and iterators instead of built-in arrays and pointers, and use strings rather than C-style array-based character strings.
+
+### 3.6 Multidimensional Array
+
+> Strictly speaking, there are no multidimensional arrays in C++. What are commonly referred to as multidimensional arrays are actually arrays of arrays.
+
+> As we saw in § 3.5.1 (p. 115), we can more easily understand these definitions by reading them from the inside out.
+
+> ⚠ To use a multidimensional array in a range for, the loop control variable for all but the innermost array must be references.
