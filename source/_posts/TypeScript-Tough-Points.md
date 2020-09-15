@@ -5,6 +5,10 @@ tags:
 - TypeScript
 ---
 
+### Type Alias vs. Interface
+
+
+
 ## Decorator
 
 https://www.typescriptlang.org/docs/handbook/decorators.html
