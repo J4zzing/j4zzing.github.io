@@ -22,9 +22,9 @@
 
   <meta name="description" content="没有无用的知识。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="A thinker.">
+<meta property="og:title" content="Introspection">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="A thinker.">
+<meta property="og:site_name" content="Introspection">
 <meta property="og:description" content="没有无用的知识。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="rockham">
@@ -43,7 +43,7 @@
   };
 </script>
 
-  <title>A thinker.</title>
+  <title>Introspection</title>
   
 
 
@@ -94,7 +94,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">A thinker.</h1>
+      <h1 class="site-title">Introspection</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">学无止境</p>
@@ -153,6 +153,355 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/16/C++Primer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rockham">
+      <meta itemprop="description" content="没有无用的知识。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Introspection">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/16/C++Primer/" class="post-title-link" itemprop="url">C++ Primer 重点摘选</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-16 21:14:07 / 修改时间：13:25:38" itemprop="dateCreated datePublished" datetime="2020-09-16T21:14:07+00:00">2020-09-16</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Chapter-2-Variables-and-Basic-Types"><a href="#Chapter-2-Variables-and-Basic-Types" class="headerlink" title="Chapter 2 - Variables and Basic Types"></a>Chapter 2 - Variables and Basic Types</h2><h3 id="2-1-Primitive-Built-in-Types"><a href="#2-1-Primitive-Built-in-Types" class="headerlink" title="2.1 Primitive Built-in Types"></a>2.1 Primitive Built-in Types</h3><blockquote>
+<p>C++ defines a set of primitive types that include the <strong>arithmetic types</strong> and a special type named <strong>void</strong>. The arithmetic types represent characters, integers, boolean values, and floating-point numbers. The void type has no associated values and can be used in only a few circumstances, most commonly as the return type for functions that do not return a value.</p>
+</blockquote>
+<h4 id="2-1-1-Arithmetic-Types"><a href="#2-1-1-Arithmetic-Types" class="headerlink" title="2.1.1 Arithmetic Types"></a>2.1.1 Arithmetic Types</h4><blockquote>
+<p>The arithmetic types are divided into two categories: <strong>integral types</strong>(which include character and boolean types) and <strong>floating-point types</strong>.</p>
+</blockquote>
+<h4 id="2-1-2-Type-Conversions"><a href="#2-1-2-Type-Conversions" class="headerlink" title="2.1.2 Type Conversions"></a>2.1.2 Type Conversions</h4><blockquote>
+<p>The type of an object defines the data that an object might contain and what operations that object can perform. Among the operations that many types support is the ability to convert objects of the given type to other, related types.</p>
+<p>Type conversions happen automatically when we use an object of one type where an object of another type is expected.</p>
+</blockquote>
+<h3 id="2-2-Variables"><a href="#2-2-Variables" class="headerlink" title="2.2 Variables"></a>2.2 Variables</h3><h4 id="2-2-1-Variable-Definitions"><a href="#2-2-1-Variable-Definitions" class="headerlink" title="2.2.1 Variable Definitions"></a>2.2.1 Variable Definitions</h4><blockquote>
+<p>C++ programmers tend to be cavalier in their use of the term object. Most generally, an object is a region of memory that can contain data and has a type.</p>
+</blockquote>
+<ol>
+<li>int number = 1;</li>
+<li>int number = {1};</li>
+<li>int number{1};</li>
+<li>int number(1);</li>
+</ol>
+<blockquote>
+<p>The compiler will not let us list initialize variables of built-in type if the initializer might lead to the loss of information.</p>
+</blockquote>
+<blockquote>
+<p>Initialization in C++ is a surprisingly complicated topic and one we will return<br>to again and again. Many programmers are confused by the use of the = symbol to<br>initialize a variable. It is tempting to think of initialization as a form of assignment,<br>but initialization and assignment are different operations in C++. This concept<br>is particularly confusing because in many languages the distinction is irrelevant<br>and can be ignored. Moreover, even in C++ the distinction often doesn’t matter.</p>
+</blockquote>
+<blockquote>
+<p>⚠ Initialization is not assignment. Initialization happens when a variable<br>is given a value when it is created. Assignment obliterates an object’s<br>current value and replaces that value with a new one.</p>
+</blockquote>
+<blockquote>
+<p>The value of an object of built-in type that is not explicitly initialized depends<br>on where it is defined. Variables defined outside any function body are initialized<br>to zero. With one exception, which we cover in § 6.1.1 (p. 205), variables of built-in<br>type defined inside a function areuninitialized. The valueof an uninitialized vari-<br>able of built-in type is undefined (§ 2.1.2, p. 36). It is an error to copy or otherwise<br>try to access the value of a variable whose value is undefined.</p>
+</blockquote>
+<blockquote>
+<p>Uninitialized objects of built-in type defined inside a function body<br>have undefined value. Objects of class type that we do not explicitly<br>initialize have a value that is defined by the class.</p>
+</blockquote>
+<p>使用内置类型时最好先初始化。</p>
+<h4 id="2-2-2-作用域-Scope"><a href="#2-2-2-作用域-Scope" class="headerlink" title="2.2.2 作用域 - Scope"></a>2.2.2 作用域 - Scope</h4><blockquote>
+<p>Once a name has been declared in a scope, that name can be used by scopes<br>nested inside that scope. Names declared in the outer scope can also be <strong>redefined</strong><br>in an inner scope.</p>
+</blockquote>
+<blockquote>
+<p>⚠ It is almost always a bad idea to define a local variable with the same<br>name as a global variable that the function uses or might use.</p>
+</blockquote>
+<h3 id="2-3-复合类型-Compound-types"><a href="#2-3-复合类型-Compound-types" class="headerlink" title="2.3 复合类型 - Compound types"></a>2.3 复合类型 - Compound types</h3><h4 id="2-3-1-引用-References"><a href="#2-3-1-引用-References" class="headerlink" title="2.3.1 引用 - References"></a>2.3.1 引用 - References</h4><p>A Reference Is an Alias.</p>
+<p>A reference must be initialized.</p>
+<p>Reference is not object.</p>
+<p>References cannot be rebind.</p>
+<h4 id="2-3-2-指针-Pointers"><a href="#2-3-2-指针-Pointers" class="headerlink" title="2.3.2 指针 - Pointers"></a>2.3.2 指针 - Pointers</h4><blockquote>
+<p>The most direct approach is to initialize the pointer using the literal nullptr,<br>which was introduced by the new standard. nullptr is a literal that has a special<br>type that can be converted</p>
+</blockquote>
+<blockquote>
+<p>The value (i.e., the address) stored in a pointer can be in one of four states:</p>
+<ol>
+<li>It can point to an object.</li>
+<li>It can point to the location just immediately past the end of an object.</li>
+<li>It can be a null pointer, indicating that it is not bound to any object.</li>
+<li>It can be invalid; values other than the preceding three are invalid.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>It can be easier to understand complicated pointer or reference declarations if you read them from right to left.</p>
+</blockquote>
+<h3 id="2-4-const-Qulifier"><a href="#2-4-const-Qulifier" class="headerlink" title="2.4 const Qulifier"></a>2.4 const Qulifier</h3><h4 id="2-4-1-References-to-const"><a href="#2-4-1-References-to-const" class="headerlink" title="2.4.1 References to const"></a>2.4.1 References to const</h4><blockquote>
+<p>we can bind a reference to const to a nonconst object, a literal, or a more general expression. p.61</p>
+</blockquote>
+<h4 id="2-4-2-Pointers-and-const"><a href="#2-4-2-Pointers-and-const" class="headerlink" title="2.4.2 Pointers and const"></a>2.4.2 Pointers and const</h4><p>Pointers to const</p>
+<blockquote>
+<p>It may be helpful to think of pointers and references to const as pointers or references ”that think they point or refer to const.”</p>
+</blockquote>
+<p>const Pointers</p>
+<h4 id="2-4-3-Top-Level-const"><a href="#2-4-3-Top-Level-const" class="headerlink" title="2.4.3 Top-Level const"></a>2.4.3 Top-Level const</h4><blockquote>
+<p>The distinction between top-level and low-level matters when we copy an object. When we copy an object, top-level consts are ignored. On the other hand, low-level const is never ignored.</p>
+</blockquote>
+<h4 id="2-4-4-constexpr-and-Constant-Expressions"><a href="#2-4-4-constexpr-and-Constant-Expressions" class="headerlink" title="2.4.4 constexpr and Constant Expressions"></a>2.4.4 <code>constexpr</code> and Constant Expressions</h4><blockquote>
+<p>A constant expression is an expression whose value cannot change and that can be evaluated at compile time. A literal is a constant expression. A <code>const</code> object that is initialized from a constant expression is also a constant expression. </p>
+</blockquote>
+<blockquote>
+<p>In a large system, it can be difficult to determine (for certain) that an initializer is a<br>constant expression. </p>
+<p>Under the new standard, we can ask the compiler to verify that a variable is a constant expression by declaring the variable in a <code>constexpr</code> declaration. Variables declared as constexpr are implicitly const and must be initialized by constant expressions. *&lt;C++11&gt;*</p>
+</blockquote>
+<h3 id="2-5-Dealing-with-types"><a href="#2-5-Dealing-with-types" class="headerlink" title="2.5 Dealing with types"></a>2.5 Dealing with types</h3><h4 id="2-5-1-Type-Aliases"><a href="#2-5-1-Type-Aliases" class="headerlink" title="2.5.1 Type Aliases"></a>2.5.1 Type Aliases</h4><h4 id="2-5-2-The-auto-Type-Specifier-lt-C-11-gt"><a href="#2-5-2-The-auto-Type-Specifier-lt-C-11-gt" class="headerlink" title="2.5.2 The auto Type Specifier *&lt;C++11&gt;*"></a>2.5.2 The <code>auto</code> Type Specifier *&lt;C++11&gt;*</h4><blockquote>
+<p>By implication, a variable that uses auto as its type specifier must have an initializer.</p>
+</blockquote>
+<blockquote>
+<p> Auto ordinarily ignores top-level consts.</p>
+</blockquote>
+<h4 id="2-5-3-The-decltype-Type-Specifier-lt-C-11-gt"><a href="#2-5-3-The-decltype-Type-Specifier-lt-C-11-gt" class="headerlink" title="2.5.3 The decltype Type Specifier *&lt;C++11&gt;*"></a>2.5.3 The <code>decltype</code> Type Specifier *&lt;C++11&gt;*</h4><blockquote>
+<p>Sometimes we want to define a variable with a type that the compiler deduces<br>from an expression but do not want to use that expression to initialize the variable.</p>
+</blockquote>
+<blockquote>
+<p><code>decltype</code> returns a reference type for expressions that yield objects that can stand on the left-hand side of the assignment.</p>
+</blockquote>
+<blockquote>
+<p><code>decltype</code> of a parenthesized variable is always a reference.</p>
+</blockquote>
+<h3 id="2-6-Define-Our-Own-Data-Structures"><a href="#2-6-Define-Our-Own-Data-Structures" class="headerlink" title="2.6 Define Our Own Data Structures"></a>2.6 Define Our Own Data Structures</h3><blockquote>
+<p>Ordinarily,it is a bad idea to define an object as part of a class definition. Doing so obscures the code by combining the definitions of two different entities—the class and a<br>variable—in a single statement.</p>
+</blockquote>
+<blockquote>
+<p>Under the new standard, we can supply an in-class initializer for a data mem-<br>ber. When we create objects, the in-class initializers will be used to initialize the<br>datamembers. Memberswithout aninitializeraredefaultinitialized. &lt;C++11&gt;</p>
+</blockquote>
+<h4 id="2-6-3-Writing-Our-Own-Header-Files"><a href="#2-6-3-Writing-Our-Own-Header-Files" class="headerlink" title="2.6.3 Writing Our Own Header Files"></a>2.6.3 Writing Our Own Header Files</h4><blockquote>
+<p>Headers (usually) contain entities (such as class definitions and const and<br>constexpr variables) that can be defined only once in any given file.</p>
+</blockquote>
+<blockquote>
+<p>Preprocessor variables, including names of header guards, must be unique throughout the program. Typically we ensure uniqueness by basing the guard’s name on the name of a class in the header. To avoid name clashes with other entities in our programs, preprocessor variables usually are written in all uppercase.</p>
+</blockquote>
+<blockquote>
+<p>Headers should have guards, even if they aren’t (yet) included by another header. Header guards are trivial to write, and by habitually defining them you don’t need to decide whether they are needed.</p>
+</blockquote>
+<h2 id="Chapter-3-Strings-Vectors-and-Arrays"><a href="#Chapter-3-Strings-Vectors-and-Arrays" class="headerlink" title="Chapter 3 - Strings, Vectors and Arrays"></a>Chapter 3 - Strings, Vectors and Arrays</h2><blockquote>
+<p>A string is a variable-length sequence of characters. A vector holds a variable-length sequence of objects of a given type</p>
+</blockquote>
+<h3 id="3-1-Namespace-using-Declarations"><a href="#3-1-Namespace-using-Declarations" class="headerlink" title="3.1 Namespace using Declarations"></a>3.1 Namespace <code>using</code> Declarations</h3><blockquote>
+<p>Headers Should Not Include using Declarations.</p>
+</blockquote>
+<h3 id="3-2-Library-string-Type"><a href="#3-2-Library-string-Type" class="headerlink" title="3.2 Library string Type"></a>3.2 Library <code>string</code> Type</h3><h4 id="3-2-1-Defining-and-Initializing-strings"><a href="#3-2-1-Defining-and-Initializing-strings" class="headerlink" title="3.2.1 Defining and Initializing strings"></a>3.2.1 Defining and Initializing <code>string</code>s</h4><p>copy initializing and direct initializing</p>
+<h4 id="3-2-2-Operations-on-strings"><a href="#3-2-2-Operations-on-strings" class="headerlink" title="3.2.2 Operations on strings"></a>3.2.2 Operations on <code>string</code>s</h4><blockquote>
+<p>This <code>getline</code> function reads the given stream up to and including the first newline and stores what it read—not including the newline—in its string argument.</p>
+</blockquote>
+<blockquote>
+<p>Although we don’t know the precise type of string::size_type, we do know that it is an <strong>unsigned</strong> type big enough to hold the size of any string. Any variable used to store the result from the string size operation should be of type string::size_type.</p>
+</blockquote>
+<blockquote>
+<p>⚠ For historical reasons, and for compatibility with C, string literals are not standard library strings. It is important to remember that these types differ when you use string literals and library strings.</p>
+</blockquote>
+<h4 id="3-2-3-Dealing-with-the-Characters-in-a-string"><a href="#3-2-3-Dealing-with-the-Characters-in-a-string" class="headerlink" title="3.2.3 Dealing with the Characters in a string"></a>3.2.3 Dealing with the Characters in a <code>string</code></h4><blockquote>
+<p>Ordinarily, C++ programs should use the <em>cname</em> versions of headers and not the <em>name.h</em> versions.</p>
+</blockquote>
+<h3 id="3-3-Library-vector-Type"><a href="#3-3-Library-vector-Type" class="headerlink" title="3.3 Library vector Type"></a>3.3 Library <code>vector</code> Type</h3><blockquote>
+<p>A vector is often referred to as a container because it “contains” other objects.</p>
+</blockquote>
+<blockquote>
+<p>Templates are not themselves functions or classes. Instead, they can be thought of as instructions to the compiler for generating classes or functions. The process that the compiler uses to create classes or functions from templates is called <strong>instantiation</strong>. When we use a template, we specify what kind of class or function we want the compiler to instantiate.</p>
+</blockquote>
+<blockquote>
+<p>It is worth noting that earlier versions of C++ used a slightly different syntax<br>to define a vector whose elements are themselves vectors (or another template<br>type). In the past, we had to supply a space between the closing angle bracket<br>of the outer vector and its element type—vector&lt;vector<int> &gt; rather than<br>vector&lt;vector<int>&gt;.</p>
+</blockquote>
+<h4 id="3-3-1-Defining-and-Initializing-vectors"><a href="#3-3-1-Defining-and-Initializing-vectors" class="headerlink" title="3.3.1 Defining and Initializing vectors"></a>3.3.1 Defining and Initializing <code>vector</code>s</h4><blockquote>
+<p>when we use the copy initialization form (i.e., when we use =), we can supply only a single initializer; and when we supply an in-class initializer, we must either use copy initialization  or use curly braces.</p>
+</blockquote>
+<blockquote>
+<p>If we use braces and there is no way to use the initializers to list initialize the object, then those values will be used to construct the object.</p>
+</blockquote>
+<h4 id="3-3-2-Adding-Elements-to-a-vector"><a href="#3-3-2-Adding-Elements-to-a-vector" class="headerlink" title="3.3.2 Adding Elements to a vector"></a>3.3.2 Adding Elements to a <code>vector</code></h4><blockquote>
+<p>The standard requires that vector implementations can efficiently add elements at run time. Because vectors grow efficiently, it is often unnecessary—and can result in poorer performance—to define a vector of a specific size. The exception to this rule is if all the elements actually need the same value. </p>
+</blockquote>
+<blockquote>
+<p>⚠ We cannot use a range <code>for</code> if the body of the loop adds elements to the vector.</p>
+<p>⚠ The body of a range for must not change the size of the sequence over which it is iterating.</p>
+</blockquote>
+<h4 id="3-3-3-Other-vector-Operations"><a href="#3-3-3-Other-vector-Operations" class="headerlink" title="3.3.3 Other vector Operations"></a>3.3.3 Other <code>vector</code> Operations</h4><blockquote>
+<p>It is an error to subscript an element that doesn’t exist, but it is an error that the compiler is unlikely to detect. So-called buffer overflow errors are the result of subscripting elements that don’t exist. Such bugs are the most common cause of security problems in  PC and other applications.</p>
+<p>A good way to ensure that subscripts are in range is to avoid subscripting altogether by using a range <code>for</code> whenever possible.</p>
+</blockquote>
+<h3 id="3-4-Introducing-Iterators"><a href="#3-4-Introducing-Iterators" class="headerlink" title="3.4 Introducing Iterators"></a>3.4 Introducing Iterators</h3><blockquote>
+<p>All of the library containers have iterators, but only a few of them support the subscript operator.</p>
+</blockquote>
+<h4 id="3-4-1-Using-Iterators"><a href="#3-4-1-Using-Iterators" class="headerlink" title="3.4.1 Using Iterators"></a>3.4.1 Using Iterators</h4><blockquote>
+<p>The iterator returned by <code>end</code> is an iterator positioned “one past the end” of the associated container (or string). This iterator denotes a nonexistent element “off the end”of the container. It is used as a marker indicating when we have processed all the elements. The iterator returned by end is often referred to as the <strong>off-the-end iterator</strong> or abbreviated as “the end iterator.”</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Standard Container Iterator Operations</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*iter</td>
+<td></td>
+</tr>
+<tr>
+<td>iter-&gt;mem</td>
+<td>Equivalent to ( * iter).mem.</td>
+</tr>
+<tr>
+<td>++iter</td>
+<td></td>
+</tr>
+<tr>
+<td>–iter</td>
+<td></td>
+</tr>
+<tr>
+<td>iter1 == iter2</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>KEY CONCEPT : GENERIC PROGRAMMING<br>Programmers coming to C++ from C or Java might be surprised that we used != rather<br>than &lt; in our for loops such as the one above and in the one on page94. C++ programmers use != as a matter of habit. They do so for the same reason that they use iterators<br>rather than subscripts: This coding style applies equally well to various kinds of containers provided by the library.<br>As we’ve seen, only a few library types, vector and string being among them,have the subscript operator. Similarly, all of the library containers have iterators that define the == and != operators. Most of those iterators do not have the &lt; operator.<br>By routinely using iterators and !=, we don’t have to worry about the precise type of<br>container we’re processing.</p>
+</blockquote>
+<blockquote>
+<p>To let us ask specifically for the <code>const_iterator</code> type, the new standard introduced two new functions named <code>cbegin</code> and <code>cend</code>.</p>
+</blockquote>
+<h4 id="3-4-2-Iterator-Arithmetic"><a href="#3-4-2-Iterator-Arithmetic" class="headerlink" title="3.4.2 Iterator Arithmetic"></a>3.4.2 Iterator Arithmetic</h4><blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Operations Supported by vector and string Iterators</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>iter + n</td>
+<td></td>
+</tr>
+<tr>
+<td>iter - n</td>
+<td></td>
+</tr>
+<tr>
+<td>iter += n</td>
+<td></td>
+</tr>
+<tr>
+<td>iter -= n</td>
+<td></td>
+</tr>
+<tr>
+<td>iter1 - iter2</td>
+<td></td>
+</tr>
+<tr>
+<td>&gt;,&gt;=,&lt;,&lt;=</td>
+<td></td>
+</tr>
+</tbody></table>
+</blockquote>
+<h3 id="3-5-Arrays"><a href="#3-5-Arrays" class="headerlink" title="3.5 Arrays"></a>3.5 Arrays</h3><blockquote>
+<p>An array is a data structure that is similar to the library <code>vector</code> type but offers a different trade-off between performance and flexibility.</p>
+</blockquote>
+<h4 id="3-5-1-Defining-and-Initializing-Built-in-Arrays"><a href="#3-5-1-Defining-and-Initializing-Built-in-Arrays" class="headerlink" title="3.5.1 Defining and Initializing Built-in Arrays"></a>3.5.1 Defining and Initializing Built-in Arrays</h4><blockquote>
+<p>Arrays are a compound type. An array declarator has the form <code>a[d]</code>, where <code>a</code> is the name being defined and <code>d</code> is the dimension of the array.</p>
+<p>The number of elements in an array is part of the array’s type. As a result, the dimension must be known at compile time, which means that the dimension must be a constant<br>expression.</p>
+<p>By default, the elements in an array are default initialized.</p>
+</blockquote>
+<blockquote>
+<p>⚠ As with variables of built-in type, a default-initialized array of built-in type that is defined inside a function will have undefined values.</p>
+</blockquote>
+<blockquote>
+<p>We can initialize such arrays from a string literal. When we use this form of initialization, it is important to remember that string literals end with a null character. That null character is copied into the array along with the characters in the literal.</p>
+</blockquote>
+<blockquote>
+<p>We cannot initialize an array as a copy of another array, nor is it legal to assign one array to another.</p>
+</blockquote>
+<blockquote>
+<p>It can be easier to understand array declarations by starting with the array’s name and reading them from the inside out.</p>
+</blockquote>
+<h4 id="3-5-2-Accessing-the-Elements-of-an-Array"><a href="#3-5-2-Accessing-the-Elements-of-an-Array" class="headerlink" title="3.5.2 Accessing the Elements of an Array"></a>3.5.2 Accessing the Elements of an Array</h4><blockquote>
+<p>⚠ The most common source of security problems are buffer overflow bugs. Such bugs occur when a program fails to check a subscript and mistakenly uses memory outside the range of an array or similar data structure.</p>
+</blockquote>
+<h4 id="3-5-3-Pointers-and-Arrays"><a href="#3-5-3-Pointers-and-Arrays" class="headerlink" title="3.5.3 Pointers and Arrays"></a>3.5.3 Pointers and Arrays</h4><blockquote>
+<p>In C++ pointers and arrays are closely intertwined. In particular, as we’ll see, when we use an array, the compiler ordinarily converts the array to a pointer.</p>
+<p>In most places when we use an array, the compiler automatically substitutes a pointer to the first element.</p>
+</blockquote>
+<blockquote>
+<p>Just as we can use iterators to traverse the elements in a vector, we can use pointers to traverse the elements in an array. Of course, to do so, we need to obtain pointers to the first and one past the last element.</p>
+</blockquote>
+<blockquote>
+<p>To make it easier and safer to use pointers, the new library includes two functions, named<br>begin and end.</p>
+</blockquote>
+<blockquote>
+<p>The result of subtracting two pointers is a library type named <code>ptrdiff_t</code>. Like<br><code>size_t</code>, the <code>ptrdiff_t</code> type is a machine-specific type and is defined in the<br><code>cstddef</code> header. Because subtraction might yield a negative distance, <code>ptrdiff_t</code> is a signed integral type.</p>
+</blockquote>
+<blockquote>
+<p>We can use the subscript operator on any pointer, as long as that pointer points to an element (or one past the last element) in an array.</p>
+</blockquote>
+<blockquote>
+<p>The index used with the built-in subscript operator can be a negative value. </p>
+<p>⚠ Unlike subscripts for vector and string, the index of the built-in subscript operator is not an unsigned type.</p>
+</blockquote>
+<h4 id="3-5-4-C-Style-Character-Strings"><a href="#3-5-4-C-Style-Character-Strings" class="headerlink" title="3.5.4 C-Style Character Strings"></a>3.5.4 C-Style Character Strings</h4><blockquote>
+<p>⚠ Although C++ supports C-style strings, they should not be used by C++ programs. C-style strings are a surprisingly rich source of bugs and are the root cause of many security problems. They’re also harder to use!</p>
+</blockquote>
+<h4 id="3-5-5-Interfacing-to-Older-Code"><a href="#3-5-5-Interfacing-to-Older-Code" class="headerlink" title="3.5.5 Interfacing to Older Code"></a>3.5.5 Interfacing to Older Code</h4><blockquote>
+<p>More generally, we can use a null-terminated character array anywhere that we can use a string literal.</p>
+</blockquote>
+<blockquote>
+<p>If a program needs continuing access to the contents of the array returned by <code>c_str</code>(), the program must copy the array returned by <code>c_str</code>.</p>
+</blockquote>
+<blockquote>
+<p>Modern C++ programs should use <code>vector</code>s and iterators instead of built-in arrays and pointers, and use strings rather than C-style array-based character strings.</p>
+</blockquote>
+<h3 id="3-6-Multidimensional-Array"><a href="#3-6-Multidimensional-Array" class="headerlink" title="3.6 Multidimensional Array"></a>3.6 Multidimensional Array</h3><blockquote>
+<p>Strictly speaking, there are no multidimensional arrays in C++. What are commonly referred to as multidimensional arrays are actually arrays of arrays.</p>
+</blockquote>
+<blockquote>
+<p>As we saw in § 3.5.1 (p. 115), we can more easily understand these definitions by reading them from the inside out.</p>
+</blockquote>
+<blockquote>
+<p>⚠ To use a multidimensional array in a range for, the loop control variable for all but the innermost array must be references.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/12/Dive-into-InversifyJS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -162,7 +511,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
+      <meta itemprop="name" content="Introspection">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -184,7 +533,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 16:17:05" itemprop="dateModified" datetime="2020-09-15T16:17:05+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-16 13:25:38" itemprop="dateModified" datetime="2020-09-16T13:25:38+00:00">2020-09-16</time>
               </span>
 
           
@@ -284,7 +633,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
+      <meta itemprop="name" content="Introspection">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -306,7 +655,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 16:17:05" itemprop="dateModified" datetime="2020-09-15T16:17:05+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-16 13:25:38" itemprop="dateModified" datetime="2020-09-16T13:25:38+00:00">2020-09-16</time>
               </span>
 
           
@@ -388,7 +737,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
+      <meta itemprop="name" content="Introspection">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -410,7 +759,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 16:17:05" itemprop="dateModified" datetime="2020-09-15T16:17:05+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-16 13:25:38" itemprop="dateModified" datetime="2020-09-16T13:25:38+00:00">2020-09-16</time>
               </span>
 
           
@@ -467,7 +816,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
+      <meta itemprop="name" content="Introspection">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -489,7 +838,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 16:17:05" itemprop="dateModified" datetime="2020-09-15T16:17:05+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-16 13:25:38" itemprop="dateModified" datetime="2020-09-16T13:25:38+00:00">2020-09-16</time>
               </span>
 
           
@@ -563,7 +912,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
+      <meta itemprop="name" content="Introspection">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -585,7 +934,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 16:17:05" itemprop="dateModified" datetime="2020-09-15T16:17:05+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-16 13:25:38" itemprop="dateModified" datetime="2020-09-16T13:25:38+00:00">2020-09-16</time>
               </span>
 
           
@@ -641,6 +990,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/05/arcanist/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rockham">
+      <meta itemprop="description" content="没有无用的知识。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Introspection">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/05/arcanist/" class="post-title-link" itemprop="url">Phabricator workflow</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-05 15:35:28" itemprop="dateCreated datePublished" datetime="2020-08-05T15:35:28+00:00">2020-08-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-16 13:25:38" itemprop="dateModified" datetime="2020-09-16T13:25:38+00:00">2020-09-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Altered from this gist: <a href="https://gist.github.com/sekimura/6367366" target="_blank" rel="noopener">https://gist.github.com/sekimura/6367366</a></p>
+<ul>
+<li><p>create tasks <code>T{NNNN}</code> assign them</p>
+</li>
+<li><p>create and switch to a branch <code>git checkout -b &lt;branch name&gt;</code></p>
+</li>
+<li><p>make some changes and commit until it gets ready to be reviewed</p>
+<p><code>git commit -am &#39;comment here&#39;</code></p>
+</li>
+<li><p>check if it’s lint free (NOTE: it runs lint against only modified files)</p>
+<p><code>arc lint</code></p>
+</li>
+<li><p>push a review request to the server. This will create a diff with id <code>D{NNNN}</code></p>
+<p><code>arc diff [remote branch name] [--draft]</code></p>
+</li>
+<li><p>As a reviewer, you can apply the change set on your local by using <code>arc patch D{NNNN}</code></p>
+<p><code>arc patch D5678</code></p>
+</li>
+<li><p>if reviewers post a comment and you need to update the change set, commit more changes on that branch</p>
+<p><code>git commit -am &#39;update&#39;</code></p>
+</li>
+<li><p>and push updated change set to the server</p>
+<p><code>arc diff --update D5678</code></p>
+</li>
+<li><p>To check status of review requests which you have posted, run <code>arc list</code> which will give you a list of Status, Diff ID and title</p>
+<p><code>arc list</code></p>
+</li>
+<li><p>Once review request got accepted, merge changes to a remote branch. <code>arc land</code> command will take care of merging/rebasing branch and deleting your working branch… And pushing changes to origin/master.</p>
+<p><code>arc land [--onto &lt;remote branch name&gt;]</code></p>
+</li>
+<li><p>viola!</p>
+</li>
+</ul>
+<h3 id="More"><a href="#More" class="headerlink" title="More"></a>More</h3><p><a href="https://secure.phabricator.com/book/phabricator/article/arcanist_diff/" target="_blank" rel="noopener">https://secure.phabricator.com/book/phabricator/article/arcanist_diff/</a></p>
+<p><a href="https://secure.phabricator.com/T13547" target="_blank" rel="noopener">https://secure.phabricator.com/T13547</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/26/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%B6%E9%9B%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -650,7 +1098,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
+      <meta itemprop="name" content="Introspection">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -672,7 +1120,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 16:17:05" itemprop="dateModified" datetime="2020-09-15T16:17:05+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-16 13:25:38" itemprop="dateModified" datetime="2020-09-16T13:25:38+00:00">2020-09-16</time>
               </span>
 
           
@@ -722,7 +1170,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
+      <meta itemprop="name" content="Introspection">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -744,7 +1192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 16:17:05" itemprop="dateModified" datetime="2020-09-15T16:17:05+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-16 13:25:38" itemprop="dateModified" datetime="2020-09-16T13:25:38+00:00">2020-09-16</time>
               </span>
 
           
@@ -799,71 +1247,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97-Node-js/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rockham">
-      <meta itemprop="description" content="没有无用的知识。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/07/Web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0%E6%8C%87%E5%8D%97-Node-js/" class="post-title-link" itemprop="url">Web前端复习指南 - Node.js</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-07 17:41:00" itemprop="dateCreated datePublished" datetime="2020-07-07T17:41:00+00:00">2020-07-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 16:17:05" itemprop="dateModified" datetime="2020-09-15T16:17:05+00:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>Node.js的顶级作用域不是全局作用域。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8E%9F%E5%88%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -873,12 +1256,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
+      <meta itemprop="name" content="Introspection">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8E%9F%E5%88%99/" class="post-title-link" itemprop="url">设计模式/原则</a>
+            <a href="/2020/06/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%8E%9F%E5%88%99/" class="post-title-link" itemprop="url">设计模式与原则</a>
         </h2>
 
         <div class="post-meta">
@@ -895,7 +1278,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 16:17:05" itemprop="dateModified" datetime="2020-09-15T16:17:05+00:00">2020-09-15</time>
+                <time title="修改时间：2020-09-16 13:25:38" itemprop="dateModified" datetime="2020-09-16T13:25:38+00:00">2020-09-16</time>
               </span>
 
           
@@ -916,7 +1299,7 @@
 <p><a href="https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)</a></p>
 <p>DRY vs WET</p>
 <p><a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" rel="noopener">DRY</a></p>
-<p>High xx, Low coupling</p>
+<p>High cohesion, Low coupling</p>
 <p><a href="https://en.wikipedia.org/wiki/Coupling_(computer_programming)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Coupling_(computer_programming)</a></p>
 <h2 id="Programming-Paradigms"><a href="#Programming-Paradigms" class="headerlink" title="Programming Paradigms"></a><a href="https://en.wikipedia.org/wiki/Programming_paradigm" target="_blank" rel="noopener">Programming Paradigms</a></h2><h3 id="Imperative-Programming"><a href="#Imperative-Programming" class="headerlink" title="Imperative Programming"></a>Imperative Programming</h3><h3 id="Object-Oriented-Programming-OOP"><a href="#Object-Oriented-Programming-OOP" class="headerlink" title="Object-Oriented Programming - OOP"></a><a href="https://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">Object-Oriented Programming - OOP</a></h3><h4 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation"></a><a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)" target="_blank" rel="noopener">Encapsulation</a></h4><p><a href="https://lostechies.com/derickbailey/2011/03/28/encapsulation-youre-doing-it-wrong/" target="_blank" rel="noopener">https://lostechies.com/derickbailey/2011/03/28/encapsulation-youre-doing-it-wrong/</a></p>
 <h4 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a><a href="https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)" target="_blank" rel="noopener">Inheritance</a></h4><p><a href="https://medium.com/hackernoon/inheritance-based-on-internal-structure-is-evil-7474cc8e64dc" target="_blank" rel="noopener">Implementation Inheritance Is Evil</a></p>
@@ -1041,124 +1424,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/19/ECMAScript2015-ES6%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rockham">
-      <meta itemprop="description" content="没有无用的知识。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A thinker.">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/19/ECMAScript2015-ES6%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">ECMAScript2015/ES6特性</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-19 23:11:23" itemprop="dateCreated datePublished" datetime="2020-06-19T23:11:23+00:00">2020-06-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 16:17:05" itemprop="dateModified" datetime="2020-09-15T16:17:05+00:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="JavaScript历史"><a href="#JavaScript历史" class="headerlink" title="JavaScript历史"></a>JavaScript历史</h2><p><a href="https://medium.com/@madasamy/javascript-brief-history-and-ecmascript-es6-es7-es8-features-673973394df4" target="_blank" rel="noopener">https://medium.com/@madasamy/javascript-brief-history-and-ecmascript-es6-es7-es8-features-673973394df4</a></p>
-<h3 id="Proposal"><a href="#Proposal" class="headerlink" title="Proposal"></a>Proposal</h3><p><a href="https://tc39.github.io/process-document/" target="_blank" rel="noopener">https://tc39.github.io/process-document/</a></p>
-<h2 id="ECMAScript-2015-ES6-特性"><a href="#ECMAScript-2015-ES6-特性" class="headerlink" title="ECMAScript 2015/ES6 特性"></a>ECMAScript 2015/ES6 特性</h2><p><a href="https://babeljs.io/docs/en/learn/" target="_blank" rel="noopener">https://babeljs.io/docs/en/learn/</a></p>
-<p><a href="https://ponyfoo.com/articles/es6" target="_blank" rel="noopener">https://ponyfoo.com/articles/es6</a></p>
-<h4 id="模组化：CommonJS和ES6-import"><a href="#模组化：CommonJS和ES6-import" class="headerlink" title="模组化：CommonJS和ES6 import"></a>模组化：CommonJS和ES6 import</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import</a></p>
-<p>require() and module.exports</p>
-<p>import and export </p>
-<h4 id="模板字面量-Template-literals-Template-strings"><a href="#模板字面量-Template-literals-Template-strings" class="headerlink" title="模板字面量(Template literals/Template strings)"></a>模板字面量(Template literals/Template strings)</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals</a></p>
-<h4 id="解构赋值；Spread-syntax-Rest-parameter"><a href="#解构赋值；Spread-syntax-Rest-parameter" class="headerlink" title="解构赋值；Spread syntax, Rest parameter"></a>解构赋值；Spread syntax, Rest parameter</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">数组和对象解构赋值</a></p>
-<p>Rest parameter 对比 argument object</p>
-<p>对象解构赋值 对比 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener">Object.assign()</a></p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax</a></p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters</a></p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments</a></p>
-<h4 id="getter-amp-setter"><a href="#getter-amp-setter" class="headerlink" title="getter &amp; setter"></a>getter &amp; setter</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get</a></p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set</a></p>
-<h4 id="简短的定义对象的方法"><a href="#简短的定义对象的方法" class="headerlink" title="简短的定义对象的方法"></a>简短的定义对象的方法</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions</a></p>
-<h4 id="Computed-property-names"><a href="#Computed-property-names" class="headerlink" title="Computed property names"></a>Computed property names</h4><blockquote>
-<p>Starting with ECMAScript 2015, the object initializer syntax also supports computed property names. That allows you to put an expression in brackets <code>[]</code>, that will be computed and used as the property name. This is reminiscent of the bracket notation of the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors" target="_blank" rel="noopener">property accessor</a> syntax, which you may have used to read and set properties already.</p>
-</blockquote>
-<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes</a></p>
-<p>类是“特殊的函数”，是基于JS原型继承的语法糖。</p>
-<p>特点：</p>
-<ul>
-<li>和函数一样，声明类有两种语法 —— 类声明和类表达式</li>
-<li>与函数声明不一样，类声明不会被hoisted（提升）</li>
-<li>类里面的代码永远以strict mode执行，为了提高性能</li>
-<li>支持：构造函数，实例属性（构造函数内定义），静态属性（在类体之外定义），方法，静态方法，继承</li>
-<li>super调用父类函数</li>
-</ul>
-<p>注意：</p>
-<ul>
-<li>autoboxing不会发生：this如果为undefined，不会被设置为全局对象(Global Object)，因为class内永远是strict mode</li>
-</ul>
-<p>实验性功能</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#Field_declarations" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#Field_declarations</a></p>
-<h4 id="回调，Promise"><a href="#回调，Promise" class="headerlink" title="回调，Promise"></a>回调，Promise</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></p>
-<p>Promise构造函数</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise</a></p>
-<h4 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h4><p>Map &amp; Set</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map</a></p>
-<p>TypedArray</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray</a></p>
-<h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol</a></p>
-<h4 id="BigInt"><a href="#BigInt" class="headerlink" title="BigInt"></a>BigInt</h4><h4 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h4><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators</a></p>
-<h4 id="Iterator-Protocol"><a href="#Iterator-Protocol" class="headerlink" title="Iterator Protocol"></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols" target="_blank" rel="noopener">Iterator Protocol</a></h4><blockquote>
-<p>In order to be <strong>iterable</strong>, an object must implement the <strong>@@iterator</strong> method, meaning that the object (or one of the objects up its <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain" target="_blank" rel="noopener">prototype chain</a>) must have a property with a <code>@@iterator</code> key which is available via constant <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator" target="_blank" rel="noopener"><code>Symbol.iterator</code></a>:</p>
-</blockquote>
-<h2 id="实验性特性"><a href="#实验性特性" class="headerlink" title="实验性特性"></a>实验性特性</h2><p>公开类字段  stage 3</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1224,14 +1493,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
