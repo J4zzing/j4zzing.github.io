@@ -1,9 +1,15 @@
 ---
-title: node.js
-date: 2020-05-29 10:56:18
-tags:
-- Nodejs
+title: Web前端笔记 - Node.js
+date: 2020-07-07 17:41:00
+tags: 
+- Node.js
 ---
+
+
+
+## 作用域
+
+Node.js的顶级作用域不是全局作用域。
 
 top-level scope in Node is not the global scope
 
@@ -20,6 +26,12 @@ top-level scope in Node is not the global scope
 ## [Express](http://expressjs.com/)
 
 ### express router
+
+
+
+### Koa
+
+
 
 
 

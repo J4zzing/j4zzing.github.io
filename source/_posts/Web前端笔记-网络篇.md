@@ -1,5 +1,5 @@
 ---
-title: Web前端复习指南 - 网络
+title: Web前端笔记 - 网络篇
 date: 2020-06-19 17:35:28
 tags: 
 - Computer network

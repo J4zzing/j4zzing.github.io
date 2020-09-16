@@ -1,5 +1,5 @@
 ---
-title: React 陷阱
+title: React pitfalls
 date: 2020-06-02 21:55:15
 tags:
 - React

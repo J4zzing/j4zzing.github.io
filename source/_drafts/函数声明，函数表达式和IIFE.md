@@ -1,8 +1,6 @@
 ---
 title: 函数声明，函数表达式和IIFE
-date: 2020-05-29 10:56:35
 tags:
-- JavaScript
 ---
 
 # 函数声明，函数表达式和IIFE

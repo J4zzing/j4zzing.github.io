@@ -1,7 +1,10 @@
 ---
 title: Mysterious POSIX Command
 tags:
+- Unix
 ---
+
+答应我未来你要弄懂这些东西
 
 ```bash
 cat << EOF >> ~/.bash_profile
