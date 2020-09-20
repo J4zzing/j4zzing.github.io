@@ -167,7 +167,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/16/C++Primer/" class="post-title-link" itemprop="url">C++ Primer 重点摘选</a>
+            <a href="/2020/09/16/C++Primer/" class="post-title-link" itemprop="url">C++ Primer - The Basics</a>
         </h2>
 
         <div class="post-meta">
@@ -184,7 +184,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-17 05:05:05" itemprop="dateModified" datetime="2020-09-17T05:05:05+00:00">2020-09-17</time>
+                <time title="修改时间：2020-09-20 15:45:47" itemprop="dateModified" datetime="2020-09-20T15:45:47+00:00">2020-09-20</time>
               </span>
 
           
@@ -434,7 +434,7 @@
 <p>By default, the elements in an array are default initialized.</p>
 </blockquote>
 <blockquote>
-<p>⚠ As with variables of built-in type, a default-initialized array of built-in type that is defined inside a function will have undefined values.</p>
+<p>🚨 As with variables of built-in type, a default-initialized array of built-in type that is defined inside a function will have undefined values.</p>
 </blockquote>
 <blockquote>
 <p>We can initialize such arrays from a string literal. When we use this form of initialization, it is important to remember that string literals end with a null character. That null character is copied into the array along with the characters in the literal.</p>
@@ -466,10 +466,10 @@
 </blockquote>
 <blockquote>
 <p>The index used with the built-in subscript operator can be a negative value. </p>
-<p>⚠ Unlike subscripts for vector and string, the index of the built-in subscript operator is not an unsigned type.</p>
+<p>🚨 Unlike subscripts for vector and string, the index of the built-in subscript operator is not an unsigned type.</p>
 </blockquote>
 <h4 id="3-5-4-C-Style-Character-Strings"><a href="#3-5-4-C-Style-Character-Strings" class="headerlink" title="3.5.4 C-Style Character Strings"></a>3.5.4 C-Style Character Strings</h4><blockquote>
-<p>⚠ Although C++ supports C-style strings, they should not be used by C++ programs. C-style strings are a surprisingly rich source of bugs and are the root cause of many security problems. They’re also harder to use!</p>
+<p>🚨 Although C++ supports C-style strings, they should not be used by C++ programs. C-style strings are a surprisingly rich source of bugs and are the root cause of many security problems. They’re also harder to use!</p>
 </blockquote>
 <h4 id="3-5-5-Interfacing-to-Older-Code"><a href="#3-5-5-Interfacing-to-Older-Code" class="headerlink" title="3.5.5 Interfacing to Older Code"></a>3.5.5 Interfacing to Older Code</h4><blockquote>
 <p>More generally, we can use a null-terminated character array anywhere that we can use a string literal.</p>
@@ -487,7 +487,176 @@
 <p>As we saw in § 3.5.1 (p. 115), we can more easily understand these definitions by reading them from the inside out.</p>
 </blockquote>
 <blockquote>
-<p>⚠ To use a multidimensional array in a range for, the loop control variable for all but the innermost array must be references.</p>
+<p>🚨 To use a multidimensional array in a range for, the loop control variable for all but the innermost array must be references.</p>
+</blockquote>
+<h2 id="Chapter-4-Expressions"><a href="#Chapter-4-Expressions" class="headerlink" title="Chapter 4 - Expressions"></a>Chapter 4 - Expressions</h2><blockquote>
+<p>This chapter focuses on the operators as defined in the language and applied to operands of built-in type. We will also look at some of the operators defined by the library.</p>
+</blockquote>
+<blockquote>
+<p>An expression is composed of one or more operands and yields a result when<br>it is evaluated. <u>The simplest form of an expression is a single literal or variable.</u></p>
+</blockquote>
+<h3 id="4-1-Fundamentals"><a href="#4-1-Fundamentals" class="headerlink" title="4.1 Fundamentals"></a>4.1 Fundamentals</h3><h4 id="4-1-1-Basic-Concepts"><a href="#4-1-1-Basic-Concepts" class="headerlink" title="4.1.1 Basic Concepts"></a>4.1.1 Basic Concepts</h4><blockquote>
+<p>There are both <strong>unary operators</strong> and <strong>binary operators</strong>. Unary operators, such as<br>address-of (&amp;) and dereference ( * ), act on one operand. Binary operators, such as<br>equality (==) and multiplication ( * ), act on two operands. There is also one <strong>ternary</strong><br><strong>operator</strong> that takes three operands, and one operator, <u>function call</u>, that takes an<br>unlimited number of operands.</p>
+</blockquote>
+<blockquote>
+<p>Understanding expressions with multiple operators requires understanding the<br>precedence and associativity of the operators and may depend on the order of<br>evaluation of the operands.</p>
+</blockquote>
+<blockquote>
+<p>As part of evaluating an expression, operands are often converted from one type to another. These operators can be used on operands with differing types so long as the operands can be converted (§ 2.1.2, p. 35) to a common type.</p>
+</blockquote>
+<blockquote>
+<p>We can also define what most operators mean when applied to class<br>types. Because such definitions give an alternative meaning to an existing opera-<br>tor symbol, we refer to them as <strong>overloaded operators</strong>.</p>
+</blockquote>
+<blockquote>
+<p>Every expression in C++ is either an <strong>rvalue</strong> or an <strong>lvalue</strong>. These names are inherited from C and originally had a simple mnemonic purpose: lvalues could stand on the left-hand side of an assignment whereas rvalues could not.</p>
+<p>In C++, an lvalue expression yields an object or a function. However, some lvalues, such as const objects, may not be the left-hand operand of an assignment. Roughly speaking, when we use an object as an rvalue, we use the object’s value (its contents). When we use an object as an lvalue, we use the object’s identity (its location in memory).</p>
+<p>The important point is that (with one exception that we’ll cover in § 13.6 (p. 531))we can use an lvalue when an rvalue is required, but we cannot use an rvalue when an lvalue (i.e., a location) is required. When we use an lvalue in place of an rvalue, the object’s contents (its value) are used.</p>
+<p>• Assignment requiresa(nonconst) lvalueas its left-handoperandand yields its left-hand operand as an lvalue.<br>• The address-of operator requires an lvalue operand and returns a pointer to its operand as an rvalue.<br>• The built-in dereference and subscript operators and the iterator dereferenceand string and vector subscript operators all yield lvalues.<br>• The built-in and iterator increment and decrement operators require lvalue operands and the prefix versions (which are the ones we have used so far) also yield lvalues.</p>
+<p>When we apply <code>decltype</code> to an expression (other than a variable), the result is a reference type if the expression yields an lvalue. As an example, assume p is an <code>int *</code> . Because dereference yields an lvalue, <code>decltype( * p)</code> is <code>int&amp;</code>.</p>
+</blockquote>
+<h4 id="4-1-2-Predence-and-Associativety"><a href="#4-1-2-Predence-and-Associativety" class="headerlink" title="4.1.2 Predence and Associativety"></a>4.1.2 Predence and Associativety</h4><blockquote>
+<p>An expression with two or more operators is a <strong>compound expression</strong>. Evaluating a compound expression involves grouping the operands to the operators. <strong>Precedence</strong> and <strong>associativity</strong> determine how the operands are grouped. Programmers can override these rules by parenthesizing compound expressions to force a particular grouping.</p>
+<p>In general, the value of an expression depends on how the subexpressions are grouped. Operands of operators with higher precedence group more tightly than operands of operators at lower precedence. Associativity determines how to group operands with the same precedence.</p>
+</blockquote>
+<h4 id="4-1-3-Order-of-Evaluation"><a href="#4-1-3-Order-of-Evaluation" class="headerlink" title="4.1.3 Order of Evaluation"></a>4.1.3 Order of Evaluation</h4><blockquote>
+<p>Precedence specifies how the operands are grouped. It says nothing about the order in which the operands are evaluated. In most cases, the order is largely unspecified. In the following expression</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = f1() * f2();</span><br></pre></td></tr></table></figure>
+
+<p>we know that f1 and f2 must be called before the multiplication can be done. However, we have no way of knowing whether f1 will be called before f2 or vice versa.</p>
+<p>For operators that do not specify evaluation order, it is an error for an expression to <em>refer to and change</em> the same object. Expressions that do so have undefined behavior (§ 2.1.2, p. 36). As a simple example, the &lt;&lt; operator makes no guarantees about when or how its operands are evaluated. As a result, the following output expression is undefined:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">cout</span> &gt;&gt; i &gt;&gt; <span class="string">" "</span> &gt;&gt; ++i &gt;&gt; <span class="built_in">endl</span>;  <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>There are four operators that do guarantee the order in which operands are evaluated:</p>
+<ul>
+<li><p>the logical AND (&amp;&amp;) operator</p>
+</li>
+<li><p>the logical OR (||) operator</p>
+</li>
+<li><p>the conditional (? :) operator</p>
+</li>
+<li><p>the comma (,) operator</p>
+</li>
+</ul>
+<blockquote>
+<p>ADVICE: When you write compound expressions, two rules of thumb can be helpful:</p>
+<ol>
+<li>When in doubt, parenthesize expressions to force the grouping that the logic of<br>your program requires.</li>
+<li>If you change the value of an operand, don’t use that operand elsewhere in the<br>same expresion.</li>
+</ol>
+</blockquote>
+<h4 id="4-2-Arithmetic-Operators"><a href="#4-2-Arithmetic-Operators" class="headerlink" title="4.2 Arithmetic Operators"></a>4.2 Arithmetic Operators</h4><blockquote>
+<p>Unless noted otherwise, the arithmetic operators may be applied to any of the<br>arithmetic types (§2.1.1,p. 32)or to any type that can be converted to an arithmetic<br>type. The operands and results of these operators are rvalues. As described in<br>§ 4.11 (p. 159), operands of small integral types are promoted to a larger integral<br>type, and all operands may be converted to a common type as part of evaluating<br>these operators.</p>
+<p>*&lt;C++11&gt;* Earlier versions of the language permited a negative quotient to be rounded up or down; the new standard requires the quotient to be rounded toward zero (i.e., truncated).</p>
+<p>*&lt;C++11&gt;*  Earlier versions of the language permitted m%n to have the same sign as<br>n on implementations in which negative m/n was rounded away from zero, but<br>such implementations are now prohibited.</p>
+</blockquote>
+<h4 id="4-3-Logical-and-Relational-Operators"><a href="#4-3-Logical-and-Relational-Operators" class="headerlink" title="4.3 Logical and Relational Operators"></a>4.3 Logical and Relational Operators</h4><blockquote>
+<p>The relational operators take operandsof arithmetic or pointer type; the logical op-<br>erators take operands of any type that can be converted to bool. These operators<br>all return values of type bool. Arithmetic and pointer operand(s) with a value of zero are false; all other values are true. The operands to these operators are<br>rvalues and the result is an rvalue.</p>
+</blockquote>
+<p>Precedence of Logical and Relational Operators:</p>
+<ol>
+<li>!</li>
+<li>&lt;, &lt;=, &gt;, &gt;=</li>
+<li>==, !=</li>
+<li>&amp;&amp;</li>
+<li>||</li>
+</ol>
+<blockquote>
+<p>The logical AND and OR operators always evaluate their left operand before the right. Moreover, the right operand is evaluated if and only if the left operand does<br>not determine the result. This strategy is known as short-circuit evaluation:<br>• The right side of an &amp;&amp; is evaluated if and only if the left side is true.<br>• The right side of an || is evaluated if and only if the left side is false.</p>
+</blockquote>
+<blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (val == <span class="literal">true</span>) &#123; / * . . .* / &#125; <span class="comment">// true only if val is equal to 1 </span></span><br></pre></td></tr></table></figure>
+
+<p>🚨 It is usually a bad idea to use the boolean literals true and false as operands in a comparison. These literals should be used only to compare to an object of type bool.</p>
+</blockquote>
+<h4 id="4-4-Assignment-Operators"><a href="#4-4-Assignment-Operators" class="headerlink" title="4.4 Assignment Operators"></a>4.4 Assignment Operators</h4><blockquote>
+<p>The left-hand operand of an assignment operator must be a modifiable lvalue.</p>
+<p>The result of an assignment is its left-hand operand, which is an lvalue. If the types of the left and right operands differ, the right-hand operand is converted to the type of the left.</p>
+</blockquote>
+<blockquote>
+<p>*&lt;C++11&gt;* Under the new standard, we can use a braced initializer list (§ 2.2.1, p. 43) on the right-hand side:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">k = &#123;<span class="number">3.14</span>&#125;; <span class="comment">// error: narrowing conversion</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vi; <span class="comment">// initially empty</span></span><br><span class="line">vi = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;; <span class="comment">// vi now has ten elements, values 0 through 9</span></span><br></pre></td></tr></table></figure>
+
+<p>If the left-hand operand is of a built-in type, the initializer list may contain at most one value, and that value must not require a narrowing conversion (§ 2.2.1, p. 43).</p>
+<p>For class types, what happens depends on the details of the class. In the case of<br>vector, the vector template defines its own version of an assignment operator<br>that can take an initializer list. This operator replaces the elements of the left-hand<br>side with the elements in the list on the right-hand side.</p>
+<p>Regardless of the type of the left-hand operand, the initializer list maybe empty. In this case, the compiler generates a value-initialized(§3.3.1,p.98) temporary and assigns that value to the left-hand operand.</p>
+</blockquote>
+<blockquote>
+<p>Assignment is right associative. Each object in a multiple assignment must have the same type as its right-hand neighbor or a type to which that neighbor can be converted (§ 4.11, p. 159).</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival, * pval; <span class="comment">// ival is an int ; pval is a pointer to int</span></span><br><span class="line">ival = pval = <span class="number">0</span>; <span class="comment">// error: cannot assign the value of a pointer to an int</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>Assignments often occur in conditions. Because assignment has relatively low precedence, we usually must parenthesize the assignment for the condition to work properly.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">while</span> ((i = get_value()) != <span class="number">42</span>) &#123;</span><br><span class="line">  <span class="comment">// do something . . .</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>Compound Assignment Operators: </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+=, -=, *=, /=, %=   <span class="comment">// arithmetic operators</span></span><br><span class="line">&lt;&lt;=, &gt;&gt;=, &amp;=, ^=, |= <span class="comment">// bitwise operators; see § 4.8 (p. 152)</span></span><br></pre></td></tr></table></figure>
+
+<p>when we use the compound assignment, the left-hand operand is evaluated only once. If we use an ordinary assignment, that operand is evaluated twice: once in the expression on the right-hand side and again as the operand on the left hand. In many, perhaps most, contexts this difference is immaterial aside from possible performance consequences.</p>
+</blockquote>
+<h4 id="4-5-Increment-and-Decrement-Operators"><a href="#4-5-Increment-and-Decrement-Operators" class="headerlink" title="4.5 Increment and Decrement Operators"></a>4.5 Increment and Decrement Operators</h4><blockquote>
+<p>The increment (++) and decrement (–) operators provide a convenient notational shorthand for adding or subtracting 1 from an object. This notation rises above mere convenience when we use these operators with iterators, because many iterators do not support arithmetic.</p>
+</blockquote>
+<blockquote>
+<p>There are two forms of these operators: prefix and postfix. The prefix operators increments (or decrements) its operand and yields the changed object as its result. The postfix operators increment (or decrement) the operand but yield a copy of the original, unchanged value as its result.</p>
+<p>These operators require lvalue operands. The prefix operators return the object itself as an lvalue. The postfix operators return a copy of the object’s original value as an rvalue.</p>
+</blockquote>
+<blockquote>
+<p><u>ADVICE : USE POSTFIX OPERATORS ONLY WHEN NECESSARY</u><br>Readers from a C background might be surprised that we use the prefix increment in<br>the programs we’ve written. The reason is simple: The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result. If we don’t need the unincremented value, there’s no need for the extra work done by the postfix operator.</p>
+</blockquote>
+<blockquote>
+<p>Combining Dereference and Increment in a Single Expression:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> pbeg = v.<span class="built_in">begin</span>(); <span class="comment">// print elements up to the first negative value</span></span><br><span class="line"><span class="keyword">while</span> (pbeg != v.<span class="built_in">end</span>() &amp;&amp; *beg &gt;= <span class="number">0</span>)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *pbeg++ &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// print the current value and advance pbeg</span></span><br></pre></td></tr></table></figure>
+
+<p>The precedenceof postfix increment is higher than that of the dereference operator, so <code>*pbeg++</code> is equivalent to <code>*(pbeg++)</code>.</p>
+</blockquote>
+<blockquote>
+<p><u>ADVICE : BREVITY CAN BE A VIRTUE</u><br>Expressions such as <code>*pbeg++</code> can be bewildering—at first. However, it is a useful and widely used <u>idiom</u>. Once the notation is familiar, writing</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; * iter++ &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
+<p>is easier and less error-prone than the more verbose equivalent</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; * iter &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">++iter;</span><br></pre></td></tr></table></figure>
+
+<p>It is worthwhile to study examples of such code until their meanings are immediately clear. Most C++ programs use succinct expressions rather than more verbose equivalents. Therefore, C++ programmers must be comfortable with such usages. Moreover, once these expressions are familiar, you will find them less error-prone.</p>
+</blockquote>
+<blockquote>
+<p>Because the increment and decrement operators change their operands, it is easy to misuse these operators in compound expressions.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// the behavior of the following loop is undefined!</span></span><br><span class="line"><span class="keyword">while</span> (beg != s.<span class="built_in">end</span>() &amp;&amp; !<span class="built_in">isspace</span>( *beg))</span><br><span class="line">    *beg = <span class="built_in">toupper</span>( *beg++);  <span class="comment">// error: this assignment is undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>The compiler might evaluate this expression as either</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">beg = <span class="built_in">toupper</span>( *beg);  <span class="comment">// execution if left-hand side is evaluated first</span></span><br><span class="line">(beg + <span class="number">1</span>) = <span class="built_in">toupper</span>( *beg);  <span class="comment">// execution if right-hand side is evaluated first</span></span><br></pre></td></tr></table></figure>
+
+<p>or it might evaluate it in yet some other way.</p>
+</blockquote>
+<h4 id="4-6-The-Member-Access-Operators"><a href="#4-6-The-Member-Access-Operators" class="headerlink" title="4.6 The Member Access Operators"></a>4.6 The Member Access Operators</h4><blockquote>
+<p>The dot and arrow operators provide for member access. The dot operator fetches a member from an object of class type; arrow is defined so that <code>ptr-&gt;mem</code> is a synonym for <code>(*ptr).mem</code>.</p>
+<p>Dereference has a lower precedence than dot.</p>
+<p>The arrow operator requires a pointer operand and yields an lvalue. The dot operator yields an lvalue if the object from which the member is fetched is an lvalue; otherwise the result is an rvalue.</p>
+</blockquote>
+<h4 id="4-7-The-Conditional-Operators"><a href="#4-7-The-Conditional-Operators" class="headerlink" title="4.7 The Conditional Operators"></a>4.7 The Conditional Operators</h4><blockquote>
+<p>The conditional operator has the following form:<br><code>cond ? expr1 : expr2;</code></p>
+<p>The conditional operator guarantees that only one of <code>expr1</code> or <code>expr2</code> is evaluated.</p>
+<p>That result of the conditional operator is an lvalue if both expressions are lvalues or if they convert to a common lvalue type. Otherwise the result is an rvalue.</p>
+</blockquote>
+<blockquote>
+<p>We can nest one conditional operator inside another:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> finalgrade = (grade &gt; <span class="number">90</span>) ? <span class="string">"high pass"</span></span><br><span class="line">								 : (grade &lt; <span class="number">60</span>) ? <span class="string">"fail"</span> : <span class="string">"pass"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>The conditional operator is right associative, meaning (as usual) that the operands group right to left.</p>
+<p>🚨 Nested conditionals quickly become unreadable. It’s a good idea to nest no more than two or three.</p>
+</blockquote>
+<blockquote>
+<p>The conditional operator has fairly low precedence. When we embed a conditional<br>expression in a larger expression, we usually must parenthesize the conditional<br>subexpression. For example:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; ((grade &lt; <span class="number">60</span>) ? <span class="string">"fail"</span> : <span class="string">"pass"</span>); <span class="comment">// prints pass or fail</span></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; (grade &lt; <span class="number">60</span>) ? <span class="string">"fail"</span> : <span class="string">"pass"</span>; <span class="comment">// prints 1 or 0 !</span></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; grade &lt; <span class="number">60</span> ? <span class="string">"fail"</span> : <span class="string">"pass"</span>; <span class="comment">// error: compares cout to 60</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="4-8-The-Bitwise-Operators"><a href="#4-8-The-Bitwise-Operators" class="headerlink" title="4.8 The Bitwise Operators"></a>4.8 The Bitwise Operators</h4><blockquote>
+<p>The bitwise operators take operands of integral type that they use as a collection<br>of bits. These operators let us test and set individual bits.</p>
+<p>As usual, if an operand is a “small integer,” its value is first promoted (§ 4.11.1, p. 160) to a larger integral type. The operand(s) can be either signed or unsigned.</p>
+<p>Because there are no guarantees for how the sign bit is handled, we strongly recommend using unsigned types with the bitwise operators.</p>
+</blockquote>
+<blockquote>
+<p>The &gt;&gt; and &lt;&lt; operators yield a value that is a copy of the (possibly promoted) left-hand operand with the bits shifted as directed by the right-hand operand. The right-hand operand must not be negative and must be a value that is strictly less than the number of bits in the result. Otherwise, the operation is undefined. </p>
+<p>The left-shift operator (the &lt;&lt; operator) inserts 0-valued bits on the right. The behavior of the right-shift operator (the &gt;&gt; operator) depends on the type of the left-handoperand: If that operand is unsigned, then the operator inserts 0-valued bits on the left; if it is a signed type, the result is implementation defined—either copies of the sign bit or 0-valued bits are inserted on the left.</p>
 </blockquote>
 
       
@@ -539,7 +708,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-17 05:05:05" itemprop="dateModified" datetime="2020-09-17T05:05:05+00:00">2020-09-17</time>
+                <time title="修改时间：2020-09-20 15:45:47" itemprop="dateModified" datetime="2020-09-20T15:45:47+00:00">2020-09-20</time>
               </span>
 
           
@@ -661,7 +830,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-17 05:05:05" itemprop="dateModified" datetime="2020-09-17T05:05:05+00:00">2020-09-17</time>
+                <time title="修改时间：2020-09-20 15:45:47" itemprop="dateModified" datetime="2020-09-20T15:45:47+00:00">2020-09-20</time>
               </span>
 
           
@@ -765,7 +934,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-17 05:05:05" itemprop="dateModified" datetime="2020-09-17T05:05:05+00:00">2020-09-17</time>
+                <time title="修改时间：2020-09-20 15:45:47" itemprop="dateModified" datetime="2020-09-20T15:45:47+00:00">2020-09-20</time>
               </span>
 
           
@@ -861,7 +1030,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-17 05:05:05" itemprop="dateModified" datetime="2020-09-17T05:05:05+00:00">2020-09-17</time>
+                <time title="修改时间：2020-09-20 15:45:47" itemprop="dateModified" datetime="2020-09-20T15:45:47+00:00">2020-09-20</time>
               </span>
 
           
@@ -948,7 +1117,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-17 05:05:05" itemprop="dateModified" datetime="2020-09-17T05:05:05+00:00">2020-09-17</time>
+                <time title="修改时间：2020-09-20 15:45:47" itemprop="dateModified" datetime="2020-09-20T15:45:47+00:00">2020-09-20</time>
               </span>
 
           
@@ -1047,7 +1216,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-17 05:05:05" itemprop="dateModified" datetime="2020-09-17T05:05:05+00:00">2020-09-17</time>
+                <time title="修改时间：2020-09-20 15:45:47" itemprop="dateModified" datetime="2020-09-20T15:45:47+00:00">2020-09-20</time>
               </span>
 
           
@@ -1133,7 +1302,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-17 05:05:05" itemprop="dateModified" datetime="2020-09-17T05:05:05+00:00">2020-09-17</time>
+                <time title="修改时间：2020-09-20 15:45:47" itemprop="dateModified" datetime="2020-09-20T15:45:47+00:00">2020-09-20</time>
               </span>
 
           
@@ -1208,8 +1377,10 @@
 <li><a href="https://en.wikipedia.org/wiki/Interface_segregation_principle" target="_blank" rel="noopener">Interface Segregation Principle</a></li>
 </ul>
 <blockquote>
-<p>The interface-segregation principle (ISP) states that <strong>no client should be forced to depend on methods it does not use.</strong> ISP splits interfaces that are very large into smaller and more specific ones so that clients will only have to know about the methods that are of interest to them. ISP is intended to keep a system decoupled and thus easier to refactor, change, and redeploy.Such shrunken interfaces are also called <a href="https://martinfowler.com/bliki/RoleInterface.html" target="_blank" rel="noopener"><em>role interface</em>s.</a></p>
+<p>The interface-segregation principle (ISP) states that <strong>no client should be forced to depend on methods it does not use.</strong> ISP splits interfaces that are very large into smaller and more specific ones so that clients will only have to know about the methods that are of interest to them. ISP is intended to keep a system decoupled and thus easier to refactor, change, and redeploy. Such shrunken interfaces are also called <a href="https://martinfowler.com/bliki/RoleInterface.html" target="_blank" rel="noopener"><em>role interface</em>s.</a></p>
 </blockquote>
+<p><a href="https://martinfowler.com/bliki/RoleInterface.html" target="_blank" rel="noopener">https://martinfowler.com/bliki/RoleInterface.html</a></p>
+<p><a href="https://martinfowler.com/bliki/HeaderInterface.html" target="_blank" rel="noopener">https://martinfowler.com/bliki/HeaderInterface.html</a></p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank" rel="noopener">Denpendency Inversion Principle</a></li>
 </ul>
@@ -1314,7 +1485,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-17 05:05:05" itemprop="dateModified" datetime="2020-09-17T05:05:05+00:00">2020-09-17</time>
+                <time title="修改时间：2020-09-20 15:45:47" itemprop="dateModified" datetime="2020-09-20T15:45:47+00:00">2020-09-20</time>
               </span>
 
           
@@ -1428,7 +1599,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-17 05:05:05" itemprop="dateModified" datetime="2020-09-17T05:05:05+00:00">2020-09-17</time>
+                <time title="修改时间：2020-09-20 15:45:47" itemprop="dateModified" datetime="2020-09-20T15:45:47+00:00">2020-09-20</time>
               </span>
 
           
