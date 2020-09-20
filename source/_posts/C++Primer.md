@@ -1,5 +1,5 @@
 ---
-title: C++ Primer 重点摘选
+title: C++ Primer - The Basics
 date: 2020-09-16 21:14:07
 tags: C++
 ---
@@ -267,7 +267,7 @@ copy initializing and direct initializing
 >
 > By default, the elements in an array are default initialized.
 
-> ⚠ As with variables of built-in type, a default-initialized array of built-in type that is defined inside a function will have undefined values.
+> 🚨 As with variables of built-in type, a default-initialized array of built-in type that is defined inside a function will have undefined values.
 
 > We can initialize such arrays from a string literal. When we use this form of initialization, it is important to remember that string literals end with a null character. That null character is copied into the array along with the characters in the literal.
 
@@ -298,11 +298,11 @@ copy initializing and direct initializing
 
 > The index used with the built-in subscript operator can be a negative value. 
 >
-> ⚠ Unlike subscripts for vector and string, the index of the built-in subscript operator is not an unsigned type.
+> 🚨 Unlike subscripts for vector and string, the index of the built-in subscript operator is not an unsigned type.
 
 #### 3.5.4 C-Style Character Strings
 
-> ⚠ Although C++ supports C-style strings, they should not be used by C++ programs. C-style strings are a surprisingly rich source of bugs and are the root cause of many security problems. They’re also harder to use!
+> 🚨 Although C++ supports C-style strings, they should not be used by C++ programs. C-style strings are a surprisingly rich source of bugs and are the root cause of many security problems. They’re also harder to use!
 
 #### 3.5.5 Interfacing to Older Code
 
@@ -318,4 +318,275 @@ copy initializing and direct initializing
 
 > As we saw in § 3.5.1 (p. 115), we can more easily understand these definitions by reading them from the inside out.
 
-> ⚠ To use a multidimensional array in a range for, the loop control variable for all but the innermost array must be references.
+> 🚨 To use a multidimensional array in a range for, the loop control variable for all but the innermost array must be references.
+
+## Chapter 4 - Expressions
+
+> This chapter focuses on the operators as defined in the language and applied to operands of built-in type. We will also look at some of the operators defined by the library.
+
+> An expression is composed of one or more operands and yields a result when
+> it is evaluated. <u>The simplest form of an expression is a single literal or variable.</u>
+
+### 4.1 Fundamentals
+
+#### 4.1.1 Basic Concepts
+
+> There are both **unary operators** and **binary operators**. Unary operators, such as
+> address-of (&) and dereference ( * ), act on one operand. Binary operators, such as
+> equality (==) and multiplication ( * ), act on two operands. There is also one **ternary**
+> **operator** that takes three operands, and one operator, <u>function call</u>, that takes an
+> unlimited number of operands.
+
+> Understanding expressions with multiple operators requires understanding the
+> precedence and associativity of the operators and may depend on the order of
+> evaluation of the operands.
+
+> As part of evaluating an expression, operands are often converted from one type to another. These operators can be used on operands with differing types so long as the operands can be converted (§ 2.1.2, p. 35) to a common type.
+
+> We can also define what most operators mean when applied to class
+> types. Because such definitions give an alternative meaning to an existing opera-
+> tor symbol, we refer to them as **overloaded operators**.
+
+> Every expression in C++ is either an **rvalue** or an **lvalue**. These names are inherited from C and originally had a simple mnemonic purpose: lvalues could stand on the left-hand side of an assignment whereas rvalues could not.
+>
+> In C++, an lvalue expression yields an object or a function. However, some lvalues, such as const objects, may not be the left-hand operand of an assignment. Roughly speaking, when we use an object as an rvalue, we use the object’s value (its contents). When we use an object as an lvalue, we use the object’s identity (its location in memory).
+>
+> The important point is that (with one exception that we’ll cover in § 13.6 (p. 531))we can use an lvalue when an rvalue is required, but we cannot use an rvalue when an lvalue (i.e., a location) is required. When we use an lvalue in place of an rvalue, the object’s contents (its value) are used.
+>
+> • Assignment requiresa(nonconst) lvalueas its left-handoperandand yields its left-hand operand as an lvalue.
+> • The address-of operator requires an lvalue operand and returns a pointer to its operand as an rvalue.
+> • The built-in dereference and subscript operators and the iterator dereferenceand string and vector subscript operators all yield lvalues.
+> • The built-in and iterator increment and decrement operators require lvalue operands and the prefix versions (which are the ones we have used so far) also yield lvalues.
+>
+> When we apply `decltype` to an expression (other than a variable), the result is a reference type if the expression yields an lvalue. As an example, assume p is an `int *` . Because dereference yields an lvalue, `decltype( * p)` is `int&`.
+
+#### 4.1.2 Predence and Associativety
+
+> An expression with two or more operators is a **compound expression**. Evaluating a compound expression involves grouping the operands to the operators. **Precedence** and **associativity** determine how the operands are grouped. Programmers can override these rules by parenthesizing compound expressions to force a particular grouping.
+>
+> In general, the value of an expression depends on how the subexpressions are grouped. Operands of operators with higher precedence group more tightly than operands of operators at lower precedence. Associativity determines how to group operands with the same precedence.
+
+#### 4.1.3 Order of Evaluation
+
+> Precedence specifies how the operands are grouped. It says nothing about the order in which the operands are evaluated. In most cases, the order is largely unspecified. In the following expression
+>
+> ```C++
+> int i = f1() * f2();
+> ```
+>
+> we know that f1 and f2 must be called before the multiplication can be done. However, we have no way of knowing whether f1 will be called before f2 or vice versa.
+>
+> For operators that do not specify evaluation order, it is an error for an expression to *refer to and change* the same object. Expressions that do so have undefined behavior (§ 2.1.2, p. 36). As a simple example, the << operator makes no guarantees about when or how its operands are evaluated. As a result, the following output expression is undefined:
+>
+> ```C++
+> int i = 0;
+> cout >> i >> " " >> ++i >> endl;  // undefined
+> ```
+
+There are four operators that do guarantee the order in which operands are evaluated:
+
+- the logical AND (&&) operator
+
+- the logical OR (||) operator
+- the conditional (? :) operator
+- the comma (,) operator
+
+> ADVICE: When you write compound expressions, two rules of thumb can be helpful:
+> 1. When in doubt, parenthesize expressions to force the grouping that the logic of
+> your program requires.
+> 2. If you change the value of an operand, don’t use that operand elsewhere in the
+> same expresion.
+
+#### 4.2 Arithmetic Operators
+
+> Unless noted otherwise, the arithmetic operators may be applied to any of the
+> arithmetic types (§2.1.1,p. 32)or to any type that can be converted to an arithmetic
+> type. The operands and results of these operators are rvalues. As described in
+> § 4.11 (p. 159), operands of small integral types are promoted to a larger integral
+> type, and all operands may be converted to a common type as part of evaluating
+> these operators.
+>
+> *<C++11>* Earlier versions of the language permited a negative quotient to be rounded up or down; the new standard requires the quotient to be rounded toward zero (i.e., truncated).
+>
+> *<C++11>*  Earlier versions of the language permitted m%n to have the same sign as
+> n on implementations in which negative m/n was rounded away from zero, but
+> such implementations are now prohibited.
+
+#### 4.3 Logical and Relational Operators
+
+> The relational operators take operandsof arithmetic or pointer type; the logical op-
+> erators take operands of any type that can be converted to bool. These operators
+> all return values of type bool. Arithmetic and pointer operand(s) with a value of zero are false; all other values are true. The operands to these operators are
+> rvalues and the result is an rvalue.
+
+Precedence of Logical and Relational Operators:
+
+1. !
+2. <, <=, >, >=
+3. ==, !=
+4. &&
+5. ||
+
+> The logical AND and OR operators always evaluate their left operand before the right. Moreover, the right operand is evaluated if and only if the left operand does
+> not determine the result. This strategy is known as short-circuit evaluation:
+> • The right side of an && is evaluated if and only if the left side is true.
+> • The right side of an || is evaluated if and only if the left side is false.
+
+> ```C++
+> if (val == true) { / * . . .* / } // true only if val is equal to 1 
+> ```
+>
+> 🚨 It is usually a bad idea to use the boolean literals true and false as operands in a comparison. These literals should be used only to compare to an object of type bool.
+
+#### 4.4 Assignment Operators
+
+> The left-hand operand of an assignment operator must be a modifiable lvalue.
+>
+> The result of an assignment is its left-hand operand, which is an lvalue. If the types of the left and right operands differ, the right-hand operand is converted to the type of the left.
+
+> *<C++11>* Under the new standard, we can use a braced initializer list (§ 2.2.1, p. 43) on the right-hand side:
+>
+> ```C++
+> k = {3.14}; // error: narrowing conversion
+> vector<int> vi; // initially empty
+> vi = {0,1,2,3,4,5,6,7,8,9}; // vi now has ten elements, values 0 through 9
+> ```
+>
+> If the left-hand operand is of a built-in type, the initializer list may contain at most one value, and that value must not require a narrowing conversion (§ 2.2.1, p. 43).
+>
+> For class types, what happens depends on the details of the class. In the case of
+> vector, the vector template defines its own version of an assignment operator
+> that can take an initializer list. This operator replaces the elements of the left-hand
+> side with the elements in the list on the right-hand side.
+>
+> Regardless of the type of the left-hand operand, the initializer list maybe empty. In this case, the compiler generates a value-initialized(§3.3.1,p.98) temporary and assigns that value to the left-hand operand.
+
+> Assignment is right associative. Each object in a multiple assignment must have the same type as its right-hand neighbor or a type to which that neighbor can be converted (§ 4.11, p. 159).
+>
+> ```C++
+> int ival, * pval; // ival is an int ; pval is a pointer to int
+> ival = pval = 0; // error: cannot assign the value of a pointer to an int
+> ```
+
+> Assignments often occur in conditions. Because assignment has relatively low precedence, we usually must parenthesize the assignment for the condition to work properly.
+>
+> ```C++
+> int i;
+> while ((i = get_value()) != 42) {
+>   // do something . . .
+> }
+> ```
+
+> Compound Assignment Operators: 
+>
+> ```C++
+> +=, -=, *=, /=, %=   // arithmetic operators
+> <<=, >>=, &=, ^=, |= // bitwise operators; see § 4.8 (p. 152)
+> ```
+>
+> when we use the compound assignment, the left-hand operand is evaluated only once. If we use an ordinary assignment, that operand is evaluated twice: once in the expression on the right-hand side and again as the operand on the left hand. In many, perhaps most, contexts this difference is immaterial aside from possible performance consequences.
+
+#### 4.5 Increment and Decrement Operators
+
+> The increment (++) and decrement (--) operators provide a convenient notational shorthand for adding or subtracting 1 from an object. This notation rises above mere convenience when we use these operators with iterators, because many iterators do not support arithmetic.
+
+> There are two forms of these operators: prefix and postfix. The prefix operators increments (or decrements) its operand and yields the changed object as its result. The postfix operators increment (or decrement) the operand but yield a copy of the original, unchanged value as its result.
+>
+> These operators require lvalue operands. The prefix operators return the object itself as an lvalue. The postfix operators return a copy of the object’s original value as an rvalue.
+
+> <u>ADVICE : USE POSTFIX OPERATORS ONLY WHEN NECESSARY</u>
+> Readers from a C background might be surprised that we use the prefix increment in
+> the programs we’ve written. The reason is simple: The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result. If we don’t need the unincremented value, there’s no need for the extra work done by the postfix operator.
+
+> Combining Dereference and Increment in a Single Expression:
+>
+> ```C++
+> auto pbeg = v.begin(); // print elements up to the first negative value
+> while (pbeg != v.end() && *beg >= 0)
+>     cout << *pbeg++ << endl; // print the current value and advance pbeg
+> ```
+>
+> The precedenceof postfix increment is higher than that of the dereference operator, so `*pbeg++` is equivalent to `*(pbeg++)`.
+
+> <u>ADVICE : BREVITY CAN BE A VIRTUE</u>
+> Expressions such as `*pbeg++` can be bewildering—at first. However, it is a useful and widely used <u>idiom</u>. Once the notation is familiar, writing
+>
+> ```C++
+> cout << * iter++ << endl;
+> ```
+>
+> is easier and less error-prone than the more verbose equivalent
+>
+> ```C++
+> cout << * iter << endl;
+> ++iter;
+> ```
+>
+> It is worthwhile to study examples of such code until their meanings are immediately clear. Most C++ programs use succinct expressions rather than more verbose equivalents. Therefore, C++ programmers must be comfortable with such usages. Moreover, once these expressions are familiar, you will find them less error-prone.
+
+> Because the increment and decrement operators change their operands, it is easy to misuse these operators in compound expressions.
+>
+> ```C++
+> // the behavior of the following loop is undefined!
+> while (beg != s.end() && !isspace( *beg))
+>     *beg = toupper( *beg++);  // error: this assignment is undefined
+> ```
+>
+> The compiler might evaluate this expression as either
+> ```C++
+> beg = toupper( *beg);  // execution if left-hand side is evaluated first
+> (beg + 1) = toupper( *beg);  // execution if right-hand side is evaluated first
+> ```
+>
+> or it might evaluate it in yet some other way.
+
+#### 4.6 The Member Access Operators
+
+> The dot and arrow operators provide for member access. The dot operator fetches a member from an object of class type; arrow is defined so that `ptr->mem` is a synonym for `(*ptr).mem`.
+>
+> Dereference has a lower precedence than dot.
+>
+> The arrow operator requires a pointer operand and yields an lvalue. The dot operator yields an lvalue if the object from which the member is fetched is an lvalue; otherwise the result is an rvalue.
+
+#### 4.7 The Conditional Operators
+
+> The conditional operator has the following form:
+> `cond ? expr1 : expr2;`
+>
+> The conditional operator guarantees that only one of `expr1` or `expr2` is evaluated.
+>
+> That result of the conditional operator is an lvalue if both expressions are lvalues or if they convert to a common lvalue type. Otherwise the result is an rvalue.
+
+> We can nest one conditional operator inside another:
+>
+> ```C++
+> string finalgrade = (grade > 90) ? "high pass"
+> 								 : (grade < 60) ? "fail" : "pass";
+> ```
+>
+> The conditional operator is right associative, meaning (as usual) that the operands group right to left.
+>
+> 🚨 Nested conditionals quickly become unreadable. It’s a good idea to nest no more than two or three.
+
+> The conditional operator has fairly low precedence. When we embed a conditional
+> expression in a larger expression, we usually must parenthesize the conditional
+> subexpression. For example:
+>
+> ```C++
+> cout << ((grade < 60) ? "fail" : "pass"); // prints pass or fail
+> cout << (grade < 60) ? "fail" : "pass"; // prints 1 or 0 !
+> cout << grade < 60 ? "fail" : "pass"; // error: compares cout to 60
+> ```
+
+#### 4.8 The Bitwise Operators
+
+> The bitwise operators take operands of integral type that they use as a collection
+> of bits. These operators let us test and set individual bits.
+>
+> As usual, if an operand is a “small integer,” its value is first promoted (§ 4.11.1, p. 160) to a larger integral type. The operand(s) can be either signed or unsigned.
+>
+> Because there are no guarantees for how the sign bit is handled, we strongly recommend using unsigned types with the bitwise operators.
+
+> The >> and << operators yield a value that is a copy of the (possibly promoted) left-hand operand with the bits shifted as directed by the right-hand operand. The right-hand operand must not be negative and must be a value that is strictly less than the number of bits in the result. Otherwise, the operation is undefined. 
+>
+> The left-shift operator (the << operator) inserts 0-valued bits on the right. The behavior of the right-shift operator (the >> operator) depends on the type of the left-handoperand: If that operand is unsigned, then the operator inserts 0-valued bits on the left; if it is a signed type, the result is implementation defined—either copies of the sign bit or 0-valued bits are inserted on the left.

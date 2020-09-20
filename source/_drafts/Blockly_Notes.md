@@ -5,7 +5,21 @@ tags:
 - Blockly
 ---
 
-
+```js
+// 继承
+/**
+ * Inherit the prototype methods from one constructor into another.
+ *
+ * @param {!Function} childCtor Child class.
+ * @param {!Function} parentCtor Parent class.
+ * @suppress {strictMissingProperties} superClass_ is not defined on Function.
+ */
+Blockly.utils.object.inherits = function(childCtor, parentCtor) {
+  childCtor.superClass_ = parentCtor.prototype;
+  childCtor.prototype = Object.create(parentCtor.prototype);
+  childCtor.prototype.constructor = childCtor;
+};
+```
 
 Renderer, Theme, ToolBox, Field 作用与关系
 

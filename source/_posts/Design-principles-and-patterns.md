@@ -113,9 +113,11 @@ https://pasztor.at/blog/clean-code-responsibilities/
 
 - [Interface Segregation Principle](https://en.wikipedia.org/wiki/Interface_segregation_principle)
 
-> The interface-segregation principle (ISP) states that **no client should be forced to depend on methods it does not use.** ISP splits interfaces that are very large into smaller and more specific ones so that clients will only have to know about the methods that are of interest to them. ISP is intended to keep a system decoupled and thus easier to refactor, change, and redeploy.Such shrunken interfaces are also called [*role interface*s.](https://martinfowler.com/bliki/RoleInterface.html)
+> The interface-segregation principle (ISP) states that **no client should be forced to depend on methods it does not use.** ISP splits interfaces that are very large into smaller and more specific ones so that clients will only have to know about the methods that are of interest to them. ISP is intended to keep a system decoupled and thus easier to refactor, change, and redeploy. Such shrunken interfaces are also called [*role interface*s.](https://martinfowler.com/bliki/RoleInterface.html)
 
+https://martinfowler.com/bliki/RoleInterface.html
 
+https://martinfowler.com/bliki/HeaderInterface.html
 
 - [Denpendency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle)
 
