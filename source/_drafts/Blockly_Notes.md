@@ -5,6 +5,7 @@ tags:
 - Blockly
 ---
 
+
 ```js
 // 继承
 /**
@@ -21,9 +22,21 @@ Blockly.utils.object.inherits = function(childCtor, parentCtor) {
 };
 ```
 
-Renderer, Theme, ToolBox, Field 作用与关系
+### Elegant code style
+
+```js
+var blocks = [1,2,3];
+for (var i = 0, block; (block = blocks[i]); i++) {
+  // statements
+}
+```
 
 
+
+
+
+
+### Source code
 
 ```javascript
 // Blockly.blockRendering.register
@@ -32,14 +45,24 @@ Renderer, Theme, ToolBox, Field 作用与关系
 
 
 
-```typescript
-// Blockly.core.registry
-Blockly.registry.typeMap_: {
-  type: {
-    name: registryItem;
+```ts
+// Blockly/core/registry.js
+declare var Blockly.registry.typeMap_ = {
+  [type: Blockly.registry.Type.toString() | string]: {
+    [name: string]: registryItem;
   }
 }
+
+declare type registryItem = new () => any;
+
+declare interface Blockly.registry.Type = {
+  name: 'renderer' | 'field' | 'toolbox' | 'theme';
+  toString(): string;
+}
+
 ```
+
+Renderer, Theme, ToolBox, Field 作用与关系?
 
 
 
