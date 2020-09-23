@@ -177,17 +177,17 @@ copy initializing and direct initializing
 
 > This `getline` function reads the given stream up to and including the first newline and stores what it read—not including the newline—in its string argument.
 
-> Although we don’t know the precise type of string::size_type, we do know that it is an **unsigned** type big enough to hold the size of any string. Any variable used to store the result from the string size operation should be of type string::size_type.
+> Although we don’t know the precise type of `string::size_type`, we do know that it is an **unsigned** type big enough to hold the size of any string. Any variable used to store the result from the string size operation should be of type `string::size_type`.
 
-> ⚠ For historical reasons, and for compatibility with C, string literals are not standard library strings. It is important to remember that these types differ when you use string literals and library strings.
+> 🚨 For historical reasons, and for compatibility with C, string literals are not standard library strings. It is important to remember that these types differ when you use string literals and library strings.
 
 #### 3.2.3 Dealing with the Characters in a `string`
 
-> Ordinarily, C++ programs should use the *cname* versions of headers and not the *name.h* versions.
+> Ordinarily, C++ programs should use the `*cname*` versions of headers and not the `*name.h*` versions.
 
 ### 3.3 Library `vector` Type
 
-> A vector is often referred to as a container because it “contains” other objects.
+> A vector is often referred to as a <u>container</u> because it “contains” other objects.
 
 > Templates are not themselves functions or classes. Instead, they can be thought of as instructions to the compiler for generating classes or functions. The process that the compiler uses to create classes or functions from templates is called **instantiation**. When we use a template, we specify what kind of class or function we want the compiler to instantiate.
 
@@ -207,9 +207,9 @@ copy initializing and direct initializing
 
 > The standard requires that vector implementations can efficiently add elements at run time. Because vectors grow efficiently, it is often unnecessary—and can result in poorer performance—to define a vector of a specific size. The exception to this rule is if all the elements actually need the same value. 
 
-> ⚠ We cannot use a range `for` if the body of the loop adds elements to the vector.
+> 🚨 We cannot use a range `for` if the body of the loop adds elements to the vector.
 >
-> ⚠ The body of a range for must not change the size of the sequence over which it is iterating.
+> 🚨 The body of a range for must not change the size of the sequence over which it is iterating.
 
 #### 3.3.3 Other `vector` Operations
 
@@ -287,8 +287,7 @@ copy initializing and direct initializing
 
 > Just as we can use iterators to traverse the elements in a vector, we can use pointers to traverse the elements in an array. Of course, to do so, we need to obtain pointers to the first and one past the last element.
 
-> To make it easier and safer to use pointers, the new library includes two functions, named
-> begin and end.
+> To make it easier and safer to use pointers, the new library includes two functions, named `begin` and `end`.
 
 > The result of subtracting two pointers is a library type named `ptrdiff_t`. Like
 > `size_t`, the `ptrdiff_t` type is a machine-specific type and is defined in the
@@ -590,3 +589,68 @@ Precedence of Logical and Relational Operators:
 > The >> and << operators yield a value that is a copy of the (possibly promoted) left-hand operand with the bits shifted as directed by the right-hand operand. The right-hand operand must not be negative and must be a value that is strictly less than the number of bits in the result. Otherwise, the operation is undefined. 
 >
 > The left-shift operator (the << operator) inserts 0-valued bits on the right. The behavior of the right-shift operator (the >> operator) depends on the type of the left-handoperand: If that operand is unsigned, then the operator inserts 0-valued bits on the left; if it is a signed type, the result is implementation defined—either copies of the sign bit or 0-valued bits are inserted on the left.
+>
+> Shift Operators (aka IO Operators) Are Left Associative
+
+#### 4.9 The `sizeof` Operator
+
+> The `sizeof` operator returns the size, in bytes, of an expression or a type name. The operator is right associative. The result of `sizeof` is a <u>constant expression</u> of type `size_t`.
+>
+> ```C++
+> sizeof (type)
+> sizeof expr
+> ```
+>
+> Dereferencing an invalid pointer as the operand to `sizeof` is safe because the pointer is not actually used. `sizeof` doesn’t need dereference the pointer to know what type it will return.
+>
+> *<C++11>* Under the new standard, we can use the scope operator to ask for the size of a member of a class type. Ordinarily we can only access the members of a class through an object of that type. We don’t need to supply an object, because `sizeof` does not need to fetch the member to know its size.
+
+> The result of applying sizeof depends in part on the type involved:
+> • sizeof char or an expression of type char is guaranteed to be 1.
+> • sizeof a reference type returns the size of an object of the referenced type.
+> • sizeof a pointer returns the size needed hold a pointer.
+> • sizeof a dereferenced pointer returns the size of an object of the type to
+> which the pointer points; the pointer need not be valid.
+> • sizeof an array is the size of the entire array. It is equivalent to taking the
+> sizeof the element type times the number of elements in the array. Note
+> that sizeof does not convert the array to a pointer.
+> • sizeof a string or a vectorreturns only the size of the fixed part of these
+> types; it does not return the size used by the object’s elements.
+
+> Because `sizeof` returns the size of the entire array, we can determine the number of elements in an array by dividing the array size by the element size:
+>
+> ```C++
+> // sizeof(ia)/sizeof(*ia) returns the number of elements in ia
+> constexpr size_t sz = sizeof(ia)/sizeof(*ia);
+> int arr2[sz]; // ok sizeof returns a constant expression § 2.4.4 (p. 65)
+> ```
+
+#### 4.10 Comma Operator
+
+> The comma operator takes two operands, which it evaluates from left to right. Like
+> the logical AND and logical OR and the conditional operator, the comma operator
+> guarantees the order in which its operands are evaluated.
+>
+> The left-hand expression is evaluated and its result is discarded. The result of a comma expression is the value of its right-hand expression. The result is an lvalue if the right-hand operand is an lvalue.
+
+#### 4.11 Type Conversions
+
+> In C++ some types are related to each other. Two types are related if there is a conversion between them.
+>
+> C++ defines a set of conversions to transform the operands to a common type.These conversions are carried out automatically without programmer intervention—and sometimes without programmer knowledge. For that reason, they are referred to as implicit conversions.
+>
+> The implicit conversions among the arithmetic types are defined to preserve
+> precision, if possible.
+>
+> The compiler automatically converts operands in the following circumstances:
+> • In most expressions, values of integral types smaller than int are first pro-
+> moted to an appropriate larger integral type.
+> • In conditions, nonbool expressions are converted to bool.
+> • In initializations, the initializer is converted to the type of the variable; in
+> assignments, theright-handoperandis convertedto thetypeoftheleft-hand.
+> • In arithmetic and relational expressions with operands of mixed types, the
+> types are converted to a common type.
+> • As we’ll see in Chapter 6, conversions also happen during function calls.
+
+#### 4.11.1 The Arithmetic Conversion
+

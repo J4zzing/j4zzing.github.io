@@ -3,6 +3,8 @@ title: playgroud
 tags:
 ---
 
+## Redux
+
 https://redux.js.org/api/bindactioncreators
 
 ```js
@@ -17,16 +19,16 @@ function bindActionCreators(actionCreatorMapObj:ActionCreatorsMapObject, dispatc
 
 ```
 
-
+## Blockly
 
 ```js
 // Blockly shortcut script
 let mw = Blockly.mainWorkspace;
-let wtd = Blockly.Xml.WorkspaceToDom;
-let dtw = Blockly.Xml.DomToWorkspace;
-let dtt = Blockly.Xml.DomToText;
-let ttd = Blockly.Xml.TextToDom;
-let dtpt = Blockly.Xml.DomToPrettyText;
+let wtd = Blockly.Xml.workspaceToDom.bind(Blockly.Xml);
+let dtw = Blockly.Xml.domToWorkspace.bind(Blockly.Xml);
+let dtt = Blockly.Xml.domToText.bind(Blockly.Xml);
+let ttd = Blockly.Xml.textToDom.bind(Blockly.Xml);
+let dtpt = Blockly.Xml.domToPrettyText.bind(Blockly.Xml);
 let xmlDoc = wtd(mw);
 xmlDoc;
 // or
@@ -47,3 +49,38 @@ dtw(dom, mw);
 
 
 
+## Heart
+
+搞清楚整个过程，Connect the dots，联系积木定义，domain function在Heart里是怎么运作的。
+
+
+
+### 构想
+
+去掉'rest-s'如何？
+
+### 优化
+
+如何设计dom_compiler.ts的block_dom_to_json方法，使之可读性更高？
+
+### Playgroud
+
+```js
+let blockXML = '<kitten><block type=\"start_on_click\" id=\"C24oVoAxUz7xoY}k^~yu\" inline=\"true\" x=\"210\" y=\"109\"><next><block type=\"TUTORIAL__signal\" id=\"_c-B|Vhx6Nt]2JyF~jIY\" inline=\"true\"></block></next></block></kitten>'
+
+let p = new DOMParser();
+let parsed = p.parseFromString(blockXML, "text/xml");
+
+let blockDom = parsed.firstChild.firstChild;
+
+```
+
+
+
+https://developer.mozilla.org/en-US/docs/Web/API/DOMParser
+
+
+
+
+
+函数式编程
