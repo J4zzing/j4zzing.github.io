@@ -8,6 +8,18 @@ tags:
 https://redux.js.org/api/bindactioncreators
 
 ```js
+// createActionCreator
+import { ActionCreator, Action } from 'redux';
+
+function create_action_creator<P extends Object>(type:string) : ActionCreator<Action & P> {
+  return (payload:P) => {
+    return {
+      type,
+      ...payload,
+    }
+  }
+}
+
 // redux bindActionCreators
 function bindActionCreators(actionCreatorMapObj:ActionCreatorsMapObject, dispatch:Dispatch<any>) {
   Object.entries(actionCreatorMapObj).forEach(([key, val]) => {
@@ -51,13 +63,25 @@ dtw(dom, mw);
 
 ## Heart
 
-搞清楚整个过程，Connect the dots，联系积木定义，domain function在Heart里是怎么运作的。
+### 目的
+
+搞清楚整个过程，Connect the dots，联系积木定义，domain function在Heart里是如何运作的。
+
+### 疑问
+
+**Block_provider和Runtime_provider？**
+
+Block Provider比Runtime Provider多一个config属性
+
+
+
+**Responder 和lifetime responder？**
 
 
 
 ### 构想
 
-去掉'rest-s'如何？
+去掉'rest-s'，换成Throw
 
 ### 优化
 
@@ -83,4 +107,72 @@ https://developer.mozilla.org/en-US/docs/Web/API/DOMParser
 
 
 
-函数式编程
+```js
+function on_message(event) {
+  const { data } = event;
+  let { result } = data;
+
+  switch (data.eventName) {
+    case 'webviewOnReady':
+      console.log('webviewOnReady');
+      break;
+    case 'CUR_WORKSPACE_SVG':
+      const body = document.querySelector('body');
+      let lastChild = body.lastElementChild;
+      result = JSON.parse(result);
+        if (result.startsWith('<svg')) {
+          if (lastChild instanceof SVGElement) {
+            lastChild.outerHTML = result;
+          } else {
+            body.insertAdjacentHTML('beforeend', result);
+          }
+        } else {
+          let img;
+          if (lastChild instanceof Image) {
+            img = lastChild;
+          } else {
+            img = new Image();
+          }
+          img.className = 'block-img';
+          img.src = result;
+
+          if (!(lastChild instanceof Image)){
+            body.appendChild(img);
+          }
+        }
+      break;
+    case 'sendWorkspaceSvg':
+      console.log('Received SVGs...');
+      break;
+    case 'loadSvgStatue':
+      if (data.result) {
+        console.log('All blocks has been generated.');
+      } else {
+        console.warn('Generating blocks svg did not finished correctlly.');
+      }
+      break;
+
+    case 'playerOnReady':
+      console.log('playerOnReady');
+      break;
+    case 'loadStatus':
+      console.log('loadStatus', data.result);
+      break;
+
+    default:
+      throw new Error('Unknow Event: ' + data.eventName);
+  }
+}
+
+window.addEventListener('message', on_message, false);
+
+temp1.contentWindow.postMessage({
+  eventName: 'GET_CUR_WORKSPACE_SVG',
+  // type: 'xml',
+  // type: 'dataurl+ascii',
+  // type: 'dataurl+base64',
+  type: 'dataurl+png',
+  scale: 5,
+}, '*');
+```
+

@@ -3,11 +3,23 @@ title: Wonderful-Git
 tags:
 ---
 
+## Commit
+
+**把当前Commit回退到Stage状态**
+
+```sh
+git reset --soft HEAD^
+```
+
+https://stackoverflow.com/questions/7214039/how-do-you-move-a-commit-to-the-staging-area-in-git
+
+https://git-scm.com/docs/git-reset
+
+
+
 ## Branch
 
 **根据特定commit创建新的分支**
-
-https://stackoverflow.com/questions/2816715/branch-from-a-previous-commit-using-git
 
 ```sh
 git branch branchname <sha1-of-commit>
@@ -16,6 +28,8 @@ git branch branchname HEAD~3
 
 git checkout -b branchname <sha1-of-commit or HEAD~3>
 ```
+
+https://stackoverflow.com/questions/2816715/branch-from-a-previous-commit-using-git
 
 
 
