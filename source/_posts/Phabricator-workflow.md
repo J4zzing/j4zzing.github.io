@@ -42,7 +42,7 @@ Altered from this gist: https://gist.github.com/sekimura/6367366
 
 - Once review request got accepted, merge changes to a remote branch. `arc land` command will take care of merging/rebasing branch and deleting your working branch... And pushing changes to origin/master.
 
-  `arc land [--onto <remote branch name>]`
+  `arc land [--onto <remote branch name>] --strategy squash`
 
 - viola!
 

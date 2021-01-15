@@ -3,6 +3,27 @@ title: playgroud
 tags:
 ---
 
+## Animation
+
+https://easings.net/#easeOutElastic
+
+```js
+function easeOutElastic(x) {
+    const c4 = (2 * Math.PI) / 3;
+    
+    return x === 0
+        ? 0
+        : x === 1
+        ? 1
+        : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1;
+}
+
+let progress = [0, 0.16, 0.28, 0.44, 0.59, 0.73, 0.88, 1];
+let values = progress.map(easeOutElastic);
+```
+
+
+
 ## Redux
 
 https://redux.js.org/api/bindactioncreators
@@ -61,32 +82,6 @@ dtw(dom, mw);
 
 
 
-## Heart
-
-### 目的
-
-搞清楚整个过程，Connect the dots，联系积木定义，domain function在Heart里是如何运作的。
-
-### 疑问
-
-**Block_provider和Runtime_provider？**
-
-Block Provider比Runtime Provider多一个config属性
-
-
-
-**Responder 和lifetime responder？**
-
-
-
-### 构想
-
-去掉'rest-s'，换成Throw
-
-### 优化
-
-如何设计dom_compiler.ts的block_dom_to_json方法，使之可读性更高？
-
 ### Playgroud
 
 ```js
@@ -102,77 +97,4 @@ let blockDom = parsed.firstChild.firstChild;
 
 
 https://developer.mozilla.org/en-US/docs/Web/API/DOMParser
-
-
-
-
-
-```js
-function on_message(event) {
-  const { data } = event;
-  let { result } = data;
-
-  switch (data.eventName) {
-    case 'webviewOnReady':
-      console.log('webviewOnReady');
-      break;
-    case 'CUR_WORKSPACE_SVG':
-      const body = document.querySelector('body');
-      let lastChild = body.lastElementChild;
-      result = JSON.parse(result);
-        if (result.startsWith('<svg')) {
-          if (lastChild instanceof SVGElement) {
-            lastChild.outerHTML = result;
-          } else {
-            body.insertAdjacentHTML('beforeend', result);
-          }
-        } else {
-          let img;
-          if (lastChild instanceof Image) {
-            img = lastChild;
-          } else {
-            img = new Image();
-          }
-          img.className = 'block-img';
-          img.src = result;
-
-          if (!(lastChild instanceof Image)){
-            body.appendChild(img);
-          }
-        }
-      break;
-    case 'sendWorkspaceSvg':
-      console.log('Received SVGs...');
-      break;
-    case 'loadSvgStatue':
-      if (data.result) {
-        console.log('All blocks has been generated.');
-      } else {
-        console.warn('Generating blocks svg did not finished correctlly.');
-      }
-      break;
-
-    case 'playerOnReady':
-      console.log('playerOnReady');
-      break;
-    case 'loadStatus':
-      console.log('loadStatus', data.result);
-      break;
-
-    default:
-      throw new Error('Unknow Event: ' + data.eventName);
-  }
-}
-
-window.addEventListener('message', on_message, false);
-
-temp1.contentWindow.postMessage({
-  eventName: 'GET_CUR_WORKSPACE_SVG',
-  // type: 'xml',
-  // type: 'dataurl+ascii',
-  // type: 'dataurl+base64',
-  type: 'dataurl+png',
-  scale: 5,
-}, '*');
-```
 
